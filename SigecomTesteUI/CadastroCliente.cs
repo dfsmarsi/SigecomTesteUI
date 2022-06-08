@@ -13,14 +13,17 @@ namespace SigecomTesteUI
             Setup();
             DigitarNoCampo("txtUsuario", "Douglas");
             DigitarNoCampoEnter("txtSenha", "123");
-            Thread.Sleep(20000);
+            Thread.Sleep(5000);
             TrocarJanela();
             Verificar("SIGECOM - Sistema de Gestão Comercial - NFCE", "SIGECOM - Sistema de Gestão Comercial - NFCE");
         }
         [TestMethod]
-        public void CadastrarProdutoNovo()
+        public void CadastrarClienteNovo()
         {
-            ClicarBotao("Cadastro");
+            //Abrir tela de cadastro de Cliente e clicar no botão novo
+            DoubleClickBotao("Cadastro");
+            ClicarBotao("Clientes");
+            ClicarBotao("F2 - Novo");
         }
     }
 }

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -61,6 +62,13 @@ namespace SigecomTesteUI
         {
             var botao = session.FindElementByName(nomeBotao);
             botao.Click();
+        }
+        public void DoubleClickBotao(string nomeBotao)
+        {
+            Actions acao = new Actions(session);
+            acao.MoveToElement(session.FindElementByName(nomeBotao));
+            acao.DoubleClick();
+            acao.Perform();
         }
 
         public void Verificar(string nomeCampo, string valor)
