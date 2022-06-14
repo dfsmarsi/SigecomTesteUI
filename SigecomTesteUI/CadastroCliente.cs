@@ -24,6 +24,13 @@ namespace SigecomTesteUI
             DoubleClickBotao("Cadastro");
             ClicarBotao("Clientes");
             ClicarBotao("F2 - Novo");
+            DigitarNoCampo("txtNome", "Joao Penca");
+            DigitarNoCampo("txtCPF", "43671566051");
+            DigitarNoCampo("txtRG", "52195129X");
+            DigitarNoCampoEnter("txtCEP","15700082");
+            Thread.Sleep(999);
+            DigitarNoCampo("txtNumero","123");
+            ClicarBotao("F5 - Gravar");
         }
     }
 }
