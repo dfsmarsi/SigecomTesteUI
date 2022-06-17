@@ -14,7 +14,7 @@ namespace SigecomTesteUI
             DigitarNoCampo("txtUsuario", "Douglas");
             DigitarNoCampoEnter("txtSenha", "123");
             Thread.Sleep(5000);
-            TrocarJanela();
+            TrocarJanela(0);
             Verificar("SIGECOM - Sistema de Gestão Comercial - NFCE", "SIGECOM - Sistema de Gestão Comercial - NFCE");
         }
         [TestMethod]
@@ -27,10 +27,13 @@ namespace SigecomTesteUI
             DigitarNoCampo("txtNome", "Joao Penca");
             DigitarNoCampo("txtCPF", "43671566051");
             DigitarNoCampo("txtRG", "52195129X");
-            DigitarNoCampoEnter("txtCEP","15700082");
+            DigitarNoCampoEnter("txtCEP", "15700082");
             Thread.Sleep(999);
-            DigitarNoCampo("txtNumero","123");
+            DigitarNoCampo("txtNumero", "123");
             ClicarBotao("F5 - Gravar");
+            VerificarCadastroRealizado("Pesquisa de cliente", "JOAO PENCA");
+            FecharJanelaComEsc("Pesquisa de cliente");
+            FecharJanelaComEsc("Cadastro de clientes");
         }
     }
 }

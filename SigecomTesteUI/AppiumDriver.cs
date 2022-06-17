@@ -30,7 +30,7 @@ namespace SigecomTesteUI
             }
         }
 
-        public void TrocarJanela()
+        public void TrocarJanela(int nivel)
         {
             // Identify the current window handle. You can check through inspect.exe which window this is.
             var currentWindowHandle = session.CurrentWindowHandle;
@@ -43,7 +43,7 @@ namespace SigecomTesteUI
             // Assuming you only have only one window entry in allWindowHandles and it is in fact the correct one,
             // switch the session to that window as follows. You can repeat this logic with any top window with the same
             // process id (any entry of allWindowHandles)
-            session.SwitchTo().Window(allWindowHandles[0]);
+            session.SwitchTo().Window(allWindowHandles[nivel]);
         }
 
         public void DigitarNoCampo(string nomeCampo, string texto)
@@ -83,6 +83,22 @@ namespace SigecomTesteUI
             comboBox.Click();
             comboBox.SendKeys(Keys.Down);
             comboBox.SendKeys(Keys.Enter);
+        }
+
+        public void VerificarCadastroRealizado(string nomeTelaPesquisa, string stringPesquisa)
+        {
+            session.FindElementByName("F9 - Pesquisar").Click();
+            Verificar(nomeTelaPesquisa, nomeTelaPesquisa);
+            var campo = session.FindElementByAccessibilityId("textEditParametroDePesquisa");
+            campo.SendKeys(stringPesquisa);
+            campo.SendKeys(Keys.Enter);
+            var nomeDaGrid = session.FindElementByName("Nome row 0").Text;
+            Assert.AreEqual(stringPesquisa, nomeDaGrid);
+        }
+        public void FecharJanelaComEsc(string nomeJanela)
+        {
+            var janela = session.FindElementByName(nomeJanela);
+            janela.SendKeys(Keys.Escape);
         }
     }
 }
