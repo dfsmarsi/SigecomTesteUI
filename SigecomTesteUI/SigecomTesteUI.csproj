@@ -70,7 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppiumDriver.cs" />
+    <Compile Include="Base.cs" />
     <Compile Include="CadastroCliente.cs" />
+    <Compile Include="CadastroColaborador.cs" />
+    <Compile Include="CadastroFornecedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
