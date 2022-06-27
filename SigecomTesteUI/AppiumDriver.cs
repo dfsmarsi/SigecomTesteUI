@@ -34,7 +34,6 @@ namespace SigecomTesteUI
             session = null; ;
         }
 
-
         public void TrocarJanela()
         {
             // Identify the current window handle. You can check through inspect.exe which window this is.
@@ -62,10 +61,21 @@ namespace SigecomTesteUI
             campo.SendKeys(texto);
             campo.SendKeys(Keys.Enter);
         }
+        public void DigitarNoCampoESelecionarNaPesquisa(string nomeCampo, string texto)
+        {
+            var campo = session.FindElementByAccessibilityId(nomeCampo);
+            campo.SendKeys(texto);
+            campo.SendKeys(Keys.Enter);
+        }
 
-        public void ClicarBotao(string nomeBotao)
+        public void ClicarBotaoName(string nomeBotao)
         {
             var botao = session.FindElementByName(nomeBotao);
+            botao.Click();
+        }
+        public void ClicarBotaoId(string idBotao)
+        {
+            var botao = session.FindElementByAccessibilityId(idBotao);
             botao.Click();
         }
         public void DoubleClickBotao(string nomeBotao)
@@ -82,12 +92,13 @@ namespace SigecomTesteUI
             Assert.AreEqual(campo.Text, valor);
         }
 
-        public void SelecionarItemComboBox(string nomeCampo)
+        public void SelecionarItemComboBox(string nomeCampo, int posicao)
         {
-            WindowsElement comboBox = session.FindElementByAccessibilityId(nomeCampo);
-            comboBox.Click();
-            comboBox.SendKeys(Keys.Down);
-            comboBox.SendKeys(Keys.Enter);
+            var campo = session.FindElementByAccessibilityId(nomeCampo);
+            campo.Click();
+            for (int i = 1; i <= posicao; i++)
+                campo.SendKeys(Keys.ArrowDown);
+            campo.SendKeys(Keys.Enter);
         }
 
         public void VerificarCadastroRealizado(string nomeTelaPesquisa, string stringPesquisa)

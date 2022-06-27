@@ -15,15 +15,15 @@ namespace SigecomTesteUI
             DigitarNoCampoEnter("txtSenha", "123");
             Thread.Sleep(TimeSpan.FromSeconds(5));
             TrocarJanela();
-            Verificar("SIGECOM - Sistema de Gestão Comercial - NFCE", "SIGECOM - Sistema de Gestão Comercial - NFCE");
+            Verificar("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR", "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR");
         }
         [TestCleanup]
         public void FecharSistema()
         {
-            ClicarBotao("Sair/Login");
+            ClicarBotaoName("Sair/Login");
             TrocarJanela();
             Verificar("Sistema de gestão comercial", "Sistema de gestão comercial");
-            ClicarBotao("Fechar");
+            ClicarBotaoName("Fechar");
             EncerrarSessao();
         }
     }
