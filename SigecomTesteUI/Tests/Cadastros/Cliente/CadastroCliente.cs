@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 
-namespace SigecomTesteUI
+namespace SigecomTesteUI.Views.Cadastros.Cliente
 {
     [TestClass]
     public class CadastroCliente : Base

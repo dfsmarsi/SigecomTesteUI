@@ -71,9 +71,14 @@
   <ItemGroup>
     <Compile Include="AppiumDriver.cs" />
     <Compile Include="Base.cs" />
-    <Compile Include="CadastroCliente.cs" />
-    <Compile Include="CadastroColaborador.cs" />
-    <Compile Include="CadastroFornecedor.cs" />
+    <Compile Include="Tests\Cadastros\Cliente\CadastroCliente.cs" />
+    <Compile Include="Tests\Cadastros\Colaborador\CadastroColaborador.cs" />
+    <Compile Include="Tests\Cadastros\Fornecedor\CadastroFornecedorTests.cs" />
+    <Compile Include="Views\Cadastros\Cliente\CadastroClientePage.cs" />
+    <Compile Include="Views\Cadastros\Colaborador\CadastroColaboradorPage.cs" />
+    <Compile Include="Views\Cadastros\Fornecedor\CadastroFornecedorPage.Actions.cs" />
+    <Compile Include="Views\Cadastros\Fornecedor\CadastroFornecedorPage.Assertions.cs" />
+    <Compile Include="Views\Cadastros\Fornecedor\CadastroFornecedorPage.Elements.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

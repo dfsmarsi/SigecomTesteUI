@@ -1,16 +1,25 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Threading;
 
 namespace SigecomTesteUI
 {
     [TestClass]
-    public class Base : AppiumDriver
+    class Base
     {
+        private WindowsDriver<WindowsElement> _driver;
+
+        public Base(WindowsDriver<WindowsElement> _driver)
+        {
+            this._driver = _driver;
+        }
+
         [TestInitialize]
         public void Logar()
         {
-            Setup();
+
+            _driver.Setup();
             DigitarNoCampo("txtUsuario", "Douglas");
             DigitarNoCampoEnter("txtSenha", "123");
             Thread.Sleep(TimeSpan.FromSeconds(5));

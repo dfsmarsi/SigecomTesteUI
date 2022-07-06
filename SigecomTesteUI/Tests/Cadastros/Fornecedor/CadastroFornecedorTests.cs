@@ -2,14 +2,17 @@
 using System;
 using System.Threading;
 
-namespace SigecomTesteUI
+namespace SigecomTesteUI.Views.Cadastros.Fornecedor
 {
     [TestClass]
-    public class CadastroFornecedor : Base
+    public class CadastroFornecedorTests : Base
     {
+        private CadastroFornecedorPage _cadastroFornecedorPage;
+        
         [TestMethod]
         public void CadastrarFornecedorNovo()
         {
+            _cadastroFornecedorPage = new CadastroFornecedorPage(_driver);
             DoubleClickBotao("Cadastro");
             ClicarBotaoName("Fornecedores");
             ClicarBotaoName("F2 - Novo");

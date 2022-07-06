@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 
-namespace SigecomTesteUI
+namespace SigecomTesteUI.Views.Cadastros.Colaborador
 {
     [TestClass]
     public class CadastroColaborador : Base
