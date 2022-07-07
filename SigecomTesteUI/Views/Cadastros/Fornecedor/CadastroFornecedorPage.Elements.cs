@@ -1,13 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Appium.Windows;
+﻿using OpenQA.Selenium.Appium.Windows;
 
 namespace SigecomTesteUI.Tests.Cadastros.Fornecedor
 {
-    partial class CadastroFornecedorPage : Base
+    public partial class CadastroFornecedorPage : Base
     {
-        public WindowsElement Nome = _driver
-
+        public CadastroFornecedorPage(AppiumDriver driver) : base(driver)
+        {
+        }
         //DoubleClickBotao("Cadastro");
+        public WindowsElement Menu => AppiumDriver.
         //ClicarBotaoName("Fornecedores");
         //ClicarBotaoName("F2 - Novo");
         //DigitarNoCampo("txtNome", "FUSKAS TELEMARKETING");

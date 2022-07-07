@@ -1,10 +1,9 @@
-﻿using OpenQA.Selenium.Appium.Windows;
-
-namespace SigecomTesteUI.Views.Cadastros.Fornecedor
+﻿namespace SigecomTesteUI.Views.Cadastros.Fornecedor
 {
-    partial class CadastroFornecedorPage
+    public partial class CadastroFornecedorPage : Base
     {
-        public CadastroFornecedorPage(WindowsDriver<WindowsElement> driver) => driver = driver;
-
+        public CadastroFornecedorPage(AppiumDriver driver) : base(driver)
+        {
+        }
     }
 }
