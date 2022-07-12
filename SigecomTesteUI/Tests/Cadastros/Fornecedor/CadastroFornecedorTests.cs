@@ -8,7 +8,7 @@ namespace SigecomTesteUI.Views.Cadastros.Fornecedor
     public class CadastroFornecedorTests : CadastroFornecedorPage
     {
 
-        public CadastroFornecedorTests() : base(new AppiumDriver())
+        public CadastroFornecedorTests()
         {
 
         }
@@ -16,6 +16,8 @@ namespace SigecomTesteUI.Views.Cadastros.Fornecedor
         [TestMethod]
         public void CadastrarFornecedorNovo()
         {
+            ClicarBotaoName(Menu);
+
             DoubleClickBotao("Cadastro");
             ClicarBotaoName("Fornecedores");
             ClicarBotaoName("F2 - Novo");

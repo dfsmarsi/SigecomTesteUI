@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="UtilManipularCamposDaTela.cs" />
     <Compile Include="Base.cs" />
-    <Compile Include="LoginPage.cs" />
     <Compile Include="Tests\Cadastros\Cliente\CadastroCliente.cs" />
     <Compile Include="Tests\Cadastros\Colaborador\CadastroColaborador.cs" />
     <Compile Include="Tests\Cadastros\Fornecedor\CadastroFornecedorTests.cs" />

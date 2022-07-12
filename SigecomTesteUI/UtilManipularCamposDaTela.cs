@@ -13,11 +13,13 @@ namespace SigecomTesteUI
         {
             elemento.SendKeys(texto);
         }
+
         public void DigitarNoCampoEnter(WindowsElement elemento, string texto)
         {
             elemento.SendKeys(texto);
             elemento.SendKeys(Keys.Enter);
         }
+
         public void DigitarNoCampoESelecionarNaPesquisa(WindowsElement elemento, string texto)
         {
             elemento.SendKeys(texto);
@@ -28,10 +30,12 @@ namespace SigecomTesteUI
         {
             elemento.Click();
         }
+
         public void ClicarBotaoId(WindowsElement elemento)
         {
             elemento.Click();
         }
+
         public void DoubleClickBotao(WindowsElement elemento, Actions acao)
         {
             acao.MoveToElement(elemento);
@@ -62,6 +66,7 @@ namespace SigecomTesteUI
             var nomeDaGrid = _windowsDriver.FindElementByName("Nome row 0").Text;
             Assert.AreEqual(stringPesquisa, nomeDaGrid);
         }
+
         public void FecharJanelaComEsc(string nomeJanela)
         {
             var janela = _windowsDriver.FindElementByName(nomeJanela);
