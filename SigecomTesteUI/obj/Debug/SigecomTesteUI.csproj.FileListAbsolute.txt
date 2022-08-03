@@ -1,6 +1,5 @@
-C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
-C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
-C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\obj\Debug\SigecomTesteUI.csproj.AssemblyReference.cache
+C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\obj\Debug\SigecomTesteUI.csproj.CoreCompileInputs.cache
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
@@ -22,8 +21,6 @@ C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\Newt
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\WebDriver.xml
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\bin\Debug\WebDriver.Support.xml
-C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\obj\Debug\SigecomTesteUI.csproj.AssemblyReference.cache
-C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\obj\Debug\SigecomTesteUI.csproj.CoreCompileInputs.cache
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\obj\Debug\SigecomTesteUI.csproj.CopyComplete
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\obj\Debug\SigecomTesteUI.dll
 C:\Users\Douglas\Documents\Projetos\SigecomTesteUI\SigecomTesteUI\obj\Debug\SigecomTesteUI.pdb

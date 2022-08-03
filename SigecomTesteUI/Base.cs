@@ -1,30 +1,36 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Threading;
+using System.Collections.Generic;
 
 namespace SigecomTesteUI
 {
     [TestClass]
-    public class Base : AppiumDriver
+    public class Base
     {
+        public Page pageTeste;
+        protected DriverService DriverService;
+
         [TestInitialize]
-        public void Logar()
+        public void AbrirSistema()
         {
-            Setup();
-            DigitarNoCampo("txtUsuario", "Douglas");
-            DigitarNoCampoEnter("txtSenha", "123");
-            Thread.Sleep(TimeSpan.FromSeconds(5));
-            TrocarJanela();
-            Verificar("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR", "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR");
+            var dictionaryDados = new Dictionary<string, string>() {
+                { "Usuario", "Douglas" },
+                { "Senha", "123" },
+                { "NomeTelaPrincipal", "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR" }
+            };
+            DriverService = new DriverService();
+            DriverService.Setup();
+            pageTeste = new LoginPage(DriverService);
+            pageTeste.RealizarTeste(dictionaryDados);
         }
+
         [TestCleanup]
         public void FecharSistema()
         {
-            ClicarBotaoName("Sair/Login");
-            TrocarJanela();
-            Verificar("Sistema de gestão comercial", "Sistema de gestão comercial");
-            ClicarBotaoName("Fechar");
-            EncerrarSessao();
+            //ClicarBotaoName("Sair/Login");
+            //TrocarJanela();
+            //Verificar("Sistema de gestão comercial", "Sistema de gestão comercial");
+            //ClicarBotaoName("Fechar");
+            //EncerrarSessao();
         }
     }
 }
