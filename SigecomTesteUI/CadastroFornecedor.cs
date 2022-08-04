@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Threading;
+using System.Collections.Generic;
 
 namespace SigecomTesteUI
 {
@@ -10,19 +9,15 @@ namespace SigecomTesteUI
         [TestMethod]
         public void CadastrarFornecedorNovo()
         {
-            DoubleClickBotao("Cadastro");
-            ClicarBotaoName("Fornecedores");
-            ClicarBotaoName("F2 - Novo");
-            DigitarNoCampo("txtNome", "FUSKAS TELEMARKETING");
-            DigitarNoCampo("txtCPF", "39920109029");
-            DigitarNoCampo("txtRG", "111111111");
-            DigitarNoCampoEnter("txtCEP", "15700082");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
-            DigitarNoCampo("txtNumero", "123");
-            ClicarBotaoName("F5 - Gravar");
-            VerificarCadastroRealizado("Pesquisa de fornecedor", "FUSKAS TELEMARKETING");
-            FecharJanelaComEsc("Pesquisa de fornecedor");
-            FecharJanelaComEsc("Cadastro de fornecedores");
+            var dictionaryDados = new Dictionary<string, string>() {
+                { "Nome", "Correios" },
+                { "Cpf", "385.648.790-50" },
+                { "Rg", "123456789112" },
+                { "Cep", "15700-082" },
+                { "Numero", "123" }
+            };
+            pageTeste = new CadastroFornecedorPage(DriverService);
+            pageTeste.RealizarTeste(dictionaryDados);
         }
     }
 }
