@@ -3,19 +3,12 @@ using System.Collections.Generic;
 
 namespace SigecomTesteUI
 {
-    public class Page
+    public abstract class Page
     {
-        protected DriverService DriverService;
+        protected readonly DriverService DriverService;
 
-        public Page(DriverService driverService) => DriverService = driverService;
+        protected Page(DriverService driverService) => DriverService = driverService;
 
-        public virtual void RealizarTeste(Dictionary<string, string> dados)
-        {}
-
-        protected WindowsElement RetornarElementoPorNome(string nomeCampo) 
-            => DriverService.RetornarSessao().FindElementByName(nomeCampo);
-
-        protected WindowsElement RetornarElementoPorId(string nomeCampo)
-            => DriverService.RetornarSessao().FindElementByAccessibilityId(nomeCampo);
+        
     }
 }

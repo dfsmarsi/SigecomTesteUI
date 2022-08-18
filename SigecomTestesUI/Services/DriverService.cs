@@ -1,22 +1,44 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
 using SigecomTesteUI.Config;
 using System;
-using System.Diagnostics;
 using System.Threading;
 
-namespace SigecomTesteUI
+namespace SigecomTestesUI.Services
 {
     public class DriverService : IDisposable
     {
         public WindowsDriver<WindowsElement> Driver;
 
-        public DriverService(WindowsDriver<WindowsElement> driver)
+        public DriverService()
         {
             Driver = DriverFabrica.CriarDriver();
+        }
+
+        public WindowsElement EncontrarElementoId(string idElemento)
+        {
+            return Driver.FindElementByAccessibilityId(idElemento);
+        }
+
+        public WindowsElement EncontrarElementoName(string nomeElemento)
+        {
+            return Driver.FindElementByName(nomeElemento);
+        }
+
+        public WindowsElement EncontrarElementoXPath(string caminhoElemento)
+        {
+            return Driver.FindElementByXPath(caminhoElemento);
+        }
+
+        public string ObterValorElementoId(WindowsElement elemento)
+        {
+            return elemento.Text;
+        }
+
+        public string ObterValorElementoName(WindowsElement elemento)
+        {
+            return elemento.Text;
         }
 
         public void TrocarJanela()
@@ -35,40 +57,28 @@ namespace SigecomTesteUI
             Driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
-        public void DigitarNoCampo(WindowsElement campo, string texto)
+        public void DigitarNoCampo(WindowsElement elemento, string texto)
         {
-            campo.SendKeys(texto);
+            elemento.SendKeys(texto);
         }
 
-        public void DigitarNoCampoEnter(WindowsElement campo, string texto)
+        public void DigitarNoCampoEnter(WindowsElement elemento, string texto)
         {
-            campo.SendKeys(texto);
-            campo.SendKeys(Keys.Enter);
-        }
-
-        public void DigitarNoCampoESelecionarNaPesquisa(string nomeCampo, string texto)
-        {
-            var campo = Driver.FindElementByAccessibilityId(nomeCampo);
-            campo.SendKeys(texto);
-            campo.SendKeys(Keys.Enter);
+            elemento.SendKeys(texto);
+            elemento.SendKeys(Keys.Enter);
         }
 
         public void ClicarBotao(WindowsElement botao)
         {
             botao.Click();
         }
-        
+
         public void DoubleClickBotao(WindowsElement botao)
         {
             Actions acao = new Actions(Driver);
             acao.MoveToElement(botao);
             acao.DoubleClick();
             acao.Perform();
-        }
-
-        public void Verificar(WindowsElement elemento, string valor)
-        {
-            Assert.AreEqual(elemento.Text, valor);
         }
 
         public void SelecionarItemComboBox(string nomeCampo, int posicao)
@@ -98,7 +108,6 @@ namespace SigecomTesteUI
 
         public void Dispose()
         {
-            
         }
     }
 }

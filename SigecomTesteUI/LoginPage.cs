@@ -11,18 +11,28 @@ namespace SigecomTesteUI
         {
         }
 
-        private WindowsElement TextBoxUsuario => RetornarElementoPorId("txtUsuario");
-        private WindowsElement TextBoxSenha => RetornarElementoPorId("txtSenha");
-        private WindowsElement ViewTelaPrincipal => RetornarElementoPorNome("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR");
-
-        public override void RealizarTeste(Dictionary<string, string> dados)
+        public bool AbrirSistema()
         {
-            DriverService.DigitarNoCampo(TextBoxUsuario, dados["Usuario"]);
-            DriverService.DigitarNoCampoEnter(TextBoxSenha, dados["Senha"]);
-            DriverService.Setup();
-            Thread.Sleep(TimeSpan.FromSeconds(5));
-            DriverService.TrocarJanela();
-            DriverService.Verificar(ViewTelaPrincipal, dados["NomeTelaPrincipal"]);
+            
+            
+            return true;
         }
+
+
+
+
+        //private WindowsElement TextBoxUsuario => RetornarElementoPorId("txtUsuario");
+        //private WindowsElement TextBoxSenha => RetornarElementoPorId("txtSenha");
+        //private WindowsElement ViewTelaPrincipal => RetornarElementoPorNome("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR");
+
+        //public override void RealizarTeste(Dictionary<string, string> dados)
+        //{
+        //    DriverService.DigitarNoCampo(TextBoxUsuario, dados["Usuario"]);
+        //    DriverService.DigitarNoCampoEnter(TextBoxSenha, dados["Senha"]);
+        //    DriverService.Setup();
+        //    Thread.Sleep(TimeSpan.FromSeconds(5));
+        //    DriverService.TrocarJanela();
+        //    DriverService.Verificar(ViewTelaPrincipal, dados["NomeTelaPrincipal"]);
+        //}
     }
 }
