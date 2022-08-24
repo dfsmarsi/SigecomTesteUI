@@ -12,12 +12,28 @@ namespace SigecomTestesUI.Config
             DriverService = driver;
         }
 
-        public bool ValidarAberturaDeTela(WindowsElement elemento, string nomeTela)
+        public bool ValidarAberturaDeTela(string nomeTela)
         {
-            if (DriverService.ObterValorElementoName(elemento) != nomeTela)
+            if (DriverService.ObterValorElementoName(nomeTela) != nomeTela)
                 return false;
 
             return true;
+        }
+
+        public bool AcessarOpcaoMenu(string menu, string opcaoSubMenu)
+        {
+            try
+            {
+                DriverService.DoubleClickBotaoName(menu);
+                DriverService.ClicarBotaoName(opcaoSubMenu);
+
+                return true;
+            }
+            catch (System.Exception)
+            {
+
+                return false;
+            }
         }
     }
 }

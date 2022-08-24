@@ -1,52 +1,51 @@
 ﻿using OpenQA.Selenium.Appium.Windows;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
+using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SigecomTestesUI.Login
 {
     public class LoginPage : PageObjectModel
     {
-        private WindowsElement _usuarioWindowsElement;
-        private WindowsElement _senhaWindowsElement;
-        private WindowsElement _telaLoginWindowsElement;
-        private WindowsElement _telaPrincipalWindowsElement;
 
-        public LoginPage(DriverService driver) : base(driver){
-            MapearElementos();
+        private string _elementoUsuario = "txtUsuario";
+        private string _elementoSenha = "txtSenha";
+        private string _elementoTelaLogin = "Sistema de gestão comercial";
+        private string _elementoTelaPrincipal = "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR";
+        private Dictionary<string, string> _dadosLogin
+            = new Dictionary<string, string>{
+                {"Usuario","Douglas"},
+                {"Senha", "123"}
+            };
+
+        public LoginPage(DriverService driver) : base(driver) {}
+
+        public void PreencherLogin()
+        {
+            DriverService.DigitarNoCampoId(_elementoUsuario, _dadosLogin["Usuario"]);
+            DriverService.DigitarNoCampoEnterId(_elementoSenha, _dadosLogin["Senha"]);
         }
 
-        public void MapearElementos()
+        public bool ValidarPreenchimentoFormLogin()
         {
-            _usuarioWindowsElement = DriverService.EncontrarElementoId("txtUsuario");
-            _senhaWindowsElement = DriverService.EncontrarElementoId("txtSenha");
-            _telaLoginWindowsElement = DriverService.EncontrarElementoName("Sistema de gestão comercial");
-            _telaPrincipalWindowsElement = DriverService.EncontrarElementoName("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR");
-        }
-
-        public void PreencherLogin(Dictionary<string, string> dados)
-        {
-            DriverService.DigitarNoCampo(_usuarioWindowsElement, dados["Usuario"]);
-            DriverService.DigitarNoCampoEnter(_senhaWindowsElement, dados["Senha"]);
-        }
-
-        public bool ValidarPreenchimentoFormLogin(Dictionary<string, string> dados)
-        {
-            if (DriverService.ObterValorElementoId(_usuarioWindowsElement) != dados["Usuario"])
+            if (DriverService.ObterValorElementoId(_elementoUsuario) != _dadosLogin["Usuario"])
                 return false;
-            if (DriverService.ObterValorElementoId(_usuarioWindowsElement) != dados["Senha"])
+            if (DriverService.ObterValorElementoId(_elementoSenha) != _dadosLogin["Senha"])
                 return false;
 
             return true;
         }
 
-        public bool Logar(Dictionary<string, string> dados)
+        public bool Logar()
         {
-            if(!ValidarAberturaDeTela(_telaLoginWindowsElement, "Sistema de gestão comercial"))
+            if (!ValidarAberturaDeTela(_elementoTelaLogin))
                 return false;
-            PreencherLogin(dados);
+            PreencherLogin();
+            Thread.Sleep(TimeSpan.FromSeconds(4));
             DriverService.TrocarJanela();
-            if (!ValidarAberturaDeTela(_telaPrincipalWindowsElement, "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR"))
+            if (!ValidarAberturaDeTela(_elementoTelaPrincipal))
                 return false;
 
             return true;

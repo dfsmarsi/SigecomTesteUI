@@ -10,10 +10,11 @@ namespace SigecomTestesUI.Services
     public class DriverService : IDisposable
     {
         public WindowsDriver<WindowsElement> Driver;
+        public DriverFabrica driverFabrica = new DriverFabrica();
 
         public DriverService()
         {
-            Driver = DriverFabrica.CriarDriver();
+            Driver = driverFabrica.CriarDriver();
         }
 
         public WindowsElement EncontrarElementoId(string idElemento)
@@ -31,13 +32,15 @@ namespace SigecomTestesUI.Services
             return Driver.FindElementByXPath(caminhoElemento);
         }
 
-        public string ObterValorElementoId(WindowsElement elemento)
+        public string ObterValorElementoId(string nomeElemento)
         {
+            var elemento = Driver.FindElementByAccessibilityId(nomeElemento);
             return elemento.Text;
         }
 
-        public string ObterValorElementoName(WindowsElement elemento)
+        public string ObterValorElementoName(string nomeElemento)
         {
+            var elemento = Driver.FindElementByName(nomeElemento);
             return elemento.Text;
         }
 
@@ -57,24 +60,47 @@ namespace SigecomTestesUI.Services
             Driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
-        public void DigitarNoCampo(WindowsElement elemento, string texto)
+        public void DigitarNoCampoId(string idElemento, string texto)
         {
+            var elemento = Driver.FindElementByAccessibilityId(idElemento);
             elemento.SendKeys(texto);
         }
 
-        public void DigitarNoCampoEnter(WindowsElement elemento, string texto)
+        public void DigitarNoCampoName(string nomeElemento, string texto)
         {
+            var elemento = Driver.FindElementByName(nomeElemento);
+            elemento.SendKeys(texto);
+        }
+
+        public void DigitarNoCampoEnterId(string idElemento, string texto)
+        {
+            var elemento = Driver.FindElementByAccessibilityId(idElemento);
             elemento.SendKeys(texto);
             elemento.SendKeys(Keys.Enter);
         }
 
-        public void ClicarBotao(WindowsElement botao)
+        public void DigitarNoCampoEnterName(string nomeElemento, string texto)
         {
+            var elemento = Driver.FindElementByAccessibilityId(nomeElemento);
+            elemento.SendKeys(texto);
+            elemento.SendKeys(Keys.Enter);
+        }
+
+        public void ClicarBotaoName(string nomeBotao)
+        {
+            var botao = Driver.FindElementByName(nomeBotao);
             botao.Click();
         }
 
-        public void DoubleClickBotao(WindowsElement botao)
+        public void ClicarBotaoId(string nomeBotao)
         {
+            var botao = Driver.FindElementByAccessibilityId(nomeBotao);
+            botao.Click();
+        }
+
+        public void DoubleClickBotaoName(string nomeBotao)
+        {
+            var botao = Driver.FindElementByName(nomeBotao);
             Actions acao = new Actions(Driver);
             acao.MoveToElement(botao);
             acao.DoubleClick();

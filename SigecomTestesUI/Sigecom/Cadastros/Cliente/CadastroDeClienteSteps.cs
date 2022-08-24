@@ -1,4 +1,5 @@
 ﻿using SigecomTestesUI.Config;
+using SigecomTestesUI.Login;
 using System;
 using TechTalk.SpecFlow;
 using Xunit;
@@ -9,50 +10,65 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
     [CollectionDefinition(nameof(TestesFixture))]
     public class CadastroDeClienteSteps
     {
-        private readonly CadastroDeClientePage _cadastroClientePage;
+        private readonly LoginPage _loginPage;
         private readonly TestesFixture _testesFixture;
+        private readonly CadastroDeClientePage _cadastroClientePage;
+
+        public CadastroDeClienteSteps(TestesFixture testesFixture)
+        {
+            _testesFixture = testesFixture;
+            _loginPage = new LoginPage(testesFixture.DriverService);
+            _cadastroClientePage = new CadastroDeClientePage(testesFixture.DriverService);
+        }
 
         [Given(@"Que o sistema esteja aberto")]
         public void DadoQueOSistemaEstejaAberto()
         {
+            var login = _loginPage.Logar();
             
+            Assert.True(login);
         }
         
         [Given(@"Aberto o formulario de cadastro de cliente")]
         public void DadoAbertoOFormularioDeCadastroDeCliente()
         {
-            ScenarioContext.Current.Pending();
+            var abrirCadastroCliente = _cadastroClientePage.AbrirCadastroCliente();
+
+            Assert.True(abrirCadastroCliente);
         }
 
         [Given(@"Clicar no botao Novo")]
         public void DadoClicarNoBotaoNovo()
         {
-            ScenarioContext.Current.Pending();
-        }
+            var clicarBotaoNovo = _cadastroClientePage.ClicarBotaoNovo();
 
+            Assert.True(clicarBotaoNovo);
+        }
 
         [When(@"Confirmar que o tipo de pessoa fisica ja esteja selecionado")]
         public void QuandoConfirmarQueOTipoDePessoaFisicaJaEstejaSelecionado()
         {
-            ScenarioContext.Current.Pending();
+            var verificarTipoPessoa = _cadastroClientePage.VerificarTipoPessoa();
+
+            Assert.True(verificarTipoPessoa);
         }
         
         [When(@"Preencher os campos obrigatorios")]
         public void QuandoPreencherOsCamposObrigatorios(Table table)
         {
-            ScenarioContext.Current.Pending();
+            
         }
         
         [When(@"Clicar em gravar")]
         public void QuandoClicarEmGravar()
         {
-            ScenarioContext.Current.Pending();
+            
         }
         
         [Then(@"O nome do cliente deve aparecer na tela de pesquisa de cliente")]
         public void EntaoONomeDoClienteDeveAparecerNaTelaDePesquisaDeCliente()
         {
-            ScenarioContext.Current.Pending();
+            
         }
     }
 }
