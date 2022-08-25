@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium.Appium.Windows;
-using SigecomTestesUI.Config;
+﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using System;
 using System.Collections.Generic;
@@ -43,7 +42,7 @@ namespace SigecomTestesUI.Login
             if (!ValidarAberturaDeTela(_elementoTelaLogin))
                 return false;
             PreencherLogin();
-            Thread.Sleep(TimeSpan.FromSeconds(4));
+            Esperar3Segundos();
             DriverService.TrocarJanela();
             if (!ValidarAberturaDeTela(_elementoTelaPrincipal))
                 return false;

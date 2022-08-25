@@ -1,5 +1,6 @@
-﻿using OpenQA.Selenium.Appium.Windows;
-using SigecomTestesUI.Services;
+﻿using SigecomTestesUI.Services;
+using System;
+using System.Threading;
 
 namespace SigecomTestesUI.Config
 {
@@ -24,7 +25,7 @@ namespace SigecomTestesUI.Config
         {
             try
             {
-                DriverService.DoubleClickBotaoName(menu);
+                DriverService.DarDuploCliqueNoBotaoName(menu);
                 DriverService.ClicarBotaoName(opcaoSubMenu);
 
                 return true;
@@ -34,6 +35,16 @@ namespace SigecomTestesUI.Config
 
                 return false;
             }
+        }
+
+        public void Esperar3Segundos()
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+        }
+
+        public void FecharSistema()
+        {
+            DriverService.Dispose();
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Diagnostics;
-using Xunit;
 
 namespace SigecomTesteUI.Config
 {
@@ -13,17 +13,16 @@ namespace SigecomTesteUI.Config
 
         public WindowsDriver<WindowsElement> CriarDriver()
         {
-            WindowsDriver<WindowsElement> driver = null;
+            WindowsDriver<WindowsElement> driver;
             Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
-            if (driver == null)
-            {
-                AppiumOptions appOptions = new AppiumOptions();
-                appOptions.AddAdditionalCapability("app", AppId);
-                driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
-                Assert.NotNull(driver);
 
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-            }
+            AppiumOptions appOptions = new AppiumOptions();
+            appOptions.AddAdditionalCapability("app", AppId);
+            driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
+            Assert.NotNull(driver);
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+
 
             return driver;
         }
