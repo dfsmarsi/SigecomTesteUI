@@ -1,25 +1,46 @@
 ﻿using NUnit.Framework;
+using SigecomTestesUI.Sigecom.Cadastros.PesquisaPessoa;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
 {
-    public class CadastroFornecedorTeste :BaseTestes
+    public class CadastroDeClienteTeste : BaseTestes
     {
-        //private readonly CadastroDeFornecedorPage _cadastroClientePage;
+        private readonly CadastroDeClientePage _cadastroClientePage;
+        private readonly PesquisaDePessoaPage _pesquisaPessoaPage;
 
-        //public CadastroFornecedorTeste()
-        //{
-        //    _cadastroClientePage = new CadastroDeClientePage(DriverService);
-        //}
+        private Dictionary<string, string> _dados = new Dictionary<string, string>() {
+            {"Nome","JOAO PENCA"},
+            {"Cpf","43671566051"},
+            {"Cep","15700082"},
+            {"Numero","123"},
+        };
 
-        [Test]
+        public CadastroDeClienteTeste()
+        {
+            _cadastroClientePage = new CadastroDeClientePage(DriverService, _dados);
+            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
+        }
+
+        //[Test]
         public void CadastrarClienteSomenteCamposObrigatorios()
         {
-            //_cadastroClientePage.AbrirCadastroCliente();
-            //_cadastroClientePage.ClicarBotaoNovo();
-            //_cadastroClientePage.VerificarTipoPessoa();
-            //_cadastroClientePage.PreencherCampos();
-            //_cadastroClientePage.GravarCadastro();
-            Assert.Pass();
+            // Arange
+            _cadastroClientePage.AbrirCadastroCliente();
+            _cadastroClientePage.ClicarBotaoNovo();
+            _cadastroClientePage.VerificarTipoPessoa();
+
+            //// Act
+            _cadastroClientePage.PreencherCampos();
+            _cadastroClientePage.GravarCadastro();
+
+            // Assert
+            _cadastroClientePage.ClicarBotaoPesquisar();
+            _pesquisaPessoaPage.PesquisarPessoa("cliente", _dados["Nome"]);
+            var existeClienteNaPesquisa = _pesquisaPessoaPage.VerificarSeExistePessoaNaGrid(_dados["Nome"]);
+            Assert.True(existeClienteNaPesquisa);
+            _pesquisaPessoaPage.FecharJanelaComEsc("cliente");
+            _cadastroClientePage.FecharJanelaComEsc();
         }
     }
 }
