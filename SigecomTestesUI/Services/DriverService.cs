@@ -23,11 +23,11 @@ namespace SigecomTestesUI.Services
             //ClicarBotaoName(", Sim (ENTER)");
             Thread.Sleep(TimeSpan.FromSeconds(3));
             TrocarJanela();
-            Verificar("Sistema de gestão comercial");
+            ValidarElementoExistentePorNome("Sistema de gestão comercial");
             ClicarBotaoName("Fechar");
         }
 
-        public void Verificar(string valor)
+        public void ValidarElementoExistentePorNome(string valor)
         {
             var elemento = EncontrarElementoName(valor);
             Assert.AreEqual(elemento.Text, valor);
@@ -58,6 +58,11 @@ namespace SigecomTestesUI.Services
         {
             var elemento = _driver.FindElementByName(nomeElemento);
             return elemento.Text;
+        }
+
+        public string PegarValorDaColunaDaGrid(string nomeColuna)
+        {
+           return _driver.FindElementByName($"{nomeColuna} row 0").Text;
         }
 
         public void TrocarJanela()
@@ -132,16 +137,6 @@ namespace SigecomTestesUI.Services
             campo.SendKeys(Keys.Enter);
         }
 
-        //public void VerificarCadastroRealizado(string nomeTelaPesquisa, string stringPesquisa)
-        //{
-        //    driver.FindElementByName("F9 - Pesquisar").Click();
-        //    Verificar(nomeTelaPesquisa, nomeTelaPesquisa);
-        //    var campo = driver.FindElementByAccessibilityId("textEditParametroDePesquisa");
-        //    campo.SendKeys(stringPesquisa);
-        //    campo.SendKeys(Keys.Enter);
-        //    var nomeDaGrid = driver.FindElementByName("Nome row 0").Text;
-        //    Assert.AreEqual(stringPesquisa, nomeDaGrid);
-        //}
         public void FecharJanelaComEsc(string nomeJanela)
         {
             var janela = _driver.FindElementByName(nomeJanela);
