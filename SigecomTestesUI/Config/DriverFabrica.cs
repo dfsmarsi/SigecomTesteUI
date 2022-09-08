@@ -8,13 +8,14 @@ namespace SigecomTesteUI.Config
 {
     public class DriverFabrica
     {
-        private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private const string AppId = @"C:\SIGECOM\SIGECOM.exe";
+        public const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
+        public const string AppId = @"C:\SIGECOM\SIGECOM.exe";
 
         public WindowsDriver<WindowsElement> CriarDriver()
         {
             WindowsDriver<WindowsElement> driver;
-            Process.Start(@"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe");
+
+            AbrirWinAppDriver();
 
             AppiumOptions appOptions = new AppiumOptions();
             appOptions.AddAdditionalCapability("app", AppId);
@@ -25,6 +26,12 @@ namespace SigecomTesteUI.Config
 
 
             return driver;
+        }
+
+        public void AbrirWinAppDriver()
+        {
+            string WinAppDriver = @"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe";
+            Process.Start(WinAppDriver);
         }
     }
 }

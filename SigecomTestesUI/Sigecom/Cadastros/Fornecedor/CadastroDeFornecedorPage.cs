@@ -107,7 +107,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Fornecedor
             }
         }
 
-        public bool FecharJanelaComEsc()
+        public bool FecharJanelaCadastroFornecedorComEsc()
         {
             try
             {

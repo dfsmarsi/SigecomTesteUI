@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
             _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
         }
 
-        //[Test]
+        [Test]
         public void CadastrarClienteSomenteCamposObrigatorios()
         {
             // Arange

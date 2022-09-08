@@ -40,7 +40,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Fornecedor
             var existeClienteNaPesquisa = _pesquisaPessoaPage.VerificarSeExistePessoaNaGrid(_dados["Nome"]);
             Assert.True(existeClienteNaPesquisa);
             _pesquisaPessoaPage.FecharJanelaComEsc("fornecedor");
-            _cadastroFornecedorPage.FecharJanelaComEsc();
+            _cadastroFornecedorPage.FecharJanelaCadastroFornecedorComEsc();
         }
     }
 }
