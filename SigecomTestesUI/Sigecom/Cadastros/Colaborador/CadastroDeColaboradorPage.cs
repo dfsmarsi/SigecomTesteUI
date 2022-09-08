@@ -11,21 +11,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
         private const string _telaCadastroColaborador = "Cadastro de colaboradores";
         private const string _botaoNovo = "F2 - Novo";
         private const string _botaoGravar = "F5 - Gravar";
+        private const string _botaoPesquisar = "F9 - Pesquisar";
         private const string _elementoTipoPessoa = "cbxPessoaClassificacao";
         private const string _elementoNome = "txtNome";
         private const string _elementoCpf = "txtCPF";
         private const string _elementoCep = "txtCEP";
         private const string _elementoNumero = "txtNumero";
 
-        private Dictionary<string, string> dados = new Dictionary<string, string>() {
-            {"Nome","Rony Rustico"},
-            {"Cpf","28061149001"},
-            {"Cep","15700082"},
-            {"Numero","333"},
-        };
+        private readonly Dictionary<string, string> _dados;
 
-
-        public CadastroDeColaboradorPage(DriverService driver) : base(driver) { }
+        public CadastroDeColaboradorPage(DriverService driver, Dictionary<string, string> dados) : base(driver) {
+            _dados = dados;
+        }
 
         public bool AbrirCadastroColaborador()
         {
@@ -55,6 +52,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
             }
         }
 
+        public bool ClicarBotaoPesquisar()
+        {
+            try
+            {
+                DriverService.ClicarBotaoName(_botaoPesquisar);
+
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+        }
+
         public bool VerificarTipoPessoa()
         {
             var valorTipoPessoa = DriverService.ObterValorElementoId(_elementoTipoPessoa);
@@ -67,11 +78,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
         {
             try
             {
-                DriverService.DigitarNoCampoId(_elementoNome, dados["Nome"]);
-                DriverService.DigitarNoCampoId(_elementoCpf, dados["Cpf"]);
-                DriverService.DigitarNoCampoEnterId(_elementoCep, dados["Cep"]);
+                DriverService.DigitarNoCampoId(_elementoNome, _dados["Nome"]);
+                DriverService.DigitarNoCampoId(_elementoCpf, _dados["Cpf"]);
+                DriverService.DigitarNoCampoEnterId(_elementoCep, _dados["Cep"]);
                 Esperar3Segundos();
-                DriverService.DigitarNoCampoId(_elementoNumero, dados["Numero"]);
+                DriverService.DigitarNoCampoId(_elementoNumero, _dados["Numero"]);
 
                 return true;
             }
@@ -95,7 +106,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
             }
         }
 
-        public bool FecharJanelaComEsc()
+        public bool FecharJanelaCadastroColaboradorComEsc()
         {
             try
             {
