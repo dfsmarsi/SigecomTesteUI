@@ -1,3 +1,4 @@
+using NUnit.Allure.Core;
 using NUnit.Framework;
 using SigecomTestesUI.Login;
 using SigecomTestesUI.Services;
@@ -6,6 +7,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Cliente;
 namespace SigecomTestesUI
 {
     [TestFixture]
+    [AllureNUnit]
     public class BaseTestes
     {
         public DriverService DriverService;

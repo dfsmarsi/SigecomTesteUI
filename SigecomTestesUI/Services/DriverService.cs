@@ -21,7 +21,7 @@ namespace SigecomTestesUI.Services
         {
             ClicarBotaoName("Sair/Login");
             //ClicarBotaoName(", Sim (ENTER)");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            Thread.Sleep(TimeSpan.FromSeconds(2));
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
             ClicarBotaoName("Fechar");

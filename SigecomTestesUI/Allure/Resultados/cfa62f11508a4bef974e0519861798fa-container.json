@@ -1,0 +1,48 @@
+{
+  "uuid": "9987ed75-99c1-41b9-904d-65c4c8a8fc2e-tc-0-1005",
+  "name": "SigecomTestesUI.Sigecom.Cadastros.Cliente.CadastroDeClienteTeste.CadastrarClienteSomenteCamposObrigatorios",
+  "children": [
+    "88222bb3-3e26-4028-bea0-e207c592ad9d-tr-0-1006"
+  ],
+  "befores": [
+    {
+      "name": "Setup",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/1A902240-DFFE-4AEA-926C-8F7C1255B940/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.\r\nTearDown : OpenQA.Selenium.WebDriverException : Currently selected window has been closed",
+        "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ObterValorElementoName(String nomeElemento) in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 59\r\n   at SigecomTestesUI.Config.PageObjectModel.ValidarAberturaDeTela(String nomeTela) in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Config\\PageObjectModel.cs:line 18\r\n   at SigecomTestesUI.Login.LoginPage.Logar() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Login\\LoginPage.cs:line 45\r\n   at SigecomTestesUI.BaseTestes.Setup() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\BaseTestes.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n--TearDown\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ClicarBotaoName(String nomeBotao) in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 112\r\n   at SigecomTestesUI.Services.DriverService.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 22\r\n   at SigecomTestesUI.Services.DriverService.Dispose() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 148\r\n   at SigecomTestesUI.Config.PageObjectModel.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Config\\PageObjectModel.cs:line 47\r\n   at SigecomTestesUI.BaseTestes.TearDown() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\BaseTestes.cs:line 31"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1663010207312,
+      "stop": 1663010207312
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/1A902240-DFFE-4AEA-926C-8F7C1255B940/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.\r\nTearDown : OpenQA.Selenium.WebDriverException : Currently selected window has been closed",
+        "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ObterValorElementoName(String nomeElemento) in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 59\r\n   at SigecomTestesUI.Config.PageObjectModel.ValidarAberturaDeTela(String nomeTela) in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Config\\PageObjectModel.cs:line 18\r\n   at SigecomTestesUI.Login.LoginPage.Logar() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Login\\LoginPage.cs:line 45\r\n   at SigecomTestesUI.BaseTestes.Setup() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\BaseTestes.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n--TearDown\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ClicarBotaoName(String nomeBotao) in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 112\r\n   at SigecomTestesUI.Services.DriverService.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 22\r\n   at SigecomTestesUI.Services.DriverService.Dispose() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 148\r\n   at SigecomTestesUI.Config.PageObjectModel.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Config\\PageObjectModel.cs:line 47\r\n   at SigecomTestesUI.BaseTestes.TearDown() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\BaseTestes.cs:line 31"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1663010207313,
+      "stop": 1663010207313
+    }
+  ],
+  "links": [],
+  "start": 1663010138124,
+  "stop": 1663010207377
+}

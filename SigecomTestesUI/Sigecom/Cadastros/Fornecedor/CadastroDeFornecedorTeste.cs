@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.PesquisaPessoa;
 using System.Collections.Generic;
 
@@ -22,7 +23,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Fornecedor
             _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
         }
 
-        [Test]
+        [Test(Description = "Cadastro de fornecedor somente campos obrigatórios com endereço")]
+        [AllureTag("CI")]
+        [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
+        [AllureIssue("2")]
+        [AllureTms("2")]
+        [AllureOwner("Douglas")]
+        [AllureSuite("Cadastros")]
+        [AllureSubSuite("Fornecedor")]
         public void CadastrarFornecedorSomenteCamposObrigatorios()
         {
             // Arrange

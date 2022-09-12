@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.PesquisaPessoa;
 using System.Collections.Generic;
 
@@ -22,7 +23,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
             _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
         }
 
-        [Test]
+
+        [Test(Description = "Cadastro de cliente somente campos obrigatórios com endereço")]
+        [AllureTag("CI")]
+        [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
+        [AllureIssue("1")]
+        [AllureTms("1")]
+        [AllureOwner("Douglas")]
+        [AllureSuite("Cadastros")]
+        [AllureSubSuite("Cliente")]
         public void CadastrarClienteSomenteCamposObrigatorios()
         {
             // Arange
