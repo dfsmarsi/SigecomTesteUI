@@ -2,13 +2,13 @@
 using SigecomTestesUI.Services;
 using System.Collections.Generic;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
     public class CadastroDeClientePage : PageObjectModel
     {
         private const string _botaoMenu = "Cadastro";
         private const string _botaoSubMenu = "Clientes";
-        private const string _telaCadastroCliente = "Cadastro de clientes";
+        private const string _elementoTelaCadastroCliente = "Cadastro de clientes";
         private const string _botaoNovo = "F2 - Novo";
         private const string _botaoGravar = "F5 - Gravar";
         private const string _botaoPesquisar = "F9 - Pesquisar";
@@ -25,18 +25,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
             _dados = dados;
         }
 
-        public bool AbrirCadastroCliente()
+        public bool ClicarNaOpcaoDoMenu()
         {
-            try
-            {
-                AcessarOpcaoMenu(_botaoMenu, _botaoSubMenu);
+            var acessadoMenu = AcessarOpcaoMenu(_botaoMenu);
+            return acessadoMenu;
+        }
 
-                return true;
-            }
-            catch (System.Exception)
-            {
-                return false;
-            }
+        public bool ClicarNaOpcaoDoSubMenu()
+        {
+            var acessadoSubMenu = AcessarOpcaoSubMenu(_botaoSubMenu);
+            return acessadoSubMenu;
         }
 
         public bool ClicarBotaoNovo()
@@ -82,7 +80,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
                 DriverService.DigitarNoCampoId(_elementoNome, _dados["Nome"]);
                 DriverService.DigitarNoCampoId(_elementoCpf, _dados["Cpf"]);
                 DriverService.DigitarNoCampoEnterId(_elementoCep, _dados["Cep"]);
-                Esperar3Segundos();
+                EsperarAcaoEmSegundos(2);
                 DriverService.DigitarNoCampoId(_elementoNumero, _dados["Numero"]);
 
                 return true;
@@ -111,7 +109,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
         {
             try
             {
-                DriverService.FecharJanelaComEsc(_telaCadastroCliente);
+                DriverService.FecharJanelaComEsc(_elementoTelaCadastroCliente);
 
                 return true;
             }

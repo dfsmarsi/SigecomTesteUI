@@ -39,10 +39,12 @@ namespace SigecomTestesUI.Login
         {
             if (!ValidarAberturaDeTela(_elementoTelaLogin))
                 return false;
+
             PreencherLogin();
-            Esperar3Segundos();
+            EsperarAcaoEmSegundos(2);
             DriverService.TrocarJanela();
-            if (!ValidarAberturaDeTela(_elementoTelaPrincipal))
+
+            if(!ValidarAberturaDeTela(_elementoTelaPrincipal))
                 return false;
 
             return true;

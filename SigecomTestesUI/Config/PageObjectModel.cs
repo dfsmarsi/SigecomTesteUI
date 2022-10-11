@@ -21,25 +21,36 @@ namespace SigecomTestesUI.Config
             return true;
         }
 
-        public bool AcessarOpcaoMenu(string menu, string opcaoSubMenu)
+        public bool AcessarOpcaoMenu(string menu)
         {
             try
             {
                 DriverService.DarDuploCliqueNoBotaoName(menu);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool AcessarOpcaoSubMenu(string opcaoSubMenu)
+        {
+            try
+            {
                 DriverService.ClicarBotaoName(opcaoSubMenu);
 
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
-
                 return false;
             }
         }
 
-        public void Esperar3Segundos()
+        public void EsperarAcaoEmSegundos(int tempoEmSegundos)
         {
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            Thread.Sleep(TimeSpan.FromSeconds(tempoEmSegundos));
         }
 
         public void FecharSistema()
