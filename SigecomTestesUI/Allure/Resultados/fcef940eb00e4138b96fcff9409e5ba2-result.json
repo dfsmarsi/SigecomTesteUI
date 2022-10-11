@@ -1,0 +1,99 @@
+{
+  "uuid": "84058792-a398-4243-8d74-055eab709273-tr-0-1002",
+  "historyId": "SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto.CadastroDeProdutoTeste.CadastrarProdutoSomenteCamposObrigatorios",
+  "fullName": "SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto.CadastroDeProdutoTeste.CadastrarProdutoSomenteCamposObrigatorios",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto"
+    },
+    {
+      "name": "testMethod",
+      "value": "CadastrarProdutoSomenteCamposObrigatorios"
+    },
+    {
+      "name": "testClass",
+      "value": "CadastroDeProdutoTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Douglas"
+    },
+    {
+      "name": "suite",
+      "value": "Cadastros"
+    },
+    {
+      "name": "subSuite",
+      "value": "Cliente"
+    }
+  ],
+  "links": [
+    {
+      "name": "1",
+      "url": "https://sistemasbr.atlassian.net/browse/1",
+      "type": "issue"
+    },
+    {
+      "name": "1",
+      "url": "http://mysite.com/1",
+      "type": "tms"
+    }
+  ],
+  "name": "CadastrarProdutoSomenteCamposObrigatorios",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "System.Collections.Generic.KeyNotFoundException : The given key 'ValorVenda' was not present in the dictionary.\r\nTearDown : System.ArgumentOutOfRangeException : Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')",
+    "trace": "   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto.CadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\Produto\\CadastroDeProdutoPage.cs:line 84\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto.CadastroDeProdutoTeste.CadastrarProdutoSomenteCamposObrigatorios() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\Produto\\CadastroDeProdutoTeste.cs:line 45\r\n--TearDown\r\n   at System.Collections.Generic.List`1.get_Item(Int32 index)\r\n   at System.Collections.ObjectModel.ReadOnlyCollection`1.get_Item(Int32 index)\r\n   at SigecomTestesUI.Services.DriverService.TrocarJanela() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 81\r\n   at SigecomTestesUI.Services.DriverService.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 25\r\n   at SigecomTestesUI.Services.DriverService.Dispose() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 153\r\n   at SigecomTestesUI.Config.PageObjectModel.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Config\\PageObjectModel.cs:line 58\r\n   at SigecomTestesUI.BaseTestes.TearDown() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\BaseTestes.cs:line 30"
+  },
+  "stage": "finished",
+  "description": "\nTearDown TearDown method failed\nCadastro de Produto Somente Campos Obrigatorios\n",
+  "steps": [
+    {
+      "name": "CadastrarProdutoSomenteCamposObrigatorios",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "System.Collections.Generic.KeyNotFoundException : The given key 'ValorVenda' was not present in the dictionary.\r\nTearDown : System.ArgumentOutOfRangeException : Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')",
+        "trace": "   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto.CadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\Produto\\CadastroDeProdutoPage.cs:line 84\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto.CadastroDeProdutoTeste.CadastrarProdutoSomenteCamposObrigatorios() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\Produto\\CadastroDeProdutoTeste.cs:line 45\r\n--TearDown\r\n   at System.Collections.Generic.List`1.get_Item(Int32 index)\r\n   at System.Collections.ObjectModel.ReadOnlyCollection`1.get_Item(Int32 index)\r\n   at SigecomTestesUI.Services.DriverService.TrocarJanela() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 81\r\n   at SigecomTestesUI.Services.DriverService.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 25\r\n   at SigecomTestesUI.Services.DriverService.Dispose() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 153\r\n   at SigecomTestesUI.Config.PageObjectModel.FecharSistema() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Config\\PageObjectModel.cs:line 58\r\n   at SigecomTestesUI.BaseTestes.TearDown() in C:\\Users\\Douglas\\source\\repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\BaseTestes.cs:line 30"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "564a8b692f084ad98ad5b30c0987f0c7-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1665520927272,
+      "stop": 1665520949257
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1665520927272,
+  "stop": 1665520949265
+}

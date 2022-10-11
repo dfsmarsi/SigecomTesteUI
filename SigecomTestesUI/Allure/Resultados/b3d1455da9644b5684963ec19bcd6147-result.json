@@ -1,0 +1,96 @@
+{
+  "uuid": "20b01c2f-e457-430a-bbf5-0692ce5c32e2-tr-0-1006",
+  "historyId": "SigecomTestesUI.Sigecom.Cadastros.Cliente.CadastroDeClienteTeste.CadastrarClienteSomenteCamposObrigatorios",
+  "fullName": "SigecomTestesUI.Sigecom.Cadastros.Cliente.CadastroDeClienteTeste.CadastrarClienteSomenteCamposObrigatorios",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Cadastros.Cliente"
+    },
+    {
+      "name": "testMethod",
+      "value": "CadastrarClienteSomenteCamposObrigatorios"
+    },
+    {
+      "name": "testClass",
+      "value": "CadastroDeClienteTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Douglas"
+    },
+    {
+      "name": "suite",
+      "value": "Cadastros"
+    },
+    {
+      "name": "subSuite",
+      "value": "Cliente"
+    }
+  ],
+  "links": [
+    {
+      "name": "1",
+      "url": "http://mysite.com/1",
+      "type": "issue"
+    },
+    {
+      "name": "1",
+      "url": "http://mysite.com/1",
+      "type": "tms"
+    }
+  ],
+  "name": "CadastrarClienteSomenteCamposObrigatorios",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "CadastrarClienteSomenteCamposObrigatorios"
+  },
+  "stage": "finished",
+  "description": "Cadastro de cliente somente campos obrigatórios com endereço\n",
+  "steps": [
+    {
+      "name": "CadastrarClienteSomenteCamposObrigatorios",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "8469721012164b5c8c1590c344432b07-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1663077343154,
+      "stop": 1663077372923
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1663077343154,
+  "stop": 1663077372928
+}

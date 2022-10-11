@@ -1,0 +1,96 @@
+{
+  "uuid": "c997cdf9-a4e5-41e2-a8c8-e2ace10b514d-tr-0-1004",
+  "historyId": "SigecomTestesUI.Sigecom.Cadastros.Colaborador.CadastroDeColaboradorTeste.CadastrarColaboradorSomenteCamposObrigatorios",
+  "fullName": "SigecomTestesUI.Sigecom.Cadastros.Colaborador.CadastroDeColaboradorTeste.CadastrarColaboradorSomenteCamposObrigatorios",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Cadastros.Colaborador"
+    },
+    {
+      "name": "testMethod",
+      "value": "CadastrarColaboradorSomenteCamposObrigatorios"
+    },
+    {
+      "name": "testClass",
+      "value": "CadastroDeColaboradorTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Douglas"
+    },
+    {
+      "name": "suite",
+      "value": "Cadastros"
+    },
+    {
+      "name": "subSuite",
+      "value": "Colaborador"
+    }
+  ],
+  "links": [
+    {
+      "name": "3",
+      "url": "https://sistemasbr.atlassian.net/browse/3",
+      "type": "issue"
+    },
+    {
+      "name": "3",
+      "url": "http://mysite.com/3",
+      "type": "tms"
+    }
+  ],
+  "name": "CadastrarColaboradorSomenteCamposObrigatorios",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "CadastrarColaboradorSomenteCamposObrigatorios"
+  },
+  "stage": "finished",
+  "description": "Cadastro de Colaborador somente campos obrigatórios com endereço\n",
+  "steps": [
+    {
+      "name": "CadastrarColaboradorSomenteCamposObrigatorios",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "f127f2be90eb4c7c9f818be5691c2105-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1663256187459,
+      "stop": 1663256218908
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1663256187459,
+  "stop": 1663256218909
+}

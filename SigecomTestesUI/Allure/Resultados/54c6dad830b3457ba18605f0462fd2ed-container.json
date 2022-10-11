@@ -1,0 +1,44 @@
+{
+  "uuid": "8728d419-c865-46d4-b5f7-8ee8654f99f7-tc-0-1005",
+  "name": "SigecomTestesUI.Sigecom.Cadastros.Cliente.CadastroDeClienteTeste.CadastrarClienteSomenteCamposObrigatorios",
+  "children": [
+    "ad2dad94-6398-4cc9-8408-657e89b5a3b5-tr-0-1006"
+  ],
+  "befores": [
+    {
+      "name": "Setup",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1663077189357,
+      "stop": 1663077189357
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1663077189358,
+      "stop": 1663077189358
+    }
+  ],
+  "links": [],
+  "start": 1663077159956,
+  "stop": 1663077189409
+}
