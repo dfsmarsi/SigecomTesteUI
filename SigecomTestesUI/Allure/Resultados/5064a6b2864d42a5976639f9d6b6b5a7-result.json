@@ -1,0 +1,96 @@
+{
+  "uuid": "a9930a65-4ee2-4962-83a0-a0be49c748e1-tr-0-1002",
+  "historyId": "SigecomTestesUI.Sigecom.Cadastros.Fornecedor.CadastroDeFornecedorTeste.CadastrarFornecedorSomenteCamposObrigatorios",
+  "fullName": "SigecomTestesUI.Sigecom.Cadastros.Fornecedor.CadastroDeFornecedorTeste.CadastrarFornecedorSomenteCamposObrigatorios",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Cadastros.Fornecedor"
+    },
+    {
+      "name": "testMethod",
+      "value": "CadastrarFornecedorSomenteCamposObrigatorios"
+    },
+    {
+      "name": "testClass",
+      "value": "CadastroDeFornecedorTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Douglas"
+    },
+    {
+      "name": "suite",
+      "value": "Cadastros"
+    },
+    {
+      "name": "subSuite",
+      "value": "Fornecedor"
+    }
+  ],
+  "links": [
+    {
+      "name": "2",
+      "url": "http://mysite.com/2",
+      "type": "issue"
+    },
+    {
+      "name": "2",
+      "url": "http://mysite.com/2",
+      "type": "tms"
+    }
+  ],
+  "name": "CadastrarFornecedorSomenteCamposObrigatorios",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "CadastrarFornecedorSomenteCamposObrigatorios"
+  },
+  "stage": "finished",
+  "description": "Cadastro de fornecedor somente campos obrigatórios com endereço\n",
+  "steps": [
+    {
+      "name": "CadastrarFornecedorSomenteCamposObrigatorios",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "537b7d05e51b40c89485d54283667ea5-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1663078062204,
+      "stop": 1663078091161
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1663078062204,
+  "stop": 1663078091161
+}

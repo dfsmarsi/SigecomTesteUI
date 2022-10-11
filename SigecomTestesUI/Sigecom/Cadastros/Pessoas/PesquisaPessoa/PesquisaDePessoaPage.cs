@@ -1,7 +1,7 @@
 ﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.PesquisaPessoa
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
 {
     public class PesquisaDePessoaPage : PageObjectModel
     {

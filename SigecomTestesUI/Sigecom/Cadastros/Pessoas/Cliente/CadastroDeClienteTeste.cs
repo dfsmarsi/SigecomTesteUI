@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Cadastros.PesquisaPessoa;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Framework;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System.Collections.Generic;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
     public class CadastroDeClienteTeste : BaseTestes
     {
@@ -13,7 +14,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
             {"Nome","JOAO PENCA"},
             {"Cpf","43671566051"},
             {"Cep","15700082"},
-            {"Numero","123"},
+            {"Numero","123"}
         };
 
         public CadastroDeClienteTeste()
@@ -22,11 +23,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Cliente
             _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
         }
 
-        [Test]
+
+        [Test(Description = "Cadastro de cliente somente campos obrigatórios com endereço")]
+        [AllureTag("CI")]
+        [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
+        [AllureIssue("1")]
+        [AllureTms("1")]
+        [AllureOwner("Douglas")]
+        [AllureSuite("Cadastros")]
+        [AllureSubSuite("Cliente")]
         public void CadastrarClienteSomenteCamposObrigatorios()
         {
             // Arange
-            _cadastroClientePage.AbrirCadastroCliente();
+            _cadastroClientePage.ClicarNaOpcaoDoMenu();
+            _cadastroClientePage.ClicarNaOpcaoDoSubMenu();
             _cadastroClientePage.ClicarBotaoNovo();
             _cadastroClientePage.VerificarTipoPessoa();
 

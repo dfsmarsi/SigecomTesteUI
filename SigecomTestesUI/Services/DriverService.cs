@@ -21,7 +21,7 @@ namespace SigecomTestesUI.Services
         {
             ClicarBotaoName("Sair/Login");
             //ClicarBotaoName(", Sim (ENTER)");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            Thread.Sleep(TimeSpan.FromSeconds(2));
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
             ClicarBotaoName("Fechar");
@@ -132,9 +132,14 @@ namespace SigecomTestesUI.Services
         {
             var campo = _driver.FindElementByAccessibilityId(nomeCampo);
             campo.Click();
+            EncontrarElementoNaComboBox(posicao, campo);
+            campo.SendKeys(Keys.Enter);
+        }
+
+        private static void EncontrarElementoNaComboBox(int posicao, WindowsElement campo)
+        {
             for (int i = 1; i <= posicao; i++)
                 campo.SendKeys(Keys.ArrowDown);
-            campo.SendKeys(Keys.Enter);
         }
 
         public void FecharJanelaComEsc(string nomeJanela)

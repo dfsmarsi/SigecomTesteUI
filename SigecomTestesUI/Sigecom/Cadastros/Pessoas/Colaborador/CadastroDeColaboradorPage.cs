@@ -2,7 +2,7 @@
 using SigecomTestesUI.Services;
 using System.Collections.Generic;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {
     public class CadastroDeColaboradorPage : PageObjectModel
     {
@@ -24,11 +24,25 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
             _dados = dados;
         }
 
-        public bool AbrirCadastroColaborador()
+        public bool ClicarNaOpcaoDoMenu()
         {
             try
             {
-                AcessarOpcaoMenu(_botaoMenu, _botaoSubMenu);
+                AcessarOpcaoMenu(_botaoMenu);
+
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool ClicarNaOpcaoDoSubMenu()
+        {
+            try
+            {
+                AcessarOpcaoSubMenu(_botaoSubMenu);
 
                 return true;
             }
@@ -81,7 +95,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
                 DriverService.DigitarNoCampoId(_elementoNome, _dados["Nome"]);
                 DriverService.DigitarNoCampoId(_elementoCpf, _dados["Cpf"]);
                 DriverService.DigitarNoCampoEnterId(_elementoCep, _dados["Cep"]);
-                Esperar3Segundos();
+                EsperarAcaoEmSegundos(2);
                 DriverService.DigitarNoCampoId(_elementoNumero, _dados["Numero"]);
 
                 return true;

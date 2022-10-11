@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Cadastros.PesquisaPessoa;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Framework;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System.Collections.Generic;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Fornecedor
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 {
     public class CadastroDeFornecedorTeste : BaseTestes
     {
@@ -22,11 +23,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Fornecedor
             _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
         }
 
-        [Test]
+        [Test(Description = "Cadastro de fornecedor somente campos obrigatórios com endereço")]
+        [AllureTag("CI")]
+        [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
+        [AllureIssue("2")]
+        [AllureTms("2")]
+        [AllureOwner("Douglas")]
+        [AllureSuite("Cadastros")]
+        [AllureSubSuite("Fornecedor")]
         public void CadastrarFornecedorSomenteCamposObrigatorios()
         {
             // Arrange
-            _cadastroFornecedorPage.AbrirCadastroFornecedor();
+            _cadastroFornecedorPage.ClicarNaOpcaoDoMenu();
+            _cadastroFornecedorPage.ClicarNaOpcaoDoSubMenu();
             _cadastroFornecedorPage.ClicarBotaoNovo();
             _cadastroFornecedorPage.VerificarTipoPessoa();
             

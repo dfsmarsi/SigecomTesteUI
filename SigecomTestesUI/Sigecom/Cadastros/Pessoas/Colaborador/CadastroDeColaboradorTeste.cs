@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Cadastros.PesquisaPessoa;
+﻿using NUnit.Allure.Attributes;
+using NUnit.Framework;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System.Collections.Generic;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {
     public class CadastroDeColaboradorTeste : BaseTestes
     {
@@ -22,11 +23,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Colaborador
             _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
         }
 
-        [Test]
+        [Test(Description = "Cadastro de Colaborador somente campos obrigatórios com endereço")]
+        [AllureTag("CI")]
+        [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
+        [AllureIssue("3")]
+        [AllureTms("3")]
+        [AllureOwner("Douglas")]
+        [AllureSuite("Cadastros")]
+        [AllureSubSuite("Colaborador")]
         public void CadastrarColaboradorSomenteCamposObrigatorios()
         {
             // Arange
-            _cadastroColaboradorPage.AbrirCadastroColaborador();
+            _cadastroColaboradorPage.ClicarNaOpcaoDoMenu();
+            _cadastroColaboradorPage.ClicarNaOpcaoDoSubMenu();
             _cadastroColaboradorPage.ClicarBotaoNovo();
             _cadastroColaboradorPage.VerificarTipoPessoa();
 
