@@ -40,7 +40,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             _cadastroClientePage.ClicarBotaoNovo();
             _cadastroClientePage.VerificarTipoPessoa();
 
-            //// Act
+            // Act
             _cadastroClientePage.PreencherCampos();
             _cadastroClientePage.GravarCadastro();
 
