@@ -1,4 +1,5 @@
-﻿using SigecomTestesUI.Config;
+﻿using System;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
@@ -19,9 +20,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)
         {
             var nomePessoaNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");
-            if (nomePessoa == nomePessoaNaGrid)
-                return true;
-            return false;
+            return nomePessoa == nomePessoaNaGrid;
         }
 
         public bool FecharJanelaComEsc(string tipoPessoa)
@@ -30,10 +29,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
             try
             {
                 DriverService.FecharJanelaComEsc(nomeJanela);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }

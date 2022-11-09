@@ -1,6 +1,7 @@
-﻿using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
+﻿using System;
 using System.Collections.Generic;
+using SigecomTestesUI.Config;
+using SigecomTestesUI.Services;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 {
@@ -20,20 +21,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 
         private readonly Dictionary<string, string> _dados;
 
-        public CadastroDeFornecedorPage(DriverService driver, Dictionary<string, string> dados) : base(driver)
-        {
+        public CadastroDeFornecedorPage(DriverService driver, Dictionary<string, string> dados) : base(driver) => 
             _dados = dados;
-        }
 
         public bool ClicarNaOpcaoDoMenu()
         {
             try
             {
                 AcessarOpcaoMenu(_botaoMenu);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -44,10 +42,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             try
             {
                 AcessarOpcaoSubMenu(_botaoSubMenu);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -58,10 +55,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             try
             {
                 DriverService.ClicarBotaoName(_botaoNovo);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -72,10 +68,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             try
             {
                 DriverService.ClicarBotaoName(_botaoPesquisar);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -84,9 +79,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
         public bool VerificarTipoPessoa()
         {
             var valorTipoPessoa = DriverService.ObterValorElementoId(_elementoTipoPessoa);
-            if (valorTipoPessoa != "FÍSICA")
-                return false;
-            return true;
+            return valorTipoPessoa == "FÍSICA";
         }
 
         public bool PreencherCampos()
@@ -98,7 +91,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
                 DriverService.DigitarNoCampoEnterId(_elementoCep, _dados["Cep"]);
                 EsperarAcaoEmSegundos(2);
                 DriverService.DigitarNoCampoId(_elementoNumero, _dados["Numero"]);
-
                 return true;
             }
             catch
@@ -112,10 +104,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             try
             {
                 DriverService.ClicarBotaoName(_botaoGravar);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -126,10 +117,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             try
             {
                 DriverService.FecharJanelaComEsc(_telaCadastroFornecedor);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }

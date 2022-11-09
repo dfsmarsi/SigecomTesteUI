@@ -10,7 +10,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         private readonly CadastroDeColaboradorPage _cadastroColaboradorPage;
         private readonly PesquisaDePessoaPage _pesquisaPessoaPage;
 
-        private Dictionary<string, string> _dados = new Dictionary<string, string>() {
+        private readonly Dictionary<string, string> _dados = new Dictionary<string, string>() {
             {"Nome","RONY RUSTICO"},
             {"Cpf","28061149001"},
             {"Cep","15700082"},
