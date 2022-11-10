@@ -1,17 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using SigecomTestesUI.Config;
+﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoPage : PageObjectModel
     {
-        private readonly Dictionary<string, string> _dadosProduto;
+        private readonly Dictionary<string, string> _dadosProduto = new Dictionary<string, string>
+        {
+            {"Nome","PRODUTO"},
+            {"Unidade", "UN"},
+            {"CodigoInterno","int"},
+            {"Categoria","PRODUTO"},
+            {"Custo","5,00"},
+            {"Markup","100,00"},
+            {"PrecoVenda","10,00"},
+            {"Referencia","ref"},
+            {"NCM","22030000"}
+        };
 
-        public CadastroDeProdutoPage(DriverService driver, Dictionary<string, string> dadosProduto) : base(driver) => 
-            _dadosProduto = dadosProduto;
+        public CadastroDeProdutoPage(DriverService driver) : base(driver)
+        {
+        }
 
         public bool ClicarNaOpcaoDoMenu() => 
             AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoMenuCadastro);

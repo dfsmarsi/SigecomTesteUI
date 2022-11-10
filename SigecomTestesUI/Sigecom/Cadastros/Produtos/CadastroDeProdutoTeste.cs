@@ -1,27 +1,11 @@
-﻿using System.Collections.Generic;
-using NUnit.Allure.Attributes;
+﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoTeste : BaseTestes
     {
-        private readonly CadastroDeProdutoPage _cadastroDeProdutoPage;
-        private readonly Dictionary<string, string> _dadosProduto = new Dictionary<string, string>
-        {
-            {"Nome","PRODUTO"},
-            {"Unidade", "UN"},
-            {"CodigoInterno","int"},
-            {"Categoria","PRODUTO"},
-            {"Custo","5,00"},
-            {"Markup","100,00"},
-            {"PrecoVenda","10,00"},
-            {"Referencia","ref"},
-            {"NCM","22030000"}
-        };
-
-        public CadastroDeProdutoTeste() => 
-            _cadastroDeProdutoPage = new CadastroDeProdutoPage(DriverService, _dadosProduto);
+        private CadastroDeProdutoPage _cadastroDeProdutoPage;
 
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
@@ -33,6 +17,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         [AllureSubSuite("Cliente")]
         public void CadastrarProdutoSomenteCamposObrigatorios()
         {
+            _cadastroDeProdutoPage = new CadastroDeProdutoPage(DriverService);
             // Arange
             _cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
             _cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();

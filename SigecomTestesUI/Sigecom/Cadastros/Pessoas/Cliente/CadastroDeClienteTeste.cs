@@ -1,14 +1,14 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using System.Collections.Generic;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
     public class CadastroDeClienteTeste : BaseTestes
     {
-        private readonly CadastroDeClientePage _cadastroClientePage;
-        private readonly PesquisaDePessoaPage _pesquisaPessoaPage;
+        private CadastroDeClientePage _cadastroClientePage;
+        private PesquisaDePessoaPage _pesquisaPessoaPage;
 
         private readonly Dictionary<string, string> _dados = new Dictionary<string, string>
         {
@@ -17,13 +17,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             {"Cep","15700082"},
             {"Numero","123"}
         };
-
-        public CadastroDeClienteTeste()
-        {
-            _cadastroClientePage = new CadastroDeClientePage(DriverService, _dados);
-            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
-        }
-
 
         [Test(Description = "Cadastro de cliente somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
@@ -35,6 +28,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         [AllureSubSuite("Cliente")]
         public void CadastrarClienteSomenteCamposObrigatorios()
         {
+            _cadastroClientePage = new CadastroDeClientePage(DriverService, _dados);
             // Arange
             _cadastroClientePage.ClicarNaOpcaoDoMenu();
             _cadastroClientePage.ClicarNaOpcaoDoSubMenu();
@@ -47,6 +41,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 
             // Assert
             _cadastroClientePage.ClicarBotaoPesquisar();
+            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
             _pesquisaPessoaPage.PesquisarPessoa("cliente", _dados["Nome"]);
             var existeClienteNaPesquisa = _pesquisaPessoaPage.VerificarSeExistePessoaNaGrid(_dados["Nome"]);
             Assert.True(existeClienteNaPesquisa);

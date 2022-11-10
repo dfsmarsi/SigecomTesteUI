@@ -1,5 +1,7 @@
+using Autofac;
 using NUnit.Allure.Core;
 using NUnit.Framework;
+using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Login;
 using SigecomTestesUI.Services;
 
@@ -14,7 +16,9 @@ namespace SigecomTestesUI
 
         public BaseTestes()
         {
-            DriverService = new DriverService();
+            ControleDeInjecaoAutofac.ConstruirContainerComDependenciasSemCarregarDados();
+            var scope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            DriverService = scope.Resolve<DriverService>();
             _loginPage = new LoginPage(DriverService);
         }
 

@@ -1,14 +1,14 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using System.Collections.Generic;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {
     public class CadastroDeColaboradorTeste : BaseTestes
     {
-        private readonly CadastroDeColaboradorPage _cadastroColaboradorPage;
-        private readonly PesquisaDePessoaPage _pesquisaPessoaPage;
+        private CadastroDeColaboradorPage _cadastroColaboradorPage;
+        private PesquisaDePessoaPage _pesquisaPessoaPage;
 
         private readonly Dictionary<string, string> _dados = new Dictionary<string, string>() {
             {"Nome","RONY RUSTICO"},
@@ -16,12 +16,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             {"Cep","15700082"},
             {"Numero","333"}
         };
-
-        public CadastroDeColaboradorTeste()
-        {
-            _cadastroColaboradorPage = new CadastroDeColaboradorPage(DriverService, _dados);
-            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
-        }
 
         [Test(Description = "Cadastro de Colaborador somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
@@ -33,6 +27,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         [AllureSubSuite("Colaborador")]
         public void CadastrarColaboradorSomenteCamposObrigatorios()
         {
+            _cadastroColaboradorPage = new CadastroDeColaboradorPage(DriverService, _dados);
             // Arange
             _cadastroColaboradorPage.ClicarNaOpcaoDoMenu();
             _cadastroColaboradorPage.ClicarNaOpcaoDoSubMenu();
@@ -45,6 +40,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 
             // Assert
             _cadastroColaboradorPage.ClicarBotaoPesquisar();
+            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
             _pesquisaPessoaPage.PesquisarPessoa("colaborador", _dados["Nome"]);
             var existeClienteNaPesquisa = _pesquisaPessoaPage.VerificarSeExistePessoaNaGrid(_dados["Nome"]);
             Assert.True(existeClienteNaPesquisa);

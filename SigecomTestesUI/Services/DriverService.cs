@@ -2,9 +2,9 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
+using SigecomTestesUI.Config;
 using System;
 using System.Threading;
-using SigecomTestesUI.Config;
 
 namespace SigecomTestesUI.Services
 {
@@ -12,9 +12,9 @@ namespace SigecomTestesUI.Services
     {
         private readonly WindowsDriver<WindowsElement> _driver;
 
-        public DriverService()
+        public DriverService(DriverFabrica driverFabrica)
         {
-            _driver = new DriverFabrica().CriarDriver();
+            _driver = driverFabrica.CriarDriver();
         }
 
         public void FecharSistema()

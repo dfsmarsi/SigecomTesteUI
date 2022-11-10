@@ -1,27 +1,22 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using System.Collections.Generic;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 {
     public class CadastroDeFornecedorTeste : BaseTestes
     {
-        private readonly CadastroDeFornecedorPage _cadastroFornecedorPage;
-        private readonly PesquisaDePessoaPage _pesquisaPessoaPage;
+        private CadastroDeFornecedorPage _cadastroFornecedorPage;
+        private PesquisaDePessoaPage _pesquisaPessoaPage;
 
-        private readonly Dictionary<string, string> _dados = new Dictionary<string, string>() {
+        private readonly Dictionary<string, string> _dados = new Dictionary<string, string>
+        {
             {"Nome","FORNECEDOR"},
             {"Cpf","31055577092"},
             { "Cep","15700082"},
             { "Numero","222"},
         };
-
-        public CadastroDeFornecedorTeste()
-        {
-            _cadastroFornecedorPage = new CadastroDeFornecedorPage(DriverService, _dados);
-            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
-        }
 
         [Test(Description = "Cadastro de fornecedor somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
@@ -33,6 +28,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
         [AllureSubSuite("Fornecedor")]
         public void CadastrarFornecedorSomenteCamposObrigatorios()
         {
+            _cadastroFornecedorPage = new CadastroDeFornecedorPage(DriverService, _dados);
             // Arrange
             _cadastroFornecedorPage.ClicarNaOpcaoDoMenu();
             _cadastroFornecedorPage.ClicarNaOpcaoDoSubMenu();
@@ -45,6 +41,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             
             // Assert
             _cadastroFornecedorPage.ClicarBotaoPesquisar();
+            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
             _pesquisaPessoaPage.PesquisarPessoa("fornecedor", _dados["Nome"]);
             var existeClienteNaPesquisa = _pesquisaPessoaPage.VerificarSeExistePessoaNaGrid(_dados["Nome"]);
             Assert.True(existeClienteNaPesquisa);

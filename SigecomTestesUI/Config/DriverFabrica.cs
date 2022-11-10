@@ -1,8 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using System;
+using System.Diagnostics;
 
 namespace SigecomTestesUI.Config
 {
