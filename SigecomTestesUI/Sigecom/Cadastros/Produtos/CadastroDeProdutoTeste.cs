@@ -1,13 +1,13 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System.Collections.Generic;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using System.Collections.Generic;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoTeste : BaseTestes
     {
         private readonly CadastroDeProdutoPage _cadastroDeProdutoPage;
-        private Dictionary<string, string> _dadosProduto = new Dictionary<string, string>()
+        private readonly Dictionary<string, string> _dadosProduto = new Dictionary<string, string>
         {
             {"Nome","PRODUTO"},
             {"Unidade", "UN"},
@@ -20,10 +20,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto
             {"NCM","22030000"}
         };
 
-        public CadastroDeProdutoTeste()
-        {
+        public CadastroDeProdutoTeste() => 
             _cadastroDeProdutoPage = new CadastroDeProdutoPage(DriverService, _dadosProduto);
-        }
 
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
@@ -54,7 +52,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Produto
             // pesquisar produto
             // assert item da grid == PRODUTO
             // fechar tela de pesquisa
-            // fechar tela de cadastro           
+            // fechar tela de cadastro         
+            _cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
         }
     }
 }
