@@ -58,7 +58,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNome, _dados["Nome"]);
                 DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoCpf, _dados["Cpf"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeCienteModel.ElementoCep, _dados["Cep"]);
-                EsperarAcaoEmSegundos(2);
+                EsperarAcaoEmSegundos(5);
                 DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNumero, _dados["Numero"]);
                 return true;
             }

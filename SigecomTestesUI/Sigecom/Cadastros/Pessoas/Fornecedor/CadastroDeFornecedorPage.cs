@@ -89,7 +89,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
                 DriverService.DigitarNoCampoId(_elementoNome, _dados["Nome"]);
                 DriverService.DigitarNoCampoId(_elementoCpf, _dados["Cpf"]);
                 DriverService.DigitarNoCampoEnterId(_elementoCep, _dados["Cep"]);
-                EsperarAcaoEmSegundos(2);
+                EsperarAcaoEmSegundos(5);
                 DriverService.DigitarNoCampoId(_elementoNumero, _dados["Numero"]);
                 return true;
             }
