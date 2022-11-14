@@ -1,11 +1,27 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System.Collections.Generic;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
+using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoTeste : BaseTestes
     {
+        private readonly Dictionary<string, string> _dadosProduto = new Dictionary<string, string>
+        {
+            {"Nome","PRODUTO"},
+            {"Unidade", "UN"},
+            {"CodigoInterno","int"},
+            {"Categoria","PRODUTO"},
+            {"Custo","5,00"},
+            {"Markup","100,00"},
+            {"PrecoVenda","10,00"},
+            {"Referencia","ref"},
+            {"NCM","22030000"}
+        };
+
         private CadastroDeProdutoPage _cadastroDeProdutoPage;
+        private PesquisaDeProdutoPage _pesquisaDeProdutoPage; 
 
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
@@ -33,12 +49,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             _cadastroDeProdutoPage.Gravar();
 
             // Assert
-            // abrir tela de pesquisa
-            // pesquisar produto
-            // assert item da grid == PRODUTO
-            // fechar tela de pesquisa
-            // fechar tela de cadastro         
-            _cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+            _cadastroDeProdutoPage.ClicarNaOpcaoDoPesquisar();
+            _pesquisaDeProdutoPage = new PesquisaDeProdutoPage(DriverService);
+            _pesquisaDeProdutoPage.PesquisarProduto(_dadosProduto["Nome"]);
+            var possuiProduto = _pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(_dadosProduto["Nome"]);
+            Assert.True(possuiProduto);
+            _pesquisaDeProdutoPage.FecharJanelaComEsc();
+            _cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();     
         }
     }
 }

@@ -31,6 +31,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         public bool ClicarNaOpcaoDoSubMenu() => 
             AcessarOpcaoSubMenu(CadastroDeProdutoModel.BotaoSubMenuProduto);
 
+        public bool ClicarNaOpcaoDoPesquisar() =>
+            AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoPesquisar);
+
         public bool ClicarNoBotaoNovo()
         {
             try

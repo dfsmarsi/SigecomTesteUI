@@ -1,13 +1,13 @@
-﻿using System;
-using SigecomTestesUI.Config;
+﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto
 {
     public class PesquisaDeProdutoPage : PageObjectModel
     {
-        private const string _telaPesquisaDeProdutoPrefixo = "Pesquisa de produto";
-        private const string _elementoParametroDePesquisa = "textEditParametroDePesquisa";
+        private const string _telaPesquisaDeProdutoPrefixo = "Pesquisa de produtos";
+        private const string _elementoParametroDePesquisa = "txtPesquisar";
 
         public PesquisaDeProdutoPage(DriverService driver) : base(driver) { }
 
