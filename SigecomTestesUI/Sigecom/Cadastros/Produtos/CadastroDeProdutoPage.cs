@@ -8,22 +8,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoPage : PageObjectModel
     {
-        private readonly Dictionary<string, string> _dadosProduto = new Dictionary<string, string>
-        {
-            {"Nome","PRODUTO"},
-            {"Unidade", "UN"},
-            {"CodigoInterno","int"},
-            {"Categoria","PRODUTO"},
-            {"Custo","5,00"},
-            {"Markup","100,00"},
-            {"PrecoVenda","10,00"},
-            {"Referencia","ref"},
-            {"NCM","22030000"}
-        };
-
-        public CadastroDeProdutoPage(DriverService driver) : base(driver)
-        {
-        }
+        private readonly Dictionary<string, string> _dadosDeProduto;
+        public CadastroDeProdutoPage(DriverService driver, Dictionary<string, string> dadosDeProduto) : base(driver) => 
+            _dadosDeProduto = dadosDeProduto;
 
         public bool ClicarNaOpcaoDoMenu() => 
             AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoMenuCadastro);
@@ -51,13 +38,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, _dadosProduto["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, _dadosProduto["Unidade"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeProdutoModel.ElementoCategoria, _dadosProduto["Categoria"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, _dadosDeProduto["Nome"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, _dadosDeProduto["Unidade"]);
+                DriverService.DigitarNoCampoEnterId(CadastroDeProdutoModel.ElementoCategoria, _dadosDeProduto["Categoria"]);
                 EsperarAcaoEmSegundos(2);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, _dadosProduto["Custo"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, _dadosProduto["Markup"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, _dadosProduto["Referencia"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, _dadosDeProduto["Custo"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, _dadosDeProduto["Markup"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, _dadosDeProduto["Referencia"]);
                 return true;
             }
             catch (Exception)
@@ -69,7 +56,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         public bool VerificarSePrecoDeVendaFoiCalculado()
         {
             var precoDeVenda = double.Parse(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoPrecoVenda));
-            return precoDeVenda.Equals(double.Parse(_dadosProduto["PrecoVenda"]));
+            return precoDeVenda.Equals(double.Parse(_dadosDeProduto["PrecoVenda"]));
         }
 
         public bool AcessarAbaImpostos()
@@ -92,7 +79,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoOrigemMercadoria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, _dadosProduto["NCM"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, _dadosDeProduto["NCM"]);
                 return true;
             }
             catch (Exception)

@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
+using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoTeste : BaseTestes
     {
-        private readonly Dictionary<string, string> _dadosProduto = new Dictionary<string, string>
+        private readonly Dictionary<string, string> _dadosDeProduto = new Dictionary<string, string>
         {
             {"Nome","PRODUTO"},
             {"Unidade", "UN"},
@@ -20,9 +23,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             {"NCM","22030000"}
         };
 
-        private CadastroDeProdutoPage _cadastroDeProdutoPage;
-        private PesquisaDeProdutoPage _pesquisaDeProdutoPage; 
-
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -33,29 +33,31 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         [AllureSubSuite("Cliente")]
         public void CadastrarProdutoSomenteCamposObrigatorios()
         {
-            _cadastroDeProdutoPage = new CadastroDeProdutoPage(DriverService);
+            var resolveCadastroDeProdutoPage = _lifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
+            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, _dadosDeProduto);
             // Arange
-            _cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
-            _cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
-            _cadastroDeProdutoPage.ClicarNoBotaoNovo();
+            cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
+            cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeProdutoPage.ClicarNoBotaoNovo();
 
             // Act
-            _cadastroDeProdutoPage.PreencherCamposDoProduto();
-            _cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
+            cadastroDeProdutoPage.PreencherCamposDoProduto();
+            cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
             // mudar para aba impostos
-            _cadastroDeProdutoPage.AcessarAbaImpostos();
+            cadastroDeProdutoPage.AcessarAbaImpostos();
             // preencher impostos
-            _cadastroDeProdutoPage.PreencherCamposDeImpostos();
-            _cadastroDeProdutoPage.Gravar();
+            cadastroDeProdutoPage.PreencherCamposDeImpostos();
+            cadastroDeProdutoPage.Gravar();
 
             // Assert
-            _cadastroDeProdutoPage.ClicarNaOpcaoDoPesquisar();
-            _pesquisaDeProdutoPage = new PesquisaDeProdutoPage(DriverService);
-            _pesquisaDeProdutoPage.PesquisarProduto(_dadosProduto["Nome"]);
-            var possuiProduto = _pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(_dadosProduto["Nome"]);
+            cadastroDeProdutoPage.ClicarNaOpcaoDoPesquisar();
+            var resolvePesquisaDeProdutoPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
+            var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
+            pesquisaDeProdutoPage.PesquisarProduto(_dadosDeProduto["Nome"]);
+            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(_dadosDeProduto["Nome"]);
             Assert.True(possuiProduto);
-            _pesquisaDeProdutoPage.FecharJanelaComEsc();
-            _cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();     
+            pesquisaDeProdutoPage.FecharJanelaComEsc();
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();     
         }
     }
 }

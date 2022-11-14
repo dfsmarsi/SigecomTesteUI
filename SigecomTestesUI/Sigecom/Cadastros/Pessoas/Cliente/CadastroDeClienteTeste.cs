@@ -1,16 +1,16 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
 using System.Collections.Generic;
+using Autofac;
+using SigecomTestesUI.Services;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
     public class CadastroDeClienteTeste : BaseTestes
     {
-        private CadastroDeClientePage _cadastroClientePage;
-        private PesquisaDePessoaPage _pesquisaPessoaPage;
-
-        private readonly Dictionary<string, string> _dados = new Dictionary<string, string>
+        private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
             {"Nome","JOAO PENCA"},
             {"Cpf","43671566051"},
@@ -28,25 +28,27 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         [AllureSubSuite("Cliente")]
         public void CadastrarClienteSomenteCamposObrigatorios()
         {
-            _cadastroClientePage = new CadastroDeClientePage(DriverService, _dados);
+            var resolveCadastroDeProdutoPage = _lifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClientePage>>();
+            var cadastroDeClientePage = resolveCadastroDeProdutoPage(DriverService, _dadosDoCliente);
             // Arange
-            _cadastroClientePage.ClicarNaOpcaoDoMenu();
-            _cadastroClientePage.ClicarNaOpcaoDoSubMenu();
-            _cadastroClientePage.ClicarBotaoNovo();
-            _cadastroClientePage.VerificarTipoPessoa();
+            cadastroDeClientePage.ClicarNaOpcaoDoMenu();
+            cadastroDeClientePage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeClientePage.ClicarBotaoNovo();
+            cadastroDeClientePage.VerificarTipoPessoa();
 
             // Act
-            _cadastroClientePage.PreencherCampos();
-            _cadastroClientePage.GravarCadastro();
+            cadastroDeClientePage.PreencherCampos();
+            cadastroDeClientePage.GravarCadastro();
 
             // Assert
-            _cadastroClientePage.ClicarBotaoPesquisar();
-            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
-            _pesquisaPessoaPage.PesquisarPessoa("cliente", _dados["Nome"]);
-            var existeClienteNaPesquisa = _pesquisaPessoaPage.VerificarSeExistePessoaNaGrid(_dados["Nome"]);
+            cadastroDeClientePage.ClicarBotaoPesquisar(); 
+            var resolvePesquisaDePessoaPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
+            pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
+            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
             Assert.True(existeClienteNaPesquisa);
-            _pesquisaPessoaPage.FecharJanelaComEsc("cliente");
-            _cadastroClientePage.FecharJanelaComEsc();
+            pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
+            cadastroDeClientePage.FecharJanelaComEsc();
         }
     }
 }

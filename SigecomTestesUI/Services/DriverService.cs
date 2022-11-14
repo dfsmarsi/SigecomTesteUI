@@ -2,7 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
-using SigecomTestesUI.Config;
 using System;
 using System.Threading;
 
@@ -12,10 +11,7 @@ namespace SigecomTestesUI.Services
     {
         private readonly WindowsDriver<WindowsElement> _driver;
 
-        public DriverService(DriverFabrica driverFabrica)
-        {
-            _driver = driverFabrica.CriarDriver();
-        }
+        public DriverService(WindowsDriver<WindowsElement> windowsDriver) => _driver = windowsDriver;
 
         public void FecharSistema()
         {
@@ -25,6 +21,7 @@ namespace SigecomTestesUI.Services
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
             ClicarBotaoName("Fechar");
+            _driver.Dispose();
         }
 
         public void ValidarElementoExistentePorNome(string valor)

@@ -8,10 +8,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
     public class CadastroDeClientePage : PageObjectModel
     {
-        private readonly Dictionary<string, string> _dados;
+        private readonly Dictionary<string, string> _dadosDoCliente;
 
-        public CadastroDeClientePage(DriverService driver, Dictionary<string, string> dados) : base(driver) => 
-            _dados = dados;
+        public CadastroDeClientePage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) => 
+            _dadosDoCliente = dadosDoCliente;
 
         public bool ClicarNaOpcaoDoMenu() => 
             AcessarOpcaoMenu(CadastroDeCienteModel.BotaoMenu);
@@ -55,11 +55,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNome, _dados["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoCpf, _dados["Cpf"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeCienteModel.ElementoCep, _dados["Cep"]);
+                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNome, _dadosDoCliente["Nome"]);
+                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
+                DriverService.DigitarNoCampoEnterId(CadastroDeCienteModel.ElementoCep, _dadosDoCliente["Cep"]);
                 EsperarAcaoEmSegundos(5);
-                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNumero, _dados["Numero"]);
+                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
                 return true;
             }
             catch

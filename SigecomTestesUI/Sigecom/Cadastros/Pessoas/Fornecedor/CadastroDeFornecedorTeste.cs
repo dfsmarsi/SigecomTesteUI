@@ -1,16 +1,16 @@
-﻿using NUnit.Allure.Attributes;
+﻿using Autofac;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
+using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
+using System;
 using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 {
     public class CadastroDeFornecedorTeste : BaseTestes
     {
-        private CadastroDeFornecedorPage _cadastroFornecedorPage;
-        private PesquisaDePessoaPage _pesquisaPessoaPage;
-
-        private readonly Dictionary<string, string> _dados = new Dictionary<string, string>
+        private readonly Dictionary<string, string> _dadosDeFornecedor = new Dictionary<string, string>
         {
             {"Nome","FORNECEDOR"},
             {"Cpf","31055577092"},
@@ -28,25 +28,27 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
         [AllureSubSuite("Fornecedor")]
         public void CadastrarFornecedorSomenteCamposObrigatorios()
         {
-            _cadastroFornecedorPage = new CadastroDeFornecedorPage(DriverService, _dados);
+            var resolveCadastroDeFornecedorPage = _lifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorPage>>();
+            var cadastroDeFornecedorPage = resolveCadastroDeFornecedorPage(DriverService, _dadosDeFornecedor);
             // Arrange
-            _cadastroFornecedorPage.ClicarNaOpcaoDoMenu();
-            _cadastroFornecedorPage.ClicarNaOpcaoDoSubMenu();
-            _cadastroFornecedorPage.ClicarBotaoNovo();
-            _cadastroFornecedorPage.VerificarTipoPessoa();
+            cadastroDeFornecedorPage.ClicarNaOpcaoDoMenu();
+            cadastroDeFornecedorPage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeFornecedorPage.ClicarBotaoNovo();
+            cadastroDeFornecedorPage.VerificarTipoPessoa();
             
             // Act
-            _cadastroFornecedorPage.PreencherCampos();
-            _cadastroFornecedorPage.GravarCadastro();
+            cadastroDeFornecedorPage.PreencherCampos();
+            cadastroDeFornecedorPage.GravarCadastro();
             
             // Assert
-            _cadastroFornecedorPage.ClicarBotaoPesquisar();
-            _pesquisaPessoaPage = new PesquisaDePessoaPage(DriverService);
-            _pesquisaPessoaPage.PesquisarPessoa("fornecedor", _dados["Nome"]);
-            var existeClienteNaPesquisa = _pesquisaPessoaPage.VerificarSeExistePessoaNaGrid(_dados["Nome"]);
+            cadastroDeFornecedorPage.ClicarBotaoPesquisar(); 
+            var resolvePesquisaDePessoaPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
+            pesquisaDePessoaPage.PesquisarPessoa("fornecedor", _dadosDeFornecedor["Nome"]);
+            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeFornecedor["Nome"]);
             Assert.True(existeClienteNaPesquisa);
-            _pesquisaPessoaPage.FecharJanelaComEsc("fornecedor");
-            _cadastroFornecedorPage.FecharJanelaCadastroFornecedorComEsc();
+            pesquisaDePessoaPage.FecharJanelaComEsc("fornecedor");
+            cadastroDeFornecedorPage.FecharJanelaCadastroFornecedorComEsc();
         }
     }
 }
