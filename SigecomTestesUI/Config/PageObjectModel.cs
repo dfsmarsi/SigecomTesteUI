@@ -15,10 +15,7 @@ namespace SigecomTestesUI.Config
 
         public bool ValidarAberturaDeTela(string nomeTela)
         {
-            if (DriverService.ObterValorElementoName(nomeTela) != nomeTela)
-                return false;
-
-            return true;
+            return DriverService.ObterValorElementoName(nomeTela) == nomeTela;
         }
 
         public bool AcessarOpcaoMenu(string menu)

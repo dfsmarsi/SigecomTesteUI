@@ -1,39 +1,35 @@
-﻿using SigecomTestesUI.Config;
+﻿using System;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa.Model;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
+namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa
 {
     public class PesquisaDePessoaPage : PageObjectModel
     {
-        private const string _telaPesquisaPessoaPrefixo = "Pesquisa de ";
-        private const string _elementoParametroDePesquisa = "textEditParametroDePesquisa";
-
         public PesquisaDePessoaPage(DriverService driver) : base(driver) { }
 
         public void PesquisarPessoa(string tipoPessoa, string nomePessoa)
         {
-            DriverService.ValidarElementoExistentePorNome(_telaPesquisaPessoaPrefixo + tipoPessoa);
-            DriverService.DigitarNoCampoEnterId(_elementoParametroDePesquisa, nomePessoa);            
+            DriverService.ValidarElementoExistentePorNome(PesquisaDePessoaModel.TelaPesquisaPessoaPrefixo + tipoPessoa);
+            DriverService.DigitarNoCampoEnterId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa);            
         }
 
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)
         {
             var nomePessoaNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");
-            if (nomePessoa == nomePessoaNaGrid)
-                return true;
-            return false;
+            return nomePessoa == nomePessoaNaGrid;
         }
 
         public bool FecharJanelaComEsc(string tipoPessoa)
         {
-            var nomeJanela = _telaPesquisaPessoaPrefixo + tipoPessoa;
+            var nomeJanela = PesquisaDePessoaModel.TelaPesquisaPessoaPrefixo + tipoPessoa;
             try
             {
                 DriverService.FecharJanelaComEsc(nomeJanela);
-
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }

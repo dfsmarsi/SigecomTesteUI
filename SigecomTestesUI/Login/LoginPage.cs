@@ -11,7 +11,7 @@ namespace SigecomTestesUI.Login
         private string _elementoSenha = "txtSenha";
         private string _elementoTelaLogin = "Sistema de gestão comercial";
         private string _elementoTelaPrincipal = "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR";
-        private Dictionary<string, string> _dadosLogin
+        private readonly Dictionary<string, string> _dadosLogin
             = new Dictionary<string, string>{
                 {"Usuario","Douglas"},
                 {"Senha", "123"}
@@ -25,29 +25,18 @@ namespace SigecomTestesUI.Login
             DriverService.DigitarNoCampoEnterId(_elementoSenha, _dadosLogin["Senha"]);
         }
 
-        public bool ValidarPreenchimentoFormLogin()
-        {
-            if (DriverService.ObterValorElementoId(_elementoUsuario) != _dadosLogin["Usuario"])
-                return false;
-            if (DriverService.ObterValorElementoId(_elementoSenha) != _dadosLogin["Senha"])
-                return false;
-
-            return true;
-        }
+        public bool ValidarPreenchimentoFormLogin() =>
+            DriverService.ObterValorElementoId(_elementoUsuario) == _dadosLogin["Usuario"] &&
+            DriverService.ObterValorElementoId(_elementoSenha) == _dadosLogin["Senha"];
 
         public bool Logar()
         {
-            if (!ValidarAberturaDeTela(_elementoTelaLogin))
-                return false;
+            if (!ValidarAberturaDeTela(_elementoTelaLogin)) return false;
 
             PreencherLogin();
             EsperarAcaoEmSegundos(2);
             DriverService.TrocarJanela();
-
-            if(!ValidarAberturaDeTela(_elementoTelaPrincipal))
-                return false;
-
-            return true;
+            return ValidarAberturaDeTela(_elementoTelaPrincipal);
         }
     }
 }

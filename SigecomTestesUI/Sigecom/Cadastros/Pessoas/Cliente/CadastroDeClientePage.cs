@@ -1,51 +1,32 @@
-﻿using SigecomTestesUI.Config;
+﻿using System;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
     public class CadastroDeClientePage : PageObjectModel
     {
-        private const string _botaoMenu = "Cadastro";
-        private const string _botaoSubMenu = "Clientes";
-        private const string _elementoTelaCadastroCliente = "Cadastro de clientes";
-        private const string _botaoNovo = "F2 - Novo";
-        private const string _botaoGravar = "F5 - Gravar";
-        private const string _botaoPesquisar = "F9 - Pesquisar";
-        private const string _elementoTipoPessoa = "cbxPessoaClassificacao";
-        private const string _elementoNome = "txtNome";
-        private const string _elementoCpf = "txtCPF";
-        private const string _elementoCep = "txtCEP";
-        private const string _elementoNumero = "txtNumero";
+        private readonly Dictionary<string, string> _dadosDoCliente;
 
-        private readonly Dictionary<string, string> _dados;
+        public CadastroDeClientePage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) => 
+            _dadosDoCliente = dadosDoCliente;
 
-        public CadastroDeClientePage(DriverService driver, Dictionary<string, string> dados) : base(driver) 
-        {
-            _dados = dados;
-        }
+        public bool ClicarNaOpcaoDoMenu() => 
+            AcessarOpcaoMenu(CadastroDeCienteModel.BotaoMenu);
 
-        public bool ClicarNaOpcaoDoMenu()
-        {
-            var acessadoMenu = AcessarOpcaoMenu(_botaoMenu);
-            return acessadoMenu;
-        }
-
-        public bool ClicarNaOpcaoDoSubMenu()
-        {
-            var acessadoSubMenu = AcessarOpcaoSubMenu(_botaoSubMenu);
-            return acessadoSubMenu;
-        }
+        public bool ClicarNaOpcaoDoSubMenu() => 
+            AcessarOpcaoSubMenu(CadastroDeCienteModel.BotaoSubMenu);
 
         public bool ClicarBotaoNovo()
         {
             try
             {
-                DriverService.ClicarBotaoName(_botaoNovo);
-
+                DriverService.ClicarBotaoName(CadastroDeCienteModel.BotaoNovo);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -55,11 +36,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.ClicarBotaoName(_botaoPesquisar);
-
+                DriverService.ClicarBotaoName(CadastroDeCienteModel.BotaoPesquisar);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -67,22 +47,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 
         public bool VerificarTipoPessoa()
         {
-            var valorTipoPessoa = DriverService.ObterValorElementoId(_elementoTipoPessoa);
-            if (valorTipoPessoa != "FÍSICA")
-                return false;
-            return true;
+            var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeCienteModel.ElementoTipoPessoa);
+            return valorTipoPessoa == "FÍSICA";
         }
 
         public bool PreencherCampos()
         {
             try
             {
-                DriverService.DigitarNoCampoId(_elementoNome, _dados["Nome"]);
-                DriverService.DigitarNoCampoId(_elementoCpf, _dados["Cpf"]);
-                DriverService.DigitarNoCampoEnterId(_elementoCep, _dados["Cep"]);
-                EsperarAcaoEmSegundos(2);
-                DriverService.DigitarNoCampoId(_elementoNumero, _dados["Numero"]);
-
+                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNome, _dadosDoCliente["Nome"]);
+                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
+                DriverService.DigitarNoCampoEnterId(CadastroDeCienteModel.ElementoCep, _dadosDoCliente["Cep"]);
+                EsperarAcaoEmSegundos(5);
+                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
                 return true;
             }
             catch
@@ -95,11 +72,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.ClicarBotaoName(_botaoGravar);
-
+                DriverService.ClicarBotaoName(CadastroDeCienteModel.BotaoGravar);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }
@@ -109,11 +85,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.FecharJanelaComEsc(_elementoTelaCadastroCliente);
-
+                DriverService.FecharJanelaComEsc(CadastroDeCienteModel.ElementoTelaCadastroCliente);
                 return true;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return false;
             }

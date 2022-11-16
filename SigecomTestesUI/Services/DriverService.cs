@@ -2,7 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
-using SigecomTesteUI.Config;
 using System;
 using System.Threading;
 
@@ -12,10 +11,7 @@ namespace SigecomTestesUI.Services
     {
         private readonly WindowsDriver<WindowsElement> _driver;
 
-        public DriverService()
-        {
-            _driver = new DriverFabrica().CriarDriver();
-        }
+        public DriverService(WindowsDriver<WindowsElement> windowsDriver) => _driver = windowsDriver;
 
         public void FecharSistema()
         {
@@ -25,6 +21,7 @@ namespace SigecomTestesUI.Services
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
             ClicarBotaoName("Fechar");
+            _driver.Dispose();
         }
 
         public void ValidarElementoExistentePorNome(string valor)
@@ -122,7 +119,7 @@ namespace SigecomTestesUI.Services
         public void DarDuploCliqueNoBotaoName(string nomeBotao)
         {
             var botao = _driver.FindElementByName(nomeBotao);
-            Actions acao = new Actions(_driver);
+            var acao = new Actions(_driver);
             acao.MoveToElement(botao);
             acao.DoubleClick();
             acao.Perform();
@@ -138,7 +135,7 @@ namespace SigecomTestesUI.Services
 
         private static void EncontrarElementoNaComboBox(int posicao, WindowsElement campo)
         {
-            for (int i = 1; i <= posicao; i++)
+            for (var i = 1; i <= posicao; i++)
                 campo.SendKeys(Keys.ArrowDown);
         }
 
