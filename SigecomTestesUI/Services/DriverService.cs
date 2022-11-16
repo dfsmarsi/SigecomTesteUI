@@ -133,6 +133,14 @@ namespace SigecomTestesUI.Services
             campo.SendKeys(Keys.Enter);
         }
 
+        public void SelecionarItemDaGrid(string nomeCampo, int posicao)
+        {
+            var campo = _driver.FindElementByName(nomeCampo);
+            campo.Click();
+            EncontrarElementoNaComboBox(posicao, campo);
+            campo.SendKeys(Keys.Enter);
+        }
+
         private static void EncontrarElementoNaComboBox(int posicao, WindowsElement campo)
         {
             for (var i = 1; i <= posicao; i++)
