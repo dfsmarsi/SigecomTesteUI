@@ -1,20 +1,18 @@
 ﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using System;
+using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto.Model;
 
 namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto
 {
     public class PesquisaDeProdutoPage : PageObjectModel
     {
-        private const string _telaPesquisaDeProdutoPrefixo = "Pesquisa de produtos";
-        private const string _elementoParametroDePesquisa = "txtPesquisar";
-
         public PesquisaDeProdutoPage(DriverService driver) : base(driver) { }
 
         public void PesquisarProduto(string nomeDoProduto)
         {
-            DriverService.ValidarElementoExistentePorNome(_telaPesquisaDeProdutoPrefixo);
-            DriverService.DigitarNoCampoEnterId(_elementoParametroDePesquisa, nomeDoProduto);
+            DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
+            DriverService.DigitarNoCampoEnterId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto);
         }
 
         public bool VerificarSeExisteProdutoNaGrid(string nomeDoProduto)
@@ -27,7 +25,7 @@ namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto
         {
             try
             {
-                DriverService.FecharJanelaComEsc(_telaPesquisaDeProdutoPrefixo);
+                DriverService.FecharJanelaComEsc(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
                 return true;
             }
             catch (Exception)

@@ -31,13 +31,11 @@ namespace SigecomTestesUI
         }
 
         [SetUp]
-        public void Setup() => Assert.IsTrue(_loginPage.Logar());
+        public void Setup() => 
+            Assert.IsTrue(_loginPage.Logar());
 
         [TearDown]
-        public void TearDown()
-        {
+        public void TearDown() => 
             _loginPage.FecharSistema();
-            _lifetimeScope.Dispose();
-        }
     }
 }

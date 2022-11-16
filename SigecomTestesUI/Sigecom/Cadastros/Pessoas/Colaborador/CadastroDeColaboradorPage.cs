@@ -2,23 +2,12 @@
 using System.Collections.Generic;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {
     public class CadastroDeColaboradorPage : PageObjectModel
     {
-        private const string _botaoMenu = "Cadastro";
-        private const string _botaoSubMenu = "Colaboradores";
-        private const string _telaCadastroColaborador = "Cadastro de colaboradores";
-        private const string _botaoNovo = "F2 - Novo";
-        private const string _botaoGravar = "F5 - Gravar";
-        private const string _botaoPesquisar = "F9 - Pesquisar";
-        private const string _elementoTipoPessoa = "cbxPessoaClassificacao";
-        private const string _elementoNome = "txtNome";
-        private const string _elementoCpf = "txtCPF";
-        private const string _elementoCep = "txtCEP";
-        private const string _elementoNumero = "txtNumero";
-
         private readonly Dictionary<string, string> _dados;
 
         public CadastroDeColaboradorPage(DriverService driver, Dictionary<string, string> dados) : base(driver) => 
@@ -28,7 +17,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                AcessarOpcaoMenu(_botaoMenu);
+                AcessarOpcaoMenu(CadastroDeColaboradorModel.BotaoMenu);
                 return true;
             }
             catch (Exception)
@@ -41,7 +30,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                AcessarOpcaoSubMenu(_botaoSubMenu);
+                AcessarOpcaoSubMenu(CadastroDeColaboradorModel.BotaoSubMenu);
                 return true;
             }
             catch (Exception)
@@ -54,7 +43,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                DriverService.ClicarBotaoName(_botaoNovo);
+                DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoNovo);
                 return true;
             }
             catch (Exception)
@@ -67,7 +56,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                DriverService.ClicarBotaoName(_botaoPesquisar);
+                DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoPesquisar);
                 return true;
             }
             catch (Exception)
@@ -78,7 +67,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 
         public bool VerificarTipoPessoa()
         {
-            var valorTipoPessoa = DriverService.ObterValorElementoId(_elementoTipoPessoa);
+            var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoTipoPessoa);
             return valorTipoPessoa == "FÍSICA";
         }
 
@@ -86,11 +75,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                DriverService.DigitarNoCampoId(_elementoNome, _dados["Nome"]);
-                DriverService.DigitarNoCampoId(_elementoCpf, _dados["Cpf"]);
-                DriverService.DigitarNoCampoEnterId(_elementoCep, _dados["Cep"]);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, _dados["Nome"]);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCpf, _dados["Cpf"]);
+                DriverService.DigitarNoCampoEnterId(CadastroDeColaboradorModel.ElementoCep, _dados["Cep"]);
                 EsperarAcaoEmSegundos(5);
-                DriverService.DigitarNoCampoId(_elementoNumero, _dados["Numero"]);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero, _dados["Numero"]);
                 return true;
             }
             catch
@@ -103,7 +92,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                DriverService.ClicarBotaoName(_botaoGravar);
+                DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoGravar);
                 return true;
             }
             catch (Exception)
@@ -116,7 +105,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                DriverService.FecharJanelaComEsc(_telaCadastroColaborador);
+                DriverService.FecharJanelaComEsc(CadastroDeColaboradorModel.TelaCadastroColaborador);
                 return true;
             }
             catch (Exception)
