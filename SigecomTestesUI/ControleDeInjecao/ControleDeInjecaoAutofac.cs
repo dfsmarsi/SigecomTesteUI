@@ -7,6 +7,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos;
+using SigecomTestesUI.Sigecom.Pesquisa.PesquisaDeCategoria;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
 using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto;
 
@@ -50,6 +51,7 @@ namespace SigecomTestesUI.ControleDeInjecao
         {
             containerBuilder.RegisterType<CadastroDeCategoriaPage>();
             containerBuilder.RegisterType<CadastroDeCategoriaTeste>();
+            containerBuilder.RegisterType<PesquisaDeCategoriaPage>();
         }
     }
 }

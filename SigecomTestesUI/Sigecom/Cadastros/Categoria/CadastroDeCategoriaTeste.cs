@@ -4,14 +4,16 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Autofac;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
+using SigecomTestesUI.Sigecom.Pesquisa.PesquisaDeCategoria;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
 {
     public class CadastroDeCategoriaTeste : BaseTestes
     {
-        private readonly Dictionary<string, string> _dadosDeCategoria = new Dictionary<string, string>()
+        private readonly Dictionary<string, string> _dadosDeCategoria = new Dictionary<string, string>
         {
-            {"Grupo", "Grade"},
+            {"Grupo", "GRADE"},
             {"Markup", "5"}
         };
 
@@ -37,7 +39,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             cadastroDeCategoriaPage.Gravar();
 
             // Assert
-            cadastroDeCategoriaPage.FecharJanelaCadastroDeProdutoComEsc();
+            cadastroDeCategoriaPage.ClicarNaOpcaoDoPesquisar();
+            var resolvePesquisaDeCategoriaPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDeCategoriaPage>>();
+            var pesquisaDeCategoriaPage = resolvePesquisaDeCategoriaPage(DriverService);
+            pesquisaDeCategoriaPage.PesquisarCategoria(_dadosDeCategoria["Grupo"]);
+            Assert.True(pesquisaDeCategoriaPage.VerificarSeExisteCategoriaNaGrid(_dadosDeCategoria["Grupo"]));
+            pesquisaDeCategoriaPage.FecharJanelaComEsc();
+            cadastroDeCategoriaPage.FecharJanelaCadastroDeProdutoComEsc(CadastroDeCategoriaModel.ElementoTelaCadastroDeCategoria);
+            cadastroDeCategoriaPage.FecharJanelaCadastroDeProdutoComEsc(CadastroDeCategoriaModel.ElementoTelaControleDeCategoria);
         }
     }
 }

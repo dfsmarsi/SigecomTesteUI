@@ -43,9 +43,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             // Act
             cadastroDeProdutoPage.PreencherCamposDoProduto();
             cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
-            // mudar para aba impostos
             cadastroDeProdutoPage.AcessarAbaImpostos();
-            // preencher impostos
             cadastroDeProdutoPage.PreencherCamposDeImpostos();
             cadastroDeProdutoPage.Gravar();
 
@@ -57,7 +55,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(_dadosDeProduto["Nome"]);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();     
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc(); 
         }
     }
 }

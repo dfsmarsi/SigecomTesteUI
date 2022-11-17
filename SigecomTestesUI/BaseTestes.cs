@@ -35,7 +35,7 @@ namespace SigecomTestesUI
             Assert.IsTrue(_loginPage.Logar());
 
         [TearDown]
-        public void TearDown() => 
+        public void TearDown() =>
             _loginPage.FecharSistema();
     }
 }

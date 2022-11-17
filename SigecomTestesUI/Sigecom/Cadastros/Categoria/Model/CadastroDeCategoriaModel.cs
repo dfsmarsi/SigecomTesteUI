@@ -4,7 +4,8 @@
     {
         public static string BotaoMenuCadastro => "Cadastro";
         public static string BotaoSubMenuCategoria => "Categorias";
-        public static string ElementoTelaCadastroDeCategoria => "Categoria";
+        public static string ElementoTelaControleDeCategoria => "Categoria";
+        public static string ElementoTelaCadastroDeCategoria => "Grupo";
         public static string BotaoNovoCategoria => ", NOVO";
         public static string BotaoAlterarCategoria => "Alterar";
         public static string BotaoNovo => "F2-Novo";

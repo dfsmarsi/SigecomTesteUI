@@ -54,9 +54,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
                 DriverService.DigitarNoCampoId(CadastroDeCategoriaModel.ElementoNomeGrupo, _dadosDeCategoria["Grupo"]);
                 DriverService.DigitarNoCampoId(CadastroDeCategoriaModel.ElementoMarkup, _dadosDeCategoria["Markup"]);
                 DriverService.SelecionarItemComboBox(CadastroDeCategoriaModel.ElementoTipoGrupo, 1);
-                DriverService.SelecionarItemDaGrid(CadastroDeCategoriaModel.ElementoGrid, 1);
-                EsperarAcaoEmSegundos(2);
-                DriverService.SelecionarItemDaGrid(CadastroDeCategoriaModel.ElementoGrid, 2);
+                DriverService.SelecionarDoisItensDaGrid(CadastroDeCategoriaModel.ElementoGrid, 1);
+                DriverService.SelecionarDoisItensDaGrid(CadastroDeCategoriaModel.ElementoGrid, 2);
                 return true;
             }
             catch (Exception)
@@ -78,11 +77,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             }
         }
 
-        public bool FecharJanelaCadastroDeProdutoComEsc()
+        public bool FecharJanelaCadastroDeProdutoComEsc(string telaAtual)
         {
             try
             {
-                DriverService.FecharJanelaComEsc(CadastroDeCategoriaModel.ElementoTelaCadastroDeCategoria);
+                DriverService.FecharJanelaComEsc(telaAtual);
                 return true;
             }
             catch (Exception)
