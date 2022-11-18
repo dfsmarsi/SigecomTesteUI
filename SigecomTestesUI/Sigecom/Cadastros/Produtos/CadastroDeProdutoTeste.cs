@@ -2,9 +2,9 @@
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto;
 using System;
 using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
@@ -43,9 +43,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             // Act
             cadastroDeProdutoPage.PreencherCamposDoProduto();
             cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
-            // mudar para aba impostos
             cadastroDeProdutoPage.AcessarAbaImpostos();
-            // preencher impostos
             cadastroDeProdutoPage.PreencherCamposDeImpostos();
             cadastroDeProdutoPage.Gravar();
 
@@ -57,7 +55,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(_dadosDeProduto["Nome"]);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();     
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc(); 
         }
     }
 }

@@ -1,17 +1,13 @@
 ﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using System.Collections.Generic;
+using SigecomTestesUI.Login.Model;
 
 namespace SigecomTestesUI.Login
 {
     public class LoginPage : PageObjectModel
     {
-
-        private string _elementoUsuario = "txtUsuario";
-        private string _elementoSenha = "txtSenha";
-        private string _elementoTelaLogin = "Sistema de gestão comercial";
-        private string _elementoTelaPrincipal = "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR";
-        private readonly Dictionary<string, string> _dadosLogin
+        private readonly Dictionary<string, string> _dadosDoLogin
             = new Dictionary<string, string>{
                 {"Usuario","Douglas"},
                 {"Senha", "123"}
@@ -21,22 +17,22 @@ namespace SigecomTestesUI.Login
 
         public void PreencherLogin()
         {
-            DriverService.DigitarNoCampoId(_elementoUsuario, _dadosLogin["Usuario"]);
-            DriverService.DigitarNoCampoEnterId(_elementoSenha, _dadosLogin["Senha"]);
+            DriverService.DigitarNoCampoId(LoginPageModel.ElementoUsuario, _dadosDoLogin["Usuario"]);
+            DriverService.DigitarNoCampoEnterId(LoginPageModel.ElementoSenha, _dadosDoLogin["Senha"]);
         }
 
         public bool ValidarPreenchimentoFormLogin() =>
-            DriverService.ObterValorElementoId(_elementoUsuario) == _dadosLogin["Usuario"] &&
-            DriverService.ObterValorElementoId(_elementoSenha) == _dadosLogin["Senha"];
+            DriverService.ObterValorElementoId(LoginPageModel.ElementoUsuario) == _dadosDoLogin["Usuario"] &&
+            DriverService.ObterValorElementoId(LoginPageModel.ElementoSenha) == _dadosDoLogin["Senha"];
 
         public bool Logar()
         {
-            if (!ValidarAberturaDeTela(_elementoTelaLogin)) return false;
+            if (!ValidarAberturaDeTela(LoginPageModel.ElementoTelaLogin)) return false;
 
             PreencherLogin();
             EsperarAcaoEmSegundos(2);
             DriverService.TrocarJanela();
-            return ValidarAberturaDeTela(_elementoTelaPrincipal);
+            return ValidarAberturaDeTela(LoginPageModel.ElementoTelaPrincipal);
         }
     }
 }
