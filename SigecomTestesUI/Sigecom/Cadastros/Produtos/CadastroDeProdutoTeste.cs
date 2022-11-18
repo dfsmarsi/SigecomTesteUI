@@ -2,9 +2,9 @@
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto;
 using System;
 using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {

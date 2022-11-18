@@ -1,9 +1,9 @@
 ﻿using System;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
 
-namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
 {
     public class PesquisaDePessoaPage : PageObjectModel
     {

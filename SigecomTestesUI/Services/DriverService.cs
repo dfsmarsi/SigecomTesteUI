@@ -30,42 +30,30 @@ namespace SigecomTestesUI.Services
             Assert.AreEqual(elemento.Text, valor);
         }
 
-        public WindowsElement EncontrarElementoId(string idElemento)
-        {
-            return _driver.FindElementByAccessibilityId(idElemento);
-        }
+        public WindowsElement EncontrarElementoId(string idElemento) => 
+            _driver.FindElementByAccessibilityId(idElemento);
 
-        public WindowsElement EncontrarElementoName(string nomeElemento)
-        {
-            return _driver.FindElementByName(nomeElemento);
-        }
+        public WindowsElement EncontrarElementoName(string nomeElemento) => 
+            _driver.FindElementByName(nomeElemento);
 
-        public WindowsElement EncontrarElementoXPath(string caminhoElemento)
-        {
-            return _driver.FindElementByXPath(caminhoElemento);
-        }
+        public WindowsElement EncontrarElementoXPath(string caminhoElemento) => 
+            _driver.FindElementByXPath(caminhoElemento);
 
-        public string ObterValorElementoId(string nomeElemento)
-        {
-            var elemento = _driver.FindElementByAccessibilityId(nomeElemento);
-            return elemento.Text;
-        }
+        public string ObterValorElementoId(string nomeElemento) => 
+            _driver.FindElementByAccessibilityId(nomeElemento).Text;
 
-        public string ObterValorElementoName(string nomeElemento)
-        {
-            var elemento = _driver.FindElementByName(nomeElemento);
-            return elemento.Text;
-        }
+        public string ObterValorElementoName(string nomeElemento) => 
+            _driver.FindElementByName(nomeElemento).Text;
 
-        public string PegarValorDaColunaDaGrid(string nomeColuna)
-        {
-           return _driver.FindElementByName($"{nomeColuna} row 0").Text;
-        }
+        public string PegarValorDaColunaDaGrid(string nomeColuna) => 
+            _driver.FindElementByName($"{nomeColuna} row 0").Text;
 
         public void TrocarJanela()
         {
             // Identify the current window handle. You can check through inspect.exe which window this is.
-            var currentWindowHandle = _driver.CurrentWindowHandle;
+
+            //var currentWindowHandle = _driver.CurrentWindowHandle;
+
             // Wait for 5 seconds or however long it is needed for the right window to appear/for the splash screen to be dismissed
             Thread.Sleep(TimeSpan.FromSeconds(3));
             // Return all window handles associated with this process/application.
@@ -78,17 +66,11 @@ namespace SigecomTestesUI.Services
             _driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
-        public void DigitarNoCampoId(string idElemento, string texto)
-        {
-            var elemento = _driver.FindElementByAccessibilityId(idElemento);
-            elemento.SendKeys(texto);
-        }
+        public void DigitarNoCampoId(string idElemento, string texto) => 
+            _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);
 
-        public void DigitarNoCampoName(string nomeElemento, string texto)
-        {
-            var elemento = _driver.FindElementByName(nomeElemento);
-            elemento.SendKeys(texto);
-        }
+        public void DigitarNoCampoName(string nomeElemento, string texto) => 
+            _driver.FindElementByName(nomeElemento).SendKeys(texto);
 
         public void DigitarNoCampoEnterId(string idElemento, string texto)
         {
@@ -104,23 +86,17 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(Keys.Enter);
         }
 
-        public void ClicarBotaoName(string nomeBotao)
-        {
-            var botao = _driver.FindElementByName(nomeBotao);
-            botao.Click();
-        }
+        public void ClicarBotaoName(string nomeBotao) => 
+            _driver.FindElementByName(nomeBotao).Click();
 
-        public void ClicarBotaoId(string nomeBotao)
-        {
-            var botao = _driver.FindElementByAccessibilityId(nomeBotao);
-            botao.Click();
-        }
+        public void ClicarBotaoId(string nomeBotao) => 
+            _driver.FindElementByAccessibilityId(nomeBotao).Click();
 
         public void DarDuploCliqueNoBotaoName(string nomeBotao)
         {
-            var botao = _driver.FindElementByName(nomeBotao);
+            var botaoEncontrado = _driver.FindElementByName(nomeBotao);
             var acao = new Actions(_driver);
-            acao.MoveToElement(botao);
+            acao.MoveToElement(botaoEncontrado);
             acao.DoubleClick();
             acao.Perform();
         }
@@ -135,12 +111,15 @@ namespace SigecomTestesUI.Services
 
         public void SelecionarDoisItensDaGrid(string nomeCampo, int posicao)
         {
-            var campo = _driver.FindElementByName(nomeCampo);
-            campo.Click();
-            EncontrarElementoNaComboBox(posicao, campo);
-            campo.SendKeys(Keys.Enter);
-            campo.SendKeys(Keys.Tab);
+            var elementoEncontrado = _driver.FindElementByName(nomeCampo);
+            elementoEncontrado.Click();
+            EncontrarElementoNaComboBox(posicao, elementoEncontrado);
+            elementoEncontrado.SendKeys(Keys.Enter);
+            elementoEncontrado.SendKeys(Keys.Tab);
         }
+
+        public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) => 
+            ClicarBotaoId(nomeDoCampo);
 
         private static void EncontrarElementoNaComboBox(int posicao, WindowsElement campo)
         {
@@ -148,11 +127,8 @@ namespace SigecomTestesUI.Services
                 campo.SendKeys(Keys.ArrowDown);
         }
 
-        public void FecharJanelaComEsc(string nomeJanela)
-        {
-            var janela = _driver.FindElementByName(nomeJanela);
-            janela.SendKeys(Keys.Escape);
-        }
+        public void FecharJanelaComEsc(string nomeJanela) => 
+            _driver.FindElementByName(nomeJanela).SendKeys(Keys.Escape);
 
         public void Dispose()
         {

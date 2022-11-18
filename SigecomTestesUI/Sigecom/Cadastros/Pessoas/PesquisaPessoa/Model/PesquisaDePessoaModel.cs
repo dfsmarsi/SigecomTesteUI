@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa.Model
+﻿namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model
 {
     public class PesquisaDePessoaModel
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
 using System.Collections.Generic;
 using Autofac;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {

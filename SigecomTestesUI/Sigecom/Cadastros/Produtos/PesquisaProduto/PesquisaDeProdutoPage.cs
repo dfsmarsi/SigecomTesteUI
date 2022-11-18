@@ -1,9 +1,9 @@
-﻿using SigecomTestesUI.Config;
+﻿using System;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
-using System;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 
-namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
 {
     public class PesquisaDeProdutoPage : PageObjectModel
     {

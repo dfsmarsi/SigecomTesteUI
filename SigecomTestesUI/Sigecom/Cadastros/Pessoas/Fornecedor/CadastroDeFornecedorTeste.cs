@@ -2,9 +2,9 @@
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
 using System;
 using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 {

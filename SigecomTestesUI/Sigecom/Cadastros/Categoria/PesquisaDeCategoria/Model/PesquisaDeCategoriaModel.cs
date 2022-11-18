@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SigecomTestesUI.Sigecom.Pesquisa.PesquisaDeCategoria.Model
+﻿namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria.Model
 {
     public class PesquisaDeCategoriaModel
     {

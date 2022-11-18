@@ -3,8 +3,8 @@ using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaPessoa;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
 {

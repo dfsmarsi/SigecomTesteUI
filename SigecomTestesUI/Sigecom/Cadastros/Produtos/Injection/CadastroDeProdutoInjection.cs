@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaProduto;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
 {

@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using System;
-using SigecomTestesUI.Sigecom.Pesquisa.PesquisaDeCategoria;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Injection
 {

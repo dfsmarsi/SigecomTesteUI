@@ -20,7 +20,7 @@ namespace SigecomTestesUI
 
         public BaseTestes()
         {
-            ControleDeInjecaoAutofac.ConstruirContainerComDependenciasSemCarregarDados();
+            ControleDeInjecaoAutofac.ConstruirContainerComDependencias();
             _lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
 
             var resolveDriveFabrica = _lifetimeScope.Resolve<Func<WindowsDriver<WindowsElement>, DriverService>>();

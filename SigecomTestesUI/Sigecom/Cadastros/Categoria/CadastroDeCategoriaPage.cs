@@ -47,13 +47,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             }
         }
 
-        public bool PreencherCamposDoProduto()
+        public bool PreencherCamposDaCategoriaGrade()
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeCategoriaModel.ElementoNomeGrupo, _dadosDeCategoria["Grupo"]);
-                DriverService.DigitarNoCampoId(CadastroDeCategoriaModel.ElementoMarkup, _dadosDeCategoria["Markup"]);
-                DriverService.SelecionarItemComboBox(CadastroDeCategoriaModel.ElementoTipoGrupo, 1);
+                PreencherCamposBaseDaCategoria();
                 DriverService.SelecionarDoisItensDaGrid(CadastroDeCategoriaModel.ElementoGrid, 1);
                 DriverService.SelecionarDoisItensDaGrid(CadastroDeCategoriaModel.ElementoGrid, 2);
                 return true;
@@ -62,6 +60,27 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             {
                 return false;
             }
+        }
+
+        public bool PreencherCamposDaCategoria(string toggleDeCategoria)
+        {
+            try
+            {
+                PreencherCamposBaseDaCategoria();
+                DriverService.ClicarNoToggleSwitchPeloId(toggleDeCategoria);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private void PreencherCamposBaseDaCategoria()
+        {
+            DriverService.DigitarNoCampoId(CadastroDeCategoriaModel.ElementoNomeGrupo, _dadosDeCategoria["Grupo"]);
+            DriverService.DigitarNoCampoId(CadastroDeCategoriaModel.ElementoMarkup, _dadosDeCategoria["Markup"]);
+            DriverService.SelecionarItemComboBox(CadastroDeCategoriaModel.ElementoTipoGrupo, 1);
         }
 
         public bool Gravar()
