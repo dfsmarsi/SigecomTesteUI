@@ -59,11 +59,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             return precoDeVenda.Equals(double.Parse(_dadosDeProduto["PrecoVenda"]));
         }
 
-        public bool AcessarAbaImpostos()
+        public bool AcessarAba(string aba)
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeProdutoModel.AbaImpostos);
+                DriverService.ClicarBotaoName(aba);
                 return true;
             }
             catch (Exception)
@@ -80,6 +80,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
                 DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, _dadosDeProduto["NCM"]);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool PreencherCamposDaBalanca()
+        {
+            try
+            {
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarras, _dadosDeProduto["Balanca"]);
                 return true;
             }
             catch (Exception)

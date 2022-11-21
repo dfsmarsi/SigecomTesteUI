@@ -9,6 +9,7 @@
         public static string BotaoGravar => "F5 - Gravar";
         public static string BotaoPesquisar => "F9 - Pesquisar";
         public static string AbaImpostos => "Impostos";
+        public static string AbaBalanca => "Balança";
         public static string ElementoNomeProduto => "txtProduto_Nome";
         public static string ElementoUnidade => "cbxProduto_Unidade";
         public static string ElementoCategoria => "txtCategoria";
@@ -21,5 +22,6 @@
         public static string ElementoSituacaoTributaria => "cbxSituacaoTributaria";
         public static string ElementoNaturezaCfop => "cbxNaturezaCfop";
         public static string ElementoNcm => "txtNCM";
+        public static string ElementoCodigoDeBarras => "txtCodigoProdBalanca";
     }
 }

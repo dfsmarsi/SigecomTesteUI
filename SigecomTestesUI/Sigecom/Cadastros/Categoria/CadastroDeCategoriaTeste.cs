@@ -146,9 +146,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             pesquisaDeCategoriaPage.PesquisarCategoria(dadosDoCadastro["Grupo"]);
             Assert.True(pesquisaDeCategoriaPage.VerificarSeExisteCategoriaNaGrid(dadosDoCadastro["Grupo"]));
             pesquisaDeCategoriaPage.FecharJanelaComEsc();
-            cadastroDeCategoriaPage.FecharJanelaCadastroDeProdutoComEsc(
+            cadastroDeCategoriaPage.FecharJanelaCadastroDeCategoriaComEsc(
                 CadastroDeCategoriaModel.ElementoTelaCadastroDeCategoria);
-            cadastroDeCategoriaPage.FecharJanelaCadastroDeProdutoComEsc(
+            cadastroDeCategoriaPage.FecharJanelaCadastroDeCategoriaComEsc(
                 CadastroDeCategoriaModel.ElementoTelaControleDeCategoria);
         }
     }
