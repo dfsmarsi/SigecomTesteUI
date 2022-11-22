@@ -118,6 +118,14 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
+        public void DigitarItensNaGrid(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} new item row");
+            elementoEncontrado.Click();
+            elementoEncontrado.SendKeys(texto);
+            elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
         public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) => 
             ClicarBotaoId(nomeDoCampo);
 

@@ -101,6 +101,21 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             }
         }
 
+        public bool PreencherCamposDaGrade()
+        {
+            try
+            {
+                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, _dadosDeProduto["Código de barras"]);
+                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, _dadosDeProduto["Tamanho"]);
+                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, _dadosDeProduto["Código de barras"]);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool Gravar()
         {
             try

@@ -10,6 +10,10 @@
         public static string BotaoPesquisar => "F9 - Pesquisar";
         public static string AbaImpostos => "Impostos";
         public static string AbaBalanca => "Balança";
+        public static string AbaGrade => "Grade";
+        public static string ElementoGridColunaCodigoDeBarrasDaGrade => "Código de barras";
+        public static string ElementoGridColunaTamanhoDaGrade => "Tamanho";
+        public static string ElementoGridColunaCorDaGrade => "Cor";
         public static string ElementoNomeProduto => "txtProduto_Nome";
         public static string ElementoUnidade => "cbxProduto_Unidade";
         public static string ElementoCategoria => "txtCategoria";

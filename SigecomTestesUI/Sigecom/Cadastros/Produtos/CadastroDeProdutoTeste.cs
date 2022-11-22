@@ -11,16 +11,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoTeste : BaseTestes
     {
-        public CadastroDeProdutoPage AbrirTelaDeProduto(Dictionary<string, string> dadosDeProduto)
+        private void RetornarCadastroDeProduto(Dictionary<string, string> dadosDeProduto,
+            out CadastroDeProdutoPage cadastroDeProdutoPage)
         {
             var resolveCadastroDeProdutoPage =
                 _lifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
-            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
+            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
+        }
 
+        public static void AbrirTelaDeProdutoParaTeste(CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
             cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
             cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
             cadastroDeProdutoPage.ClicarNoBotaoNovo();
-            return cadastroDeProdutoPage;
         }
 
         public void AtribuirDadosDoProdutoComImpostos(CadastroDeProdutoPage cadastroDeProdutoPage)
@@ -31,17 +34,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             cadastroDeProdutoPage.PreencherCamposDeImpostos();
         }
 
-        public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, Dictionary<string, string> dadosDeProdutoBalanca)
+        public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, Dictionary<string, string> dadosDeProduto)
         {
             cadastroDeProdutoPage.ClicarNaOpcaoDoPesquisar();
             var resolvePesquisaDeProdutoPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
-            pesquisaDeProdutoPage.PesquisarProduto(dadosDeProdutoBalanca["Nome"]);
-            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProdutoBalanca["Nome"]);
+            pesquisaDeProdutoPage.PesquisarProduto(dadosDeProduto["Nome"]);
+            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["Nome"]);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
             cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
         }
+
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -65,7 +69,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
                 {"NCM","22030000"}
             };
             // Arange
-            var cadastroDeProdutoPage = AbrirTelaDeProduto(dadosDeProduto);
+            RetornarCadastroDeProduto(dadosDeProduto, out var cadastroDeProdutoPage);
+            AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
 
             // Act
             AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
@@ -99,7 +104,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
                 {"Balanca","000003"}
             };
             // Arange
-            var cadastroDeProdutoPage = AbrirTelaDeProduto(dadosDeProdutoBalanca);
+            RetornarCadastroDeProduto(dadosDeProdutoBalanca, out var cadastroDeProdutoPage);
+            AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
 
             // Act
             AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
@@ -109,6 +115,45 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 
             // Assert
             RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoBalanca);
+        }
+
+        [Test(Description = "Cadastro de Produto de Balanca Somente Campos Obrigatorios")]
+        [AllureTag("CI")]
+        [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
+        [AllureIssue("1")]
+        [AllureTms("1")]
+        [AllureOwner("Takaki")]
+        [AllureSuite("Cadastros")]
+        [AllureSubSuite("Produto")]
+        public void CadastrarProdutoDeGradeSomenteCamposObrigatorios()
+        {
+            var dadosDeProdutoGrade = new Dictionary<string, string>
+            {
+                {"Nome","PRODUTO GRADE"},
+                {"Unidade", "UN"},
+                {"CodigoInterno","int"},
+                {"Categoria","GRADE"},
+                {"Custo","5,00"},
+                {"Markup","100,00"},
+                {"PrecoVenda","10,00"},
+                {"Referencia","ref"},
+                {"NCM","22030000"},
+                {"Código de barras","0000010"},
+                {"Tamanho","G"},
+                {"Cor","Preto"}
+            };
+            // Arange
+            RetornarCadastroDeProduto(dadosDeProdutoGrade, out var cadastroDeProdutoPage);
+            AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
+
+            // Act
+            AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaGrade);
+            cadastroDeProdutoPage.PreencherCamposDaGrade();
+            cadastroDeProdutoPage.Gravar();
+
+            // Assert
+            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoGrade);
         }
     }
 }
