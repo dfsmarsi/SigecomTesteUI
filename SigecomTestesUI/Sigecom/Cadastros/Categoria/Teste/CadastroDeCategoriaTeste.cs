@@ -1,16 +1,11 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste.Interfaces;
 using System.Collections.Generic;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
+namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {
-    public class CadastroDeCategoriaTeste : BaseTestes
+    public class CadastroDeCategoriaTeste: CadastroDeCategoriaBaseTeste
     {
-        private readonly ICadastroDeCategoriaBaseTeste _cadastroDeCategoriaBaseTeste;
-        public CadastroDeCategoriaTeste(ICadastroDeCategoriaBaseTeste cadastroDeCategoriaBaseTeste) =>
-            _cadastroDeCategoriaBaseTeste = cadastroDeCategoriaBaseTeste;
-
         [Test(Description = "Cadastro de Categoria Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -27,15 +22,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
                 {"Markup", "5"}
             };
             // Arange
-            _cadastroDeCategoriaBaseTeste.RetornarCadastroDeCategoria(dadosDeCategoria, out var cadastroDeCategoriaPage);
-            _cadastroDeCategoriaBaseTeste.AbrirTelaDeCategoriaParaTeste(cadastroDeCategoriaPage);
+            RetornarCadastroDeCategoria(dadosDeCategoria, out var cadastroDeCategoriaPage);
+            AbrirTelaDeCategoriaParaTeste(cadastroDeCategoriaPage);
 
             // Act
             cadastroDeCategoriaPage.PreencherCamposDaCategoriaGrade();
             cadastroDeCategoriaPage.Gravar();
 
             // Assert
-            _cadastroDeCategoriaBaseTeste.PesquisarCategoriaGravada(cadastroDeCategoriaPage, dadosDeCategoria);
+            PesquisarCategoriaGravada(cadastroDeCategoriaPage, dadosDeCategoria);
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using System;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste.Interfaces;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
 {
@@ -15,8 +14,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
             {
                 containerBuilder.RegisterType<CadastroDeProdutoPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoNormalTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoBalancaTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoGradeTeste>();
                 containerBuilder.RegisterType<PesquisaDeProdutoPage>();
-                containerBuilder.RegisterType<CadastroDeProdutoBaseTeste>().As<ICadastroDeProdutoBaseTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoBaseTeste>();
             }
             catch (Exception exception)
             {

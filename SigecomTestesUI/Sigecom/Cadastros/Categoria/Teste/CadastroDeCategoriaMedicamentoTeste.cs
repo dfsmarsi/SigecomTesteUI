@@ -1,17 +1,12 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste.Interfaces;
 using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {
-    public class CadastroDeCategoriaMedicamentoTeste
+    public class CadastroDeCategoriaMedicamentoTeste : CadastroDeCategoriaBaseTeste
     {
-        private readonly ICadastroDeCategoriaBaseTeste _cadastroDeCategoriaBaseTeste;
-        public CadastroDeCategoriaMedicamentoTeste(ICadastroDeCategoriaBaseTeste cadastroDeCategoriaBaseTeste) => 
-            _cadastroDeCategoriaBaseTeste = cadastroDeCategoriaBaseTeste;
-
         [Test(Description = "Cadastro de Categoria de Medicamento Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -29,15 +24,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
             };
 
             // Arange
-            _cadastroDeCategoriaBaseTeste.RetornarCadastroDeCategoria(dadosDeCategoriaMedicamento, out var cadastroDeCategoriaPage);
-            _cadastroDeCategoriaBaseTeste.AbrirTelaDeCategoriaParaTeste(cadastroDeCategoriaPage);
+            RetornarCadastroDeCategoria(dadosDeCategoriaMedicamento, out var cadastroDeCategoriaPage);
+            AbrirTelaDeCategoriaParaTeste(cadastroDeCategoriaPage);
 
             // Act
             cadastroDeCategoriaPage.PreencherCamposDaCategoria(CadastroDeCategoriaModel.ElementoToggleMedicamento);
             cadastroDeCategoriaPage.Gravar();
 
             // Assert
-            _cadastroDeCategoriaBaseTeste.PesquisarCategoriaGravada(cadastroDeCategoriaPage, dadosDeCategoriaMedicamento);
+            PesquisarCategoriaGravada(cadastroDeCategoriaPage, dadosDeCategoriaMedicamento);
         }
     }
 }

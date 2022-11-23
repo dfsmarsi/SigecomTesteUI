@@ -5,11 +5,10 @@ using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using System;
 using System.Collections.Generic;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste.Interfaces;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoBaseTeste : BaseTestes, ICadastroDeProdutoBaseTeste
+    public class CadastroDeProdutoBaseTeste: BaseTestes
     {
         public void RetornarCadastroDeProduto(Dictionary<string, string> dadosDeProduto,
             out CadastroDeProdutoPage cadastroDeProdutoPage)

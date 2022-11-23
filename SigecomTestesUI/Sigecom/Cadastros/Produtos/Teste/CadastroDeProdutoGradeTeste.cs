@@ -1,17 +1,12 @@
 ﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste.Interfaces;
 using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoGradeTeste
+    public class CadastroDeProdutoGradeTeste: CadastroDeProdutoBaseTeste
     {
-        private readonly ICadastroDeProdutoBaseTeste _cadastroDeProdutoBaseTeste;
-        public CadastroDeProdutoGradeTeste(ICadastroDeProdutoBaseTeste cadastroDeProdutoBaseTeste) =>
-            _cadastroDeProdutoBaseTeste = cadastroDeProdutoBaseTeste;
-
         [Test(Description = "Cadastro de Produto de Grade Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -24,17 +19,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         {
             var dadosDeProdutoGrade = AdicionandoInformacoesNecessariasParaOTeste();
             // Arange
-            _cadastroDeProdutoBaseTeste.RetornarCadastroDeProduto(dadosDeProdutoGrade, out var cadastroDeProdutoPage);
-            _cadastroDeProdutoBaseTeste.AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
+            RetornarCadastroDeProduto(dadosDeProdutoGrade, out var cadastroDeProdutoPage);
+            AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
 
             // Act
-            _cadastroDeProdutoBaseTeste.AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
+            AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
             cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaGrade);
             cadastroDeProdutoPage.PreencherCamposDaGrade();
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            _cadastroDeProdutoBaseTeste.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoGrade);
+            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoGrade);
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>

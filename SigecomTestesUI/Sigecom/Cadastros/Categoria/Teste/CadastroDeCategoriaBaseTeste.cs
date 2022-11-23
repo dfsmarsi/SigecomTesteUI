@@ -17,7 +17,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
                 .Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeCategoriaPage>>();
             cadastroDeCategoriaPage = resolveCadastroDeCategoriaPage(DriverService, dadosDeCategoria);
         }
-
+        
         public void AbrirTelaDeCategoriaParaTeste(CadastroDeCategoriaPage cadastroDeCategoriaPage)
         {
             cadastroDeCategoriaPage.ClicarNaOpcaoDoMenu();

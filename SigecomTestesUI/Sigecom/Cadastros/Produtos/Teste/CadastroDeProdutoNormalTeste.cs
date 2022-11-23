@@ -1,16 +1,11 @@
-﻿using System.Collections.Generic;
-using NUnit.Allure.Attributes;
+﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste.Interfaces;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoNormalTeste : BaseTestes
+    public class CadastroDeProdutoNormalTeste: CadastroDeProdutoBaseTeste
     {
-        private readonly ICadastroDeProdutoBaseTeste _cadastroDeProdutoBaseTeste;
-        public CadastroDeProdutoNormalTeste(ICadastroDeProdutoBaseTeste cadastroDeProdutoBaseTeste) =>
-            _cadastroDeProdutoBaseTeste = cadastroDeProdutoBaseTeste;
-
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -23,15 +18,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         {
             var dadosDeProduto = AdicionandoInformacoesNecessariasParaOTeste();
             // Arange
-            _cadastroDeProdutoBaseTeste.RetornarCadastroDeProduto(dadosDeProduto, out var cadastroDeProdutoPage);
-            _cadastroDeProdutoBaseTeste.AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
+            RetornarCadastroDeProduto(dadosDeProduto, out var cadastroDeProdutoPage);
+            AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
 
             // Act
-            _cadastroDeProdutoBaseTeste.AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
+            AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            _cadastroDeProdutoBaseTeste.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProduto);
+            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProduto);
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>
