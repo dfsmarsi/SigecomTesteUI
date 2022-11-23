@@ -2,12 +2,7 @@
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Login;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Categoria;
 using SigecomTestesUI.Sigecom.Cadastros.Injection;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos;
 
 namespace SigecomTestesUI.ControleDeInjecao
 {

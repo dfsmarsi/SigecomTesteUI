@@ -4,6 +4,7 @@ using NUnit.Framework;
 using SigecomTestesUI.Services;
 using System;
 using System.Collections.Generic;
+using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
@@ -28,7 +29,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
         [AllureSubSuite("Fornecedor")]
         public void CadastrarFornecedorSomenteCamposObrigatorios()
         {
-            var resolveCadastroDeFornecedorPage = _lifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorPage>>();
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolveCadastroDeFornecedorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorPage>>();
             var cadastroDeFornecedorPage = resolveCadastroDeFornecedorPage(DriverService, _dadosDeFornecedor);
             // Arrange
             cadastroDeFornecedorPage.ClicarNaOpcaoDoMenu();
@@ -42,7 +44,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             
             // Assert
             cadastroDeFornecedorPage.ClicarBotaoPesquisar(); 
-            var resolvePesquisaDePessoaPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
             var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
             pesquisaDePessoaPage.PesquisarPessoa("fornecedor", _dadosDeFornecedor["Nome"]);
             var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeFornecedor["Nome"]);

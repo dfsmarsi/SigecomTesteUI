@@ -3,6 +3,7 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Autofac;
+using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
@@ -27,7 +28,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         [AllureSubSuite("Colaborador")]
         public void CadastrarColaboradorSomenteCamposObrigatorios()
         {
-            var resolveCadastroDeColaboradorPage = _lifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorPage>>();
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolveCadastroDeColaboradorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorPage>>();
             var cadastroDeColaboradorPage = resolveCadastroDeColaboradorPage(DriverService, _dadosDeColaborador);
             // Arange
             cadastroDeColaboradorPage.ClicarNaOpcaoDoMenu();
@@ -41,7 +43,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 
             // Assert
             cadastroDeColaboradorPage.ClicarBotaoPesquisar();
-            var resolvePesquisaDePessoaPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
             var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
             pesquisaDePessoaPage.PesquisarPessoa("colaborador", _dadosDeColaborador["Nome"]);
             var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeColaborador["Nome"]);

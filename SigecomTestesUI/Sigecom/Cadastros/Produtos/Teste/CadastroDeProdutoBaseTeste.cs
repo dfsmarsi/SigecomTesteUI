@@ -5,6 +5,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using System;
 using System.Collections.Generic;
+using SigecomTestesUI.ControleDeInjecao;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
@@ -13,8 +14,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         public void RetornarCadastroDeProduto(Dictionary<string, string> dadosDeProduto,
             out CadastroDeProdutoPage cadastroDeProdutoPage)
         {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeProdutoPage =
-                _lifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
+                beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
             cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
         }
 
@@ -36,7 +38,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, Dictionary<string, string> dadosDeProduto)
         {
             cadastroDeProdutoPage.ClicarNaOpcaoDoPesquisar();
-            var resolvePesquisaDeProdutoPage = _lifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
             pesquisaDeProdutoPage.PesquisarProduto(dadosDeProduto["Nome"]);
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["Nome"]);
