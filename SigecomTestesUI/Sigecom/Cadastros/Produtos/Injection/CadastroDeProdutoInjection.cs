@@ -2,6 +2,8 @@
 using SigecomTestesUI.ControleDeInjecao;
 using System;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste.Interfaces;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
 {
@@ -12,8 +14,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
             try
             {
                 containerBuilder.RegisterType<CadastroDeProdutoPage>();
-                containerBuilder.RegisterType<CadastroDeProdutoTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoNormalTeste>();
                 containerBuilder.RegisterType<PesquisaDeProdutoPage>();
+                containerBuilder.RegisterType<CadastroDeProdutoBaseTeste>().As<ICadastroDeProdutoBaseTeste>();
             }
             catch (Exception exception)
             {
