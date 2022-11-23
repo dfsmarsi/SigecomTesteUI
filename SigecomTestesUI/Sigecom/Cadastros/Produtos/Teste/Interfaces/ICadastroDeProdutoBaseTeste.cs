@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste.Interfaces
+{
+    public interface ICadastroDeProdutoBaseTeste
+    {
+        void RetornarCadastroDeProduto(Dictionary<string, string> dadosDeProduto,
+            out CadastroDeProdutoPage cadastroDeProdutoPage);
+        void AbrirTelaDeProdutoParaTeste(CadastroDeProdutoPage cadastroDeProdutoPage);
+        void AtribuirDadosDoProdutoComImpostos(CadastroDeProdutoPage cadastroDeProdutoPage);
+        void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage,
+            Dictionary<string, string> dadosDeProduto);
+    }
+}
