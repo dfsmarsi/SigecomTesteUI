@@ -30,15 +30,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 
         public void PesquisarCategoriaGravada(CadastroDeCategoriaPage cadastroDeCategoriaPage, IReadOnlyDictionary<string, string> dadosDoCadastro)
         {
+            cadastroDeCategoriaPage.FecharJanelaCadastroDeCategoriaComEsc(CadastroDeCategoriaModel.ElementoTelaCadastroDeCategoria);
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            cadastroDeCategoriaPage.ClicarNaOpcaoDoPesquisar();
             var resolvePesquisaDeCategoriaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeCategoriaPage>>();
             var pesquisaDeCategoriaPage = resolvePesquisaDeCategoriaPage(DriverService);
-            pesquisaDeCategoriaPage.PesquisarCategoria(dadosDoCadastro["Grupo"]);
+            pesquisaDeCategoriaPage.PesquisarCategoriaNaTelaDeControle(dadosDoCadastro["Grupo"]);
             Assert.True(pesquisaDeCategoriaPage.VerificarSeExisteCategoriaNaGrid(dadosDoCadastro["Grupo"]));
-            pesquisaDeCategoriaPage.FecharJanelaComEsc();
-            cadastroDeCategoriaPage.FecharJanelaCadastroDeCategoriaComEsc(
-                CadastroDeCategoriaModel.ElementoTelaCadastroDeCategoria);
             cadastroDeCategoriaPage.FecharJanelaCadastroDeCategoriaComEsc(
                 CadastroDeCategoriaModel.ElementoTelaControleDeCategoria);
         }

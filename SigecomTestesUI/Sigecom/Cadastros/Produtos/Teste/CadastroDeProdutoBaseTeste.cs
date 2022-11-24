@@ -37,7 +37,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 
         public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, Dictionary<string, string> dadosDeProduto)
         {
-            cadastroDeProdutoPage.ClicarNaOpcaoDoPesquisar();
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+            cadastroDeProdutoPage.AcessarAtalhoDePesquisaDeProduto();
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
@@ -45,7 +46,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["Nome"]);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
         }
     }
 }

@@ -31,6 +31,7 @@ namespace SigecomTestesUI.Config
                 return false;
             }
         }
+
         public bool AcessarOpcaoSubMenu(string opcaoSubMenu)
         {
             try
