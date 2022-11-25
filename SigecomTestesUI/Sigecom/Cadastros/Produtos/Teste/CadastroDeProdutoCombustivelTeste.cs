@@ -12,7 +12,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
-        [AllureOwner("Douglas")]
+        [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Produto")]
         public void CadastrarProdutoDeCombustivelSomenteCamposObrigatorios()
