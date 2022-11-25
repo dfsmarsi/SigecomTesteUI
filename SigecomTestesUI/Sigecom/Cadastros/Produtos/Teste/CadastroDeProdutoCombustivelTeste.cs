@@ -5,50 +5,46 @@ using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoBalancaTeste: CadastroDeProdutoBaseTeste
+    public class CadastroDeProdutoCombustivelTeste : CadastroDeProdutoBaseTeste
     {
-        [Test(Description = "Cadastro de Produto de Balanca Somente Campos Obrigatorios")]
+        [Test(Description = "Cadastro de Produto de Combustivel Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
-        [AllureOwner("Takaki")]
+        [AllureOwner("Douglas")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Produto")]
-        public void CadastrarProdutoDeBalancaSomenteCamposObrigatorios()
+        public void CadastrarProdutoDeCombustivelSomenteCamposObrigatorios()
         {
-            var dadosDeProdutoBalanca = AdicionandoInformacoesNecessariasParaOTeste();
+            var dadosDeProdutoDeCombustivel = AdicionandoInformacoesNecessariasParaOTeste();
             // Arange
-            RetornarCadastroDeProduto(dadosDeProdutoBalanca, out var cadastroDeProdutoPage);
+            RetornarCadastroDeProduto(dadosDeProdutoDeCombustivel, out var cadastroDeProdutoPage);
             AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
 
             // Act
             AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaBalanca);
-            cadastroDeProdutoPage.PreencherCamposDaBalanca();
+            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaCombustivel);
+            cadastroDeProdutoPage.PreencherCamposDeCombustivel();
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoBalanca);
+            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoDeCombustivel);
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>
             new Dictionary<string, string>
             {
-                {"Nome","PRODUTO BALANCA"},
+                {"Nome","PRODUTO COMBUSTIVEL"},
                 {"Unidade", "UN"},
                 {"CodigoInterno","int"},
-                {"Categoria","BALANCA"},
+                {"Categoria","COMBUSTIVEL"},
                 {"Custo","5,00"},
                 {"Markup","100,00"},
                 {"PrecoVenda","10,00"},
                 {"Referencia","ref"},
                 {"NCM","22030000"},
-                {"GasNacional","0"},
-                {"GasImportado","0"},
-                {"ValorPartida","0"},
-                {"QtdeGasNatural","0"},
-                {"NomeFinal","PRODUTO BALANCA"}
+                {"NomeFinal","PRODUTO COMBUSTIVEL"}
             };
     }
 }

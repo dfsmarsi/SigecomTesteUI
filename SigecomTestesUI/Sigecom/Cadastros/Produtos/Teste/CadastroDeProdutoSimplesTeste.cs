@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoNormalTeste: CadastroDeProdutoBaseTeste
+    public class CadastroDeProdutoSimplesTeste: CadastroDeProdutoBaseTeste
     {
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
@@ -40,7 +40,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
                 {"Markup","100,00"},
                 {"PrecoVenda","10,00"},
                 {"Referencia","ref"},
-                {"NCM","22030000"}
+                {"NCM","22030000"},
+                {"NomeFinal","PRODUTO"}
             };
     }
 }

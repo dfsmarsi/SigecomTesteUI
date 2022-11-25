@@ -13,7 +13,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
             try
             {
                 containerBuilder.RegisterType<CadastroDeProdutoPage>();
-                containerBuilder.RegisterType<CadastroDeProdutoNormalTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoCombustivelTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoGradeTeste>();
                 containerBuilder.RegisterType<PesquisaDeProdutoPage>();

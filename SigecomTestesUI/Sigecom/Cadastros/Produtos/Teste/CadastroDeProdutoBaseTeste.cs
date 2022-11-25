@@ -43,7 +43,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
             pesquisaDeProdutoPage.PesquisarProduto(dadosDeProduto["Nome"]);
-            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["Nome"]);
+            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["NomeFinal"]);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
         }

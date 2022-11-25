@@ -46,7 +46,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
                 {"NCM", "22030000"},
                 {"Código de barras", "0000010"},
                 {"Tamanho", "G"},
-                {"Cor", "Preto"}
+                {"Cor", "PRETO"},
+                {"NomeFinal", "PRODUTO GRADE G PRETO"}
             };
     }
 }

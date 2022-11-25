@@ -115,13 +115,29 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             }
         }
 
+        public bool PreencherCamposDeCombustivel()
+        {
+            try
+            {
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGasNaturalNacional, _dadosDeProduto["GasNacional"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGasNaturalImportado, _dadosDeProduto["GasImportado"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoValorDePartida, _dadosDeProduto["ValorPartida"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoQuantidadeDeGasNatural, _dadosDeProduto["QtdeGasNatural"]);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool PreencherCamposDaGrade()
         {
             try
             {
                 DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, _dadosDeProduto["Código de barras"]);
                 DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, _dadosDeProduto["Tamanho"]);
-                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, _dadosDeProduto["Código de barras"]);
+                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, _dadosDeProduto["Cor"]);
                 return true;
             }
             catch (Exception)
