@@ -18,8 +18,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
         {
             var dadosDeCategoria = new Dictionary<string, string>
             {
-                {"Grupo", "GRADE"},
-                {"Markup", "5"}
+                {"Grupo", "GRUPO GRADE"},
+                {"Markup", "10"}
             };
             // Arange
             RetornarCadastroDeCategoria(dadosDeCategoria, out var cadastroDeCategoriaPage);

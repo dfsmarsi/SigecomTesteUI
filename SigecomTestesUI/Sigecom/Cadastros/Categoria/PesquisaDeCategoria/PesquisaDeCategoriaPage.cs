@@ -15,10 +15,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria
             DriverService.ValidarElementoExistentePorNome(PesquisaDeCategoriaModel.TelaPesquisaDeCategoria);
             DriverService.DigitarNoCampoEnterId(PesquisaDeCategoriaModel.ElementoParametroDePesquisa, nomeDaCategoria);
         }
-        public void PesquisarCategoriaNaTelaDeControle(string nomeDaCategoria)
-        {
+
+        public void PesquisarCategoriaNaTelaDeControle(string nomeDaCategoria) => 
             DriverService.DigitarNoCampoEnterId(CadastroDeCategoriaModel.ElementoPesquisar, nomeDaCategoria);
-        }
 
         public bool VerificarSeExisteCategoriaNaGrid(string nomeDaCategoria)
         {

@@ -19,7 +19,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
         {
             var dadosDeCategoriaMedicamento = new Dictionary<string, string>
             {
-                {"Grupo", "MEDICAMENTO"},
+                {"Grupo", "GRUPO MEDICAMENTO"},
                 {"Markup", "10"}
             };
 
