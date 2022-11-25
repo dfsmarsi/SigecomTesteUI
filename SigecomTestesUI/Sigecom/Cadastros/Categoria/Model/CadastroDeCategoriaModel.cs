@@ -11,6 +11,7 @@
         public static string BotaoNovo => "F2-Novo";
         public static string BotaoGravar => "F5-Gravar";
         public static string BotaoPesquisar => "F9-Pesquisar";
+        public static string ElementoPesquisar => "txtPequisa";
 
         public static string ElementoNomeGrupo => "txtNome";
         public static string ElementoMarkup => "txtMarkup";

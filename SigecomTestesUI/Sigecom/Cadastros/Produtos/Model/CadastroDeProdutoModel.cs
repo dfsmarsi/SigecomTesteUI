@@ -8,7 +8,7 @@
         public static string BotaoNovoCadastro => "F2 - Novo";
         public static string BotaoGravar => "F5 - Gravar";
         public static string BotaoPesquisar => "F9 - Pesquisar";
-        public static string AbaImpostos => "Impostos";
+        
         public static string ElementoNomeProduto => "txtProduto_Nome";
         public static string ElementoUnidade => "cbxProduto_Unidade";
         public static string ElementoCategoria => "txtCategoria";
@@ -16,10 +16,30 @@
         public static string ElementoMarkup => "txtMarkup";
         public static string ElementoPrecoVenda => "txtPrecoVenda";
         public static string ElementoReferencia => "txtReferencia";
+
+        //Aba Impostos
+        public static string AbaImpostos => "Impostos";
         public static string ElementoCodigoInterno => "txtCodigoProdutoInterno";
         public static string ElementoOrigemMercadoria => "cbxOrigem";
         public static string ElementoSituacaoTributaria => "cbxSituacaoTributaria";
         public static string ElementoNaturezaCfop => "cbxNaturezaCfop";
         public static string ElementoNcm => "txtNCM";
+
+        //Aba Grade
+        public static string AbaGrade => "Grade";
+        public static string ElementoGridColunaCodigoDeBarrasDaGrade => "Código de barras";
+        public static string ElementoGridColunaTamanhoDaGrade => "Tamanho";
+        public static string ElementoGridColunaCorDaGrade => "Cor";
+
+        //Aba Balança
+        public static string AbaBalanca => "Balança";
+        public static string ElementoCodigoDeBarras => "txtCodigoProdBalanca";
+
+        //Aba Combustível
+        public static string AbaCombustivel => "Combustível";
+        public static string ElementoGasNaturalNacional=> "txtGlpNacional";
+        public static string ElementoGasNaturalImportado => "txtGlpImportado";
+        public static string ElementoValorDePartida => "txtValorPartida";
+        public static string ElementoQuantidadeDeGasNatural=> "txtQtdeGasNatural";
     }
 }

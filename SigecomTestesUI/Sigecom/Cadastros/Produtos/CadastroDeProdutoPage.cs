@@ -21,6 +21,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         public bool ClicarNaOpcaoDoPesquisar() =>
             AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoPesquisar);
 
+        public bool AcessarAtalhoDePesquisaDeProduto()
+        {
+            try
+            {
+                DriverService.AbrirPesquisaDeProdutoComF9("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR");
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool ClicarNoBotaoNovo()
         {
             try
@@ -59,11 +73,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             return precoDeVenda.Equals(double.Parse(_dadosDeProduto["PrecoVenda"]));
         }
 
-        public bool AcessarAbaImpostos()
+        public bool AcessarAba(string aba)
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeProdutoModel.AbaImpostos);
+                DriverService.ClicarBotaoName(aba);
                 return true;
             }
             catch (Exception)
@@ -80,6 +94,50 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
                 DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, _dadosDeProduto["NCM"]);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool PreencherCamposDaBalanca()
+        {
+            try
+            {
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarras, _dadosDeProduto["Balanca"]);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool PreencherCamposDeCombustivel()
+        {
+            try
+            {
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGasNaturalNacional, _dadosDeProduto["GasNacional"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGasNaturalImportado, _dadosDeProduto["GasImportado"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoValorDePartida, _dadosDeProduto["ValorPartida"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoQuantidadeDeGasNatural, _dadosDeProduto["QtdeGasNatural"]);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool PreencherCamposDaGrade()
+        {
+            try
+            {
+                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, _dadosDeProduto["Código de barras"]);
+                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, _dadosDeProduto["Tamanho"]);
+                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, _dadosDeProduto["Cor"]);
                 return true;
             }
             catch (Exception)

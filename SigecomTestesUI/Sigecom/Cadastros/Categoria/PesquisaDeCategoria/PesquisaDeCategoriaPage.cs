@@ -1,6 +1,7 @@
 ﻿using System;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria
@@ -14,6 +15,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria
             DriverService.ValidarElementoExistentePorNome(PesquisaDeCategoriaModel.TelaPesquisaDeCategoria);
             DriverService.DigitarNoCampoEnterId(PesquisaDeCategoriaModel.ElementoParametroDePesquisa, nomeDaCategoria);
         }
+
+        public void PesquisarCategoriaNaTelaDeControle(string nomeDaCategoria) => 
+            DriverService.DigitarNoCampoEnterId(CadastroDeCategoriaModel.ElementoPesquisar, nomeDaCategoria);
 
         public bool VerificarSeExisteCategoriaNaGrid(string nomeDaCategoria)
         {

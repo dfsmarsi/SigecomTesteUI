@@ -118,6 +118,14 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
+        public void DigitarItensNaGrid(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} new item row");
+            elementoEncontrado.Click();
+            elementoEncontrado.SendKeys(texto);
+            elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
         public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) => 
             ClicarBotaoId(nomeDoCampo);
 
@@ -129,6 +137,9 @@ namespace SigecomTestesUI.Services
 
         public void FecharJanelaComEsc(string nomeJanela) => 
             _driver.FindElementByName(nomeJanela).SendKeys(Keys.Escape);
+
+        public void AbrirPesquisaDeProdutoComF9(string nomeJanela) =>
+            _driver.FindElementByName(nomeJanela).SendKeys(Keys.F9);
 
         public void Dispose()
         {

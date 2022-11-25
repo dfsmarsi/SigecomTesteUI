@@ -16,17 +16,16 @@ namespace SigecomTestesUI
     {
         public DriverService DriverService;
         private readonly LoginPage _loginPage;
-        public readonly ILifetimeScope _lifetimeScope;
 
         public BaseTestes()
         {
             ControleDeInjecaoAutofac.ConstruirContainerComDependencias();
-            _lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
 
-            var resolveDriveFabrica = _lifetimeScope.Resolve<Func<WindowsDriver<WindowsElement>, DriverService>>();
-            DriverService = resolveDriveFabrica(_lifetimeScope.Resolve<DriverFabrica>().CriarDriver());
+            var resolveDriveFabrica = beginLifetimeScope.Resolve<Func<WindowsDriver<WindowsElement>, DriverService>>();
+            DriverService = resolveDriveFabrica(beginLifetimeScope.Resolve<DriverFabrica>().CriarDriver());
 
-            var resolveLoginPage = _lifetimeScope.Resolve<Func<DriverService, LoginPage>>();
+            var resolveLoginPage = beginLifetimeScope.Resolve<Func<DriverService, LoginPage>>();
             _loginPage = resolveLoginPage(DriverService);
         }
 

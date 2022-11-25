@@ -96,7 +96,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             }
         }
 
-        public bool FecharJanelaCadastroDeProdutoComEsc(string telaAtual)
+        public bool FecharJanelaCadastroDeCategoriaComEsc(string telaAtual)
         {
             try
             {
