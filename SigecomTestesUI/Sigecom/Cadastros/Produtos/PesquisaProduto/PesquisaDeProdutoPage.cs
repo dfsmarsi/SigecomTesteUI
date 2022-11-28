@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
@@ -19,6 +20,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
         {
             var nomeDoProdutoNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");
             return nomeDoProduto == nomeDoProdutoNaGrid;
+        }
+
+        public bool VerificarSeExisteProdutoNaGrid()
+        {
+            var nomeDoProdutoNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");
+            return nomeDoProdutoNaGrid.Any();
         }
 
         public bool FecharJanelaComEsc()
