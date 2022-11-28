@@ -16,6 +16,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
             DriverService.DigitarNoCampoEnterId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto);
         }
 
+        public void PesquisarProdutoComConfirmar(string nomeDoProduto)
+        {
+            DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
+            DriverService.DigitarNoCampoIdEnterComF5(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto);
+        }
+
+
         public bool VerificarSeExisteProdutoNaGrid(string nomeDoProduto)
         {
             var nomeDoProdutoNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");

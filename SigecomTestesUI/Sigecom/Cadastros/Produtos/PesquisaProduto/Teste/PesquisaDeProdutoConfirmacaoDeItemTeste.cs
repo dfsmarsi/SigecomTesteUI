@@ -28,10 +28,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
             cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
             cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
-            AbrirTelaDePesquisaDeProduto(AdicionandoInformacoesNecessariasParaOTeste(), beginLifetimeScope);
+            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisar();
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
-            pesquisaDeProdutoPage.PesquisarProduto(dadosDeProduto["NomeFinal"]);
+            pesquisaDeProdutoPage.PesquisarProdutoComConfirmar(dadosDeProduto["NomeFinal"]);
             var validaSeCarregouOsDadosDoProduto = DriverService
                 .ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto).Equals(dadosDeProduto["NomeFinal"]);
             Assert.True(validaSeCarregouOsDadosDoProduto);

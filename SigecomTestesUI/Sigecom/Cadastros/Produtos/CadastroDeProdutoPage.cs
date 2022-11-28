@@ -3,6 +3,7 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System;
 using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
@@ -20,6 +21,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 
         public bool ClicarNaOpcaoDoPesquisar() =>
             AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoPesquisar);
+
+        public void ClicarNoAtalhoDePesquisar() =>
+            DriverService.AbrirPesquisaDeProdutoComF9(CadastroDeProdutoModel.BotaoPesquisar);
 
         public bool AcessarAtalhoDePesquisaDeProduto()
         {

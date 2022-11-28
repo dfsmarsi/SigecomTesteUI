@@ -17,7 +17,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Pesquisa")]
         [AllureSubSuite("Produto")]
-        public void PesquisarProdutoVazia()
+        public void PesquisarProdutoComCampoVazio()
         {
             AbrirTelaDePesquisaDeProduto(AdicionandoInformacoesNecessariasParaOTeste(), out var beginLifetimeScope);
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
