@@ -20,11 +20,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
         }
 
-        public void AbrirTelaDeProdutoParaTeste(CadastroDeProdutoPage cadastroDeProdutoPage)
+        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
+            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.ClicarNoBotaoNovo();
+        }
+
+        private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
+            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisar();
+        }
+
+        private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
         {
             cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
             cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeProdutoPage.ClicarNoBotaoNovo();
         }
 
         public void AtribuirDadosDoProdutoComImpostos(CadastroDeProdutoPage cadastroDeProdutoPage)
@@ -37,15 +48,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 
         public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, Dictionary<string, string> dadosDeProduto)
         {
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
-            cadastroDeProdutoPage.AcessarAtalhoDePesquisaDeProduto();
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
-            var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
+            PesquisarUmProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+            RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
             pesquisaDeProdutoPage.PesquisarProduto(dadosDeProduto["Nome"]);
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["NomeFinal"]);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+        }
+
+        public void RetornarPesquisaDeProduto(out PesquisaDeProdutoPage pesquisaDeProdutoPage)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
+            pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
         }
     }
 }

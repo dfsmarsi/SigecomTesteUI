@@ -25,20 +25,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         public void ClicarNoAtalhoDePesquisar() =>
             DriverService.AbrirPesquisaDeProdutoComF9(CadastroDeProdutoModel.BotaoPesquisar);
 
-        public bool AcessarAtalhoDePesquisaDeProduto()
-        {
-            try
-            {
-                DriverService.AbrirPesquisaDeProdutoComF9("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR");
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
         public bool ClicarNoBotaoNovo()
         {
             try

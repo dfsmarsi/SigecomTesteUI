@@ -4,6 +4,7 @@ using NUnit.Framework;
 using SigecomTestesUI.Services;
 using System;
 using System.Collections.Generic;
+using SigecomTestesUI.ControleDeInjecao;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 {
@@ -20,14 +21,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
         public void PesquisarProdutoPeloCodigo()
         {
             var dadosDeProduto = AdicionandoInformacoesNecessariasParaOTeste();
-            AbrirTelaDePesquisaDeProduto(dadosDeProduto, out var beginLifetimeScope);
-
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope, dadosDeProduto, out var cadastroDeProdutoPage);
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
             pesquisaDeProdutoPage.PesquisarProduto(dadosDeProduto["CodigoProduto"]);
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["NomeFinal"]);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>

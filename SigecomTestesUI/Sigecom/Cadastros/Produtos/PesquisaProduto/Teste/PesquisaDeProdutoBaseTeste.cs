@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using System;
 using System.Collections.Generic;
@@ -8,22 +7,25 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 {
     public class PesquisaDeProdutoBaseTeste: BaseTestes
     {
-        public void AbrirTelaDePesquisaDeProduto(Dictionary<string, string> dadosDeProduto, out ILifetimeScope beginLifetimeScope)
+        public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, Dictionary<string, string> dadosDeProduto, 
+            out CadastroDeProdutoPage cadastroDeProdutoPage)
         {
-            beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeProdutoPage =
                 beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
-            var cadastroDeProdutoPage =
-                resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
-            cadastroDeProdutoPage.AcessarAtalhoDePesquisaDeProduto();
+            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
+            PesquisarUmProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
         }
 
-        public void AbrirTelaDePesquisaDeProduto(Dictionary<string, string> dadosDeProduto, ILifetimeScope beginLifetimeScope)
+        private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
         {
-            var resolveCadastroDeProdutoPage =
-                beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
-            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
-            cadastroDeProdutoPage.AcessarAtalhoDePesquisaDeProduto();
+            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisar();
+        }
+
+        private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
+            cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
+            cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
         }
     }
 }

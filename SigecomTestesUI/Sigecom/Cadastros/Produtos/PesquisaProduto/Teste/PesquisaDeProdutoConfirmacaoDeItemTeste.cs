@@ -23,12 +23,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
         {
             var dadosDeProduto = AdicionandoInformacoesNecessariasParaOTeste();
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage =
-                beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
-            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
-            cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
-            cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisar();
+            PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope, dadosDeProduto, out var cadastroDeProdutoPage);
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
             pesquisaDeProdutoPage.PesquisarProdutoComConfirmar(dadosDeProduto["NomeFinal"]);

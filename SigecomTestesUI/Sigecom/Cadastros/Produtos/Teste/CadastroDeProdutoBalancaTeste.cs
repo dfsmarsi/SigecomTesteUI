@@ -20,7 +20,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             var dadosDeProdutoBalanca = AdicionandoInformacoesNecessariasParaOTeste();
             // Arange
             RetornarCadastroDeProduto(dadosDeProdutoBalanca, out var cadastroDeProdutoPage);
-            AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
+            AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
 
             // Act
             AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
