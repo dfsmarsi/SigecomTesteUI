@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 {
-    public class PesquisaDeProdutoConfirmacaoDeItemTeste : PesquisaDeProdutoBaseTeste
+    public class PesquisaDeProdutoConfirmacaoDeItemTeste : BaseTestes
     {
         [Test(Description = "Pesquisa de Produto para Confirmação de Item")]
         [AllureTag("CI")]
@@ -21,15 +21,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
         [AllureSubSuite("Produto")]
         public void PesquisarProdutoParaConfirmacaoDeItem()
         {
+            // Arange
             var dadosDeProduto = AdicionandoInformacoesNecessariasParaOTeste();
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope, dadosDeProduto, out var cadastroDeProdutoPage);
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
+
+            // Act
+            pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope,
+                dadosDeProduto, out var cadastroDeProdutoPage);
             pesquisaDeProdutoPage.PesquisarProdutoComConfirmar(dadosDeProduto["NomeFinal"]);
-            var validaSeCarregouOsDadosDoProduto = DriverService
-                .ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto).Equals(dadosDeProduto["NomeFinal"]);
-            Assert.True(validaSeCarregouOsDadosDoProduto);
+            
+            // Assert
+            Assert.True(pesquisaDeProdutoPage.VerificarSeCarregouOsDadosDoProduto(dadosDeProduto));
             cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
         }
 

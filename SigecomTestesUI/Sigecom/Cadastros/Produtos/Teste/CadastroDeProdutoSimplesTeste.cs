@@ -1,10 +1,15 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Autofac;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoSimplesTeste: CadastroDeProdutoBaseTeste
+    public class CadastroDeProdutoSimplesTeste: BaseTestes
     {
         [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
         [AllureTag("CI")]
@@ -16,17 +21,23 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         [AllureSubSuite("Produto")]
         public void CadastrarProdutoSomenteCamposObrigatorios()
         {
-            var dadosDeProduto = AdicionandoInformacoesNecessariasParaOTeste();
             // Arange
-            RetornarCadastroDeProduto(dadosDeProduto, out var cadastroDeProdutoPage);
-            AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+            var dadosDeProduto = AdicionandoInformacoesNecessariasParaOTeste();
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolveCadastroDeProdutoPage =
+                beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
+            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
 
             // Act
-            AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Produto);
+            cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
+            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
+            cadastroDeProdutoPage.PreencherCamposDeImpostos();
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProduto);
+            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Produto);
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>

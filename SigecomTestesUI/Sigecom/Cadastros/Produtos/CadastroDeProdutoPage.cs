@@ -1,17 +1,19 @@
-﻿using SigecomTestesUI.Config;
+﻿using Autofac;
+using NUnit.Framework;
+using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
-using System;
-using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
     public class CadastroDeProdutoPage : PageObjectModel
     {
-        private readonly Dictionary<string, string> _dadosDeProduto;
-        public CadastroDeProdutoPage(DriverService driver, Dictionary<string, string> dadosDeProduto) : base(driver) => 
-            _dadosDeProduto = dadosDeProduto;
+        public CadastroDeProdutoPage(DriverService driver) : base(driver) { }
 
         public bool ClicarNaOpcaoDoMenu() => 
             AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoMenuCadastro);
@@ -38,17 +40,26 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             }
         }
 
-        public bool PreencherCamposDoProduto()
+        public bool PreencherCamposDoProduto(TipoDeProduto tipoDeProduto)
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, _dadosDeProduto["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, _dadosDeProduto["Unidade"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeProdutoModel.ElementoCategoria, _dadosDeProduto["Categoria"]);
-                EsperarAcaoEmSegundos(2);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, _dadosDeProduto["Custo"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, _dadosDeProduto["Markup"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, _dadosDeProduto["Referencia"]);
+                using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDoProduto();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool PreencherCamposDaAba(TipoDeProduto tipoDeProduto)
+        {
+            try
+            {
+                using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDaAba();
                 return true;
             }
             catch (Exception)
@@ -60,7 +71,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         public bool VerificarSePrecoDeVendaFoiCalculado()
         {
             var precoDeVenda = double.Parse(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoPrecoVenda));
-            return precoDeVenda.Equals(double.Parse(_dadosDeProduto["PrecoVenda"]));
+            return precoDeVenda.Equals(double.Parse(CadastroDeProdutoBaseModel.PrecoVendaDoProduto));
         }
 
         public bool AcessarAba(string aba)
@@ -83,51 +94,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoOrigemMercadoria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, _dadosDeProduto["NCM"]);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool PreencherCamposDaBalanca()
-        {
-            try
-            {
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarras, _dadosDeProduto["Balanca"]);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool PreencherCamposDeCombustivel()
-        {
-            try
-            {
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGasNaturalNacional, _dadosDeProduto["GasNacional"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGasNaturalImportado, _dadosDeProduto["GasImportado"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoValorDePartida, _dadosDeProduto["ValorPartida"]);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoQuantidadeDeGasNatural, _dadosDeProduto["QtdeGasNatural"]);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool PreencherCamposDaGrade()
-        {
-            try
-            {
-                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, _dadosDeProduto["Código de barras"]);
-                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, _dadosDeProduto["Tamanho"]);
-                DriverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, _dadosDeProduto["Cor"]);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, CadastroDeProdutoBaseModel.NcmDoProduto);
                 return true;
             }
             catch (Exception)
@@ -160,6 +127,32 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             {
                 return false;
             }
+        }
+
+        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
+            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.ClicarNoBotaoNovo();
+        }
+
+        private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
+            cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
+            cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
+        }
+
+        private void RetornarPesquisaDeProduto(out PesquisaDeProdutoPage pesquisaDeProdutoPage)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
+            pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
+        }
+
+        public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, TipoDeProduto tipoDeProduto)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
+            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).FluxoDePesquisaDoProduto(cadastroDeProdutoPage, pesquisaDeProdutoPage);
         }
     }
 }

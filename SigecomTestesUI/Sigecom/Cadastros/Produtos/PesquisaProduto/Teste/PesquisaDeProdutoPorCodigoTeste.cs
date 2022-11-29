@@ -8,7 +8,7 @@ using SigecomTestesUI.ControleDeInjecao;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 {
-    public class PesquisaDeProdutoPorCodigoTeste: PesquisaDeProdutoBaseTeste
+    public class PesquisaDeProdutoPorCodigoTeste: BaseTestes
     {
         [Test(Description = "Pesquisa de Produto por Códigos")]
         [AllureTag("CI")]
@@ -20,16 +20,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
         [AllureSubSuite("Produto")]
         public void PesquisarProdutoPeloCodigo()
         {
+            // Arange
             var dadosDeProduto = AdicionandoInformacoesNecessariasParaOTeste();
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope, dadosDeProduto, out var cadastroDeProdutoPage);
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
+
+            // Act
+            pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope,
+                dadosDeProduto, out var cadastroDeProdutoPage);
             pesquisaDeProdutoPage.PesquisarProduto(dadosDeProduto["CodigoProduto"]);
-            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["NomeFinal"]);
-            Assert.True(possuiProduto);
-            pesquisaDeProdutoPage.FecharJanelaComEsc();
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+
+            // Assert
+            Assert.True(pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(dadosDeProduto["NomeFinal"]));
+            pesquisaDeProdutoPage.FecharTelasDeProduto(cadastroDeProdutoPage);
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>

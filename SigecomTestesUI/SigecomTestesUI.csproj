@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="Allure\Relatorios\" />
     <Folder Include="Allure\Resultados\" />
+    <Folder Include="Sigecom\Cadastros\Pessoas\CadastroSimplificadoDeCliente\" />
   </ItemGroup>
 
 </Project>

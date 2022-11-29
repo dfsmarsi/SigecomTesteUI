@@ -1,9 +1,9 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste;
-using System;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Injection
 {
     public class PesquisaDeProdutoInjection : Module
     {
@@ -12,9 +12,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
             try
             {
                 containerBuilder.RegisterType<PesquisaDeProdutoPage>();
-                containerBuilder.RegisterType<PesquisaDeProdutoBaseTeste>();
                 containerBuilder.RegisterType<PesquisaDeProdutoPorCodigoTeste>();
                 containerBuilder.RegisterType<PesquisaDeProdutoVaziaTeste>();
+                containerBuilder.RegisterType<PesquisaDeProdutoConfirmacaoDeItemTeste>();
             }
             catch (Exception exception)
             {

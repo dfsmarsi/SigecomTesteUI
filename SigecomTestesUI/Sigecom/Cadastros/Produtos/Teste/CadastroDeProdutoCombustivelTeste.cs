@@ -1,12 +1,25 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System.Collections.Generic;
+using Autofac;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoCombustivelTeste : CadastroDeProdutoBaseTeste
+    public class CadastroDeProdutoCombustivelTeste : BaseTestes
     {
+        public void RetornarCadastroDeProduto(Dictionary<string, string> dadosDeProduto,
+            out CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolveCadastroDeProdutoPage =
+                beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
+            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
+        }
+
         [Test(Description = "Cadastro de Produto de Combustivel Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -17,19 +30,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         [AllureSubSuite("Produto")]
         public void CadastrarProdutoDeCombustivelSomenteCamposObrigatorios()
         {
-            var dadosDeProdutoDeCombustivel = AdicionandoInformacoesNecessariasParaOTeste();
             // Arange
+            var dadosDeProdutoDeCombustivel = AdicionandoInformacoesNecessariasParaOTeste();
             RetornarCadastroDeProduto(dadosDeProdutoDeCombustivel, out var cadastroDeProdutoPage);
-            AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
 
             // Act
-            AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Combustivel);
+            cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
+            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
+            cadastroDeProdutoPage.PreencherCamposDeImpostos();
             cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaCombustivel);
-            cadastroDeProdutoPage.PreencherCamposDeCombustivel();
+            cadastroDeProdutoPage.PreencherCamposDaAba(TipoDeProduto.Combustivel);
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoDeCombustivel);
+            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Combustivel);
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>

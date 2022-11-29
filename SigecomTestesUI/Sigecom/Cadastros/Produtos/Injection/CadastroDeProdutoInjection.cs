@@ -1,6 +1,9 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Factory;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste;
 using System;
 
@@ -17,8 +20,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
                 containerBuilder.RegisterType<CadastroDeProdutoCombustivelTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoGradeTeste>();
-                containerBuilder.RegisterType<PesquisaDeProdutoPage>();
-                containerBuilder.RegisterType<CadastroDeProdutoBaseTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoFactory>().As<ICadastroDeProdutoFactory>();
+                containerBuilder.RegisterType<CadastroDeProdutoCombustivelPage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Combustivel);
+                containerBuilder.RegisterType<CadastroDeProdutoGradePage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Grade);
+                containerBuilder.RegisterType<CadastroDeProdutoBalancaPage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Balanca);
+                containerBuilder.RegisterType<CadastroDeProdutoSimplesPage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Produto);
             }
             catch (Exception exception)
             {
