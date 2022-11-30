@@ -11,7 +11,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
     public class CadastroDeProdutoSimplesTeste: BaseTestes
     {
-        [Test(Description = "Cadastro de Produto Somente Campos Obrigatorios")]
+        [Test(Description = "Cadastro de produto possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]

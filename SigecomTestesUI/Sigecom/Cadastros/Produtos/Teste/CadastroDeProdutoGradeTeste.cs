@@ -20,7 +20,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
         }
 
-        [Test(Description = "Cadastro de Produto de Grade Somente Campos Obrigatorios")]
+        [Test(Description = "Cadastro de produto de grade possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]

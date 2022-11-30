@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
@@ -20,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
         }
 
-        [Test(Description = "Cadastro de Produto de Medicamento Somente Campos Obrigatorios")]
+        [Test(Description = "Cadastro de produto de medicamento possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
