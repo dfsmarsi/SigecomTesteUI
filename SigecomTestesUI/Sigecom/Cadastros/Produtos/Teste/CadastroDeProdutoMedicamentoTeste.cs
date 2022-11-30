@@ -44,7 +44,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Grade);
+            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Medicamento);
         }
     }
 }

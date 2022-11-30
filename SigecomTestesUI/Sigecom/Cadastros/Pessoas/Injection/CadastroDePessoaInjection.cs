@@ -4,6 +4,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
@@ -16,6 +17,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
             {
                 containerBuilder.RegisterType<CadastroDeClientePage>();
                 containerBuilder.RegisterType<CadastroDeClienteTeste>();
+                containerBuilder.RegisterType<CadastroDeClienteCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeColaboradorPage>();
                 containerBuilder.RegisterType<CadastroDeColaboradorTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorPage>();

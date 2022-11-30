@@ -14,16 +14,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             _dadosDoCliente = dadosDoCliente;
 
         public bool ClicarNaOpcaoDoMenu() => 
-            AcessarOpcaoMenu(CadastroDeCienteModel.BotaoMenu);
+            AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
 
         public bool ClicarNaOpcaoDoSubMenu() => 
-            AcessarOpcaoSubMenu(CadastroDeCienteModel.BotaoSubMenu);
+            AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
 
         public bool ClicarBotaoNovo()
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeCienteModel.BotaoNovo);
+                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoNovo);
                 return true;
             }
             catch (Exception)
@@ -36,7 +36,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeCienteModel.BotaoPesquisar);
+                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
                 return true;
             }
             catch (Exception)
@@ -47,19 +47,54 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 
         public bool VerificarTipoPessoa()
         {
-            var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeCienteModel.ElementoTipoPessoa);
-            return valorTipoPessoa == "FÍSICA";
+            var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoTipoPessoa);
+            return valorTipoPessoa.Equals("FÍSICA");
         }
 
         public bool PreencherCampos()
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNome, _dadosDoCliente["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeCienteModel.ElementoCep, _dadosDoCliente["Cep"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, _dadosDoCliente["Nome"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
+                DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"]);
                 EsperarAcaoEmSegundos(5);
-                DriverService.DigitarNoCampoId(CadastroDeCienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool PreencherCamposCompleto()
+        {
+            try
+            {
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, _dadosDoCliente["Nome"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoRg, _dadosDoCliente["Rg"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoApelido, _dadosDoCliente["Apelido"]);
+                DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoDataDeNascimento, _dadosDoCliente["DataNascimento"]);
+                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoSexo, 1);
+                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoEstadoCivil, 1);
+                DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"]);
+                EsperarAcaoEmSegundos(3);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoComplemento, _dadosDoCliente["Complemento"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoProfissao, _dadosDoCliente["Profissao"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObservacao, _dadosDoCliente["Observacao"]);
+                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 3);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoPrimario"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoPrimario"]);
+                DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
+                EsperarAcaoEmSegundos(2);
+                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 1);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoSecundario"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoSecundario"]);
+                DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoAvisoDeVenda, _dadosDoCliente["AvisoDeVenda"]);
                 return true;
             }
             catch
@@ -72,7 +107,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeCienteModel.BotaoGravar);
+                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoGravar);
                 return true;
             }
             catch (Exception)
@@ -85,7 +120,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.FecharJanelaComEsc(CadastroDeCienteModel.ElementoTelaCadastroCliente);
+                DriverService.FecharJanelaComEsc(CadastroDeClienteModel.ElementoTelaCadastroCliente);
                 return true;
             }
             catch (Exception)

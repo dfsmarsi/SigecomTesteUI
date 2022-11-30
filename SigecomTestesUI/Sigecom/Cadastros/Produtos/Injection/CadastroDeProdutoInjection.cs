@@ -20,14 +20,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoGradeTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoFactory>().As<ICadastroDeProdutoFactory>();
-                //containerBuilder.RegisterType<CadastroDeProdutoCombustivelPage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Combustivel);
-                //containerBuilder.RegisterType<CadastroDeProdutoGradePage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Grade);
-                //containerBuilder.RegisterType<CadastroDeProdutoBalancaPage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Balanca);
-                //containerBuilder.RegisterType<CadastroDeProdutoSimplesPage>().Keyed<ICadastroDeProdutoPage>(TipoDeProduto.Produto);
                 containerBuilder.RegisterType<CadastroDeProdutoCombustivelPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoGradePage>();
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoSimplesPage>();
+                containerBuilder.RegisterType<CadastroDeProdutoMedicamentoPage>();
             }
             catch (Exception exception)
             {

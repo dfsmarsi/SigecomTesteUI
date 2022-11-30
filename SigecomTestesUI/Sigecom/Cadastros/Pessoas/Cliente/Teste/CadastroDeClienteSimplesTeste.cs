@@ -1,13 +1,13 @@
 ﻿using System;
-using NUnit.Allure.Attributes;
-using NUnit.Framework;
 using System.Collections.Generic;
 using Autofac;
+using NUnit.Allure.Attributes;
+using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
 {
     public class CadastroDeClienteTeste : BaseTestes
     {
