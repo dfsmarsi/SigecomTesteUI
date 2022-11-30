@@ -1,26 +1,25 @@
-﻿using Autofac.Features.Indexed;
+﻿using Autofac;
+using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Factory
 {
     public class CadastroDeProdutoFactory : ICadastroDeProdutoFactory
     {
-        private readonly IIndex<TipoDeProduto, ICadastroDeProdutoPage> _cadastroDeProdutoPage;
-
-        public CadastroDeProdutoFactory(IIndex<TipoDeProduto, ICadastroDeProdutoPage> cadastroDeProdutoPage) =>
-            _cadastroDeProdutoPage = cadastroDeProdutoPage;
-
         public ICadastroDeProdutoPage Fabricar(DriverService driverService, TipoDeProduto tipoDeProduto)
         {
-            //return _cadastroDeProdutoPage[tipoDeProduto];
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
 
-            if (tipoDeProduto.Equals(TipoDeProduto.Balanca))
+            return tipoDeProduto switch
             {
-                return new CadastroDeProdutoBalancaPage(driverService);
-            }
-
-            return new CadastroDeProdutoSimplesPage(driverService);
+                TipoDeProduto.Balanca => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBalancaPage>>()(driverService),
+                TipoDeProduto.Produto => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoSimplesPage>>()(driverService),
+                TipoDeProduto.Combustivel => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoCombustivelPage>>()(driverService),
+                TipoDeProduto.Grade => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoGradePage>>()(driverService),
+                _ => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoMedicamentoPage>>()(driverService)
+            };
         }
     }
 }

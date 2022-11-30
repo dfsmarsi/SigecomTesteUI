@@ -8,20 +8,20 @@ using System.Threading;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
 {
-    public class CadastroDeProdutoBalancaPage: ICadastroDeProdutoPage
+    public class CadastroDeProdutoMedicamentoPage : ICadastroDeProdutoPage
     {
         private readonly DriverService _driverService;
 
-        public CadastroDeProdutoBalancaPage(DriverService driver) => 
+        public CadastroDeProdutoMedicamentoPage(DriverService driver) =>
             _driverService = driver;
 
         public bool PreencherCamposDoProduto()
         {
             try
             {
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, CadastroDeProdutoBalancaModel.NomeDoProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, CadastroDeProdutoMedicamentoModel.NomeDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, CadastroDeProdutoBaseModel.UnidadeDoProduto);
-                _driverService.DigitarNoCampoEnterId(CadastroDeProdutoModel.ElementoCategoria, CadastroDeProdutoBalancaModel.CategoriaDoProduto);
+                _driverService.DigitarNoCampoEnterId(CadastroDeProdutoModel.ElementoCategoria, CadastroDeProdutoMedicamentoModel.CategoriaDoProduto);
                 Thread.Sleep(TimeSpan.FromSeconds(2));
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, CadastroDeProdutoBaseModel.CustoDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, CadastroDeProdutoBaseModel.MarkupDoProduto);
@@ -38,7 +38,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
         {
             try
             {
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarras, CadastroDeProdutoBalancaModel.CodigoDaBalanca);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoRegistroNaAnvisa, CadastroDeProdutoMedicamentoModel.RegistroNaAnvisa);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoPrecoMaximoAoConsumidor, CadastroDeProdutoMedicamentoModel.PrecoMaximoAoConsumidor);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMotivoDaIsecao, CadastroDeProdutoMedicamentoModel.MotivoDaIsecao);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNumeroDoLote, CadastroDeProdutoMedicamentoModel.NumeroDoLote);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoQuantidadeDeProdutoNoLote, CadastroDeProdutoMedicamentoModel.QuantidadeDeProdutoNoLote);
+                _driverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoFabricacao, 1);
+                _driverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoValidade, 1);
                 return true;
             }
             catch (Exception)
@@ -51,8 +57,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
         {
             cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
-            pesquisaDeProdutoPage.PesquisarProduto(CadastroDeProdutoBalancaModel.NomeDoProduto);
-            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoBalancaModel.NomeFinalDoProduto);
+            pesquisaDeProdutoPage.PesquisarProduto(CadastroDeProdutoMedicamentoModel.NomeDoProduto);
+            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoMedicamentoModel.NomeFinalDoProduto);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
         }

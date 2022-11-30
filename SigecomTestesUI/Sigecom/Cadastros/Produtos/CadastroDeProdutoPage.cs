@@ -1,13 +1,12 @@
 ﻿using Autofac;
-using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using System;
+using SigecomTestesUI.Login.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 {
@@ -26,6 +25,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
 
         public void ClicarNoAtalhoDePesquisar() =>
             DriverService.AbrirPesquisaDeProdutoComF9(CadastroDeProdutoModel.BotaoPesquisar);
+
+        public void ClicarNoAtalhoDePesquisarNaTelaPrincipal() =>
+            DriverService.AbrirPesquisaDeProdutoComF9(LoginPageModel.ElementoTelaPrincipal);
 
         public bool ClicarNoBotaoNovo()
         {

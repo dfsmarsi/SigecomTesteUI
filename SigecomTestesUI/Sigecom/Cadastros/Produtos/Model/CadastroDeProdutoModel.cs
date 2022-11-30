@@ -41,5 +41,14 @@
         public static string ElementoGasNaturalImportado => "txtGlpImportado";
         public static string ElementoValorDePartida => "txtValorPartida";
         public static string ElementoQuantidadeDeGasNatural=> "txtQtdeGasNatural";
+
+        public static string AbaMedicamento => "Medicamento";
+        public static string ElementoRegistroNaAnvisa => "textEditRegistroAnvisa";
+        public static string ElementoPrecoMaximoAoConsumidor => "textEditPrecoMaximoAoConsumidor";
+        public static string ElementoMotivoDaIsecao => "memoEditMotivoDaIsencao";
+        public static string ElementoNumeroDoLote => "textEditNumeroDoLote";
+        public static string ElementoQuantidadeDeProdutoNoLote => "TextEditQuantidadeDeProdutoNoLote";
+        public static string ElementoFabricacao => "dateEditFabricacao";
+        public static string ElementoValidade => "dateEditValidade";
     }
 }

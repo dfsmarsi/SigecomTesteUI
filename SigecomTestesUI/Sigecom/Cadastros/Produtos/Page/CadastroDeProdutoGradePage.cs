@@ -48,12 +48,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
 
         public void FluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, PesquisaDeProdutoPage pesquisaDeProdutoPage)
         {
-            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisar();
-            pesquisaDeProdutoPage.PesquisarProduto(CadastroDeProdutoGradeModel.NomeDoProduto);
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
+            pesquisaDeProdutoPage.PesquisarProduto(CadastroDeProdutoGradeModel.NomeFinalDoProduto);
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoGradeModel.NomeFinalDoProduto);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
         }
     }
 }
