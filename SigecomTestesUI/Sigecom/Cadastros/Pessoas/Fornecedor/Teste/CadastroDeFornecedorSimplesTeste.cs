@@ -1,22 +1,22 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
-using SigecomTestesUI.Services;
-using System;
-using System.Collections.Generic;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
 {
-    public class CadastroDeFornecedorTeste : BaseTestes
+    public class CadastroDeFornecedorSimplesTeste : BaseTestes
     {
         private readonly Dictionary<string, string> _dadosDeFornecedor = new Dictionary<string, string>
         {
-            {"Nome","FORNECEDOR"},
+            {"Nome","FORNECEDOR SIMPLES"},
             {"Cpf","31055577092"},
             { "Cep","15700082"},
-            { "Numero","222"},
+            { "Numero","222"}
         };
 
         [Test(Description = "Cadastro de fornecedor somente campos obrigatórios com endereço")]

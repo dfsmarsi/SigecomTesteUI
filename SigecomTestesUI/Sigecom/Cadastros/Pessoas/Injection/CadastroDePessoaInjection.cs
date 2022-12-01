@@ -5,6 +5,8 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
 using System;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
@@ -20,8 +22,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
                 containerBuilder.RegisterType<CadastroDeClienteCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeColaboradorPage>();
                 containerBuilder.RegisterType<CadastroDeColaboradorTeste>();
+                containerBuilder.RegisterType<CadastroDeColaboradorCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorPage>();
-                containerBuilder.RegisterType<CadastroDeFornecedorTeste>();
+                containerBuilder.RegisterType<CadastroDeFornecedorSimplesTeste>();
                 containerBuilder.RegisterType<PesquisaDePessoaPage>();
             }
             catch (Exception exception)

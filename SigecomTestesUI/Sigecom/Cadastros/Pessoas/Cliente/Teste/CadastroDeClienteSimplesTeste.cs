@@ -13,7 +13,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
-            {"Nome","JOAO PENCA"},
+            {"Nome","JOAO PENCA SIMPLES"},
             {"Cpf","43671566051"},
             {"Cep","15700082"},
             {"Numero","123"}
