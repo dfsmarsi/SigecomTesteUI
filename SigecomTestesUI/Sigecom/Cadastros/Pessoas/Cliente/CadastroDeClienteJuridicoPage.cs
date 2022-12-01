@@ -1,22 +1,22 @@
-﻿using System;
-using SigecomTestesUI.Config;
+﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
-using System.Collections.Generic;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
-    public class CadastroDeClientePage : PageObjectModel
+    public class CadastroDeClienteJuridicoPage : PageObjectModel
     {
         private readonly Dictionary<string, string> _dadosDoCliente;
 
-        public CadastroDeClientePage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) => 
+        public CadastroDeClienteJuridicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) =>
             _dadosDoCliente = dadosDoCliente;
 
-        public bool ClicarNaOpcaoDoMenu() => 
+        public bool ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
 
-        public bool ClicarNaOpcaoDoSubMenu() => 
+        public bool ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
 
         public bool ClicarBotaoNovo()
@@ -48,15 +48,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         public bool VerificarTipoPessoa()
         {
             var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoTipoPessoa);
-            return valorTipoPessoa.Equals("FÍSICA");
+            return valorTipoPessoa.Equals("JURÍDICA");
         }
 
         public bool PreencherCamposSimples()
         {
             try
             {
+                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoPessoa, 2);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, _dadosDoCliente["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cnpf"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"]);
                 EsperarAcaoEmSegundos(3);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNumero, _dadosDoCliente["Numero"]);

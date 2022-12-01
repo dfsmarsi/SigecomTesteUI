@@ -9,16 +9,15 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
 {
-    public class CadastroDeClienteFisicoCompletoTeste : BaseTestes
+    public class CadastroDeClienteJuridicoCompletoTeste : BaseTestes
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
-            {"Nome","JOAO PENCA COMPLETO"},
-            {"Cpf","43671566051"},
-            {"Rg","331281855"},
-            {"Apelido","Teste"},
-            {"DataNascimento","04081668"},
-            {"Profissao","Tester"},
+            {"Nome","EMPRESA TESTE COMPLETO"},
+            {"Cnpf","77753844000138"},
+            {"Ie","248005050206"},
+            {"Suframa","5"},
+            {"NomeFantasia","Teste"},
             {"Complemento","Centro"},
             {"Cep","15700082"},
             {"Numero","123"},
@@ -30,18 +29,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
             {"AvisoDeVenda", "Aviso teste"}
         };
 
-        [Test(Description = "Cadastro de cliente físico completo")]
+        [Test(Description = "Cadastro de cliente jurídico completo")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
-        [AllureOwner("Douglas")]
+        [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Cliente")]
-        public void CadastrarClienteFisicoCompleto()
+        public void CadastrarClienteJuridicoCompleto()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteJuridicoPage>>();
             var cadastroDeClientePage = resolveCadastroDeProdutoPage(DriverService, _dadosDoCliente);
             // Arange
             cadastroDeClientePage.ClicarNaOpcaoDoMenu();

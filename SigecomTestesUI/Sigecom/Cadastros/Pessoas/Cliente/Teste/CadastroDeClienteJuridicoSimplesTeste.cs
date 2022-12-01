@@ -1,56 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
 {
-    public class CadastroDeClienteFisicoSimplesTeste : BaseTestes
+    public class CadastroDeClienteJuridicoSimplesTeste : BaseTestes
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
-            {"Nome","JOAO PENCA SIMPLES"},
-            {"Cpf","25535468070"},
+            {"Nome","EMPRESA TESTE SIMPLES"},
+            {"Cnpf","21010848000171"},
             {"Cep","15700082"},
-            {"Numero","123"}
+            {"Numero","623"}
         };
 
-        [Test(Description = "Cadastro de cliente físico somente campos obrigatórios com endereço")]
+        [Test(Description = "Cadastro de cliente jurídico somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
-        [AllureOwner("Douglas")]
+        [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Cliente")]
-        public void CadastrarClienteFisicoSomenteCamposObrigatorios()
+        public void CadastrarClienteJuridicoSomenteCamposObrigatorios()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
-            var cadastroDeClientePage = resolveCadastroDeProdutoPage(DriverService, _dadosDoCliente);
+            var resolveCadastroDeProdutoJuridicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteJuridicoPage>>();
+            var cadastroDeProdutoJuridicoPage = resolveCadastroDeProdutoJuridicoPage(DriverService, _dadosDoCliente);
             // Arange
-            cadastroDeClientePage.ClicarNaOpcaoDoMenu();
-            cadastroDeClientePage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeClientePage.ClicarBotaoNovo();
-            cadastroDeClientePage.VerificarTipoPessoa();
+            cadastroDeProdutoJuridicoPage.ClicarNaOpcaoDoMenu();
+            cadastroDeProdutoJuridicoPage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeProdutoJuridicoPage.ClicarBotaoNovo();
+            cadastroDeProdutoJuridicoPage.VerificarTipoPessoa();
 
             // Act
-            cadastroDeClientePage.PreencherCamposSimples();
-            cadastroDeClientePage.GravarCadastro();
+            cadastroDeProdutoJuridicoPage.PreencherCamposSimples();
+            cadastroDeProdutoJuridicoPage.GravarCadastro();
 
             // Assert
-            cadastroDeClientePage.ClicarBotaoPesquisar(); 
+            cadastroDeProdutoJuridicoPage.ClicarBotaoPesquisar();
             var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
             var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
             pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
             var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
             Assert.True(existeClienteNaPesquisa);
             pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
-            cadastroDeClientePage.FecharJanelaComEsc();
+            cadastroDeProdutoJuridicoPage.FecharJanelaComEsc();
         }
     }
 }
