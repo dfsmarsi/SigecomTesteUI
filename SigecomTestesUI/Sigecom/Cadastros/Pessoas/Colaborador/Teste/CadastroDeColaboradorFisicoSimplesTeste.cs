@@ -9,40 +9,25 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
 {
-    public class CadastroDeColaboradorCompletoTeste : BaseTestes
+    public class CadastroDeColaboradorFisicoSimplesTeste : BaseTestes
     {
         private readonly Dictionary<string, string> _dadosDeColaborador = new Dictionary<string, string>
         {
-            {"Nome", "RONY RUSTICO COMPLETO"},
-            {"Cpf", "45941011008"},
-            {"Rg", "331281855"},
-            {"Apelido", "Teste"},
-            {"DataNascimento", "04081668"},
-            {"Complemento", "Centro"},
-            {"Cep", "15700082"},
-            {"Numero", "333"},
-            {"Observacao", "Teste"},
-            {"ContatoPrimario", "(11) 96405-6467"},
-            {"ObservacaoContatoPrimario", "Teste"},
-            {"ContatoSecundario", "teste@sistemasbr.net"},
-            {"ObservacaoContatoSecundario", "Teste"},
-            {"DataAdmissao", "01/01/1998"},
-            {"EmailFuncionario", "teste@sistemasbr.net"},
-            {"DiaPagamento", "07"},
-            {"Salario", "800,00"},
-            {"TelefoneFuncionario", "(11)96405-6467"},
-            {"Cargo", "TESTER"}
+            {"Nome","RONY RUSTICO SIMPLES"},
+            {"Cpf","28061149001"},
+            {"Cep","15700082"},
+            {"Numero","333"}
         };
 
-        [Test(Description = "Cadastro de colaborador completo")]
+        [Test(Description = "Cadastro de Colaborador somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("3")]
         [AllureTms("3")]
-        [AllureOwner("Takaki")]
+        [AllureOwner("Douglas")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Colaborador")]
-        public void CadastrarColaboradorCompleto()
+        public void CadastrarColaboradorSomenteCamposObrigatorios()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeColaboradorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorPage>>();
@@ -54,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
             cadastroDeColaboradorPage.VerificarTipoPessoa();
 
             // Act
-            cadastroDeColaboradorPage.PreencherCamposCompleto();
+            cadastroDeColaboradorPage.PreencherCamposSimples();
             cadastroDeColaboradorPage.GravarCadastro();
 
             // Assert

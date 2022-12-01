@@ -1,42 +1,33 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using System;
-using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
 {
-    public class CadastroDeFornecedorCompletoTeste : BaseTestes
+    public class CadastroDeFornecedorFisicoSimplesTeste : BaseTestes
     {
         private readonly Dictionary<string, string> _dadosDeFornecedor = new Dictionary<string, string>
         {
-            {"Nome", "FORNECEDOR COMPLETO"},
-            {"Cpf", "22177882052"},
-            {"Rg", "331281855"},
-            {"Apelido", "Teste"},
-            {"DataNascimento", "04081668"},
-            {"Complemento", "Centro"},
-            {"Cep", "15700082"},
-            {"Numero", "222"},
-            {"Observacao", "Teste"},
-            {"ContatoPrimario", "(11) 96405-6467"},
-            {"ObservacaoContatoPrimario", "Teste"},
-            {"ContatoSecundario", "teste@sistemasbr.net"},
-            {"ObservacaoContatoSecundario", "Teste"}
+            {"Nome","FORNECEDOR SIMPLES"},
+            {"Cpf","31055577092"},
+            { "Cep","15700082"},
+            { "Numero","222"}
         };
 
-        [Test(Description = "Cadastro de fornecedor completo")]
+        [Test(Description = "Cadastro de fornecedor somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("2")]
         [AllureTms("2")]
-        [AllureOwner("Takaki")]
+        [AllureOwner("Douglas")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Fornecedor")]
-        public void CadastrarFornecedorCompleto()
+        public void CadastrarFornecedorSomenteCamposObrigatorios()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeFornecedorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorPage>>();
@@ -46,13 +37,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
             cadastroDeFornecedorPage.ClicarNaOpcaoDoSubMenu();
             cadastroDeFornecedorPage.ClicarBotaoNovo();
             cadastroDeFornecedorPage.VerificarTipoPessoa();
-
+            
             // Act
-            cadastroDeFornecedorPage.PreencherCamposCompleto();
+            cadastroDeFornecedorPage.PreencherCamposSimples();
             cadastroDeFornecedorPage.GravarCadastro();
-
+            
             // Assert
-            cadastroDeFornecedorPage.ClicarBotaoPesquisar();
+            cadastroDeFornecedorPage.ClicarBotaoPesquisar(); 
             var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
             var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
             pesquisaDePessoaPage.PesquisarPessoa("fornecedor", _dadosDeFornecedor["Nome"]);

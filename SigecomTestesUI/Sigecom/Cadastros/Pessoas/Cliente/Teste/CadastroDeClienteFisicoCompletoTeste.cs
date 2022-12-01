@@ -9,7 +9,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
 {
-    public class CadastroDeClienteCompletoTeste : BaseTestes
+    public class CadastroDeClienteFisicoCompletoTeste : BaseTestes
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {

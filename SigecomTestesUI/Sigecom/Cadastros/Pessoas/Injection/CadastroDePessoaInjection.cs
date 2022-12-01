@@ -18,14 +18,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
             try
             {
                 containerBuilder.RegisterType<CadastroDeClientePage>();
-                containerBuilder.RegisterType<CadastroDeClienteTeste>();
-                containerBuilder.RegisterType<CadastroDeClienteCompletoTeste>();
+                containerBuilder.RegisterType<CadastroDeClienteFisicoSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeClienteFisicoCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeColaboradorPage>();
-                containerBuilder.RegisterType<CadastroDeColaboradorTeste>();
-                containerBuilder.RegisterType<CadastroDeColaboradorCompletoTeste>();
+                containerBuilder.RegisterType<CadastroDeColaboradorFisicoSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeColaboradorFisicoCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorPage>();
-                containerBuilder.RegisterType<CadastroDeFornecedorSimplesTeste>();
-                containerBuilder.RegisterType<CadastroDeFornecedorCompletoTeste>();
+                containerBuilder.RegisterType<CadastroDeFornecedorFisicoSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeFornecedorFisicoCompletoTeste>();
                 containerBuilder.RegisterType<PesquisaDePessoaPage>();
             }
             catch (Exception exception)
