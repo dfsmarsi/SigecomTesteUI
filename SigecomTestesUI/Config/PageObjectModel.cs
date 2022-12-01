@@ -8,22 +8,16 @@ namespace SigecomTestesUI.Config
     {
         protected readonly DriverService DriverService;
 
-        protected PageObjectModel(DriverService driver)
-        {
-            DriverService = driver;
-        }
+        protected PageObjectModel(DriverService driver) => DriverService = driver;
 
-        public bool ValidarAberturaDeTela(string nomeTela)
-        {
-            return DriverService.ObterValorElementoName(nomeTela) == nomeTela;
-        }
+        public bool ValidarAberturaDeTela(string nomeTela) => 
+            DriverService.ObterValorElementoName(nomeTela).Equals(nomeTela);
 
         public bool AcessarOpcaoMenu(string menu)
         {
             try
             {
                 DriverService.DarDuploCliqueNoBotaoName(menu);
-
                 return true;
             }
             catch (Exception)
@@ -37,7 +31,6 @@ namespace SigecomTestesUI.Config
             try
             {
                 DriverService.ClicarBotaoName(opcaoSubMenu);
-
                 return true;
             }
             catch (Exception)
@@ -46,14 +39,10 @@ namespace SigecomTestesUI.Config
             }
         }
 
-        public void EsperarAcaoEmSegundos(int tempoEmSegundos)
-        {
+        public void EsperarAcaoEmSegundos(int tempoEmSegundos) => 
             Thread.Sleep(TimeSpan.FromSeconds(tempoEmSegundos));
-        }
 
-        public void FecharSistema()
-        {
+        public void FecharSistema() => 
             DriverService.Dispose();
-        }
     }
 }

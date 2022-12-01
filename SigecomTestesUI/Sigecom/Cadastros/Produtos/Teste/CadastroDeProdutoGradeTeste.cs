@@ -1,13 +1,26 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System.Collections.Generic;
+using Autofac;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
-    public class CadastroDeProdutoGradeTeste: CadastroDeProdutoBaseTeste
+    public class CadastroDeProdutoGradeTeste: BaseTestes
     {
-        [Test(Description = "Cadastro de Produto de Grade Somente Campos Obrigatorios")]
+        public void RetornarCadastroDeProduto(Dictionary<string, string> dadosDeProduto,
+            out CadastroDeProdutoPage cadastroDeProdutoPage)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolveCadastroDeProdutoPage =
+                beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
+            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
+        }
+
+        [Test(Description = "Cadastro de produto de grade possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -20,16 +33,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
             var dadosDeProdutoGrade = AdicionandoInformacoesNecessariasParaOTeste();
             // Arange
             RetornarCadastroDeProduto(dadosDeProdutoGrade, out var cadastroDeProdutoPage);
-            AbrirTelaDeProdutoParaTeste(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
 
             // Act
-            AtribuirDadosDoProdutoComImpostos(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Grade);
+            cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
+            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
+            cadastroDeProdutoPage.PreencherCamposDeImpostos();
             cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaGrade);
-            cadastroDeProdutoPage.PreencherCamposDaGrade();
+            cadastroDeProdutoPage.PreencherCamposDaAba(TipoDeProduto.Grade);
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, dadosDeProdutoGrade);
+            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Grade);
         }
 
         private static Dictionary<string, string> AdicionandoInformacoesNecessariasParaOTeste() =>

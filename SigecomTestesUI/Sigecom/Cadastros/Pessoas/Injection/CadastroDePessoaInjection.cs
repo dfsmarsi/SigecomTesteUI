@@ -4,6 +4,9 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
@@ -15,11 +18,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
             try
             {
                 containerBuilder.RegisterType<CadastroDeClientePage>();
-                containerBuilder.RegisterType<CadastroDeClienteTeste>();
+                containerBuilder.RegisterType<CadastroDeClienteFisicoSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeClienteFisicoCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeColaboradorPage>();
-                containerBuilder.RegisterType<CadastroDeColaboradorTeste>();
+                containerBuilder.RegisterType<CadastroDeColaboradorFisicoSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeColaboradorFisicoCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorPage>();
-                containerBuilder.RegisterType<CadastroDeFornecedorTeste>();
+                containerBuilder.RegisterType<CadastroDeFornecedorFisicoSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeFornecedorFisicoCompletoTeste>();
                 containerBuilder.RegisterType<PesquisaDePessoaPage>();
             }
             catch (Exception exception)
