@@ -38,7 +38,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
             cadastroDeColaboradorPage.VerificarTipoPessoa();
 
             // Act
-            cadastroDeColaboradorPage.PreencherCampos();
+            cadastroDeColaboradorPage.PreencherCamposSimples();
             cadastroDeColaboradorPage.GravarCadastro();
 
             // Assert

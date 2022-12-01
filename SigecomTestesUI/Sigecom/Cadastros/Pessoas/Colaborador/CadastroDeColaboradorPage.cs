@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using SigecomTestesUI.Config;
+﻿using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {
@@ -69,17 +68,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         public bool VerificarTipoPessoa()
         {
             var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoTipoPessoa);
-            return valorTipoPessoa == "FÍSICA";
+            return valorTipoPessoa.Equals("FÍSICA");
         }
 
-        public bool PreencherCampos()
+        public bool PreencherCamposSimples()
         {
             try
             {
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, _dadosDeColaborador["Nome"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCpf, _dadosDeColaborador["Cpf"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeColaboradorModel.ElementoCep, _dadosDeColaborador["Cep"]);
-                EsperarAcaoEmSegundos(5);
+                EsperarAcaoEmSegundos(3);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero, _dadosDeColaborador["Numero"]);
                 return true;
             }
@@ -93,16 +92,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, _dadosDeColaborador["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCpf, _dadosDeColaborador["Cpf"]);
+                PreencherCamposSimples();
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoRg, _dadosDeColaborador["Rg"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoApelido, _dadosDeColaborador["Apelido"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeColaboradorModel.ElementoDataDeNascimento, _dadosDeColaborador["DataNascimento"]);
                 DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoSexo, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoEstadoCivil, 1);
-                DriverService.DigitarNoCampoEnterId(CadastroDeColaboradorModel.ElementoCep, _dadosDeColaborador["Cep"]);
-                EsperarAcaoEmSegundos(3);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero, _dadosDeColaborador["Numero"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoComplemento, _dadosDeColaborador["Complemento"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoObservacao, _dadosDeColaborador["Observacao"]);
                 DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoContato, 3);
@@ -114,10 +109,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoContatoDoCliente, _dadosDeColaborador["ContatoSecundario"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoObsContatoDoCliente, _dadosDeColaborador["ObservacaoContatoSecundario"]);
                 DriverService.ClicarBotaoId(CadastroDeColaboradorModel.BotaoContato);
-
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDataAdmissao, _dadosDeColaborador["DataAdmissao"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoEmailFuncionario, _dadosDeColaborador["EmailFuncionario"]);
-
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDiaPagamento, _dadosDeColaborador["DiaPagamento"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoSalario, _dadosDeColaborador["Salario"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoTelefoneFuncionario, _dadosDeColaborador["TelefoneFuncionario"]);

@@ -14,7 +14,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
             {"Nome","JOAO PENCA SIMPLES"},
-            {"Cpf","43671566051"},
+            {"Cpf","25535468070"},
             {"Cep","15700082"},
             {"Numero","123"}
         };
@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
             cadastroDeClientePage.VerificarTipoPessoa();
 
             // Act
-            cadastroDeClientePage.PreencherCampos();
+            cadastroDeClientePage.PreencherCamposSimples();
             cadastroDeClientePage.GravarCadastro();
 
             // Assert

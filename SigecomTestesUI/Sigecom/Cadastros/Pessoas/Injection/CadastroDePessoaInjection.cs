@@ -25,6 +25,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
                 containerBuilder.RegisterType<CadastroDeColaboradorCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorPage>();
                 containerBuilder.RegisterType<CadastroDeFornecedorSimplesTeste>();
+                containerBuilder.RegisterType<CadastroDeFornecedorCompletoTeste>();
                 containerBuilder.RegisterType<PesquisaDePessoaPage>();
             }
             catch (Exception exception)

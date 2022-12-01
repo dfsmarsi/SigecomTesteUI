@@ -14,7 +14,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
         private readonly Dictionary<string, string> _dadosDeColaborador = new Dictionary<string, string>
         {
             {"Nome", "RONY RUSTICO COMPLETO"},
-            {"Cpf", "28061149001"},
+            {"Cpf", "45941011008"},
             {"Rg", "331281855"},
             {"Apelido", "Teste"},
             {"DataNascimento", "04081668"},

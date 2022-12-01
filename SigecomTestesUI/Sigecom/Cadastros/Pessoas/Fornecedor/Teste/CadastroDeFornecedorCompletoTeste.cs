@@ -14,7 +14,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
         private readonly Dictionary<string, string> _dadosDeFornecedor = new Dictionary<string, string>
         {
             {"Nome", "FORNECEDOR COMPLETO"},
-            {"Cpf", "31055577092"},
+            {"Cpf", "22177882052"},
             {"Rg", "331281855"},
             {"Apelido", "Teste"},
             {"DataNascimento", "04081668"},

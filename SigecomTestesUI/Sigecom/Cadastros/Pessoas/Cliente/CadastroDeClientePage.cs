@@ -51,14 +51,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             return valorTipoPessoa.Equals("FÍSICA");
         }
 
-        public bool PreencherCampos()
+        public bool PreencherCamposSimples()
         {
             try
             {
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, _dadosDoCliente["Nome"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"]);
-                EsperarAcaoEmSegundos(5);
+                EsperarAcaoEmSegundos(3);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
                 return true;
             }
@@ -72,28 +72,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, _dadosDoCliente["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cpf"]);
+                PreencherCamposSimples();
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoRg, _dadosDoCliente["Rg"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoApelido, _dadosDoCliente["Apelido"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoDataDeNascimento, _dadosDoCliente["DataNascimento"]);
                 DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoSexo, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoEstadoCivil, 1);
-                DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"]);
-                EsperarAcaoEmSegundos(3);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoComplemento, _dadosDoCliente["Complemento"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoProfissao, _dadosDoCliente["Profissao"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObservacao, _dadosDoCliente["Observacao"]);
-                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 3);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoPrimario"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoPrimario"]);
-                DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
-                EsperarAcaoEmSegundos(2);
-                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 1);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoSecundario"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoSecundario"]);
-                DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
+                CadastrarContatosDoCliente();
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoAvisoDeVenda, _dadosDoCliente["AvisoDeVenda"]);
                 return true;
             }
@@ -101,6 +89,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             {
                 return false;
             }
+        }
+
+        private void CadastrarContatosDoCliente()
+        {
+            DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 3);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoPrimario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente,
+                _dadosDoCliente["ObservacaoContatoPrimario"]);
+            DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
+            EsperarAcaoEmSegundos(2);
+            DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 1);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente,
+                _dadosDoCliente["ContatoSecundario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente,
+                _dadosDoCliente["ObservacaoContatoSecundario"]);
+            DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
         }
 
         public bool GravarCadastro()

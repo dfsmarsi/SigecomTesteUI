@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
             cadastroDeFornecedorPage.VerificarTipoPessoa();
             
             // Act
-            cadastroDeFornecedorPage.PreencherCampos();
+            cadastroDeFornecedorPage.PreencherCamposSimples();
             cadastroDeFornecedorPage.GravarCadastro();
             
             // Assert

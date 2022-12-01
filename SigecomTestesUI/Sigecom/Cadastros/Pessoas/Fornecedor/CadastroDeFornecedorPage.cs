@@ -71,7 +71,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             return valorTipoPessoa == "FÍSICA";
         }
 
-        public bool PreencherCampos()
+        public bool PreencherCamposSimples()
         {
             try
             {
@@ -92,16 +92,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
         {
             try
             {
-                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNome, _dadosDeFornecedor["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoCpf, _dadosDeFornecedor["Cpf"]);
+                PreencherCamposSimples();
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoRg, _dadosDeFornecedor["Rg"]);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoApelido, _dadosDeFornecedor["Apelido"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeFornecedorModel.ElementoDataDeNascimento, _dadosDeFornecedor["DataNascimento"]);
                 DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoSexo, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoEstadoCivil, 1);
-                DriverService.DigitarNoCampoEnterId(CadastroDeFornecedorModel.ElementoCep, _dadosDeFornecedor["Cep"]);
-                EsperarAcaoEmSegundos(3);
-                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNumero, _dadosDeFornecedor["Numero"]);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoComplemento, _dadosDeFornecedor["Complemento"]);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoObservacao, _dadosDeFornecedor["Observacao"]);
                 DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoTipoContato, 3);
