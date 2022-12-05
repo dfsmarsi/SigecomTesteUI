@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
 {
@@ -33,24 +32,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
             var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
             var cadastroDeClienteFisicoPage = resolveCadastroDeClienteFisicoPage(DriverService, _dadosDoCliente);
             // Arange
-            cadastroDeClienteFisicoPage.ClicarNaOpcaoDoMenu();
-            cadastroDeClienteFisicoPage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeClienteFisicoPage.ClicarBotaoNovo();
-            cadastroDeClienteFisicoPage.VerificarTipoPessoa();
+            cadastroDeClienteFisicoPage.AcessarTelaDeCadastroDeCliente();
 
             // Act
             cadastroDeClienteFisicoPage.PreencherCamposSimples();
             cadastroDeClienteFisicoPage.GravarCadastro();
 
             // Assert
-            cadastroDeClienteFisicoPage.ClicarBotaoPesquisar(); 
-            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
-            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
-            pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
-            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
-            Assert.True(existeClienteNaPesquisa);
-            pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
-            cadastroDeClienteFisicoPage.FecharJanelaComEsc();
+            cadastroDeClienteFisicoPage.PesquisarClienteGravado(beginLifetimeScope);
         }
     }
 }

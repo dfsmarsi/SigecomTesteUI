@@ -2,8 +2,11 @@
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using System.Collections.Generic;
+using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
@@ -138,6 +141,26 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             {
                 throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
+        }
+
+        public void AcessarTelaDeCadastroDeCliente()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoNovo();
+            VerificarTipoPessoa();
+        }
+
+        public void PesquisarClienteGravado(ILifetimeScope beginLifetimeScope)
+        {
+            ClicarBotaoPesquisar();
+            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
+            pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
+            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
+            Assert.True(existeClienteNaPesquisa);
+            pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
+            FecharJanelaComEsc();
         }
     }
 }

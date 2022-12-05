@@ -151,7 +151,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             VerificarTipoPessoa();
         }
 
-        public void PesquisarClienteGravado(ILifetimeScope beginLifetimeScope)
+        public void PesquisarColaboradorGravado(ILifetimeScope beginLifetimeScope)
         {
             ClicarBotaoPesquisar();
             var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();

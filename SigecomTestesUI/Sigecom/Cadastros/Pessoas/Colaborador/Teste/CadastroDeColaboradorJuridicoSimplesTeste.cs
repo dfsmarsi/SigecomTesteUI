@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
             cadastroDeColaboradorJuridicoPage.GravarCadastro();
 
             // Assert
-            cadastroDeColaboradorJuridicoPage.PesquisarClienteGravado(beginLifetimeScope);
+            cadastroDeColaboradorJuridicoPage.PesquisarColaboradorGravado(beginLifetimeScope);
         }
     }
 }
