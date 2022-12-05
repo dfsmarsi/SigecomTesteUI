@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
 {
@@ -33,24 +32,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
             var resolveCadastroDeColaboradorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorFisicoPage>>();
             var cadastroDeColaboradorPage = resolveCadastroDeColaboradorPage(DriverService, _dadosDeColaborador);
             // Arange
-            cadastroDeColaboradorPage.ClicarNaOpcaoDoMenu();
-            cadastroDeColaboradorPage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeColaboradorPage.ClicarBotaoNovo();
-            cadastroDeColaboradorPage.VerificarTipoPessoa();
+            cadastroDeColaboradorPage.AcessarTelaDeCadastroDeColaborador();
 
             // Act
             cadastroDeColaboradorPage.PreencherCamposSimples();
             cadastroDeColaboradorPage.GravarCadastro();
 
             // Assert
-            cadastroDeColaboradorPage.ClicarBotaoPesquisar();
-            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
-            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
-            pesquisaDePessoaPage.PesquisarPessoa("colaborador", _dadosDeColaborador["Nome"]);
-            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeColaborador["Nome"]);
-            Assert.True(existeClienteNaPesquisa);
-            pesquisaDePessoaPage.FecharJanelaComEsc("colaborador");
-            cadastroDeColaboradorPage.FecharJanelaCadastroColaboradorComEsc();
+            cadastroDeColaboradorPage.PesquisarColaboradorGravado(beginLifetimeScope);
         }
     }
 }

@@ -30,8 +30,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             }
             catch (Exception exception)
             {
-                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
@@ -44,8 +43,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             }
             catch (Exception exception)
             {
-                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
@@ -125,8 +123,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             }
             catch (Exception exception)
             {
-                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
@@ -139,8 +136,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             }
             catch (Exception exception)
             {
-                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
     }

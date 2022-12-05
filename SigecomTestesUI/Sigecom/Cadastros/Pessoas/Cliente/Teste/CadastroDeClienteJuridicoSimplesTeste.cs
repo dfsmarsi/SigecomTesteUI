@@ -12,10 +12,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
-            {"Nome","EMPRESA TESTE SIMPLES"},
-            {"Cnpj","21010848000171"},
+            {"Nome","EMPRESA CLIENTE TESTE COMPLETO"},
+            {"Cnpj","77753844000138"},
             {"Cep","15700082"},
-            {"Numero","623"}
+            {"Numero","123"}
         };
 
         [Test(Description = "Cadastro de cliente jurídico somente campos obrigatórios com endereço")]
@@ -30,16 +30,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoJuridicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteJuridicoPage>>();
-            var cadastroDeProdutoJuridicoPage = resolveCadastroDeProdutoJuridicoPage(DriverService, _dadosDoCliente);
-            cadastroDeProdutoJuridicoPage.AcessarTelaDeCadastroDeCliente();
+            var resolveCadastroDeClienteJuridicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteJuridicoPage>>();
+            var cadastroDeClienteJuridicoPage = resolveCadastroDeClienteJuridicoPage(DriverService, _dadosDoCliente);
+            cadastroDeClienteJuridicoPage.AcessarTelaDeCadastroDeCliente();
 
             // Act
-            cadastroDeProdutoJuridicoPage.PreencherCamposSimples();
-            cadastroDeProdutoJuridicoPage.GravarCadastro();
+            cadastroDeClienteJuridicoPage.PreencherCamposSimples();
+            cadastroDeClienteJuridicoPage.GravarCadastro();
 
             // Assert
-            cadastroDeProdutoJuridicoPage.PesquisarClienteGravado(beginLifetimeScope);
+            cadastroDeClienteJuridicoPage.PesquisarClienteGravado(beginLifetimeScope);
         }
     }
 }

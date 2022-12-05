@@ -8,12 +8,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
 {
     public class PesquisaDePessoaPage : PageObjectModel
     {
-        public PesquisaDePessoaPage(DriverService driver) : base(driver) { }
+        public PesquisaDePessoaPage(DriverService driver) : base(driver)
+        {
+        }
 
         public void PesquisarPessoa(string tipoPessoa, string nomePessoa)
         {
             DriverService.ValidarElementoExistentePorNome(PesquisaDePessoaModel.TelaPesquisaPessoaPrefixo + tipoPessoa);
-            DriverService.DigitarNoCampoEnterId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa);            
+            DriverService.DigitarNoCampoEnterId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa);
         }
 
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)
@@ -32,8 +34,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
             }
             catch (Exception exception)
             {
-                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
     }

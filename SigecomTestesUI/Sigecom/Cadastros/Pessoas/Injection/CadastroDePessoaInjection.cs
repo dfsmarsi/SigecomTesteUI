@@ -26,6 +26,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
                 containerBuilder.RegisterType<CadastroDeColaboradorFisicoPage>();
                 containerBuilder.RegisterType<CadastroDeColaboradorFisicoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeColaboradorFisicoCompletoTeste>();
+                containerBuilder.RegisterType<CadastroDeColaboradorJuridicoPage>();
+                containerBuilder.RegisterType<CadastroDeColaboradorJuridicoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorPage>();
                 containerBuilder.RegisterType<CadastroDeFornecedorFisicoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorFisicoCompletoTeste>();

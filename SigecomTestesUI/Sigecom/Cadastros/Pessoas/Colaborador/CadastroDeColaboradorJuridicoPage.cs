@@ -1,61 +1,31 @@
-﻿using SigecomTestesUI.Config;
+﻿using Autofac;
+using NUnit.Framework;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model;
-using System;
-using System.Collections.Generic;
-using Autofac;
-using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {
-    public class CadastroDeColaboradorFisicoPage : PageObjectModel
+    public class CadastroDeColaboradorJuridicoPage : PageObjectModel
     {
         private readonly Dictionary<string, string> _dadosDeColaborador;
 
-        public CadastroDeColaboradorFisicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) :
+        public CadastroDeColaboradorJuridicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) :
             base(driver) =>
             _dadosDeColaborador = dadosDoCliente;
 
-        public bool ClicarNaOpcaoDoMenu()
-        {
-            try
-            {
-                AcessarOpcaoMenu(CadastroDeColaboradorModel.BotaoMenu);
-                return true;
-            }
-            catch (Exception exception)
-            {
-                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-            }
-        }
+        private void ClicarNaOpcaoDoMenu() =>
+            AcessarOpcaoMenu(CadastroDeColaboradorModel.BotaoMenu);
 
-        public bool ClicarNaOpcaoDoSubMenu()
-        {
-            try
-            {
-                AcessarOpcaoSubMenu(CadastroDeColaboradorModel.BotaoSubMenu);
-                return true;
-            }
-            catch (Exception exception)
-            {
-                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-            }
-        }
+        private void ClicarNaOpcaoDoSubMenu() =>
+            AcessarOpcaoSubMenu(CadastroDeColaboradorModel.BotaoSubMenu);
 
-        public bool ClicarBotaoNovo()
-        {
-            try
-            {
-                DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoNovo);
-                return true;
-            }
-            catch (Exception exception)
-            {
-                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-            }
-        }
+        private void ClicarBotaoNovo() =>
+            ClicarBotaoNovo(CadastroDeColaboradorModel.BotaoNovo);
 
         public bool ClicarBotaoPesquisar()
         {
@@ -73,19 +43,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         public bool VerificarTipoPessoa()
         {
             var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoTipoPessoa);
-            return valorTipoPessoa.Equals("FÍSICA");
+            return valorTipoPessoa.Equals("JURÍDICA");
         }
 
         public bool PreencherCamposSimples()
         {
             try
             {
+                DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoPessoa, 1);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, _dadosDeColaborador["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCpf, _dadosDeColaborador["Cpf"]);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCpf, _dadosDeColaborador["Cnpj"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeColaboradorModel.ElementoCep, _dadosDeColaborador["Cep"]);
                 EsperarAcaoEmSegundos(3);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero,
-                    _dadosDeColaborador["Numero"]);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero, _dadosDeColaborador["Numero"]);
                 return true;
             }
             catch
@@ -99,18 +69,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             try
             {
                 PreencherCamposSimples();
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoRg, _dadosDeColaborador["Rg"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoApelido,
-                    _dadosDeColaborador["Apelido"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeColaboradorModel.ElementoDataDeNascimento,
-                    _dadosDeColaborador["DataNascimento"]);
-                DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoSexo, 1);
-                DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoEstadoCivil, 1);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoRg, _dadosDeColaborador["Ie"]);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoInscricaoSuframa,
+                    _dadosDeColaborador["Suframa"]);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoApelido, _dadosDeColaborador["NomeFantasia"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoComplemento,
                     _dadosDeColaborador["Complemento"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoObservacao,
                     _dadosDeColaborador["Observacao"]);
-                CadastrarContatosDoColaborador();
+                CadastrarContatosDoCliente();
                 CadastrarInformacoesDoFuncionarioNoCadastroDeColaborador();
                 return true;
             }
@@ -120,7 +87,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             }
         }
 
-        private void CadastrarContatosDoColaborador()
+        private void CadastrarContatosDoCliente()
         {
             DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoContato, 3);
             DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoContatoDoCliente,
@@ -164,12 +131,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             }
         }
 
-        public bool FecharJanelaCadastroColaboradorComEsc()
+        private void FecharJanelaComEsc()
         {
             try
             {
                 DriverService.FecharJanelaComEsc(CadastroDeColaboradorModel.TelaCadastroColaborador);
-                return true;
             }
             catch (Exception exception)
             {
@@ -185,7 +151,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             VerificarTipoPessoa();
         }
 
-        public void PesquisarColaboradorGravado(ILifetimeScope beginLifetimeScope)
+        public void PesquisarClienteGravado(ILifetimeScope beginLifetimeScope)
         {
             ClicarBotaoPesquisar();
             var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
@@ -194,7 +160,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeColaborador["Nome"]);
             Assert.True(existeClienteNaPesquisa);
             pesquisaDePessoaPage.FecharJanelaComEsc("colaborador");
-            FecharJanelaCadastroColaboradorComEsc();
+            FecharJanelaComEsc();
         }
     }
 }

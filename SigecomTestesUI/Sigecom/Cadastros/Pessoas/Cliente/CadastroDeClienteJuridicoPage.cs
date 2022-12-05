@@ -35,8 +35,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             }
             catch (Exception exception)
             {
-                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
@@ -88,15 +87,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 3);
             DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoPrimario"]);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente,
-                _dadosDoCliente["ObservacaoContatoPrimario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoPrimario"]);
             DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
             EsperarAcaoEmSegundos(2);
             DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 1);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente,
-                _dadosDoCliente["ContatoSecundario"]);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente,
-                _dadosDoCliente["ObservacaoContatoSecundario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoSecundario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoSecundario"]); 
             DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
         }
 
@@ -109,8 +105,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             }
             catch (Exception exception)
             {
-                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
