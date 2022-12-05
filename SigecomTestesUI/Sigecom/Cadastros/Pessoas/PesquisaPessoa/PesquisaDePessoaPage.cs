@@ -1,6 +1,7 @@
 ﻿using System;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
@@ -29,8 +30,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
                 DriverService.FecharJanelaComEsc(nomeJanela);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
                 return false;
             }
         }

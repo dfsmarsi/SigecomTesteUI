@@ -1,8 +1,12 @@
-﻿using SigecomTestesUI.Config;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
+using NUnit.Framework;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
-using System;
-using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
@@ -13,24 +17,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         public CadastroDeClienteJuridicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) =>
             _dadosDoCliente = dadosDoCliente;
 
-        public bool ClicarNaOpcaoDoMenu() =>
+        private void ClicarNaOpcaoDoMenu() => 
             AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
 
-        public bool ClicarNaOpcaoDoSubMenu() =>
+        private void ClicarNaOpcaoDoSubMenu() => 
             AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
 
-        public bool ClicarBotaoNovo()
-        {
-            try
-            {
-                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoNovo);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+        private void ClicarBotaoNovo() =>
+            ClicarBotaoNovo(CadastroDeClienteModel.BotaoNovo);
 
         public bool ClicarBotaoPesquisar()
         {
@@ -39,8 +33,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
                 return false;
             }
         }
@@ -55,9 +50,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoPessoa, 2);
+                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoPessoa, 1);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, _dadosDoCliente["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cnpf"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cnpj"]);
                 DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"]);
                 EsperarAcaoEmSegundos(3);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
@@ -74,13 +69,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             try
             {
                 PreencherCamposSimples();
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoRg, _dadosDoCliente["Rg"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoApelido, _dadosDoCliente["Apelido"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoDataDeNascimento, _dadosDoCliente["DataNascimento"]);
-                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoSexo, 1);
-                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoEstadoCivil, 1);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoRg, _dadosDoCliente["Ie"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoInscricaoSuframa, _dadosDoCliente["Suframa"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoApelido, _dadosDoCliente["NomeFantasia"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoComplemento, _dadosDoCliente["Complemento"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoProfissao, _dadosDoCliente["Profissao"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObservacao, _dadosDoCliente["Observacao"]);
                 CadastrarContatosDoCliente();
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoAvisoDeVenda, _dadosDoCliente["AvisoDeVenda"]);
@@ -115,23 +107,43 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoGravar);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
                 return false;
             }
         }
 
-        public bool FecharJanelaComEsc()
+        private void FecharJanelaComEsc()
         {
             try
             {
                 DriverService.FecharJanelaComEsc(CadastroDeClienteModel.ElementoTelaCadastroCliente);
-                return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
+        }
+
+        public void AcessarTelaDeCadastroDeCliente()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoNovo();
+            VerificarTipoPessoa();
+        }
+
+        public void PesquisarClienteGravado(ILifetimeScope beginLifetimeScope)
+        {
+            ClicarBotaoPesquisar();
+            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
+            pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
+            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
+            Assert.True(existeClienteNaPesquisa);
+            pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
+            FecharJanelaComEsc();
         }
     }
 }

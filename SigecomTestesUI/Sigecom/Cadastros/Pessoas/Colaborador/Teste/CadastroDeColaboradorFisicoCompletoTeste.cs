@@ -45,7 +45,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
         public void CadastrarColaboradorCompleto()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeColaboradorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorPage>>();
+            var resolveCadastroDeColaboradorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorFisicoPage>>();
             var cadastroDeColaboradorPage = resolveCadastroDeColaboradorPage(DriverService, _dadosDeColaborador);
             // Arange
             cadastroDeColaboradorPage.ClicarNaOpcaoDoMenu();

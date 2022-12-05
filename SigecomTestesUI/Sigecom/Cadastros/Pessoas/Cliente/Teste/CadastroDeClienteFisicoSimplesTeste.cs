@@ -30,27 +30,27 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
         public void CadastrarClienteFisicoSomenteCamposObrigatorios()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
-            var cadastroDeClientePage = resolveCadastroDeProdutoPage(DriverService, _dadosDoCliente);
+            var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
+            var cadastroDeClienteFisicoPage = resolveCadastroDeClienteFisicoPage(DriverService, _dadosDoCliente);
             // Arange
-            cadastroDeClientePage.ClicarNaOpcaoDoMenu();
-            cadastroDeClientePage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeClientePage.ClicarBotaoNovo();
-            cadastroDeClientePage.VerificarTipoPessoa();
+            cadastroDeClienteFisicoPage.ClicarNaOpcaoDoMenu();
+            cadastroDeClienteFisicoPage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeClienteFisicoPage.ClicarBotaoNovo();
+            cadastroDeClienteFisicoPage.VerificarTipoPessoa();
 
             // Act
-            cadastroDeClientePage.PreencherCamposSimples();
-            cadastroDeClientePage.GravarCadastro();
+            cadastroDeClienteFisicoPage.PreencherCamposSimples();
+            cadastroDeClienteFisicoPage.GravarCadastro();
 
             // Assert
-            cadastroDeClientePage.ClicarBotaoPesquisar(); 
+            cadastroDeClienteFisicoPage.ClicarBotaoPesquisar(); 
             var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
             var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
             pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
             var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
             Assert.True(existeClienteNaPesquisa);
             pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
-            cadastroDeClientePage.FecharJanelaComEsc();
+            cadastroDeClienteFisicoPage.FecharJanelaComEsc();
         }
     }
 }

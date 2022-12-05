@@ -3,6 +3,7 @@ using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using System.Collections.Generic;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
@@ -10,13 +11,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
     {
         private readonly Dictionary<string, string> _dadosDoCliente;
 
-        public CadastroDeClienteFisicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) => 
+        public CadastroDeClienteFisicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) :
+            base(driver) =>
             _dadosDoCliente = dadosDoCliente;
 
-        public bool ClicarNaOpcaoDoMenu() => 
+        public bool ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
 
-        public bool ClicarNaOpcaoDoSubMenu() => 
+        public bool ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
 
         public bool ClicarBotaoNovo()
@@ -26,8 +28,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoNovo);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
                 return false;
             }
         }
@@ -39,8 +42,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
                 return false;
             }
         }
@@ -75,14 +79,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 PreencherCamposSimples();
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoRg, _dadosDoCliente["Rg"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoApelido, _dadosDoCliente["Apelido"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoDataDeNascimento, _dadosDoCliente["DataNascimento"]);
+                DriverService.DigitarNoCampoEnterId(CadastroDeClienteModel.ElementoDataDeNascimento,
+                    _dadosDoCliente["DataNascimento"]);
                 DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoSexo, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoEstadoCivil, 1);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoComplemento, _dadosDoCliente["Complemento"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoComplemento,
+                    _dadosDoCliente["Complemento"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoProfissao, _dadosDoCliente["Profissao"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObservacao, _dadosDoCliente["Observacao"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObservacao,
+                    _dadosDoCliente["Observacao"]);
                 CadastrarContatosDoCliente();
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoAvisoDeVenda, _dadosDoCliente["AvisoDeVenda"]);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoAvisoDeVenda,
+                    _dadosDoCliente["AvisoDeVenda"]);
                 return true;
             }
             catch
@@ -94,7 +102,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         private void CadastrarContatosDoCliente()
         {
             DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 3);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoPrimario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente,
+                _dadosDoCliente["ContatoPrimario"]);
             DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente,
                 _dadosDoCliente["ObservacaoContatoPrimario"]);
             DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
@@ -114,8 +123,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoGravar);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
                 return false;
             }
         }
@@ -127,8 +137,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.FecharJanelaComEsc(CadastroDeClienteModel.ElementoTelaCadastroCliente);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _ = new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
                 return false;
             }
         }

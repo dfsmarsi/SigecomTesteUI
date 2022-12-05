@@ -39,6 +39,19 @@ namespace SigecomTestesUI.Config
             }
         }
 
+        public bool ClicarBotaoNovo(string novo)
+        {
+            try
+            {
+                DriverService.ClicarBotaoName(novo);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public void EsperarAcaoEmSegundos(int tempoEmSegundos) => 
             Thread.Sleep(TimeSpan.FromSeconds(tempoEmSegundos));
 
