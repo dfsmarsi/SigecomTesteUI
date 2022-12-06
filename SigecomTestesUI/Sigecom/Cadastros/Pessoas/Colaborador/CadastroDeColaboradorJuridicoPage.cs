@@ -24,15 +24,23 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CadastroDeColaboradorModel.BotaoSubMenu);
 
-        private void ClicarBotaoNovo() =>
-            ClicarBotaoNovo(CadastroDeColaboradorModel.BotaoNovo);
+        private void ClicarBotaoNovo()
+        {
+            try
+            {
+                ClicarBotaoNovo(CadastroDeColaboradorModel.BotaoNovo);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
 
-        public bool ClicarBotaoPesquisar()
+        private void ClicarBotaoPesquisar()
         {
             try
             {
                 DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoPesquisar);
-                return true;
             }
             catch (Exception exception)
             {

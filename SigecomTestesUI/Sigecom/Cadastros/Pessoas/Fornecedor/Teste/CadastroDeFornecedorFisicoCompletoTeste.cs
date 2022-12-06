@@ -3,7 +3,6 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System;
 using System.Collections.Generic;
 
@@ -28,7 +27,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
             {"ObservacaoContatoSecundario", "Teste"}
         };
 
-        [Test(Description = "Cadastro de fornecedor completo")]
+        [Test(Description = "Cadastro de fornecedor fisico completo")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("2")]
@@ -36,30 +35,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Fornecedor")]
-        public void CadastrarFornecedorCompleto()
+        public void CadastrarFornecedorFisicoCompleto()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeFornecedorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorPage>>();
+            var resolveCadastroDeFornecedorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorFisicoPage>>();
             var cadastroDeFornecedorPage = resolveCadastroDeFornecedorPage(DriverService, _dadosDeFornecedor);
             // Arrange
-            cadastroDeFornecedorPage.ClicarNaOpcaoDoMenu();
-            cadastroDeFornecedorPage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeFornecedorPage.ClicarBotaoNovo();
-            cadastroDeFornecedorPage.VerificarTipoPessoa();
+            cadastroDeFornecedorPage.AcessarTelaDeCadastroDeFornecedor();
 
             // Act
             cadastroDeFornecedorPage.PreencherCamposCompleto();
             cadastroDeFornecedorPage.GravarCadastro();
 
             // Assert
-            cadastroDeFornecedorPage.ClicarBotaoPesquisar();
-            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
-            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
-            pesquisaDePessoaPage.PesquisarPessoa("fornecedor", _dadosDeFornecedor["Nome"]);
-            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeFornecedor["Nome"]);
-            Assert.True(existeClienteNaPesquisa);
-            pesquisaDePessoaPage.FecharJanelaComEsc("fornecedor");
-            cadastroDeFornecedorPage.FecharJanelaCadastroFornecedorComEsc();
+            cadastroDeFornecedorPage.PesquisarFornecedorGravado(beginLifetimeScope);
         }
     }
 }

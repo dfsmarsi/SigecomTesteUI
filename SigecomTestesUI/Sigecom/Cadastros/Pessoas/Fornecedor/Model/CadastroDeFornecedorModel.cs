@@ -15,6 +15,7 @@
         public static string ElementoNumero => "txtNumero";
 
         public static string ElementoRg => "txtRG";
+        public static string ElementoInscricaoSuframa => "txtInscricaoSuframa";
         public static string ElementoApelido => "txtApelido";
         public static string ElementoDataDeNascimento => "txtDataNascimento";
         public static string ElementoComplemento => "txtComplemento";

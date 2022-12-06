@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
 {
@@ -30,27 +29,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
         public void CadastrarFornecedorSomenteCamposObrigatorios()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeFornecedorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorPage>>();
-            var cadastroDeFornecedorPage = resolveCadastroDeFornecedorPage(DriverService, _dadosDeFornecedor);
+            var resolveCadastroDeFornecedorFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorFisicoPage>>();
+            var cadastroDeFornecedorFisicoPage = resolveCadastroDeFornecedorFisicoPage(DriverService, _dadosDeFornecedor);
             // Arrange
-            cadastroDeFornecedorPage.ClicarNaOpcaoDoMenu();
-            cadastroDeFornecedorPage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeFornecedorPage.ClicarBotaoNovo();
-            cadastroDeFornecedorPage.VerificarTipoPessoa();
+            cadastroDeFornecedorFisicoPage.AcessarTelaDeCadastroDeFornecedor();
             
             // Act
-            cadastroDeFornecedorPage.PreencherCamposSimples();
-            cadastroDeFornecedorPage.GravarCadastro();
+            cadastroDeFornecedorFisicoPage.PreencherCamposSimples();
+            cadastroDeFornecedorFisicoPage.GravarCadastro();
             
             // Assert
-            cadastroDeFornecedorPage.ClicarBotaoPesquisar(); 
-            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
-            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
-            pesquisaDePessoaPage.PesquisarPessoa("fornecedor", _dadosDeFornecedor["Nome"]);
-            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeFornecedor["Nome"]);
-            Assert.True(existeClienteNaPesquisa);
-            pesquisaDePessoaPage.FecharJanelaComEsc("fornecedor");
-            cadastroDeFornecedorPage.FecharJanelaCadastroFornecedorComEsc();
+            cadastroDeFornecedorFisicoPage.PesquisarFornecedorGravado(beginLifetimeScope);
         }
     }
 }

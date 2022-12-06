@@ -1,26 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 {
-    public class CadastroDeFornecedorPage : PageObjectModel
+    public class CadastroDeFornecedorFisicoPage : PageObjectModel
     {
         private readonly Dictionary<string, string> _dadosDeFornecedor;
 
-        public CadastroDeFornecedorPage(DriverService driver, Dictionary<string, string> dadosDeFornecedor) :
+        public CadastroDeFornecedorFisicoPage(DriverService driver, Dictionary<string, string> dadosDeFornecedor) :
             base(driver) =>
             _dadosDeFornecedor = dadosDeFornecedor;
 
-        public bool ClicarNaOpcaoDoMenu()
+        private void ClicarNaOpcaoDoMenu()
         {
             try
             {
                 AcessarOpcaoMenu(CadastroDeFornecedorModel.BotaoMenu);
-                return true;
             }
             catch (Exception exception)
             {
@@ -28,12 +30,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             }
         }
 
-        public bool ClicarNaOpcaoDoSubMenu()
+        private void ClicarNaOpcaoDoSubMenu()
         {
             try
             {
                 AcessarOpcaoSubMenu(CadastroDeFornecedorModel.BotaoSubMenu);
-                return true;
             }
             catch (Exception exception)
             {
@@ -41,12 +42,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             }
         }
 
-        public bool ClicarBotaoNovo()
+        private void ClicarBotaoNovo()
         {
             try
             {
                 DriverService.ClicarBotaoName(CadastroDeFornecedorModel.BotaoNovo);
-                return true;
             }
             catch (Exception exception)
             {
@@ -54,12 +54,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             }
         }
 
-        public bool ClicarBotaoPesquisar()
+        private void ClicarBotaoPesquisar()
         {
             try
             {
                 DriverService.ClicarBotaoName(CadastroDeFornecedorModel.BotaoPesquisar);
-                return true;
             }
             catch (Exception exception)
             {
@@ -152,6 +151,26 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             {
                 throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
+        }
+
+        public void AcessarTelaDeCadastroDeFornecedor()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoNovo();
+            VerificarTipoPessoa();
+        }
+
+        public void PesquisarFornecedorGravado(ILifetimeScope beginLifetimeScope)
+        {
+            ClicarBotaoPesquisar();
+            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
+            pesquisaDePessoaPage.PesquisarPessoa("fornecedor", _dadosDeFornecedor["Nome"]);
+            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDeFornecedor["Nome"]);
+            Assert.True(existeClienteNaPesquisa);
+            pesquisaDePessoaPage.FecharJanelaComEsc("fornecedor");
+            FecharJanelaCadastroFornecedorComEsc();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
             {"Numero","333"}
         };
 
-        [Test(Description = "Cadastro de Colaborador somente campos obrigatórios com endereço")]
+        [Test(Description = "Cadastro de Colaborador fisico somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("3")]
@@ -26,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
         [AllureOwner("Douglas")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Colaborador")]
-        public void CadastrarColaboradorSomenteCamposObrigatorios()
+        public void CadastrarColaboradorFisicoSomenteCamposObrigatorios()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeColaboradorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorFisicoPage>>();

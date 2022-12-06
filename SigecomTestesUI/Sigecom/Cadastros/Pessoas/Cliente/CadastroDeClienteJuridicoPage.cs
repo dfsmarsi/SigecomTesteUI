@@ -26,12 +26,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         private void ClicarBotaoNovo() =>
             ClicarBotaoNovo(CadastroDeClienteModel.BotaoNovo);
 
-        public bool ClicarBotaoPesquisar()
+        private void ClicarBotaoPesquisar()
         {
             try
             {
                 DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
-                return true;
             }
             catch (Exception exception)
             {
