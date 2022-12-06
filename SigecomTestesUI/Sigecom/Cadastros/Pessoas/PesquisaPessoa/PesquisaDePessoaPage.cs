@@ -1,18 +1,21 @@
 ﻿using System;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
 {
     public class PesquisaDePessoaPage : PageObjectModel
     {
-        public PesquisaDePessoaPage(DriverService driver) : base(driver) { }
+        public PesquisaDePessoaPage(DriverService driver) : base(driver)
+        {
+        }
 
         public void PesquisarPessoa(string tipoPessoa, string nomePessoa)
         {
             DriverService.ValidarElementoExistentePorNome(PesquisaDePessoaModel.TelaPesquisaPessoaPrefixo + tipoPessoa);
-            DriverService.DigitarNoCampoEnterId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa);            
+            DriverService.DigitarNoCampoEnterId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa);
         }
 
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)
@@ -29,9 +32,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
                 DriverService.FecharJanelaComEsc(nomeJanela);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
     }

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using System;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
 {
@@ -19,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
             {"Numero","123"}
         };
 
-        [Test(Description = "Cadastro de cliente somente campos obrigatórios com endereço")]
+        [Test(Description = "Cadastro de cliente físico somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -27,30 +26,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
         [AllureOwner("Douglas")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Cliente")]
-        public void CadastrarClienteSomenteCamposObrigatorios()
+        public void CadastrarClienteFisicoSomenteCamposObrigatorios()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClientePage>>();
-            var cadastroDeClientePage = resolveCadastroDeProdutoPage(DriverService, _dadosDoCliente);
+            var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
+            var cadastroDeClienteFisicoPage = resolveCadastroDeClienteFisicoPage(DriverService, _dadosDoCliente);
             // Arange
-            cadastroDeClientePage.ClicarNaOpcaoDoMenu();
-            cadastroDeClientePage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeClientePage.ClicarBotaoNovo();
-            cadastroDeClientePage.VerificarTipoPessoa();
+            cadastroDeClienteFisicoPage.AcessarTelaDeCadastroDeCliente();
 
             // Act
-            cadastroDeClientePage.PreencherCamposSimples();
-            cadastroDeClientePage.GravarCadastro();
+            cadastroDeClienteFisicoPage.PreencherCamposSimples();
+            cadastroDeClienteFisicoPage.GravarCadastro();
 
             // Assert
-            cadastroDeClientePage.ClicarBotaoPesquisar(); 
-            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
-            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
-            pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
-            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
-            Assert.True(existeClienteNaPesquisa);
-            pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
-            cadastroDeClientePage.FecharJanelaComEsc();
+            cadastroDeClienteFisicoPage.PesquisarClienteGravado(beginLifetimeScope);
         }
     }
 }

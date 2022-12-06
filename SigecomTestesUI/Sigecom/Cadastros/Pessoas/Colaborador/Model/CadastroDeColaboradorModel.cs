@@ -11,6 +11,7 @@
         public static string ElementoTipoPessoa => "cbxPessoaClassificacao";
         public static string ElementoNome => "txtNome";
         public static string ElementoCpf => "txtCPF";
+        public static string ElementoInscricaoSuframa => "txtInscricaoSuframa";
         public static string ElementoCep => "txtCEP";
         public static string ElementoNumero => "txtNumero";
         public static string ElementoRg => "txtRG";

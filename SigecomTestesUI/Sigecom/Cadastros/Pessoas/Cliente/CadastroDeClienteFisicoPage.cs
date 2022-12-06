@@ -2,33 +2,55 @@
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using System.Collections.Generic;
+using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
 {
-    public class CadastroDeClientePage : PageObjectModel
+    public class CadastroDeClienteFisicoPage : PageObjectModel
     {
         private readonly Dictionary<string, string> _dadosDoCliente;
 
-        public CadastroDeClientePage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) => 
+        public CadastroDeClienteFisicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) :
+            base(driver) =>
             _dadosDoCliente = dadosDoCliente;
 
-        public bool ClicarNaOpcaoDoMenu() => 
-            AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
-
-        public bool ClicarNaOpcaoDoSubMenu() => 
-            AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
-
-        public bool ClicarBotaoNovo()
+        private void ClicarNaOpcaoDoMenu()
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoNovo);
-                return true;
+                AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
+
+        private void ClicarNaOpcaoDoSubMenu()
+        {
+            try
+            {
+                AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
+
+        private void ClicarBotaoNovo()
+        {
+            try
+            {
+                ClicarBotao(CadastroDeClienteModel.BotaoNovo);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
@@ -36,12 +58,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
+                ClicarBotao(CadastroDeClienteModel.BotaoPesquisar);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
@@ -95,15 +117,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 3);
             DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoPrimario"]);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente,
-                _dadosDoCliente["ObservacaoContatoPrimario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoPrimario"]);
             DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
             EsperarAcaoEmSegundos(2);
             DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 1);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente,
-                _dadosDoCliente["ContatoSecundario"]);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente,
-                _dadosDoCliente["ObservacaoContatoSecundario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoSecundario"]);
+            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoSecundario"]);
             DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
         }
 
@@ -114,9 +133,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoGravar);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
         }
 
@@ -127,10 +146,30 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
                 DriverService.FecharJanelaComEsc(CadastroDeClienteModel.ElementoTelaCadastroCliente);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
             }
+        }
+
+        public void AcessarTelaDeCadastroDeCliente()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoNovo();
+            VerificarTipoPessoa();
+        }
+
+        public void PesquisarClienteGravado(ILifetimeScope beginLifetimeScope)
+        {
+            ClicarBotaoPesquisar();
+            var resolvePesquisaDePessoaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>();
+            var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
+            pesquisaDePessoaPage.PesquisarPessoa("cliente", _dadosDoCliente["Nome"]);
+            var existeClienteNaPesquisa = pesquisaDePessoaPage.VerificarSeExistePessoaNaGrid(_dadosDoCliente["Nome"]);
+            Assert.True(existeClienteNaPesquisa);
+            pesquisaDePessoaPage.FecharJanelaComEsc("cliente");
+            FecharJanelaComEsc();
         }
     }
 }
