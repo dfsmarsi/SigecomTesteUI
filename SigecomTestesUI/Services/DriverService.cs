@@ -79,14 +79,6 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(Keys.Enter);
         }
 
-        public void DigitarNoCampoIdEnterComF5(string idElemento, string texto)
-        {
-            var elemento = _driver.FindElementByAccessibilityId(idElemento);
-            elemento.SendKeys(texto);
-            elemento.SendKeys(Keys.Enter);
-            elemento.SendKeys(Keys.F5);
-        }
-
         public void DigitarNoCampoEnterName(string nomeElemento, string texto)
         {
             var elemento = _driver.FindElementByAccessibilityId(nomeElemento);
@@ -148,6 +140,9 @@ namespace SigecomTestesUI.Services
 
         public void AbrirPesquisaDeProdutoComF9(string nomeJanela) =>
             _driver.FindElementByName(nomeJanela).SendKeys(Keys.F9);
+
+        public void GravarCadastroDeProdutoAoEditar(string nomeJanela) =>
+            _driver.FindElementByName(nomeJanela).SendKeys(Keys.F5);
 
         public void Dispose()
         {

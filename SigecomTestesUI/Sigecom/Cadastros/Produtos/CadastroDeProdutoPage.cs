@@ -132,6 +132,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             }
         }
 
+        public void GravarAoEditarEFecharATela()
+        {
+            DriverService.GravarCadastroDeProdutoAoEditar(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
+            FecharJanelaCadastroDeProdutoComEsc();
+        }
+
         public bool FecharJanelaCadastroDeProdutoComEsc()
         {
             try

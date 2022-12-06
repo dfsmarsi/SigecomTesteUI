@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Autofac;
+﻿using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
+using System;
+using System.Linq;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
 {
@@ -19,20 +18,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
             DriverService.DigitarNoCampoEnterId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto);
         }
 
-        public void PesquisarProdutoComConfirmar(string nomeDoProduto)
-        {
-            DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
-            DriverService.DigitarNoCampoIdEnterComF5(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto);
-        }
-
         public bool VerificarSeExisteProdutoNaGrid(string nomeDoProduto)
         {
             var nomeDoProdutoNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");
             return nomeDoProduto.Equals(nomeDoProdutoNaGrid);
         }
 
-        public bool VerificarSeCarregouOsDadosDoProduto(Dictionary<string, string> dadosDeProduto) => 
-            DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto).Equals(dadosDeProduto["NomeFinal"]);
+        public bool VerificarSeCarregouOsDadosDoProduto() => 
+            DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto).Equals(PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
 
         public bool VerificarSeExisteQualquerProdutoNaGrid() => 
             DriverService.PegarValorDaColunaDaGrid("Nome").Any();
@@ -50,13 +43,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
             }
         }
 
-        public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, Dictionary<string, string> dadosDeProduto,
-            out CadastroDeProdutoPage cadastroDeProdutoPage)
+        public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, out CadastroDeProdutoPage cadastroDeProdutoPage)
         {
-            var resolveCadastroDeProdutoPage =
-                beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeProdutoPage>>();
-            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService, dadosDeProduto);
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage>>();
+            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
             PesquisarUmProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+        }
+
+        public void PesquisarComF9UmProdutoNaTelaPrincipal(ILifetimeScope beginLifetimeScope)
+        {
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage>>();
+            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
+            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
         }
 
         private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
@@ -65,6 +63,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
             cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisar();
         }
+
+        public void FecharSomenteTelaDePesquisa() => 
+            FecharJanelaComEsc();
 
         public void FecharTelasDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
         {
