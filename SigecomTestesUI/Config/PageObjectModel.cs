@@ -39,11 +39,11 @@ namespace SigecomTestesUI.Config
             }
         }
 
-        public bool ClicarBotaoNovo(string novo)
+        public bool ClicarBotao(string nomeDoBotao)
         {
             try
             {
-                DriverService.ClicarBotaoName(novo);
+                DriverService.ClicarBotaoName(nomeDoBotao);
                 return true;
             }
             catch (Exception)

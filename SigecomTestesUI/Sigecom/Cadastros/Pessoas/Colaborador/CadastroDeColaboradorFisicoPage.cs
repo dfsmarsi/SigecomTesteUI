@@ -46,7 +46,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                ClicarBotaoNovo(CadastroDeColaboradorModel.BotaoNovo);
+                ClicarBotao(CadastroDeColaboradorModel.BotaoNovo);
             }
             catch (Exception exception)
             {
@@ -58,7 +58,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoPesquisar);
+                ClicarBotao(CadastroDeColaboradorModel.BotaoPesquisar);
             }
             catch (Exception exception)
             {

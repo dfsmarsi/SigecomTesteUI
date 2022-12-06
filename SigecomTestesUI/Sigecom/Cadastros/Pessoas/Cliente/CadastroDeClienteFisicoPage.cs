@@ -18,20 +18,47 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             base(driver) =>
             _dadosDoCliente = dadosDoCliente;
 
-        public bool ClicarNaOpcaoDoMenu() =>
-            AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
+        private void ClicarNaOpcaoDoMenu()
+        {
+            try
+            {
+                AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
 
-        public bool ClicarNaOpcaoDoSubMenu() =>
-            AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
+        private void ClicarNaOpcaoDoSubMenu()
+        {
+            try
+            {
+                AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
 
-        public bool ClicarBotaoNovo() =>
-            ClicarBotaoNovo(CadastroDeClienteModel.BotaoNovo);
+        private void ClicarBotaoNovo()
+        {
+            try
+            {
+                ClicarBotao(CadastroDeClienteModel.BotaoNovo);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
 
         public bool ClicarBotaoPesquisar()
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
+                ClicarBotao(CadastroDeClienteModel.BotaoPesquisar);
                 return true;
             }
             catch (Exception exception)

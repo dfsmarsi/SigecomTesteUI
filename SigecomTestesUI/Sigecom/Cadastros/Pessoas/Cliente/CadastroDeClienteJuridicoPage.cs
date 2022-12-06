@@ -17,20 +17,47 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         public CadastroDeClienteJuridicoPage(DriverService driver, Dictionary<string, string> dadosDoCliente) : base(driver) =>
             _dadosDoCliente = dadosDoCliente;
 
-        private void ClicarNaOpcaoDoMenu() => 
-            AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
+        private void ClicarNaOpcaoDoMenu()
+        {
+            try
+            {
+                AcessarOpcaoMenu(CadastroDeClienteModel.BotaoMenu);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
 
-        private void ClicarNaOpcaoDoSubMenu() => 
-            AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
+        private void ClicarNaOpcaoDoSubMenu()
+        {
+            try
+            {
+                AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
 
-        private void ClicarBotaoNovo() =>
-            ClicarBotaoNovo(CadastroDeClienteModel.BotaoNovo);
+        private void ClicarBotaoNovo()
+        {
+            try
+            {
+                ClicarBotao(CadastroDeClienteModel.BotaoNovo);
+            }
+            catch (Exception exception)
+            {
+                throw new ErroAoConcluirAcaoDoCadastroDePessoaException($"{exception}");
+            }
+        }
 
         private void ClicarBotaoPesquisar()
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
+                ClicarBotao(CadastroDeClienteModel.BotaoPesquisar);
             }
             catch (Exception exception)
             {
