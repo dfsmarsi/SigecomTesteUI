@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Sigecom\Cadastros\Pessoas\CadastroSimplificadoDeCliente\**" />
+    <Compile Remove="Sigecom\Cadastros\Produtos\EdicaoDeProdutoTeste\**" />
+    <EmbeddedResource Remove="Sigecom\Cadastros\Pessoas\CadastroSimplificadoDeCliente\**" />
+    <EmbeddedResource Remove="Sigecom\Cadastros\Produtos\EdicaoDeProdutoTeste\**" />
+    <None Remove="Sigecom\Cadastros\Pessoas\CadastroSimplificadoDeCliente\**" />
+    <None Remove="Sigecom\Cadastros\Produtos\EdicaoDeProdutoTeste\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="4.3.2" />
     <PackageReference Include="Autofac" Version="6.4.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
@@ -19,8 +28,6 @@
   <ItemGroup>
     <Folder Include="Allure\Relatorios\" />
     <Folder Include="Allure\Resultados\" />
-    <Folder Include="Sigecom\Cadastros\Pessoas\CadastroSimplificadoDeCliente\" />
-    <Folder Include="Sigecom\Cadastros\Produtos\EdicaoDeProdutoTeste\" />
   </ItemGroup>
 
 </Project>
