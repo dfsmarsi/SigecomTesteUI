@@ -6,6 +6,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using System;
+using NUnit.Framework;
 using SigecomTestesUI.Login.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
@@ -20,9 +21,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         public bool ClicarNaOpcaoDoSubMenu() => 
             AcessarOpcaoSubMenu(CadastroDeProdutoModel.BotaoSubMenuProduto);
 
-        public bool ClicarNaOpcaoDoPesquisar() =>
-            AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoPesquisar);
-
         public void ClicarNoAtalhoDePesquisar() =>
             DriverService.AbrirPesquisaDeProdutoComF9(CadastroDeProdutoModel.BotaoPesquisar);
 
@@ -33,7 +31,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeProdutoModel.BotaoNovoCadastro);
+                ClicarBotao(CadastroDeProdutoModel.BotaoNovoCadastro);
                 return true;
             }
             catch (Exception)
@@ -105,6 +103,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             }
         }
 
+        public bool PreencherCamposDeImpostosDeServico()
+        {
+            try
+            {
+                DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
+                DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
+                var verificarNcm = DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm).Equals("00000000");
+                Assert.True(verificarNcm);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool Gravar()
         {
             try
@@ -116,6 +130,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             {
                 return false;
             }
+        }
+
+        public void GravarAoEditarEFecharATela()
+        {
+            DriverService.GravarCadastroDeProdutoAoEditar(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
+            FecharJanelaCadastroDeProdutoComEsc();
         }
 
         public bool FecharJanelaCadastroDeProdutoComEsc()

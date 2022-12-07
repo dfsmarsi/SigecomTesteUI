@@ -1,7 +1,8 @@
 ﻿using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
 using System.Collections.Generic;
+using OpenQA.Selenium;
 using SigecomTestesUI.Login.Model;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Login
 {
@@ -18,7 +19,7 @@ namespace SigecomTestesUI.Login
         public void PreencherLogin()
         {
             DriverService.DigitarNoCampoId(LoginPageModel.ElementoUsuario, _dadosDoLogin["Usuario"]);
-            DriverService.DigitarNoCampoEnterId(LoginPageModel.ElementoSenha, _dadosDoLogin["Senha"]);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LoginPageModel.ElementoSenha, _dadosDoLogin["Senha"], Keys.Enter);
         }
 
         public bool ValidarPreenchimentoFormLogin() =>

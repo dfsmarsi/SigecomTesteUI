@@ -1,12 +1,13 @@
 ﻿using Autofac;
 using NUnit.Framework;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System;
 using System.Collections.Generic;
+using OpenQA.Selenium;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
 {
@@ -61,7 +62,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
                 DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoPessoa, 1);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, _dadosDeColaborador["Nome"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCpf, _dadosDeColaborador["Cnpj"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeColaboradorModel.ElementoCep, _dadosDeColaborador["Cep"]);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeColaboradorModel.ElementoCep, _dadosDeColaborador["Cep"], Keys.Enter);
                 EsperarAcaoEmSegundos(3);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero, _dadosDeColaborador["Numero"]);
                 return true;

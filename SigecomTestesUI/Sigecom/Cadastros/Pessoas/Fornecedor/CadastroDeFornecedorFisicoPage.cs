@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using Autofac;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
 {
@@ -78,7 +79,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             {
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNome, _dadosDeFornecedor["Nome"]);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoCpf, _dadosDeFornecedor["Cpf"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeFornecedorModel.ElementoCep, _dadosDeFornecedor["Cep"]);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeFornecedorModel.ElementoCep, _dadosDeFornecedor["Cep"], Keys.Enter);
                 EsperarAcaoEmSegundos(3);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNumero, _dadosDeFornecedor["Numero"]);
                 return true;
@@ -97,8 +98,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoRg, _dadosDeFornecedor["Rg"]);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoApelido,
                     _dadosDeFornecedor["Apelido"]);
-                DriverService.DigitarNoCampoEnterId(CadastroDeFornecedorModel.ElementoDataDeNascimento,
-                    _dadosDeFornecedor["DataNascimento"]);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeFornecedorModel.ElementoDataDeNascimento,
+                    _dadosDeFornecedor["DataNascimento"], Keys.Enter);
                 DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoSexo, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoEstadoCivil, 1);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoComplemento,

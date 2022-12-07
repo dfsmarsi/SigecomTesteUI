@@ -9,20 +9,20 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
 {
-    public class CadastroDeProdutoBalancaPage: ICadastroDeProdutoPage
+    public class CadastroDeProdutoServicoPage: ICadastroDeProdutoPage
     {
         private readonly DriverService _driverService;
 
-        public CadastroDeProdutoBalancaPage(DriverService driver) => 
+        public CadastroDeProdutoServicoPage(DriverService driver) =>
             _driverService = driver;
 
         public bool PreencherCamposDoProduto()
         {
             try
             {
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, CadastroDeProdutoBalancaModel.NomeDoProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, CadastroDeProdutoServicoModel.NomeDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, CadastroDeProdutoBaseModel.UnidadeDoProduto);
-                _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeProdutoModel.ElementoCategoria, CadastroDeProdutoBalancaModel.CategoriaDoProduto, Keys.Enter);
+                _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeProdutoModel.ElementoCategoria, CadastroDeProdutoServicoModel.CategoriaDoProduto, Keys.Enter);
                 Thread.Sleep(TimeSpan.FromSeconds(2));
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, CadastroDeProdutoBaseModel.CustoDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, CadastroDeProdutoBaseModel.MarkupDoProduto);
@@ -37,23 +37,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
 
         public bool PreencherCamposDaAba()
         {
-            try
-            {
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarras, CadastroDeProdutoBalancaModel.CodigoDaBalanca);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return false;
+            //Não utilizado;
         }
 
         public void FluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, PesquisaDeProdutoPage pesquisaDeProdutoPage)
         {
             cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
-            pesquisaDeProdutoPage.PesquisarProdutoComEnter(CadastroDeProdutoBalancaModel.NomeDoProduto);
-            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoBalancaModel.NomeFinalDoProduto);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(CadastroDeProdutoServicoModel.NomeDoProduto);
+            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoServicoModel.NomeFinalDoProduto);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
         }

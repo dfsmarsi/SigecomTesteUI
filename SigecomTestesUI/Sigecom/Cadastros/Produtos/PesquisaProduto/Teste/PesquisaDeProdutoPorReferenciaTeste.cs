@@ -3,13 +3,14 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 {
-    public class PesquisaDeProdutoVaziaTeste: BaseTestes
+    public class PesquisaDeProdutoPorReferenciaTeste:BaseTestes
     {
-        [Test(Description = "Pesquisa de Produto Vazia")]
+        [Test(Description = "Pesquisa de produto pela referencia")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -17,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Pesquisa")]
         [AllureSubSuite("Produto")]
-        public void PesquisarProdutoComCampoVazio()
+        public void PesquisarProdutoPelaReferencia()
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
@@ -25,12 +26,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
 
             // Act
-            pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope, out var cadastroDeProdutoPage);
-            pesquisaDeProdutoPage.PesquisarProduto("");
+            pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaPrincipal(beginLifetimeScope);
+            pesquisaDeProdutoPage.PesquisarProduto(PesquisaDeProdutoInformacoesParaTesteModel.ReferenciaDoProduto);
 
             // Assert
-            Assert.True(pesquisaDeProdutoPage.VerificarSeExisteQualquerProdutoNaGrid());
-            pesquisaDeProdutoPage.FecharTelasDeProduto(cadastroDeProdutoPage);
+            Assert.True(pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto));
+            pesquisaDeProdutoPage.FecharJanelaComEsc();
+
         }
     }
 }

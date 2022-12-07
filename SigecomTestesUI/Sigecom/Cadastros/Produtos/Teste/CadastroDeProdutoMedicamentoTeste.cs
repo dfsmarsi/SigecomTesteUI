@@ -9,15 +9,7 @@ using System;
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
 {
     public class CadastroDeProdutoMedicamentoTeste : BaseTestes
-    {
-        public void RetornarCadastroDeProduto(out CadastroDeProdutoPage cadastroDeProdutoPage)
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage =
-                beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage>>();
-            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
-        }
-
+    { 
         [Test(Description = "Cadastro de produto de medicamento possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
@@ -29,7 +21,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         public void CadastrarProdutoDeMedicamentoSomenteCamposObrigatorios()
         {
             // Arange
-            RetornarCadastroDeProduto(out var cadastroDeProdutoPage);
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolveCadastroDeProdutoPage =
+                beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage>>();
+            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
             cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
 
             // Act

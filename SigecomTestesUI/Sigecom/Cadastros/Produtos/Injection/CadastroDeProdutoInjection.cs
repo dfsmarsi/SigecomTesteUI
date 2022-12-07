@@ -25,6 +25,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoSimplesPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoMedicamentoPage>();
+                containerBuilder.RegisterType<CadastroDeProdutoServicoPage>();
             }
             catch (Exception exception)
             {

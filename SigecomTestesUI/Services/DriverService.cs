@@ -72,26 +72,18 @@ namespace SigecomTestesUI.Services
         public void DigitarNoCampoName(string nomeElemento, string texto) => 
             _driver.FindElementByName(nomeElemento).SendKeys(texto);
 
-        public void DigitarNoCampoEnterId(string idElemento, string texto)
+        public void DigitarNoCampoComTeclaDeAtalhoId(string idElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
             elemento.SendKeys(texto);
-            elemento.SendKeys(Keys.Enter);
+            elemento.SendKeys(teclaDeAtalho);
         }
 
-        public void DigitarNoCampoIdEnterComF5(string idElemento, string texto)
-        {
-            var elemento = _driver.FindElementByAccessibilityId(idElemento);
-            elemento.SendKeys(texto);
-            elemento.SendKeys(Keys.Enter);
-            elemento.SendKeys(Keys.F5);
-        }
-
-        public void DigitarNoCampoEnterName(string nomeElemento, string texto)
+        public void DigitarNoCampoEnterName(string nomeElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(nomeElemento);
             elemento.SendKeys(texto);
-            elemento.SendKeys(Keys.Enter);
+            elemento.SendKeys(teclaDeAtalho);
         }
 
         public void ClicarBotaoName(string nomeBotao) => 
@@ -148,6 +140,9 @@ namespace SigecomTestesUI.Services
 
         public void AbrirPesquisaDeProdutoComF9(string nomeJanela) =>
             _driver.FindElementByName(nomeJanela).SendKeys(Keys.F9);
+
+        public void GravarCadastroDeProdutoAoEditar(string nomeJanela) =>
+            _driver.FindElementByName(nomeJanela).SendKeys(Keys.F5);
 
         public void Dispose()
         {

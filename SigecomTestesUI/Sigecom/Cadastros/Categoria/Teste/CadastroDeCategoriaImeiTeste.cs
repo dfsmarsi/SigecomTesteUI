@@ -1,13 +1,15 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
-using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {
-    public class CadastroDeCategoriaMedicamentoTeste : CadastroDeCategoriaBaseTeste
+    public class CadastroDeCategoriaImeiTeste : CadastroDeCategoriaBaseTeste
     {
-        [Test(Description = "Cadastro de Categoria de Medicamento Somente Campos Obrigatorios")]
+        [Test(Description = "Cadastro de categoria de IMEI Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -19,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
         {
             var dadosDeCategoriaMedicamento = new Dictionary<string, string>
             {
-                {"Grupo", "GRUPO MEDICAMENTO"},
+                {"Grupo", "GRUPO IMEI"},
                 {"Markup", "0"}
             };
 
@@ -28,7 +30,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
             AbrirTelaDeCategoriaParaTeste(cadastroDeCategoriaPage);
 
             // Act
-            cadastroDeCategoriaPage.PreencherCamposDaCategoria(CadastroDeCategoriaModel.ElementoToggleMedicamento);
+            cadastroDeCategoriaPage.PreencherCamposDaCategoria(CadastroDeCategoriaModel.ElementoToggleImei);
             cadastroDeCategoriaPage.Gravar();
 
             // Assert
