@@ -54,6 +54,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public void VerificarCamposDeProduto(TipoDeProduto tipoDeProduto)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDoProduto();
+        }
+
         public bool PreencherCamposDaAba(TipoDeProduto tipoDeProduto)
         {
             try
@@ -101,6 +107,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             {
                 return false;
             }
+        }
+
+        public void VerificarCamposDeImpostos()
+        {
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), "0 - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8");
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), "TRIBUTADO SEM PERMISSÃO DE CRÉDITO");
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), "Produto adquirido ou recebido de terceiros");
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm), CadastroDeProdutoBaseModel.NcmDoProduto);
         }
 
         public bool PreencherCamposDeImpostosDeServico()
@@ -155,6 +169,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
         {
             AbrirTelaDeCadastroDoProduto(cadastroDeProdutoBasePage);
             cadastroDeProdutoBasePage.ClicarNoBotaoNovo();
+        }
+
+        public void EditarProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
+        {
+            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoBasePage);
+            ClicarNoAtalhoDePesquisar();
+            RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(CadastroDeProdutoSimplesModel.NomeDoProduto);
+            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoSimplesModel.NomeFinalDoProduto);
+            Assert.True(possuiProduto);
         }
 
         private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)

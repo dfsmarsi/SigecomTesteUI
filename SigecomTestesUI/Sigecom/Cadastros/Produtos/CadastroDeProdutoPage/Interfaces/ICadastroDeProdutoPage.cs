@@ -6,6 +6,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Inter
     {
         bool PreencherCamposDoProduto();
         bool PreencherCamposDaAba();
+        void VerificarCamposDoProduto();   
         void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage);
     }
 }

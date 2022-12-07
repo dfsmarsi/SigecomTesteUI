@@ -48,6 +48,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public void VerificarCamposDoProduto()
+        {
+            throw new NotImplementedException();
+        }
+
         public void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage)
         {
             cadastroDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
