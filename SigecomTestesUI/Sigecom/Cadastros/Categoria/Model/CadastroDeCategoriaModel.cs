@@ -20,6 +20,7 @@
         public static string ElementoToggleCombustivel => "tglCombustivel";
         public static string ElementoToggleBalanca => "tglBalanca";
         public static string ElementoToggleMedicamento => "toggleSwitchMedicamento";
+        public static string ElementoToggleImei => "registrosDoEstoqueToggleSwitch";
         //public static string ElementoToggleAtivar => "tglAtivo";
     }
 }

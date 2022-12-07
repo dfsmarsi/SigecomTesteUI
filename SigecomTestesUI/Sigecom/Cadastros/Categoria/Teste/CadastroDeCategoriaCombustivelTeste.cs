@@ -20,7 +20,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
             var dadosDeCategoriaCombustivel = new Dictionary<string, string>
             {
                 {"Grupo", "GRUPO COMBUSTIVEL"},
-                {"Markup", "10"}
+                {"Markup", "0"}
             };
 
             // Arange
