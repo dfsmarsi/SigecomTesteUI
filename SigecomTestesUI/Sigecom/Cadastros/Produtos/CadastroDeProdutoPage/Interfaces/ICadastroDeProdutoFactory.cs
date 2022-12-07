@@ -1,6 +1,6 @@
 ﻿using SigecomTestesUI.Services;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Interfaces
 {
     public interface ICadastroDeProdutoFactory
     {

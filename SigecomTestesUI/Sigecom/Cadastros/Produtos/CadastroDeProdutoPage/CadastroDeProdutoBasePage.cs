@@ -1,19 +1,19 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
-using System;
-using NUnit.Framework;
 using SigecomTestesUI.Login.Model;
+using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
 {
-    public class CadastroDeProdutoPage : PageObjectModel
+    public class CadastroDeProdutoBasePage : PageObjectModel
     {
-        public CadastroDeProdutoPage(DriverService driver) : base(driver) { }
+        public CadastroDeProdutoBasePage(DriverService driver) : base(driver) { }
 
         public bool ClicarNaOpcaoDoMenu() => 
             AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoMenuCadastro);
@@ -151,16 +151,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             }
         }
 
-        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
-            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoPage);
-            cadastroDeProdutoPage.ClicarNoBotaoNovo();
+            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoBasePage);
+            cadastroDeProdutoBasePage.ClicarNoBotaoNovo();
         }
 
-        private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
-            cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
-            cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeProdutoBasePage.ClicarNaOpcaoDoMenu();
+            cadastroDeProdutoBasePage.ClicarNaOpcaoDoSubMenu();
         }
 
         private void RetornarPesquisaDeProduto(out PesquisaDeProdutoPage pesquisaDeProdutoPage)
@@ -170,11 +170,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
             pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
         }
 
-        public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, TipoDeProduto tipoDeProduto)
+        public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
-            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).FluxoDePesquisaDoProduto(cadastroDeProdutoPage, pesquisaDeProdutoPage);
+            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage);
         }
     }
 }

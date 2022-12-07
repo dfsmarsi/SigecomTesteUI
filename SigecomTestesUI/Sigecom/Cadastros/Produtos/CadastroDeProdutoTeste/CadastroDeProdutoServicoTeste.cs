@@ -1,12 +1,12 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
-using System;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoTeste
 {
     public class CadastroDeProdutoServicoTeste : BaseTestes
     {
@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage>>();
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
             cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
 

@@ -1,10 +1,10 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Factory;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Teste;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Factory;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoTeste;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
 {
@@ -14,7 +14,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
         {
             try
             {
-                containerBuilder.RegisterType<CadastroDeProdutoPage>();
+                containerBuilder.RegisterType<CadastroDeProdutoPage.CadastroDeProdutoBasePage>();
                 containerBuilder.RegisterType<CadastroDeProdutoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoCombustivelTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaTeste>();

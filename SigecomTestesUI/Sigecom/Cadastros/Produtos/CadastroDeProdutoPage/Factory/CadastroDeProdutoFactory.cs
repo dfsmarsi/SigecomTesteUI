@@ -1,10 +1,10 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
-using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Interfaces;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Factory
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Factory
 {
     public class CadastroDeProdutoFactory : ICadastroDeProdutoFactory
     {

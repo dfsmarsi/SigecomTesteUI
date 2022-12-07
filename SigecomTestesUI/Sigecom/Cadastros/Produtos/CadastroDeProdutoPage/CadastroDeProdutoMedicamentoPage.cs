@@ -1,13 +1,13 @@
-﻿using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
-using System;
+﻿using System;
 using System.Threading;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
 {
     public class CadastroDeProdutoMedicamentoPage : ICadastroDeProdutoPage
     {
@@ -54,10 +54,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
             }
         }
 
-        public void FluxoDePesquisaDoProduto(CadastroDeProdutoPage cadastroDeProdutoPage, PesquisaDeProdutoPage pesquisaDeProdutoPage)
+        public void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage)
         {
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
-            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
+            cadastroDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
+            cadastroDeProdutoBasePage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
             pesquisaDeProdutoPage.PesquisarProdutoComEnter(CadastroDeProdutoMedicamentoModel.NomeDoProduto);
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoMedicamentoModel.NomeFinalDoProduto);
             Assert.True(possuiProduto);
