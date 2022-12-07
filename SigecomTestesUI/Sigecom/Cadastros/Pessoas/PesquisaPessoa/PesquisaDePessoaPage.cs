@@ -1,8 +1,9 @@
 ﻿using System;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
 {
@@ -15,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
         public void PesquisarPessoa(string tipoPessoa, string nomePessoa)
         {
             DriverService.ValidarElementoExistentePorNome(PesquisaDePessoaModel.TelaPesquisaPessoaPrefixo + tipoPessoa);
-            DriverService.DigitarNoCampoEnterId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa, Keys.Enter);
         }
 
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)

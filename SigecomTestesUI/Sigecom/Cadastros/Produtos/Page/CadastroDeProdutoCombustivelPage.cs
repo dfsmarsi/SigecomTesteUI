@@ -1,10 +1,11 @@
 ﻿using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Page.Interfaces;
 using System;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
 {
@@ -18,7 +19,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
             {
                 DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, CadastroDeProdutoCombustivelModel.NomeDoProduto);
                 DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, CadastroDeProdutoBaseModel.UnidadeDoProduto);
-                DriverService.DigitarNoCampoEnterId(CadastroDeProdutoModel.ElementoCategoria, CadastroDeProdutoCombustivelModel.CategoriaDoProduto);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeProdutoModel.ElementoCategoria, CadastroDeProdutoCombustivelModel.CategoriaDoProduto, Keys.Enter);
                 EsperarAcaoEmSegundos(2);
                 DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, CadastroDeProdutoBaseModel.CustoDoProduto);
                 DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, CadastroDeProdutoBaseModel.MarkupDoProduto);
@@ -51,7 +52,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Page
         {
             cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
-            pesquisaDeProdutoPage.PesquisarProduto(CadastroDeProdutoCombustivelModel.NomeDoProduto);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(CadastroDeProdutoCombustivelModel.NomeDoProduto);
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoCombustivelModel.NomeFinalDoProduto);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();

@@ -1,10 +1,11 @@
 ﻿using Autofac;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using System;
 using System.Linq;
+using OpenQA.Selenium;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
 {
@@ -12,10 +13,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
     {
         public PesquisaDeProdutoPage(DriverService driver) : base(driver) { }
 
+        public void PesquisarProdutoDoConfirmacaoDeItem(string nomeDoProduto)
+        {
+            DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto, Keys.F5);
+        }
+
         public void PesquisarProduto(string nomeDoProduto)
         {
             DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
-            DriverService.DigitarNoCampoEnterId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto);
+            DriverService.DigitarNoCampoId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto);
+        }
+
+        public void PesquisarProdutoComEnter(string nomeDoProduto)
+        {
+            DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto, Keys.Enter);
         }
 
         public bool VerificarSeExisteProdutoNaGrid(string nomeDoProduto)

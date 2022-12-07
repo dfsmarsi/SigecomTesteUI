@@ -72,18 +72,18 @@ namespace SigecomTestesUI.Services
         public void DigitarNoCampoName(string nomeElemento, string texto) => 
             _driver.FindElementByName(nomeElemento).SendKeys(texto);
 
-        public void DigitarNoCampoEnterId(string idElemento, string texto)
+        public void DigitarNoCampoComTeclaDeAtalhoId(string idElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
             elemento.SendKeys(texto);
-            elemento.SendKeys(Keys.Enter);
+            elemento.SendKeys(teclaDeAtalho);
         }
 
-        public void DigitarNoCampoEnterName(string nomeElemento, string texto)
+        public void DigitarNoCampoEnterName(string nomeElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(nomeElemento);
             elemento.SendKeys(texto);
-            elemento.SendKeys(Keys.Enter);
+            elemento.SendKeys(teclaDeAtalho);
         }
 
         public void ClicarBotaoName(string nomeBotao) => 

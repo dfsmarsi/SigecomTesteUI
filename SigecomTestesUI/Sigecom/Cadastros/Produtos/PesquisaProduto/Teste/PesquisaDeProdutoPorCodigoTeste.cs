@@ -31,7 +31,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 
             // Assert
             Assert.True(pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto));
-            pesquisaDeProdutoPage.FecharSomenteTelaDePesquisa();
+            pesquisaDeProdutoPage.FecharJanelaComEsc();
         }
     }
 }

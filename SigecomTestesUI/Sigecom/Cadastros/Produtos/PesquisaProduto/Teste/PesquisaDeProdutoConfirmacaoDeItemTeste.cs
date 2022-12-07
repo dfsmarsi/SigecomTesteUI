@@ -27,7 +27,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 
             // Act
             pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(beginLifetimeScope, out var cadastroDeProdutoPage);
-            pesquisaDeProdutoPage.PesquisarProduto(PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
+            pesquisaDeProdutoPage.PesquisarProdutoDoConfirmacaoDeItem(PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
             
             // Assert
             Assert.True(pesquisaDeProdutoPage.VerificarSeCarregouOsDadosDoProduto());
