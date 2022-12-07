@@ -56,34 +56,34 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
             }
         }
 
-        public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, out CadastroDeProdutoPage cadastroDeProdutoPage)
+        public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, out CadastroDeProdutoPage.CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage>>();
-            cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
-            PesquisarUmProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
+            cadastroDeProdutoBasePage = resolveCadastroDeProdutoPage(DriverService);
+            PesquisarUmProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoBasePage);
         }
 
         public void PesquisarComF9UmProdutoNaTelaPrincipal(ILifetimeScope beginLifetimeScope)
         {
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage>>();
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
         }
 
-        private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage.CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
-            cadastroDeProdutoPage.ClicarNaOpcaoDoMenu();
-            cadastroDeProdutoPage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisar();
+            cadastroDeProdutoBasePage.ClicarNaOpcaoDoMenu();
+            cadastroDeProdutoBasePage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeProdutoBasePage.ClicarNoAtalhoDePesquisar();
         }
 
         public void FecharSomenteTelaDePesquisa() => 
             FecharJanelaComEsc();
 
-        public void FecharTelasDeProduto(CadastroDeProdutoPage cadastroDeProdutoPage)
+        public void FecharTelasDeProduto(CadastroDeProdutoPage.CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
             FecharJanelaComEsc();
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+            cadastroDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
         }
     }
 }
