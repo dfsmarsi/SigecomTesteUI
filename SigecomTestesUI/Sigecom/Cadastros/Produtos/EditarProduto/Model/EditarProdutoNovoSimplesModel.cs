@@ -2,7 +2,7 @@
 {
     public class EditarProdutoNovoSimplesModel
     {
-        public static string NomeDoProduto => "PRODUTO SIMPLES AlTERADO";
+        public static string NomeDoProduto => "PRODUTO SIMPLES ALTERADO";
         public static string CategoriaDoProduto => "PRODUTOS";
         public static string NomeFinalDoProduto => "PRODUTO SIMPLES ALTERADO";
         public static string UnidadeDoProduto => "UN";

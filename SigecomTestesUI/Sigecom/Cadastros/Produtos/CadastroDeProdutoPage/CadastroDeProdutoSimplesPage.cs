@@ -67,7 +67,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
 
         public void VerificarCamposDeProdutoEditado()
         {
-            throw new NotImplementedException();
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), EditarProdutoNovoSimplesModel.NomeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoUnidade), EditarProdutoNovoSimplesModel.UnidadeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), EditarProdutoNovoSimplesModel.CategoriaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCusto), EditarProdutoNovoSimplesModel.CustoDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarkup), EditarProdutoNovoSimplesModel.MarkupDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoReferencia), EditarProdutoNovoSimplesModel.ReferenciaDoProduto);
         }
 
         public bool PreencherCamposDaAba()

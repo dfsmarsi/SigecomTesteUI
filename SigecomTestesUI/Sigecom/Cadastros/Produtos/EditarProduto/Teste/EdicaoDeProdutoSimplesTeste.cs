@@ -30,9 +30,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
             cadastroDeProdutoPage.EditarProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
             cadastroDeProdutoPage.VerificarCamposDeProduto(TipoDeProduto.Produto);
             cadastroDeProdutoPage.PreencherCamposDoProdutoAoEditar(TipoDeProduto.Produto);
-            cadastroDeProdutoPage.VerificarCamposDeProduto(TipoDeProduto.Produto);
+            cadastroDeProdutoPage.VerificarCamposDeProdutoEditado(TipoDeProduto.Produto);
             cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
             cadastroDeProdutoPage.VerificarCamposDeImpostos();
+            cadastroDeProdutoPage.PreencherCamposDeImpostos();
             cadastroDeProdutoPage.Gravar();
 
             // Assert

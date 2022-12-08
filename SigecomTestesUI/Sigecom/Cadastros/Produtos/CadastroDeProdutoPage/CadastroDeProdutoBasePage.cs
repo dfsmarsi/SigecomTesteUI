@@ -77,7 +77,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
         public void VerificarCamposDeProdutoEditado(TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDoProduto();
+            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDeProdutoEditado();
         }
 
         public bool PreencherCamposDaAba(TipoDeProduto tipoDeProduto)
