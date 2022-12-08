@@ -54,6 +54,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public bool PreencherCamposDoProdutoAoEditar(TipoDeProduto tipoDeProduto)
+        {
+            try
+            {
+                using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDoProdutoAoEditar();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public void VerificarCamposDeProduto(TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
@@ -66,6 +80,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             {
                 using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
                 beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDaAba();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool PreencherCamposDaAbaAoEditar(TipoDeProduto tipoDeProduto)
+        {
+            try
+            {
+                using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDoProdutoAoEditar();
                 return true;
             }
             catch (Exception)
@@ -177,8 +205,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             ClicarNoAtalhoDePesquisar();
             RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
             pesquisaDeProdutoPage.PesquisarProdutoComEnter(CadastroDeProdutoSimplesModel.NomeDoProduto);
-            var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoSimplesModel.NomeFinalDoProduto);
-            Assert.True(possuiProduto);
         }
 
         private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
@@ -199,6 +225,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
             beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage);
+        }
+
+        public void RealizarFluxoDePesquisaDoProdutoParaOEditar(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, TipoDeProduto tipoDeProduto)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
+            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).FluxoDePesquisaDoProdutoEditado(cadastroDeProdutoBasePage, pesquisaDeProdutoPage);
         }
     }
 }

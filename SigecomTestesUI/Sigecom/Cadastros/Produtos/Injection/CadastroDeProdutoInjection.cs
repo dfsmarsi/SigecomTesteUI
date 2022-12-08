@@ -14,7 +14,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
         {
             try
             {
-                containerBuilder.RegisterType<CadastroDeProdutoPage.CadastroDeProdutoBasePage>();
+                containerBuilder.RegisterType<CadastroDeProdutoBasePage>();
                 containerBuilder.RegisterType<CadastroDeProdutoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoCombustivelTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaTeste>();

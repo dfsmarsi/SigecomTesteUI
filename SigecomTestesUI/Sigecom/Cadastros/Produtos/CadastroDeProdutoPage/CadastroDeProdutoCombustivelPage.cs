@@ -32,6 +32,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public bool PreencherCamposDoProdutoAoEditar()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool PreencherCamposDaAba()
         {
             try
@@ -48,6 +53,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public void PreencherCamposDaAbaAoEditar()
+        {
+            throw new NotImplementedException();
+        }
+
         public void VerificarCamposDoProduto()
         {
             throw new NotImplementedException();
@@ -61,6 +71,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoCombustivelModel.NomeFinalDoProduto);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
+        }
+
+        public void FluxoDePesquisaDoProdutoEditado(CadastroDeProdutoBasePage cadastroDeProdutoBasePage,
+            PesquisaDeProdutoPage pesquisaDeProdutoPage)
+        {
+            throw new NotImplementedException();
         }
     }
 }
