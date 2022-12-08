@@ -10,10 +10,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
 {
     public class CadastroDeColaboradorJuridicoSimplesTeste : BaseTestes
     {
-        private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
+        private readonly Dictionary<string, string> _dadosDoColaborador = new Dictionary<string, string>
         {
             {"Nome","EMPRESA COLABORADOR TESTE SIMPLES"},
-            {"Cnpj","39578222000121"},
             {"Cep","15700082"},
             {"Numero","623"}
         };
@@ -31,7 +30,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeColaboradorJuridicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorJuridicoPage>>();
-            var cadastroDeColaboradorJuridicoPage = resolveCadastroDeColaboradorJuridicoPage(DriverService, _dadosDoCliente);
+            var cadastroDeColaboradorJuridicoPage = resolveCadastroDeColaboradorJuridicoPage(DriverService, _dadosDoColaborador);
             cadastroDeColaboradorJuridicoPage.AcessarTelaDeCadastroDeColaborador();
 
             // Act
