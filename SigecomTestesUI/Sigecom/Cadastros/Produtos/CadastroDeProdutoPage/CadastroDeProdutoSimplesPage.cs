@@ -36,6 +36,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public void VerificarCamposDoProduto()
+        {
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), CadastroDeProdutoSimplesModel.NomeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoUnidade), CadastroDeProdutoBaseModel.UnidadeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCusto), CadastroDeProdutoBaseModel.CustoDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarkup), CadastroDeProdutoBaseModel.MarkupDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoReferencia), CadastroDeProdutoBaseModel.ReferenciaDoProduto);
+        }
+
         public bool PreencherCamposDoProdutoAoEditar()
         {
             try
@@ -55,6 +65,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public void VerificarCamposDeProdutoEditado()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool PreencherCamposDaAba()
         {
             return false;
@@ -63,18 +78,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
 
         public void PreencherCamposDaAbaAoEditar()
         {
-            throw new NotImplementedException();
+            //Não utilizado;
         }
 
-        public void VerificarCamposDoProduto()
-        {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), CadastroDeProdutoSimplesModel.NomeDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoUnidade), CadastroDeProdutoBaseModel.UnidadeDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCusto), CadastroDeProdutoBaseModel.CustoDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarkup), CadastroDeProdutoBaseModel.MarkupDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoReferencia), CadastroDeProdutoBaseModel.ReferenciaDoProduto);
-        }
+        public void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage) =>
+            FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage, CadastroDeProdutoSimplesModel.NomeFinalDoProduto);
+
+        public void FluxoDePesquisaDoProdutoEditado(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage) =>
+            FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage, EditarProdutoNovoSimplesModel.NomeFinalDoProduto);
 
         private static void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage, string nomeDoProduto)
         {
@@ -85,11 +96,5 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
         }
-
-        public void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage) => 
-            FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage, CadastroDeProdutoSimplesModel.NomeFinalDoProduto);
-
-        public void FluxoDePesquisaDoProdutoEditado(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage) => 
-            FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage, EditarProdutoNovoSimplesModel.NomeFinalDoProduto);
     }
 }

@@ -54,6 +54,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public void VerificarCamposDeProduto(TipoDeProduto tipoDeProduto)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDoProduto();
+        }
+
         public bool PreencherCamposDoProdutoAoEditar(TipoDeProduto tipoDeProduto)
         {
             try
@@ -68,7 +74,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
-        public void VerificarCamposDeProduto(TipoDeProduto tipoDeProduto)
+        public void VerificarCamposDeProdutoEditado(TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDoProduto();

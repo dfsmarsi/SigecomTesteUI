@@ -32,7 +32,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
+        public void VerificarCamposDoProduto()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool PreencherCamposDoProdutoAoEditar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VerificarCamposDeProdutoEditado()
         {
             throw new NotImplementedException();
         }
@@ -53,11 +63,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
         }
 
         public void PreencherCamposDaAbaAoEditar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void VerificarCamposDoProduto()
         {
             throw new NotImplementedException();
         }
