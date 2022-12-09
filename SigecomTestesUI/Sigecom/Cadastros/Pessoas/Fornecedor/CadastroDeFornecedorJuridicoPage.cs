@@ -109,7 +109,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoCep), _dadosDeFornecedor["Cep"]);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoNumero), _dadosDeFornecedor["Numero"]);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoEndereco), _dadosDeFornecedor["Endereco"]);
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoObservacao), _dadosDeFornecedor["Observacao"]);
         }
 
 

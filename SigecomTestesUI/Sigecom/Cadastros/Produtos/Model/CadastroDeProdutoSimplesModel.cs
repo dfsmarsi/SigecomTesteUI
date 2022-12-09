@@ -2,8 +2,8 @@
 {
     public class CadastroDeProdutoSimplesModel : CadastroDeProdutoBaseModel
     {
-        public static string NomeDoProduto => "PRODUTO SIMPLES";
+        public static string NomeDoProduto => "PRODUTO CADASTRO SIMPLES";
         public static string CategoriaDoProduto => "PRODUTOS";
-        public static string NomeFinalDoProduto => "PRODUTO SIMPLES";
+        public static string NomeFinalDoProduto => "PRODUTO CADASTRO SIMPLES";
     }
 }

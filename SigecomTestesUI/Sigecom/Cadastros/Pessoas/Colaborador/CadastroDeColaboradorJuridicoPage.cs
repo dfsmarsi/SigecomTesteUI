@@ -91,7 +91,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCep), _dadosDeColaborador["Cep"]);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNumero), _dadosDeColaborador["Numero"]);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEndereco), _dadosDeColaborador["Endereco"]);
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoObservacao), _dadosDeColaborador["Observacao"]);
         }
 
         public bool GravarCadastro()

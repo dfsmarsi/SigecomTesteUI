@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("Cadastros")]
+        [AllureSuite("Editar")]
         [AllureSubSuite("Produto")]
         public void EditarProdutoSomenteCamposObrigatorios()
         {
@@ -30,14 +30,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
             cadastroDeProdutoPage.EditarProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
             cadastroDeProdutoPage.VerificarCamposDeProduto(TipoDeProduto.Produto);
             cadastroDeProdutoPage.PreencherCamposDoProdutoAoEditar(TipoDeProduto.Produto);
-            cadastroDeProdutoPage.VerificarCamposDeProdutoEditado(TipoDeProduto.Produto);
             cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
             cadastroDeProdutoPage.VerificarCamposDeImpostos();
-            cadastroDeProdutoPage.PreencherCamposDeImpostos();
+            cadastroDeProdutoPage.PreencherCamposDeImpostosAoEditar();
             cadastroDeProdutoPage.Gravar();
 
             // Assert
             cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProdutoParaOEditar(cadastroDeProdutoPage, TipoDeProduto.Produto);
+            cadastroDeProdutoPage.VerificarCamposDeImpostosEditado();
+            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaProduto);
+            cadastroDeProdutoPage.VerificarCamposDeProdutoEditado(TipoDeProduto.Produto);
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
         }
     }
 }

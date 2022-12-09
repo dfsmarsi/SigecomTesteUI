@@ -8,7 +8,8 @@
         public static string BotaoNovoCadastro => "F2 - Novo";
         public static string BotaoGravar => "F5 - Gravar";
         public static string BotaoPesquisar => "F9 - Pesquisar";
-        
+
+        public static string AbaProduto => "Produto";
         public static string ElementoNomeProduto => "txtProduto_Nome";
         public static string ElementoUnidade => "cbxProduto_Unidade";
         public static string ElementoCategoria => "txtCategoria";

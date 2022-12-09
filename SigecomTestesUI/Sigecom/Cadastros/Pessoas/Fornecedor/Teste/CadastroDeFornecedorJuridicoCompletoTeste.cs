@@ -44,6 +44,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
 
             // Act
             cadastroDeFornecedorJuridicoPage.PreencherCamposCompleto();
+            cadastroDeFornecedorJuridicoPage.VerificarCamposDoCarregados();
             cadastroDeFornecedorJuridicoPage.GravarCadastro();
 
             // Assert

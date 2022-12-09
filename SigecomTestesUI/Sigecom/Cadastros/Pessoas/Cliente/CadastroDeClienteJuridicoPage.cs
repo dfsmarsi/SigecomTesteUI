@@ -7,7 +7,6 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System;
 using System.Collections.Generic;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
@@ -109,8 +108,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCep), _dadosDoCliente["Cep"]);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNumero), _dadosDoCliente["Numero"]);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEndereco), _dadosDoCliente["Endereco"]);
-
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoObservacao), _dadosDoCliente["Observacao"]);
         }
 
 
