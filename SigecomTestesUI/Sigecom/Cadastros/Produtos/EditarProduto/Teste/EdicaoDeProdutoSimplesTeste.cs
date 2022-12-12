@@ -3,6 +3,7 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdutoPage;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System;
 
@@ -22,25 +23,24 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeProdutoPage =
-                beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
-            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
+            var resolveEdicaoDeProdutoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBasePage>>();
+            var edicaoDeProdutoBasePage = resolveEdicaoDeProdutoBasePage(DriverService);
 
             // Act
-            cadastroDeProdutoPage.EditarProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
-            cadastroDeProdutoPage.VerificarCamposDeProduto(TipoDeProduto.Produto);
-            cadastroDeProdutoPage.PreencherCamposDoProdutoAoEditar(TipoDeProduto.Produto);
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
-            cadastroDeProdutoPage.VerificarCamposDeImpostos();
-            cadastroDeProdutoPage.PreencherCamposDeImpostosAoEditar();
-            cadastroDeProdutoPage.Gravar();
+            edicaoDeProdutoBasePage.EditarProdutoNaTelaDeCadastroDeProduto();
+            edicaoDeProdutoBasePage.VerificarCamposDeProduto(TipoDeProduto.Produto);
+            edicaoDeProdutoBasePage.PreencherCamposDoProdutoAoEditar(TipoDeProduto.Produto);
+            edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
+            edicaoDeProdutoBasePage.VerificarCamposDeImpostos();
+            edicaoDeProdutoBasePage.PreencherCamposDeImpostosAoEditar();
+            edicaoDeProdutoBasePage.Gravar();
 
             // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProdutoParaOEditar(cadastroDeProdutoPage, TipoDeProduto.Produto);
-            cadastroDeProdutoPage.VerificarCamposDeImpostosEditado();
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaProduto);
-            cadastroDeProdutoPage.VerificarCamposDeProdutoEditado(TipoDeProduto.Produto);
-            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+            edicaoDeProdutoBasePage.RealizarFluxoDePesquisaDoProdutoParaOEditar(TipoDeProduto.Produto);
+            edicaoDeProdutoBasePage.VerificarCamposDeImpostosEditado();
+            edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaProduto);
+            edicaoDeProdutoBasePage.VerificarCamposDeProdutoEditado(TipoDeProduto.Produto);
+            edicaoDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
         }
     }
 }
