@@ -32,21 +32,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
-        public void VerificarCamposDoProduto()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool PreencherCamposDoProdutoAoEditar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void VerificarCamposDeProdutoEditado()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool PreencherCamposDaAba()
         {
             try
@@ -62,11 +47,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
-        public void PreencherCamposDaAbaAoEditar()
-        {
-            throw new NotImplementedException();
-        }
-
         public void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, PesquisaDeProdutoPage pesquisaDeProdutoPage)
         {
             cadastroDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
@@ -75,12 +55,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             var possuiProduto = pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(CadastroDeProdutoGradeModel.NomeFinalDoProduto);
             Assert.True(possuiProduto);
             pesquisaDeProdutoPage.FecharJanelaComEsc();
-        }
-
-        public void FluxoDePesquisaDoProdutoEditado(CadastroDeProdutoBasePage cadastroDeProdutoBasePage,
-            PesquisaDeProdutoPage pesquisaDeProdutoPage)
-        {
-            throw new NotImplementedException();
         }
     }
 }

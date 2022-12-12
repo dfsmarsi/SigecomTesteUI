@@ -34,7 +34,7 @@
 
         //Aba Balança
         public static string AbaBalanca => "Balança";
-        public static string ElementoCodigoDeBarras => "txtCodigoProdBalanca";
+        public static string ElementoCodigoDeBarrasBalanca => "txtCodigoProdBalanca";
 
         //Aba Combustível
         public static string AbaCombustivel => "Combustível";

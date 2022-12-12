@@ -3,13 +3,13 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
 {
-    public class EdicaoDeProdutoSimplesTeste : BaseTestes
+    public class EdicaoDeProdutoCompletoTeste : BaseTestes
     {
         [Test(Description = "Editar produto simples possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
@@ -42,5 +42,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
             edicaoDeProdutoBasePage.VerificarCamposDeProdutoEditado(TipoDeProduto.Produto);
             edicaoDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
         }
+
     }
 }

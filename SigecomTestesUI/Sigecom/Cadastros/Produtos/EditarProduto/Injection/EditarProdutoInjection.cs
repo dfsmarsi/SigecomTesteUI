@@ -2,8 +2,9 @@
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste;
 using System;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdutoPage;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdutoPage.Factory;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Factory;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Injection
 {
@@ -15,8 +16,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Injection
             {
                 containerBuilder.RegisterType<EdicaoDeProdutoBasePage>();
                 containerBuilder.RegisterType<EdicaoDeProdutoSimplesTeste>();
+                containerBuilder.RegisterType<EdicaoDeProdutoCompletoTeste>();
+                containerBuilder.RegisterType<EdicaoDeProdutoBalancaTeste>();
                 containerBuilder.RegisterType<EdicaoDeProdutoPageFactory>().As<IEdicaoDeProdutoPageFactory>();
                 containerBuilder.RegisterType<EdicaoDeProdutoSimplesPage>();
+                containerBuilder.RegisterType<EdicaoDeProdutoCompletoPage>();
+                containerBuilder.RegisterType<EdicaoDeProdutoBalancaPage>();
             }
             catch (Exception exception)
             {

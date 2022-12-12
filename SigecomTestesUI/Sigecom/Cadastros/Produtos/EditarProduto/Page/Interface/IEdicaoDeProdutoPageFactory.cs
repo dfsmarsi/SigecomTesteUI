@@ -1,7 +1,6 @@
 ﻿using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdutoPage.Interface;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdutoPage.Factory
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface
 {
     public interface IEdicaoDeProdutoPageFactory
     {

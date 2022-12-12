@@ -1,15 +1,15 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdutoPage.Factory;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
-using System;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdutoPage
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 {
     public class EdicaoDeProdutoBasePage: PageObjectModel
     {
@@ -86,6 +86,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdu
             }
         }
 
+        public void VerificarCamposDoProduto(TipoDeProduto tipoDeProduto)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDoProduto();
+        }
+
+        public void VerificarCamposDeProdutoEditado(TipoDeProduto tipoDeProduto)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDeProdutoEditado();
+        }
+
         public bool AcessarAba(string aba)
         {
             try
@@ -99,10 +111,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdu
             }
         }
 
-        public void VerificarCamposDeProdutoEditado(TipoDeProduto tipoDeProduto)
+        public void VerificarCamposDaAba(TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDeProdutoEditado();
+            beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDaAba();
         }
 
         public bool PreencherCamposDaAbaAoEditar(TipoDeProduto tipoDeProduto)
@@ -117,6 +129,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdu
             {
                 return false;
             }
+        }
+
+        public void VerificarCamposDaAbaEditado(TipoDeProduto tipoDeProduto)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDaAbaEditado();
         }
 
         public void VerificarCamposDeImpostos()
@@ -134,7 +152,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdu
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoOrigemMercadoria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
                 DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
-                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, EditarProdutoNovoSimplesModel.NcmDoProduto);
+                DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNcm, EdicaoDeProdutoSimplesModel.NcmDoProduto);
                 return true;
             }
             catch (Exception)
@@ -148,18 +166,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.EdicaoDeProdu
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), "1 - Estrangeira - Importação direta, exceto a indicada no código 6");
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), "SUBSTITUIÇÃO TRIBUTÁRIA COBRADA ANTERIORMENTE");
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), "Produto produzido pelo estabelecimento");
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm), EditarProdutoNovoSimplesModel.NcmDoProduto);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm), EdicaoDeProdutoSimplesModel.NcmDoProduto);
         }
 
-        public void EditarProdutoNaTelaDeCadastroDeProduto()
+        public void PesquisarProdutoQueSeraEditado(TipoDeProduto tipoDeProduto)
         {
-            AbrirTelaDeCadastroDoProduto();
-            ClicarNoAtalhoDePesquisar();
-            RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
-            pesquisaDeProdutoPage.PesquisarProdutoComEnter(CadastroDeProdutoSimplesModel.NomeDoProduto);
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).PesquisarProdutoQueSeraEditado(this);
         }
 
-        public void RealizarFluxoDePesquisaDoProdutoParaOEditar(TipoDeProduto tipoDeProduto)
+        public void RealizarFluxoDePesquisaDoProdutoQueFoiEditado(TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
