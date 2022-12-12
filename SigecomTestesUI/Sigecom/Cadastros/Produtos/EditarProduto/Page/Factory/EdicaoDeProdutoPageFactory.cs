@@ -15,7 +15,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Factory
             return tipoDeProduto switch
             {
                 TipoDeProduto.Produto => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoSimplesPage>>()(driverService),
-                TipoDeProduto.Balanca => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBalancaPage>>()(driverService)
+                TipoDeProduto.Balanca => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBalancaPage>>()(driverService),
+                TipoDeProduto.Grade => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoGradePage>>()(driverService)
             };
         }
     }

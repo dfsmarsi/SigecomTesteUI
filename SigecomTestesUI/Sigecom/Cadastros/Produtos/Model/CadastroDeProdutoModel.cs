@@ -32,6 +32,11 @@
         public static string ElementoGridColunaTamanhoDaGrade => "Tamanho";
         public static string ElementoGridColunaCorDaGrade => "Cor";
 
+        public static string ElementoGridColunaEstoqueDaGrade => "Estoque";
+        public static string ElementoGridColunaCustoDaGrade => "Custo";
+        public static string ElementoGridColunaMarkupDaGrade => "Markup";
+        public static string ElementoGridColunaVendaDaGrade => "Venda";
+
         //Aba Balança
         public static string AbaBalanca => "Balança";
         public static string ElementoCodigoDeBarrasBalanca => "txtCodigoProdBalanca";

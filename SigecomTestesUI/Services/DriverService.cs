@@ -126,6 +126,25 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
+        public void EditarItensNaGrid(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
+            elementoEncontrado.Click();
+            elementoEncontrado.SendKeys(texto);
+            elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
+        public void EditarItensNaGridComDuploClick(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
+            var acao = new Actions(_driver);
+            acao.MoveToElement(elementoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+            elementoEncontrado.SendKeys(texto);
+            elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
         public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) => 
             ClicarBotaoId(nomeDoCampo);
 

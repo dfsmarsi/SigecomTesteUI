@@ -11,7 +11,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
 {
     public class EdicaoDeProdutoSimplesTeste : BaseTestes
     {
-        [Test(Description = "Editar produto simples possuindo somente campos obrigatorios")]
+        [Test(Description = "Edição de produto simples possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -19,7 +19,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Editar")]
         [AllureSubSuite("Produto")]
-        public void EditarProdutoSomenteCamposObrigatorios()
+        public void EdicaoDeProdutoSomenteCamposObrigatorios()
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();

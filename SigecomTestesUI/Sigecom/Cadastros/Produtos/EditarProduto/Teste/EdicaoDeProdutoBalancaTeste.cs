@@ -6,13 +6,12 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
 {
     public class EdicaoDeProdutoBalancaTeste : BaseTestes
     {
-        [Test(Description = "Editar produto balança possuindo somente campos obrigatorios")]
+        [Test(Description = "Edição produto balança possuindo somente campos obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -20,7 +19,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Editar")]
         [AllureSubSuite("Produto")]
-        public void EditarProdutoBalanca()
+        public void EdicaoDeProdutoBalanca()
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
