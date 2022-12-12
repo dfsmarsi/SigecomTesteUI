@@ -47,6 +47,9 @@
         public static string ElementoGasNaturalImportado => "txtGlpImportado";
         public static string ElementoValorDePartida => "txtValorPartida";
         public static string ElementoQuantidadeDeGasNatural=> "txtQtdeGasNatural";
+        public static string ElementoCodigoAnp => "txtCodigoANP";
+        public static string ElementoCodif => "txtCODIF";
+
 
         public static string AbaMedicamento => "Medicamento";
         public static string ElementoRegistroNaAnvisa => "textEditRegistroAnvisa";

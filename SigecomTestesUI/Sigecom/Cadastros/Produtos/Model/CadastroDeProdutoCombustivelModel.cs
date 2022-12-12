@@ -4,11 +4,10 @@
     {
         public static string NomeDoProduto => "PRODUTO COMBUSTIVEL";
         public static string CategoriaDoProduto => "COMBUSTIVEL";
-        public static string CodigoDaBalanca => "0000001";
-        public static string GasNacionalDoProduto => "0";
-        public static string GasImportadoDoProduto => "0";
-        public static string ValorPartidaDoProduto => "0";
-        public static string QtdeGasNaturalDoProduto => "0";
+        public static string GasNacionalDoProduto => "0,0000";
+        public static string GasImportadoDoProduto => "0,0000";
+        public static string ValorPartidaDoProduto => "0,0000";
+        public static string QtdeGasNaturalDoProduto => "0,0000";
         public static string NomeFinalDoProduto => "PRODUTO COMBUSTIVEL";
     }
 }
