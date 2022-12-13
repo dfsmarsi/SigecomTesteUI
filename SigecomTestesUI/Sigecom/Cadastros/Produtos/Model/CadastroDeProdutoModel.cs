@@ -12,7 +12,15 @@
         public static string AbaProduto => "Produto";
         public static string ElementoNomeProduto => "txtProduto_Nome";
         public static string ElementoUnidade => "cbxProduto_Unidade";
+        public static string ElementoCodigoInterno => "txtCodigoProdutoInterno";
         public static string ElementoCategoria => "txtCategoria";
+        public static string ElementoGarantiaEmDias => "txtGarantiaProduto";
+        public static string ElementoCodigoDeBarrasProduto => "txtCodBarras";
+        public static string ElementoEstoque => "estoqueTextEdit";
+        public static string ElementoEstoqueMinimo => "txtEstoqueMinimo";
+        public static string ElementoEstoqueMaximo => "txtEstoqueMaximo";
+        public static string ElementoMarca => "txtMarca";
+        public static string ElementoFornecedor => "txtFornecedor";
         public static string ElementoCusto => "txtUltimaCompra";
         public static string ElementoMarkup => "txtMarkup";
         public static string ElementoPrecoVenda => "txtPrecoVenda";
@@ -20,11 +28,22 @@
 
         //Aba Impostos
         public static string AbaImpostos => "Impostos";
-        public static string ElementoCodigoInterno => "txtCodigoProdutoInterno";
         public static string ElementoOrigemMercadoria => "cbxOrigem";
         public static string ElementoSituacaoTributaria => "cbxSituacaoTributaria";
         public static string ElementoNaturezaCfop => "cbxNaturezaCfop";
         public static string ElementoNcm => "txtNCM";
+        public static string ElementoIbptNacional => "txtIBPTNacional";
+        public static string ElementoIbptEstatual => "txtIBPTEstadual";
+        public static string ElementoIbptImportado => "txtIBPTImportado";
+        public static string ElementoIbptMunicipal => "txtIBPTMunicipal";
+        public static string ElementoAliquotaIcms => "txtAliquotaIcms";
+        public static string ElementoExigibilidadeIss => "lkuExigibilidadeIss";
+        public static string ElementoIndicadorIncentivo => "cbxIndicadorIncentivo";
+        public static string ElementoListaServicos => "txtItemListaServicos";
+        public static string ElementoCstpis => "cbxCSTPis";
+        public static string ElementoCstCofins => "cbxCSTCofins";
+        public static string ElementoClassificacaoPisCofins => "cbxClassificacaoPisCofins";
+
 
         //Aba Grade
         public static string AbaGrade => "Grade";

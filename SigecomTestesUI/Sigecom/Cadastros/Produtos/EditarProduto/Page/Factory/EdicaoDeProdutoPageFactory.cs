@@ -18,6 +18,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Factory
                 TipoDeProduto.Balanca => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBalancaPage>>()(driverService),
                 TipoDeProduto.Grade => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoGradePage>>()(driverService),
                 TipoDeProduto.Combustivel => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoCombustivelPage>>()(driverService),
+                TipoDeProduto.Medicamento => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoMedicamentoPage>>()(driverService),
+                TipoDeProduto.Servico => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoServicoPage>>()(driverService),
+                _ => beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoSimplesPage>>()(driverService)
             };
         }
     }
