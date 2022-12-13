@@ -29,7 +29,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
 
             // Act
             edicaoDeProdutoBasePage.PesquisarProdutoQueSeraEditado(tipoDeProduto);
-            edicaoDeProdutoBasePage.VerificarCamposDeProduto(tipoDeProduto);
+            edicaoDeProdutoBasePage.VerificarCamposDoProduto(tipoDeProduto);
             edicaoDeProdutoBasePage.PreencherCamposDoProdutoAoEditar(tipoDeProduto);
             edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
             edicaoDeProdutoBasePage.VerificarCamposDeImpostos();

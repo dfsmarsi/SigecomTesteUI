@@ -13,9 +13,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 {
     public class EdicaoDeProdutoBasePage: PageObjectModel
     {
-        public EdicaoDeProdutoBasePage(DriverService driver) : base(driver)
-        {
-        }
+        public EdicaoDeProdutoBasePage(DriverService driver) : base(driver) { }
 
         public bool ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(CadastroDeProdutoModel.BotaoMenuCadastro);
@@ -66,7 +64,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
         }
 
-        public void VerificarCamposDeProduto(TipoDeProduto tipoDeProduto)
+        public void VerificarCamposDoProduto(TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDoProduto();
@@ -84,12 +82,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             {
                 return false;
             }
-        }
-
-        public void VerificarCamposDoProduto(TipoDeProduto tipoDeProduto)
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto).VerificarCamposDoProduto();
         }
 
         public void VerificarCamposDeProdutoEditado(TipoDeProduto tipoDeProduto)
@@ -139,9 +131,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDeImpostos()
         {
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), "0 - Nacional, exceto as indicadas nos códigos 3, 4, 5 e 8");
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), "TRIBUTADO SEM PERMISSÃO DE CRÉDITO");
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), "Produto adquirido ou recebido de terceiros");
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), CadastroDeProdutoBaseModel.OrigemMercadoria);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), CadastroDeProdutoBaseModel.SituacaoTributaria);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), CadastroDeProdutoBaseModel.NaturezaCfop);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm), CadastroDeProdutoBaseModel.NcmDoProduto);
         }
 
@@ -163,9 +155,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDeImpostosEditado()
         {
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), "1 - Estrangeira - Importação direta, exceto a indicada no código 6");
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), "SUBSTITUIÇÃO TRIBUTÁRIA COBRADA ANTERIORMENTE");
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), "Produto produzido pelo estabelecimento");
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), EdicaoDeProdutoSimplesModel.OrigemMercadoria);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), EdicaoDeProdutoSimplesModel.SituacaoTributaria);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), EdicaoDeProdutoSimplesModel.NaturezaCfop);
             Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm), EdicaoDeProdutoSimplesModel.NcmDoProduto);
         }
 

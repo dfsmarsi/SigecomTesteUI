@@ -2,7 +2,7 @@
 {
     public class CadastroDeProdutoGradeModel : CadastroDeProdutoBaseModel
     {
-        public static string NomeDoProduto => "PRODUTO GRADE";
+        public static string NomeDoProduto => "PRODUTO GRADE CADASTRO TESTE";
         public static string CategoriaDoProduto => "GRADE";
         public static string CodigoDeBarras => "0000010";
         public static string TamanhoDaGrade => "G";
@@ -13,6 +13,6 @@
         public static string MarkupDaGrade => "50,00";
         public static string VendaDaGrade => "15,00";
 
-        public static string NomeFinalDoProduto => "PRODUTO GRADE G PRETO";
+        public static string NomeFinalDoProduto => "PRODUTO GRADE CADASTRO TESTE G PRETO";
     }
 }

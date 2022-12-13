@@ -2,7 +2,7 @@
 {
     public class CadastroDeProdutoCompletoModel : CadastroDeProdutoBaseModel
     {
-        public static string NomeDoProduto => "PRODUTO COMPLETO TESTE";
+        public static string NomeDoProduto => "PRODUTO COMPLETO CADASTRO TESTE";
         public static string CategoriaDoProduto => "PRODUTOS";
 
         public static string GarantiaEmDias => "30";
@@ -16,6 +16,6 @@
         public static string CstCofins => "49 - Outras Operações de Saída";
         public static string ClassificacaoPisCofins => "Não monofásica";
 
-        public static string NomeFinalDoProduto => "PRODUTO COMPLETO TESTE ";
+        public static string NomeFinalDoProduto => "PRODUTO COMPLETO CADASTRO TESTE";
     }
 }
