@@ -25,7 +25,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeProdutoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBasePage>>();
             var edicaoDeProdutoBasePage = resolveEdicaoDeProdutoBasePage(DriverService);
-            const TipoDeProduto tipoDeProduto = TipoDeProduto.Produto;
+            const TipoDeProduto tipoDeProduto = TipoDeProduto.Simples;
 
             // Act
             edicaoDeProdutoBasePage.PesquisarProdutoQueSeraEditado(tipoDeProduto);

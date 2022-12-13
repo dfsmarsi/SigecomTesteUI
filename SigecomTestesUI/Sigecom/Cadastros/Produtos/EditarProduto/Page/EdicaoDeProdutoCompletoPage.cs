@@ -22,23 +22,23 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             edicaoDeProdutoBasePage.AbrirTelaDeCadastroDoProduto();
             edicaoDeProdutoBasePage.ClicarNoAtalhoDePesquisar();
             edicaoDeProdutoBasePage.RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
-            pesquisaDeProdutoPage.PesquisarProdutoComEnter(EdicaoDeProdutoBalancaModel.NomeDoProdutoParaPesquisar);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(EdicaoDeProdutoCompletoModel.NomeDoProdutoParaPesquisar);
         }
 
         public void VerificarCamposDoProduto()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), CadastroDeProdutoSimplesModel.NomeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), CadastroDeProdutoCompletoModel.NomeDoProduto);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoUnidade), CadastroDeProdutoBaseModel.UnidadeDoProduto);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoInterno), CadastroDeProdutoBaseModel.CodigoInternoDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoCompletoModel.CategoriaDoProduto);
 
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoGarantiaEmDias), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoque), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoqueMinimo), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoqueMaximo), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarca), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoFornecedor), CadastroDeProdutoSimplesModel.CategoriaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoGarantiaEmDias), CadastroDeProdutoCompletoModel.GarantiaEmDias);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto), CadastroDeProdutoCompletoModel.CodigoDeBarrasProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoque), CadastroDeProdutoCompletoModel.Estoque);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoqueMinimo), CadastroDeProdutoCompletoModel.EstoqueMinimo);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoqueMaximo), CadastroDeProdutoCompletoModel.EstoqueMaximo);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarca), CadastroDeProdutoCompletoModel.Marca);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoFornecedor), CadastroDeProdutoCompletoModel.Fornecedor);
 
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCusto), CadastroDeProdutoBaseModel.CustoDoProduto);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarkup), CadastroDeProdutoBaseModel.MarkupDoProduto);
@@ -50,13 +50,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
         {
             try
             {
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, EdicaoDeProdutoSimplesModel.NomeDoProduto);
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, EdicaoDeProdutoSimplesModel.UnidadeDoProduto);
-                _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeProdutoModel.ElementoCategoria, EdicaoDeProdutoSimplesModel.CategoriaDoProduto, Keys.Enter);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, EdicaoDeProdutoCompletoModel.NomeDoProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, EdicaoDeProdutoCompletoModel.UnidadeDoProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoInterno, EdicaoDeProdutoCompletoModel.CodigoInternoDoProduto);
+                _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeProdutoModel.ElementoCategoria, EdicaoDeProdutoCompletoModel.CategoriaDoProduto, Keys.Enter);
                 Thread.Sleep(TimeSpan.FromSeconds(2));
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, EdicaoDeProdutoSimplesModel.CustoDoProduto);
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, EdicaoDeProdutoSimplesModel.MarkupDoProduto);
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, EdicaoDeProdutoSimplesModel.ReferenciaDoProduto);
+
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGarantiaEmDias, EdicaoDeProdutoCompletoModel.GarantiaEmDias);
+                //_driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto, EdicaoDeProdutoCompletoModel.CodigoDeBarrasProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoEstoqueMinimo, EdicaoDeProdutoCompletoModel.EstoqueMinimo);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoEstoqueMaximo, EdicaoDeProdutoCompletoModel.EstoqueMaximo);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarca, EdicaoDeProdutoCompletoModel.Marca);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoFornecedor, EdicaoDeProdutoCompletoModel.Fornecedor);
+
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, EdicaoDeProdutoCompletoModel.CustoDoProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, EdicaoDeProdutoCompletoModel.MarkupDoProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, EdicaoDeProdutoCompletoModel.ReferenciaDoProduto);
                 return true;
             }
             catch (Exception)
@@ -67,12 +76,29 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDeProdutoEditado()
         {
-            throw new NotImplementedException();
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), EdicaoDeProdutoCompletoModel.NomeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoUnidade), EdicaoDeProdutoCompletoModel.UnidadeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoInterno), EdicaoDeProdutoCompletoModel.CodigoInternoDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), EdicaoDeProdutoCompletoModel.CategoriaDoProduto);
+
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoGarantiaEmDias), EdicaoDeProdutoCompletoModel.GarantiaEmDias);
+            //Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto), EdicaoDeProdutoCompletoModel.CodigoDeBarrasProduto);
+            //Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoque), EdicaoDeProdutoCompletoModel.Estoque);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoqueMinimo), EdicaoDeProdutoCompletoModel.EstoqueMinimo);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoEstoqueMaximo), EdicaoDeProdutoCompletoModel.EstoqueMaximo);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarca), EdicaoDeProdutoCompletoModel.Marca);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoFornecedor), EdicaoDeProdutoCompletoModel.Fornecedor);
+
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCusto), EdicaoDeProdutoCompletoModel.CustoDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoMarkup), EdicaoDeProdutoCompletoModel.MarkupDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoPrecoVenda), EdicaoDeProdutoCompletoModel.PrecoVendaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoReferencia), EdicaoDeProdutoCompletoModel.ReferenciaDoProduto);
         }
 
         public void VerificarCamposDaAba()
         {
-            //Não utilizado;
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCstpis), CadastroDeProdutoCompletoModel.Cstpis);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCstCofins), CadastroDeProdutoCompletoModel.CstCofins);
         }
 
         public void PreencherCamposDaAbaAoEditar()

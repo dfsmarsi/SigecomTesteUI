@@ -76,5 +76,8 @@
         public static string ElementoQuantidadeDeProdutoNoLote => "TextEditQuantidadeDeProdutoNoLote";
         public static string ElementoFabricacao => "dateEditFabricacao";
         public static string ElementoValidade => "dateEditValidade";
+
+        //Aba Descrição
+        public static string AbaDescricao => "Descricao";
     }
 }

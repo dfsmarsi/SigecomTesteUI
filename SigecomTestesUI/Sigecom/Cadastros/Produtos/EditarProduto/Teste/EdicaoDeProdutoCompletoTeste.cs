@@ -25,7 +25,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeProdutoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBasePage>>();
             var edicaoDeProdutoBasePage = resolveEdicaoDeProdutoBasePage(DriverService);
-            const TipoDeProduto tipoDeProduto = TipoDeProduto.Produto;
+            const TipoDeProduto tipoDeProduto = TipoDeProduto.Completo;
 
             // Act
             edicaoDeProdutoBasePage.PesquisarProdutoQueSeraEditado(tipoDeProduto);
@@ -33,6 +33,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
             edicaoDeProdutoBasePage.PreencherCamposDoProdutoAoEditar(tipoDeProduto);
             edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
             edicaoDeProdutoBasePage.VerificarCamposDeImpostos();
+            edicaoDeProdutoBasePage.VerificarCamposDaAba(tipoDeProduto);
             edicaoDeProdutoBasePage.PreencherCamposDeImpostosAoEditar();
             edicaoDeProdutoBasePage.Gravar();
 
