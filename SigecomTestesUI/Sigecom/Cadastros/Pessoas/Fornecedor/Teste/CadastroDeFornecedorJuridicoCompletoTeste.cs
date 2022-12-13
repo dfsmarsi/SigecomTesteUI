@@ -18,12 +18,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
             {"Cep","08545-240"},
             {"Endereco", "RUA DUÍLIO DAINEZI"},
             {"Numero","224"},
-            {"Bairro","JARDIM SÃO JOÃO"},
-            {"Observacao",@"SITUAÇÃO: BAIXADA
-                            PORTE: MICRO EMPRESA
-                            CAPITAL SOCIAL: R$ 0.00
-                            CNAE: 00.00-0-00 - ********
-                            NATUREZA JURÍDICA: 213-5 - EMPRESÁRIO (INDIVIDUAL)"}
+            {"Bairro","JARDIM SÃO JOÃO"}
         };
 
         [Test(Description = "Cadastro de fornecedor júridico completo")]

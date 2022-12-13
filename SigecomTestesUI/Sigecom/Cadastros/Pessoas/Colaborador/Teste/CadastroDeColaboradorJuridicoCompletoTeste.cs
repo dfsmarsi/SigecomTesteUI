@@ -19,11 +19,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
             {"Endereco", "QUADRA F QUATRO B"},
             {"Numero","23"},
             {"Bairro","GUAJUVIRAS"},
-            {"Observacao",@"SITUAÇÃO: ATIVA
-                            PORTE: MICRO EMPRESA
-                            CAPITAL SOCIAL: R$ 1000.00
-                            CNAE: 56.20-1-04 - FORNECIMENTO DE ALIMENTOS PREPARADOS PREPONDERANTEMENTE PARA CONSUMO DOMICILIAR
-                            NATUREZA JURÍDICA: 213-5 - EMPRESÁRIO (INDIVIDUAL)"},
             {"DataAdmissao", "01/01/1998"},
             {"EmailFuncionario", "teste@sistemasbr.net"},
             {"DiaPagamento", "07"},

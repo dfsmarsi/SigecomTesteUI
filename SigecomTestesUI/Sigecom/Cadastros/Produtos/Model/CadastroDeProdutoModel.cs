@@ -44,13 +44,11 @@
         public static string ElementoCstCofins => "cbxCSTCofins";
         public static string ElementoClassificacaoPisCofins => "cbxClassificacaoPisCofins";
 
-
         //Aba Grade
         public static string AbaGrade => "Grade";
         public static string ElementoGridColunaCodigoDeBarrasDaGrade => "Código de barras";
         public static string ElementoGridColunaTamanhoDaGrade => "Tamanho";
         public static string ElementoGridColunaCorDaGrade => "Cor";
-
         public static string ElementoGridColunaEstoqueDaGrade => "Estoque";
         public static string ElementoGridColunaCustoDaGrade => "Custo";
         public static string ElementoGridColunaMarkupDaGrade => "Markup";
@@ -69,7 +67,7 @@
         public static string ElementoCodigoAnp => "txtCodigoANP";
         public static string ElementoCodif => "txtCODIF";
 
-
+        //Aba Medicamento
         public static string AbaMedicamento => "Medicamento";
         public static string ElementoRegistroNaAnvisa => "textEditRegistroAnvisa";
         public static string ElementoPrecoMaximoAoConsumidor => "textEditPrecoMaximoAoConsumidor";

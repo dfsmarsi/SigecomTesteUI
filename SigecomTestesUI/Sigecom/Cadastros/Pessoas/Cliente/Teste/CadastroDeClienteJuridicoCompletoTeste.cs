@@ -19,11 +19,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
             {"Endereco", "RUA SILVIO ALVES BALBINO"},
             {"Numero","251"},
             {"Bairro","PARQUE INDUSTRIAL II"},
-            {"Observacao",@"SITUAÇÃO: ATIVA
-                            PORTE: DEMAIS
-                            CAPITAL SOCIAL: R$ 4500000.00
-                            CNAE: 46.35-4-02 - COMÉRCIO ATACADISTA DE CERVEJA, CHOPE E REFRIGERANTE
-                            NATUREZA JURÍDICA: 206-2 - SOCIEDADE EMPRESÁRIA LIMITADA"},
             {"ContatoPrimario","(11) 96405-6467"},
             {"ContatoSecundario","teste@sistemasbr.net"}
         };
