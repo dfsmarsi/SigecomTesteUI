@@ -4,8 +4,8 @@ using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
 {
