@@ -58,7 +58,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
                 Thread.Sleep(TimeSpan.FromSeconds(2));
 
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoGarantiaEmDias, EdicaoDeProdutoCompletoModel.GarantiaEmDias);
-                //_driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto, EdicaoDeProdutoCompletoModel.CodigoDeBarrasProduto);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto, EdicaoDeProdutoCompletoModel.CodigoDeBarrasProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoEstoqueMinimo, EdicaoDeProdutoCompletoModel.EstoqueMinimo);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoEstoqueMaximo, EdicaoDeProdutoCompletoModel.EstoqueMaximo);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarca, EdicaoDeProdutoCompletoModel.Marca);

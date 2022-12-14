@@ -9,11 +9,15 @@
         public static string BotaoGravar => "F5 - Gravar";
         public static string BotaoPesquisar => "F9 - Pesquisar";
         public static string ElementoTipoPessoa => "cbxPessoaClassificacao";
+        public static string ElementoNacionalidade => "cbxNacionalidade";
         public static string ElementoNome => "txtNome";
         public static string ElementoCpf => "txtCPF";
         public static string ElementoCep => "txtCEP";
         public static string ElementoNumero => "txtNumero";
         public static string ElementoEndereco => "txtEndereco";
+        public static string ElementoCidade => "cbxCidade";
+        public static string ElementoEstado => "cbxEstado";
+
         public static string ElementoIdentificador => "txtIdentificador";
         public static string ElementoInscricaoSuframa => "txtInscricaoSuframa";
 

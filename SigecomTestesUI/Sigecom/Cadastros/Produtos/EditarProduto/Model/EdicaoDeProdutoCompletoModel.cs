@@ -8,7 +8,7 @@
         public static string CodigoInternoDoProduto => "int 2";
 
         public static string GarantiaEmDias => "30";
-        public static string CodigoDeBarrasProduto => "7891000315507";
+        public static string CodigoDeBarrasProduto => "7000000000034";
         public static string Estoque => "100,00";
         public static string EstoqueMinimo => "20,00";
         public static string EstoqueMaximo => "120,00";
