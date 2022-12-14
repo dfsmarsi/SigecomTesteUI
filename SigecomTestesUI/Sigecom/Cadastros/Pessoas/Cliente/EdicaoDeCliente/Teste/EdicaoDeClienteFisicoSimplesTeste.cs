@@ -20,17 +20,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Test
         [AllureSubSuite("Cliente")]
         public void EdicaoDeClienteFisicoSimples()
         {
+            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteBasePage>>();
-            var cadastroDeClienteFisicoPage = resolveCadastroDeClienteFisicoPage(DriverService);
-            // Arange
-            cadastroDeClienteFisicoPage.AbrirTelaDeCadastroDeCliente();
+            var edicaoDeClienteBasePage = resolveCadastroDeClienteFisicoPage(DriverService);
+            edicaoDeClienteBasePage.AbrirTelaDeCadastroDeCliente();
 
             // Act
-            cadastroDeClienteFisicoPage.Gravar();
+            edicaoDeClienteBasePage.VerificarInformacoesDoCliente();
+            edicaoDeClienteBasePage.PreencherAsInformacoesDaPessoasNaEdicao();
+            edicaoDeClienteBasePage.Gravar();
 
             // Assert
-
+            edicaoDeClienteBasePage.ClicarNoAtalhoDePesquisar();
+            edicaoDeClienteBasePage.FluxoDePesquisaDaPessoaEditado();
+            edicaoDeClienteBasePage.VerificarDadosDaPessoaEditados();
+            edicaoDeClienteBasePage.FecharJanelaCadastroDeClienteComEsc();
         }
     }
 }

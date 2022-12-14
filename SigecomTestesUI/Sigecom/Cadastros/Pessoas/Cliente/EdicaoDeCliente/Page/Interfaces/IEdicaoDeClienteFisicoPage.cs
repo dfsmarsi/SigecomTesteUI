@@ -7,7 +7,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
         void VerificarDadosDaPessoa();
         void PreencherAsInformacoesDaPessoasNaEdicao();
         void VerificarDadosDaPessoaEditados();
-        void FluxoDePesquisaDaPessoaEditado(CadastroDeClienteFisicoPage cadastroDeClienteFisicoPage,
+        void FluxoDePesquisaDaPessoaEditado(EdicaoDeClienteBasePage EdicaoDeClienteBasePage,
             PesquisaDePessoaPage pesquisaDePessoaPage);
     }
 }

@@ -10,19 +10,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
     public class EdicaoDeClienteFisicoSimplesPage : IEdicaoDeClienteFisicoPage
     {
         private readonly DriverService _driverService;
-        private static Dictionary<string, string> _dadosDoCliente => new Dictionary<string, string>()
+        private static Dictionary<string, string> _dadosDoCliente => new Dictionary<string, string>
         {
             {"TipoPessoa", "FÍSICA"},
-            {"Nacionalidade", "Brasileira"},
+            {"Nacionalidade", "BRASILEIRO(A)"},
             {"Nome", "CLIENTE FISICO EDITAR TESTE"},
             {"Cidade", "JALES"},
-            {"Estado", ""}
+            {"Estado", "SÃO PAULO"}
         };
 
-        public EdicaoDeClienteFisicoSimplesPage(DriverService driver, Dictionary<string, string> dadosDoCliente)
-        {
-            _driverService = driver;
-        }
+        public EdicaoDeClienteFisicoSimplesPage(DriverService driver) => _driverService = driver;
 
         public void VerificarDadosDaPessoa()
         {
@@ -47,9 +44,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEstado), EdicaoDeClienteFisicoModel.Estado);
         }
 
-        public void FluxoDePesquisaDaPessoaEditado(CadastroDeClienteFisicoPage cadastroDeClienteFisicoPage, PesquisaDePessoaPage pesquisaDePessoaPage)
+        public void FluxoDePesquisaDaPessoaEditado(EdicaoDeClienteBasePage EdicaoDeClienteBasePage, PesquisaDePessoaPage pesquisaDePessoaPage)
         {
-            cadastroDeClienteFisicoPage.ClicarBotaoPesquisar();
+            EdicaoDeClienteBasePage.ClicarNoAtalhoDePesquisar();
             pesquisaDePessoaPage.PesquisarPessoa("cliente", EdicaoDeClienteFisicoModel.NomeDoClienteAlterado);
         }
     }
