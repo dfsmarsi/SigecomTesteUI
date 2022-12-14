@@ -2,7 +2,6 @@
 {
     public class EdicaoDeProdutoCompletoModel
     {
-        public static string NomeDoProdutoParaPesquisar => "PRODUTO COMPLETO EDITAR TESTE";
         public static string NomeDoProduto => "PRODUTO COMPLETO EDITAR TESTE ALTERADO";
         public static string CategoriaDoProduto => "BALANCA";
         public static string UnidadeDoProduto => "CX";

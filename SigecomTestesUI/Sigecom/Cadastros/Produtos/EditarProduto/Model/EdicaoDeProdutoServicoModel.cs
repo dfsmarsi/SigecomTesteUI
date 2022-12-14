@@ -2,7 +2,6 @@
 {
     public class EdicaoDeProdutoServicoModel
     {
-        public static string NomeDoProdutoParaPesquisar => "PRODUTO SERVICO EDITAR TESTE";
         public static string NomeDoProdutoAlterado => "PRODUTO SERVICO EDITAR TESTE ALTERADO";
 
         public static string IbptNacional => "50,00";
