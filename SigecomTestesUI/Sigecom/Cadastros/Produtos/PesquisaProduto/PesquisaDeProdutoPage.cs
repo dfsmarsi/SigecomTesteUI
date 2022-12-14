@@ -1,10 +1,11 @@
 ﻿using Autofac;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using System;
 using System.Linq;
 using OpenQA.Selenium;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
@@ -56,21 +57,21 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
             }
         }
 
-        public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, out CadastroDeProdutoPage.CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
+        public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, out CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>();
             cadastroDeProdutoBasePage = resolveCadastroDeProdutoPage(DriverService);
             PesquisarUmProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoBasePage);
         }
 
         public void PesquisarComF9UmProdutoNaTelaPrincipal(ILifetimeScope beginLifetimeScope)
         {
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
+            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>();
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
         }
 
-        private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoPage.CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
+        private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
             cadastroDeProdutoBasePage.ClicarNaOpcaoDoMenu();
             cadastroDeProdutoBasePage.ClicarNaOpcaoDoSubMenu();
@@ -80,7 +81,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
         public void FecharSomenteTelaDePesquisa() => 
             FecharJanelaComEsc();
 
-        public void FecharTelasDeProduto(CadastroDeProdutoPage.CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
+        public void FecharTelasDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
             FecharJanelaComEsc();
             cadastroDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();

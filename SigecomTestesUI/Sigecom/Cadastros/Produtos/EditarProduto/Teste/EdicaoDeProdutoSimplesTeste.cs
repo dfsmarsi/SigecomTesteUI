@@ -3,8 +3,8 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste

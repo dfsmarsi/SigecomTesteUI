@@ -2,9 +2,9 @@
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
