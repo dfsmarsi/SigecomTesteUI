@@ -12,20 +12,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
-            {"Nome","EMPRESA CLIENTE TESTE COMPLETO"},
-            {"Cnpj","77753844000138"},
-            {"Ie","248005050206"},
-            {"Suframa","12345678"},
-            {"NomeFantasia","Teste"},
-            {"Complemento","Centro"},
-            {"Cep","15700082"},
-            {"Numero","123"},
-            {"Observacao","Teste"},
+            {"Nome","VENTURINI - FLORENCIO INDUSTRIA E COM DE BEBIDAS LTDA"},
+            {"Cnpj","53765640000159"},
+            {"NomeFantasia","REFRIGERANTES SABORAKI"},
+            {"Cep","15708-030"},
+            {"Endereco", "RUA SILVIO ALVES BALBINO"},
+            {"Numero","251"},
+            {"Bairro","PARQUE INDUSTRIAL II"},
             {"ContatoPrimario","(11) 96405-6467"},
-            {"ObservacaoContatoPrimario","Teste"},
-            {"ContatoSecundario","teste@sistemasbr.net"},
-            {"ObservacaoContatoSecundario","Teste"},
-            {"AvisoDeVenda", "Aviso teste"}
+            {"ContatoSecundario","teste@sistemasbr.net"}
         };
 
         [Test(Description = "Cadastro de cliente jurídico completo")]
@@ -46,6 +41,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
 
             // Act
             cadastroDeClienteJuridicoPage.PreencherCamposCompleto();
+            cadastroDeClienteJuridicoPage.VerificarCamposDoCarregados();
             cadastroDeClienteJuridicoPage.GravarCadastro();
 
             // Assert

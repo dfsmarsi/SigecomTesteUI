@@ -13,7 +13,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
             {"Nome","EMPRESA CLIENTE TESTE SIMPLES"},
-            {"Cnpj","29224713000110"},
             {"Cep","15700082"},
             {"Numero","123"}
         };

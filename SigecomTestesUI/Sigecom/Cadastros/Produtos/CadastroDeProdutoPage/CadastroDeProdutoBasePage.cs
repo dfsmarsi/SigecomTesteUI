@@ -1,5 +1,4 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
@@ -8,6 +7,7 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
 {
@@ -103,20 +103,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             }
         }
 
-        public bool PreencherCamposDeImpostosDeServico()
+        public void PreencherCamposDeImpostosDeServico()
         {
-            try
-            {
-                DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
-                DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
-                var verificarNcm = DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm).Equals("00000000");
-                Assert.True(verificarNcm);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
+            DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
+            var verificarNcm = DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm).Equals("00000000");
+            Assert.True(verificarNcm);
+        }
+
+        public void PreencherCamposDeDescricaoParaOCadastroCompleto()
+        {
+            DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoDescricao, CadastroDeProdutoCompletoModel.Descricao);
         }
 
         public bool Gravar()
@@ -153,27 +150,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
 
         public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
-            AbrirTelaDeCadastroDoProduto(cadastroDeProdutoBasePage);
-            cadastroDeProdutoBasePage.ClicarNoBotaoNovo();
-        }
-
-        private static void AbrirTelaDeCadastroDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
-        {
             cadastroDeProdutoBasePage.ClicarNaOpcaoDoMenu();
             cadastroDeProdutoBasePage.ClicarNaOpcaoDoSubMenu();
-        }
-
-        private void RetornarPesquisaDeProduto(out PesquisaDeProdutoPage pesquisaDeProdutoPage)
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
-            pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
+            cadastroDeProdutoBasePage.ClicarNoBotaoNovo();
         }
 
         public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
+            var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
+            var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
             beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage);
         }
     }

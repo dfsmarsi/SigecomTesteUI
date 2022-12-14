@@ -13,7 +13,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
         private readonly Dictionary<string, string> _dadosDeFornecedor = new Dictionary<string, string>
         {
             {"Nome","EMPRESA FORNECEDOR TESTE SIMPLES"},
-            {"Cnpj","25841943000178"},
             {"Cep","15700082"},
             {"Numero","333"}
         };

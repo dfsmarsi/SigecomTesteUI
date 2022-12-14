@@ -12,20 +12,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
-            {"Nome", "EMPRESA COLABORADOR TESTE COMPLETO"},
-            {"Cnpj", "28406678000198"},
-            {"Ie","248005050206"},
-            {"Suframa","12345678"},
-            {"NomeFantasia","Teste"},
-            {"Complemento","Centro"},
-            {"Cep", "15700082"},
-            {"Numero", "623"},
-            {"Observacao","Teste"},
-            {"ContatoPrimario","(11) 96405-6467"},
-            {"ObservacaoContatoPrimario","Teste"},
-            {"ContatoSecundario","teste@sistemasbr.net"},
-            {"ObservacaoContatoSecundario","Teste"},
-            {"AvisoDeVenda", "Aviso teste"}
+            {"Nome", "FABIANO HENRIQUE DE MORAIS FONSECA 04184783090"},
+            {"Cnpj", "39578222000121"},
+            {"NomeFantasia","SALGADINHOS DA VERA."},
+            {"Cep","92440-304"},
+            {"Endereco", "QUADRA F QUATRO B"},
+            {"Numero","23"},
+            {"Bairro","GUAJUVIRAS"},
+            {"DataAdmissao", "01/01/1998"},
+            {"EmailFuncionario", "teste@sistemasbr.net"},
+            {"DiaPagamento", "07"},
+            {"Salario", "800,00"},
+            {"TelefoneFuncionario", "(11)96405-6467"},
+            {"Cargo", "TESTER"}
         };
 
         [Test(Description = "Cadastro de colaborador jurídico completo")]
@@ -46,6 +45,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
 
             // Act
             cadastroDeColaboradorJuridicoPage.PreencherCamposCompleto();
+            cadastroDeColaboradorJuridicoPage.VerificarCamposDoCarregados();
             cadastroDeColaboradorJuridicoPage.GravarCadastro();
 
             // Assert

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using System;
+using System.Collections.Generic;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
@@ -78,9 +78,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             {
                 DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoPessoa, 1);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, _dadosDoCliente["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cnpj"]);
-                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"], Keys.Enter);
-                EsperarAcaoEmSegundos(3);
+                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoCep, _dadosDoCliente["Cep"]);
                 DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNumero, _dadosDoCliente["Numero"]);
                 return true;
             }
@@ -94,14 +92,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
         {
             try
             {
-                PreencherCamposSimples();
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoRg, _dadosDoCliente["Ie"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoInscricaoSuframa, _dadosDoCliente["Suframa"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoApelido, _dadosDoCliente["NomeFantasia"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoComplemento, _dadosDoCliente["Complemento"]);
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObservacao, _dadosDoCliente["Observacao"]);
-                CadastrarContatosDoCliente();
-                DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoAvisoDeVenda, _dadosDoCliente["AvisoDeVenda"]);
+                DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoPessoa, 1);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeClienteModel.ElementoCpf, _dadosDoCliente["Cnpj"], Keys.Enter);
                 return true;
             }
             catch
@@ -110,18 +102,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente
             }
         }
 
-        private void CadastrarContatosDoCliente()
+        public void VerificarCamposDoCarregados()
         {
-            DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 3);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoPrimario"]);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoPrimario"]);
-            DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
-            EsperarAcaoEmSegundos(2);
-            DriverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTipoContato, 1);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatoDoCliente, _dadosDoCliente["ContatoSecundario"]);
-            DriverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObsContatoDoCliente, _dadosDoCliente["ObservacaoContatoSecundario"]); 
-            DriverService.ClicarBotaoId(CadastroDeClienteModel.BotaoContato);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), _dadosDoCliente["Nome"]);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCep), _dadosDoCliente["Cep"]);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNumero), _dadosDoCliente["Numero"]);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEndereco), _dadosDoCliente["Endereco"]);
         }
+
 
         public bool GravarCadastro()
         {

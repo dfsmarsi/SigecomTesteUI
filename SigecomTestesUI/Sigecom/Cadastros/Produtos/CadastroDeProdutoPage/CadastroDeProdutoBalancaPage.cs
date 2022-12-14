@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
         {
             try
             {
-                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarras, CadastroDeProdutoBalancaModel.CodigoDaBalanca);
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasBalanca, CadastroDeProdutoBalancaModel.CodigoDaBalanca);
                 return true;
             }
             catch (Exception)

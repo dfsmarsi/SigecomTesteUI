@@ -13,7 +13,7 @@
         public static string ElementoCpf => "txtCPF";
         public static string ElementoCep => "txtCEP";
         public static string ElementoNumero => "txtNumero";
-
+        public static string ElementoEndereco => "txtEndereco";
         public static string ElementoRg => "txtRG";
         public static string ElementoInscricaoSuframa => "txtInscricaoSuframa";
         public static string ElementoApelido => "txtApelido";

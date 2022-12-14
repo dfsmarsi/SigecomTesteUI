@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Allure.Attributes;
+﻿using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
+using System.Collections.Generic;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {
@@ -17,16 +15,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Categoria")]
-        public void CadastrarCategoriaMedicamentoSomenteCamposObrigatorios()
+        public void CadastrarCategoriaImeiSomenteCamposObrigatorios()
         {
-            var dadosDeCategoriaMedicamento = new Dictionary<string, string>
+            var dadosDeCategoriaImei = new Dictionary<string, string>
             {
                 {"Grupo", "GRUPO IMEI"},
                 {"Markup", "0"}
             };
 
             // Arange
-            RetornarCadastroDeCategoria(dadosDeCategoriaMedicamento, out var cadastroDeCategoriaPage);
+            RetornarCadastroDeCategoria(dadosDeCategoriaImei, out var cadastroDeCategoriaPage);
             AbrirTelaDeCategoriaParaTeste(cadastroDeCategoriaPage);
 
             // Act
@@ -34,7 +32,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
             cadastroDeCategoriaPage.Gravar();
 
             // Assert
-            PesquisarCategoriaGravada(cadastroDeCategoriaPage, dadosDeCategoriaMedicamento);
+            PesquisarCategoriaGravada(cadastroDeCategoriaPage, dadosDeCategoriaImei);
         }
     }
 }

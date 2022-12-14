@@ -28,14 +28,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoTeste
 
             // Act
             cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
-            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Produto);
+            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Simples);
             cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
             cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
             cadastroDeProdutoPage.PreencherCamposDeImpostos();
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Produto);
+            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Simples);
         }
     }
 }

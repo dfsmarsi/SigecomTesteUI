@@ -14,11 +14,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
         {
             try
             {
-                containerBuilder.RegisterType<CadastroDeProdutoPage.CadastroDeProdutoBasePage>();
+                containerBuilder.RegisterType<CadastroDeProdutoBasePage>();
                 containerBuilder.RegisterType<CadastroDeProdutoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoCombustivelTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoBalancaTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoGradeTeste>();
+                containerBuilder.RegisterType<CadastroDeProdutoCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeProdutoFactory>().As<ICadastroDeProdutoFactory>();
                 containerBuilder.RegisterType<CadastroDeProdutoCombustivelPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoGradePage>();
@@ -26,6 +27,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Injection
                 containerBuilder.RegisterType<CadastroDeProdutoSimplesPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoMedicamentoPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoServicoPage>();
+                containerBuilder.RegisterType<CadastroDeProdutoCompletoPage>();
             }
             catch (Exception exception)
             {

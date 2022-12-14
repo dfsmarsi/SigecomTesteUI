@@ -12,20 +12,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
     {
         private readonly Dictionary<string, string> _dadosDeFornecedor = new Dictionary<string, string>
         {
-            {"Nome","EMPRESA FORNECEDOR TESTE COMPLETO"},
-            {"Cnpj","25850870000180"},
-            {"Ie","248005050206"},
-            {"Suframa","12345678"},
-            {"NomeFantasia","Teste"},
-            {"Complemento","Centro"},
-            {"Cep", "15700082"},
-            {"Numero", "315"},
-            {"Observacao","Teste"},
-            {"ContatoPrimario","(11) 96405-6467"},
-            {"ObservacaoContatoPrimario","Teste"},
-            {"ContatoSecundario","teste@sistemasbr.net"},
-            {"ObservacaoContatoSecundario","Teste"},
-            {"AvisoDeVenda", "Aviso teste"}
+            {"Nome","PAMELA TABATA TUGERA DOS REIS 31130435814"},
+            {"Cnpj","16716114000172"},
+            {"NomeFantasia","MARIA BELLE"},
+            {"Cep","08545-240"},
+            {"Endereco", "RUA DUÍLIO DAINEZI"},
+            {"Numero","224"},
+            {"Bairro","JARDIM SÃO JOÃO"}
         };
 
         [Test(Description = "Cadastro de fornecedor júridico completo")]
@@ -46,6 +39,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
 
             // Act
             cadastroDeFornecedorJuridicoPage.PreencherCamposCompleto();
+            cadastroDeFornecedorJuridicoPage.VerificarCamposDoCarregados();
             cadastroDeFornecedorJuridicoPage.GravarCadastro();
 
             // Assert

@@ -1,12 +1,12 @@
 ﻿using Autofac;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System;
 using System.Collections.Generic;
-using OpenQA.Selenium;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
@@ -61,9 +61,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             {
                 DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoPessoa, 1);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, _dadosDeColaborador["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCpf, _dadosDeColaborador["Cnpj"]);
-                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeColaboradorModel.ElementoCep, _dadosDeColaborador["Cep"], Keys.Enter);
-                EsperarAcaoEmSegundos(3);
+                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCep, _dadosDeColaborador["Cep"]);
                 DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero, _dadosDeColaborador["Numero"]);
                 return true;
             }
@@ -77,17 +75,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
         {
             try
             {
-                PreencherCamposSimples();
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoRg, _dadosDeColaborador["Ie"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoInscricaoSuframa,
-                    _dadosDeColaborador["Suframa"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoApelido, _dadosDeColaborador["NomeFantasia"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoComplemento,
-                    _dadosDeColaborador["Complemento"]);
-                DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoObservacao,
-                    _dadosDeColaborador["Observacao"]);
-                CadastrarContatosDoCliente();
-                CadastrarInformacoesDoFuncionarioNoCadastroDeColaborador();
+                DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoPessoa, 1);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeColaboradorModel.ElementoCpf, _dadosDeColaborador["Cnpj"], Keys.Enter);
                 return true;
             }
             catch
@@ -96,35 +85,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
             }
         }
 
-        private void CadastrarContatosDoCliente()
+        public void VerificarCamposDoCarregados()
         {
-            DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoContato, 3);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoContatoDoCliente,
-                _dadosDeColaborador["ContatoPrimario"]);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoObsContatoDoCliente,
-                _dadosDeColaborador["ObservacaoContatoPrimario"]);
-            DriverService.ClicarBotaoId(CadastroDeColaboradorModel.BotaoContato);
-            EsperarAcaoEmSegundos(2);
-            DriverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoTipoContato, 1);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoContatoDoCliente,
-                _dadosDeColaborador["ContatoSecundario"]);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoObsContatoDoCliente,
-                _dadosDeColaborador["ObservacaoContatoSecundario"]);
-            DriverService.ClicarBotaoId(CadastroDeColaboradorModel.BotaoContato);
-        }
-
-        private void CadastrarInformacoesDoFuncionarioNoCadastroDeColaborador()
-        {
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDataAdmissao,
-                _dadosDeColaborador["DataAdmissao"]);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoEmailFuncionario,
-                _dadosDeColaborador["EmailFuncionario"]);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDiaPagamento,
-                _dadosDeColaborador["DiaPagamento"]);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoSalario, _dadosDeColaborador["Salario"]);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoTelefoneFuncionario,
-                _dadosDeColaborador["TelefoneFuncionario"]);
-            DriverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCargo, _dadosDeColaborador["Cargo"]);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNome), _dadosDeColaborador["Nome"]);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCep), _dadosDeColaborador["Cep"]);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNumero), _dadosDeColaborador["Numero"]);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEndereco), _dadosDeColaborador["Endereco"]);
         }
 
         public bool GravarCadastro()
