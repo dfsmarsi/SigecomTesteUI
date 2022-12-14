@@ -111,6 +111,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProdutoPage
             Assert.True(verificarNcm);
         }
 
+        public void PreencherCamposDeDescricaoParaOCadastroCompleto()
+        {
+            DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoDescricao, CadastroDeProdutoCompletoModel.Descricao);
+        }
+
         public bool Gravar()
         {
             try

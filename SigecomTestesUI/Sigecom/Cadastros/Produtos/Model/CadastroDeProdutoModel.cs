@@ -24,6 +24,8 @@
         public static string ElementoCusto => "txtUltimaCompra";
         public static string ElementoMarkup => "txtMarkup";
         public static string ElementoPrecoVenda => "txtPrecoVenda";
+        public static string ElementoLocal => "txtLocal";
+        public static string ElementoObs => "txtObs";
         public static string ElementoReferencia => "txtReferencia";
 
         //Aba Impostos
@@ -78,6 +80,7 @@
         public static string ElementoValidade => "dateEditValidade";
 
         //Aba Descrição
-        public static string AbaDescricao => "Descricao";
+        public static string AbaDescricao => "Descrição";
+        public static string ElementoDescricao => "txtDescricao";
     }
 }
