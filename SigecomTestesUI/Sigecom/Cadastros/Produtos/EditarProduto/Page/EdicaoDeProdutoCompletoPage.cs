@@ -27,7 +27,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDoProduto()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), CadastroDeProdutoCompletoModel.NomeDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNomeProduto), "PRODUTO COMPLETO EDITAR TESTE");
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoUnidade), CadastroDeProdutoBaseModel.UnidadeDoProduto);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoInterno), CadastroDeProdutoBaseModel.CodigoInternoDoProduto);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoCompletoModel.CategoriaDoProduto);

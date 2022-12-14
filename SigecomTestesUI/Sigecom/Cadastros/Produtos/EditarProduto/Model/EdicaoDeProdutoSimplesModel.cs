@@ -2,10 +2,10 @@
 {
     public class EdicaoDeProdutoSimplesModel
     {
-        public static string NomeDoProdutoParaPesquisar => "PRODUTO SIMPLES TESTE";
-        public static string NomeDoProduto => "PRODUTO SIMPLES TESTE ALTERADO";
+        public static string NomeDoProdutoParaPesquisar => "PRODUTO SIMPLES EDITAR TESTE";
+        public static string NomeDoProduto => "PRODUTO SIMPLES EDITAR TESTE ALTERADO";
         public static string CategoriaDoProduto => "BALANCA";
-        public static string NomeFinalDoProduto => "PRODUTO SIMPLES TESTE ALTERADO";
+        public static string NomeFinalDoProduto => "PRODUTO SIMPLES EDITAR TESTE ALTERADO";
         public static string UnidadeDoProduto => "CX";
         public static string CustoDoProduto => "2,00";
         public static string MarkupDoProduto => "10,00";

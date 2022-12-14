@@ -2,8 +2,8 @@
 {
     public class EdicaoDeProdutoServicoModel
     {
-        public static string NomeDoProdutoParaPesquisar => "PRODUTO SERVICO TESTE";
-        public static string NomeDoProdutoAlterado => "PRODUTO SERVICO TESTE ALTERADO";
+        public static string NomeDoProdutoParaPesquisar => "PRODUTO SERVICO EDITAR TESTE";
+        public static string NomeDoProdutoAlterado => "PRODUTO SERVICO EDITAR TESTE ALTERADO";
 
         public static string IbptNacional => "50,00";
         public static string IbptEstatual => "10,00";
@@ -12,6 +12,6 @@
         public static string AliquotaIcms => "15,00";
         public static string ListaServicos => "18.01";
 
-        public static string NomeFinalDoProduto => "PRODUTO SERVICO TESTE ALTERADO";
+        public static string NomeFinalDoProduto => "PRODUTO SERVICO EDITAR TESTE ALTERADO";
     }
 }
