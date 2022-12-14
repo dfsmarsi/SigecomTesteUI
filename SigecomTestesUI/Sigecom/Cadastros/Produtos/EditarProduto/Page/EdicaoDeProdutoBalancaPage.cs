@@ -49,7 +49,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDaAba()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasBalanca), CadastroDeProdutoBalancaModel.CodigoDaBalanca);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasBalanca), "000002");
         }
 
         public void PreencherCamposDaAbaAoEditar()

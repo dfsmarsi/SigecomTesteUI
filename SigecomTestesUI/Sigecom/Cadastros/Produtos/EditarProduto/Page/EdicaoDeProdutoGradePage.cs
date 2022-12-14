@@ -49,7 +49,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDaAba()
         {
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade), CadastroDeProdutoGradeModel.CodigoDeBarras);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade), "0000009");
             Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade), CadastroDeProdutoGradeModel.TamanhoDaGrade);
             Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade), CadastroDeProdutoGradeModel.CorDaGrade);
 
