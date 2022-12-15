@@ -4,6 +4,8 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste;
@@ -23,6 +25,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
                 containerBuilder.RegisterType<CadastroDeClienteJuridicoCompletoTeste>();
                 containerBuilder.RegisterType<CadastroDeClienteFisicoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeClienteFisicoCompletoTeste>();
+                containerBuilder.RegisterType<EdicaoDeClienteFisicoSimplesPage>();
+                containerBuilder.RegisterType<EdicaoDeClienteFisicoSimplesTeste>(); 
+                containerBuilder.RegisterType<EdicaoDeClienteBasePage>();
                 containerBuilder.RegisterType<CadastroDeColaboradorFisicoPage>();
                 containerBuilder.RegisterType<CadastroDeColaboradorFisicoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeColaboradorFisicoCompletoTeste>();

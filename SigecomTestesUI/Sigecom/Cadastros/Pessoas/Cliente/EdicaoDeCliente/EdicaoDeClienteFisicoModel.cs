@@ -2,9 +2,9 @@
 {
     public class EdicaoDeClienteFisicoModel
     {
-        public static string NomeDoClienteParaPesquisar => "CLIENTE SIMPLES EDITAR TESTE";
-        public static string NomeDoClienteAlterado => "CLIENTE SIMPLES EDITAR TESTE ALTERADO";
-        public static string Cidade => "ALMAS";
+        public static string NomeDoClienteParaPesquisar => "CLIENTE FISICO SIMPLES EDITAR TESTE";
+        public static string NomeDoClienteAlterado => "CLIENTE FISICO SIMPLES EDITAR TESTE ALTERADO";
+        public static string Cidade => "ABREULÂNDIA";
         public static string Estado => "TOCANTINS";
     }
 }

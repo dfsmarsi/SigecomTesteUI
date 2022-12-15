@@ -14,12 +14,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
         {
             {"TipoPessoa", "FÍSICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "CLIENTE FISICO EDITAR TESTE"},
+            {"Nome", "CLIENTE FISICO SIMPLES EDITAR TESTE"},
             {"Cidade", "JALES"},
             {"Estado", "SÃO PAULO"}
         };
 
         public EdicaoDeClienteFisicoSimplesPage(DriverService driver) => _driverService = driver;
+
+        public void PesquisarClienteQueSeraEditado(EdicaoDeClienteBasePage edicaoDeClienteBasePage)
+        {
+            edicaoDeClienteBasePage.AbrirTelaDeCadastroDeCliente();
+            edicaoDeClienteBasePage.ClicarNoAtalhoDePesquisar();
+            edicaoDeClienteBasePage.RetornarPesquisaDePessoa(out var pesquisaDePessoaPage);
+            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("cliente", _dadosDoCliente["Nome"]);
+        }
 
         public void VerificarDadosDaPessoa()
         {
@@ -33,21 +41,21 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
         public void PreencherAsInformacoesDaPessoasNaEdicao()
         {
             _driverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoNome, EdicaoDeClienteFisicoModel.NomeDoClienteAlterado);
-            _driverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoCidade, 1);
             _driverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoEstado, 1);
+            _driverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoCidade, 1);
         }
 
         public void VerificarDadosDaPessoaEditados()
         {
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), EdicaoDeClienteFisicoModel.NomeDoClienteAlterado);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCidade), EdicaoDeClienteFisicoModel.Cidade);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEstado), EdicaoDeClienteFisicoModel.Estado);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCidade), EdicaoDeClienteFisicoModel.Cidade);
         }
 
-        public void FluxoDePesquisaDaPessoaEditado(EdicaoDeClienteBasePage EdicaoDeClienteBasePage, PesquisaDePessoaPage pesquisaDePessoaPage)
+        public void FluxoDePesquisaDaPessoaEditado(EdicaoDeClienteBasePage edicaoDeClienteBasePage, PesquisaDePessoaPage pesquisaDePessoaPage)
         {
-            EdicaoDeClienteBasePage.ClicarNoAtalhoDePesquisar();
-            pesquisaDePessoaPage.PesquisarPessoa("cliente", EdicaoDeClienteFisicoModel.NomeDoClienteAlterado);
+            edicaoDeClienteBasePage.ClicarNoAtalhoDePesquisar();
+            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("cliente", EdicaoDeClienteFisicoModel.NomeDoClienteAlterado);
         }
     }
 }

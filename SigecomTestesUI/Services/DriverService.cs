@@ -79,6 +79,14 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(teclaDeAtalho);
         }
 
+        public void DigitarNoCampoComTeclaDeAtalhoIdComF5(string idElemento, string texto, string teclaDeAtalho)
+        {
+            var elemento = _driver.FindElementByAccessibilityId(idElemento);
+            elemento.SendKeys(texto);
+            elemento.SendKeys(teclaDeAtalho);
+            elemento.SendKeys(Keys.F5);
+        }
+
         public void DigitarNoCampoEnterName(string nomeElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(nomeElemento);

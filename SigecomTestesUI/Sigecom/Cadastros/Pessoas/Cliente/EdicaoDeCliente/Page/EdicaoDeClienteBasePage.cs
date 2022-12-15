@@ -38,7 +38,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoNovo();
+        }
+
+        public void PesquisarProdutoQueSeraEditado()
+        {
+            using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var edicaoDeClienteFisicoSimplesPage = lifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteFisicoSimplesPage>>()(DriverService);
+            edicaoDeClienteFisicoSimplesPage.PesquisarClienteQueSeraEditado(this);
         }
 
         public void VerificarInformacoesDoCliente()

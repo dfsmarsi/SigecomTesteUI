@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Test
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteBasePage>>();
             var edicaoDeClienteBasePage = resolveCadastroDeClienteFisicoPage(DriverService);
-            edicaoDeClienteBasePage.AbrirTelaDeCadastroDeCliente();
+            edicaoDeClienteBasePage.PesquisarProdutoQueSeraEditado();
 
             // Act
             edicaoDeClienteBasePage.VerificarInformacoesDoCliente();
@@ -32,7 +32,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Test
             edicaoDeClienteBasePage.Gravar();
 
             // Assert
-            edicaoDeClienteBasePage.ClicarNoAtalhoDePesquisar();
             edicaoDeClienteBasePage.FluxoDePesquisaDaPessoaEditado();
             edicaoDeClienteBasePage.VerificarDadosDaPessoaEditados();
             edicaoDeClienteBasePage.FecharJanelaCadastroDeClienteComEsc();
