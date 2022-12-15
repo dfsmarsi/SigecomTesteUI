@@ -8,9 +8,9 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Teste
 {
-    public class EdicaoDeClienteFisicoSimplesTeste : BaseTestes
+    class EdicaoDeClienteJuridicoSimplesTeste : BaseTestes
     {
-        [Test(Description = "Edição de cliente físico somente campos obrigatórios com endereço")]
+        [Test(Description = "Edição de cliente jurídico somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -18,13 +18,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Test
         [AllureOwner("Takaki")]
         [AllureSuite("Editar")]
         [AllureSubSuite("Cliente")]
-        public void EdicaoDeClienteFisicoSimples()
+        public void EdicaoDeClienteJuridicoSimples()
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteBasePage>>();
             var edicaoDeClienteBasePage = resolveCadastroDeClienteFisicoPage(DriverService);
-            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.FisicaSimples;
+            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.JuridicaSimples;
             edicaoDeClienteBasePage.PesquisarProdutoQueSeraEditado(classificacaoDePessoa);
 
             // Act

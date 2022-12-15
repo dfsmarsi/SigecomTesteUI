@@ -2,8 +2,9 @@
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Interfaces
 {
-    public interface IEdicaoDeClienteFisicoPage
+    public interface IEdicaoDeClientePage
     {
+        void PesquisarClienteQueSeraEditado(EdicaoDeClienteBasePage edicaoDeClienteBasePage);
         void VerificarDadosDaPessoa();
         void PreencherAsInformacoesDaPessoasNaEdicao();
         void VerificarDadosDaPessoaEditados();

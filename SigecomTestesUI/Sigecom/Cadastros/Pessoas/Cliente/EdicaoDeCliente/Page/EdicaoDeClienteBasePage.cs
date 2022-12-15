@@ -1,11 +1,11 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Interfaces;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
 {
@@ -40,25 +40,25 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             ClicarNaOpcaoDoSubMenu();
         }
 
-        public void PesquisarProdutoQueSeraEditado()
+        public void PesquisarProdutoQueSeraEditado(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var edicaoDeClienteFisicoSimplesPage = lifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteFisicoSimplesPage>>()(DriverService);
-            edicaoDeClienteFisicoSimplesPage.PesquisarClienteQueSeraEditado(this);
+            var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
+            edicaoDeClientePage.PesquisarClienteQueSeraEditado(this);
         }
 
-        public void VerificarInformacoesDoCliente()
+        public void VerificarInformacoesDoCliente(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var edicaoDeClienteFisicoSimplesPage = lifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteFisicoSimplesPage>>()(DriverService);
-            edicaoDeClienteFisicoSimplesPage.VerificarDadosDaPessoa();
+            var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
+            edicaoDeClientePage.VerificarDadosDaPessoa();
         }
 
-        public void PreencherAsInformacoesDaPessoasNaEdicao()
+        public void PreencherAsInformacoesDaPessoasNaEdicao(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var edicaoDeClienteFisicoSimplesPage = lifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteFisicoSimplesPage>>()(DriverService);
-            edicaoDeClienteFisicoSimplesPage.PreencherAsInformacoesDaPessoasNaEdicao();
+            var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
+            edicaoDeClientePage.PreencherAsInformacoesDaPessoasNaEdicao();
         }
 
         internal void RetornarPesquisaDePessoa(out PesquisaDePessoaPage pesquisaDePessoaPage)
@@ -68,19 +68,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
         }
 
-        public void FluxoDePesquisaDaPessoaEditado()
+        public void FluxoDePesquisaDaPessoaEditado(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var edicaoDeClienteFisicoSimplesPage = lifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteFisicoSimplesPage>>()(DriverService);
+            var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             RetornarPesquisaDePessoa(out var pesquisaDePessoaPage);
-            edicaoDeClienteFisicoSimplesPage.FluxoDePesquisaDaPessoaEditado(this, pesquisaDePessoaPage);
+            edicaoDeClientePage.FluxoDePesquisaDaPessoaEditado(this, pesquisaDePessoaPage);
         }
 
-        public void VerificarDadosDaPessoaEditados()
+        public void VerificarDadosDaPessoaEditados(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var edicaoDeClienteFisicoSimplesPage = lifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteFisicoSimplesPage>>()(DriverService);
-            edicaoDeClienteFisicoSimplesPage.VerificarDadosDaPessoaEditados();
+            var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
+            edicaoDeClientePage.VerificarDadosDaPessoaEditados();
         }
 
         public void Gravar() => 
