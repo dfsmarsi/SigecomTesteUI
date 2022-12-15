@@ -14,7 +14,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             return classificacaoDePessoa switch
             {
                 ClassificacaoDePessoa.FisicaSimples => life.Resolve<Func<DriverService, EdicaoDeClienteFisicoSimplesPage>>()(driverService),
-                ClassificacaoDePessoa.JuridicaSimples => life.Resolve<Func<DriverService, EdicaoDeClienteJuridicoSimplesPage>>()(driverService)
+                ClassificacaoDePessoa.JuridicaSimples => life.Resolve<Func<DriverService, EdicaoDeClienteJuridicoSimplesPage>>()(driverService),
+                ClassificacaoDePessoa.FisicaCompleta => life.Resolve<Func<DriverService, EdicaoDeClienteFisicoCompletoPage>>()(driverService)
             };
         }
     }

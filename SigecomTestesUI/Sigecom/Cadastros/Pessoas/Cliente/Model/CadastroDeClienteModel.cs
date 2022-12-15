@@ -17,6 +17,7 @@
         public static string ElementoEndereco => "txtEndereco";
         public static string ElementoCidade => "cbxCidade";
         public static string ElementoEstado => "cbxEstado";
+        public static string ElementoContatos => "txtContatos";
 
         public static string ElementoIdentificador => "txtIdentificador";
         public static string ElementoInscricaoSuframa => "txtInscricaoSuframa";
@@ -34,5 +35,9 @@
         public static string ElementoAvisoDeVenda => "txtAvisoDeVenda";
         public static string ElementoTipoContato => "cbxPessoaContatoTipo";
         public static string BotaoContato => "btnAddContato";
+        public static string ElementoBairro => "txtBairro";
+        public static string ElementoDescontoPadrao => "txtDescontoPadraoCliente";
+        public static string ElementoTabelaDePreco => "cbxTabelaPreco";
+        public static string ElementoGrupo => "cbxGrupoPessoa";
     }
 }
