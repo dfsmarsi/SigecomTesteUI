@@ -1,13 +1,13 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Teste;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection;
-using System;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Factory;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Injection
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Injection
 {
     public class EdicaoDeClienteInjection : Module
     {

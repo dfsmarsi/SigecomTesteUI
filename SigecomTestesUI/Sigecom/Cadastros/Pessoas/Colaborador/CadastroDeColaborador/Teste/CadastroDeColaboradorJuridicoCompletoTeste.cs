@@ -1,12 +1,13 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using System;
-using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Page;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Teste
 {
     public class CadastroDeColaboradorJuridicoCompletoTeste : BaseTestes
     {

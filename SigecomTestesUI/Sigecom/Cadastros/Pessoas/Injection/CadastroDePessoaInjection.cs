@@ -1,13 +1,15 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Page;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Page;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Teste;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
 {

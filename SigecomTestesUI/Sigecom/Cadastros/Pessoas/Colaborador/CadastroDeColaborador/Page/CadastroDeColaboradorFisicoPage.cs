@@ -1,15 +1,15 @@
-﻿using SigecomTestesUI.Config;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Autofac;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using SigecomTestesUI.Config;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Page
 {
     public class CadastroDeColaboradorFisicoPage : PageObjectModel
     {

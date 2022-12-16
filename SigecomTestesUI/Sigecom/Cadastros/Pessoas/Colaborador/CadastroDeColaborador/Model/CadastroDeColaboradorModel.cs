@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.Model
+﻿namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Model
 {
     public static class CadastroDeColaboradorModel
     {
