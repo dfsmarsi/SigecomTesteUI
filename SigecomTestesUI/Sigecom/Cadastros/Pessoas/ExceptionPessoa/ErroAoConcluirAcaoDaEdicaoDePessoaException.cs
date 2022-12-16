@@ -24,4 +24,3 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa
         }
     }
 }
-}

@@ -7,7 +7,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Int
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Injection
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Injection
 {
     public class EdicaoDeClienteInjection : Module
     {
@@ -28,7 +28,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.In
             }
             catch (Exception exception)
             {
-                throw new RegistrarDependenciaException(typeof(CadastroDePessoaInjection).Namespace, exception);
+                throw new RegistrarDependenciaException(typeof(EdicaoDeClienteInjection).Namespace, exception);
             }
         }
     }

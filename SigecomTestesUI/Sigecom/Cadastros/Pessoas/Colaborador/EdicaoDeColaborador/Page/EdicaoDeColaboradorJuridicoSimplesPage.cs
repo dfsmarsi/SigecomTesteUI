@@ -1,26 +1,26 @@
 ﻿using NUnit.Framework;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System.Collections.Generic;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Page
 {
-    public class EdicaoDeColaboradorFisicoSimplesPage: IEdicaoDeColaboradorPage
+    public class EdicaoDeColaboradorJuridicoSimplesPage: IEdicaoDeColaboradorPage
     {
         private readonly DriverService _driverService;
         private static Dictionary<string, string> DadosDoColaborador => new Dictionary<string, string>
         {
-            {"TipoPessoa", "FÍSICA"},
+            {"TipoPessoa", "JURÍDICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "COLABORADOR FISICO SIMPLES EDITAR TESTE"},
+            {"Nome", "COLABORADOR JURIDICA SIMPLES EDITAR TESTE"},
             {"Cidade", "JALES"},
             {"Estado", "SÃO PAULO"}
         };
 
-        public EdicaoDeColaboradorFisicoSimplesPage(DriverService driverService) => _driverService = driverService;
+        public EdicaoDeColaboradorJuridicoSimplesPage(DriverService driverService) => _driverService = driverService;
 
         public void PesquisarColaboradorQueSeraEditado(EdicaoDeColaboradorBasePage edicaoDeColaboradorBasePage)
         {
@@ -41,23 +41,23 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
 
         public void PreencherAsInformacoesDaPessoasNaEdicao()
         {
-            _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, EdicaoDeColaboradorFisicoSimplesModel.NomeDoColaboradorAlterado);
+            _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNome, EdicaoDeColaboradorJuridicoSimplesModel.NomeDoColaboradorAlterado);
             _driverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoEstado, 1);
             _driverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoCidade, 1);
         }
 
         public void VerificarDadosDaPessoaEditados()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNome), EdicaoDeColaboradorFisicoSimplesModel.NomeDoColaboradorAlterado);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEstado), EdicaoDeColaboradorFisicoSimplesModel.Estado);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCidade), EdicaoDeColaboradorFisicoSimplesModel.Cidade);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNome), EdicaoDeColaboradorJuridicoSimplesModel.NomeDoColaboradorAlterado);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEstado), EdicaoDeColaboradorJuridicoSimplesModel.Estado);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCidade), EdicaoDeColaboradorJuridicoSimplesModel.Cidade);
         }
 
         public void FluxoDePesquisaDaPessoaEditado(EdicaoDeColaboradorBasePage edicaoDeColaboradorBasePage,
             PesquisaDePessoaPage pesquisaDePessoaPage)
         {
             edicaoDeColaboradorBasePage.ClicarNoAtalhoDePesquisar();
-            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("colaborador", EdicaoDeColaboradorFisicoSimplesModel.NomeDoColaboradorAlterado);
+            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("colaborador", EdicaoDeColaboradorJuridicoSimplesModel.NomeDoColaboradorAlterado);
         }
     }
 }

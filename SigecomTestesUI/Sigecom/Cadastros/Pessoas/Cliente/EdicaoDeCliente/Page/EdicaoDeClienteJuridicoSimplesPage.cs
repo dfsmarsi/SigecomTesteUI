@@ -11,7 +11,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
     public class EdicaoDeClienteJuridicoSimplesPage: IEdicaoDeClientePage
     {
         private readonly DriverService _driverService;
-        private static Dictionary<string, string> _dadosDoCliente => new Dictionary<string, string>
+        private static Dictionary<string, string> DadosDoCliente => new Dictionary<string, string>
         {
             {"TipoPessoa", "JURÍDICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
@@ -27,16 +27,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             edicaoDeClienteBasePage.AbrirTelaDeCadastroDeCliente();
             edicaoDeClienteBasePage.ClicarNoAtalhoDePesquisar();
             edicaoDeClienteBasePage.RetornarPesquisaDePessoa(out var pesquisaDePessoaPage);
-            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("cliente", _dadosDoCliente["Nome"]);
+            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("cliente", DadosDoCliente["Nome"]);
         }
 
         public void VerificarDadosDaPessoa()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoTipoPessoa), _dadosDoCliente["TipoPessoa"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNacionalidade), _dadosDoCliente["Nacionalidade"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), _dadosDoCliente["Nome"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCidade), _dadosDoCliente["Cidade"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEstado), _dadosDoCliente["Estado"]);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoTipoPessoa), DadosDoCliente["TipoPessoa"]);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNacionalidade), DadosDoCliente["Nacionalidade"]);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), DadosDoCliente["Nome"]);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCidade), DadosDoCliente["Cidade"]);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEstado), DadosDoCliente["Estado"]);
         }
 
 
