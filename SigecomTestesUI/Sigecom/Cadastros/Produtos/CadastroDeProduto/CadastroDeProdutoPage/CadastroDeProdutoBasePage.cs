@@ -22,10 +22,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             AcessarOpcaoSubMenu(CadastroDeProdutoModel.BotaoSubMenuProduto);
 
         public void ClicarNoAtalhoDePesquisar() =>
-            DriverService.AbrirPesquisaDeProdutoComF9(CadastroDeProdutoModel.BotaoPesquisar);
+            DriverService.AbrirPesquisaComF9(CadastroDeProdutoModel.BotaoPesquisar);
 
         public void ClicarNoAtalhoDePesquisarNaTelaPrincipal() =>
-            DriverService.AbrirPesquisaDeProdutoComF9(LoginPageModel.ElementoTelaPrincipal);
+            DriverService.AbrirPesquisaComF9(LoginPageModel.ElementoTelaPrincipal);
 
         public bool ClicarNoBotaoNovo()
         {

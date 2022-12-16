@@ -6,6 +6,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
 {
@@ -20,19 +21,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             AcessarOpcaoSubMenu(CadastroDeClienteModel.BotaoSubMenu);
 
         public void ClicarNoAtalhoDePesquisar() =>
-            DriverService.AbrirPesquisaDeProdutoComF9(CadastroDeClienteModel.BotaoPesquisar);
-
-        private void ClicarBotaoNovo()
-        {
-            try
-            {
-                ClicarBotao(CadastroDeClienteModel.BotaoNovo);
-            }
-            catch (Exception exception)
-            {
-                throw;
-            }
-        }
+            DriverService.AbrirPesquisaComF9(CadastroDeClienteModel.BotaoPesquisar);
 
         public void AbrirTelaDeCadastroDeCliente()
         {
@@ -40,7 +29,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             ClicarNaOpcaoDoSubMenu();
         }
 
-        public void PesquisarProdutoQueSeraEditado(ClassificacaoDePessoa classificacaoDePessoa)
+        public void PesquisarClienteQueSeraEditado(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
@@ -92,12 +81,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             {
                 DriverService.FecharJanelaComEsc(CadastroDeClienteModel.ElementoTelaCadastroCliente);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                throw;
+                throw new ErroAoConcluirAcaoDaEdicaoDePessoaException($"{exception}");
             }
         }
-
-        
     }
 }
