@@ -19,6 +19,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa, Keys.Enter);
         }
 
+        public void PesquisarPessoaComConfirmar(string tipoPessoa, string nomePessoa)
+        {
+            DriverService.ValidarElementoExistentePorNome(PesquisaDePessoaModel.TelaPesquisaPessoaPrefixo + tipoPessoa);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdComF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa, Keys.Enter);
+        }
+
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)
         {
             var nomePessoaNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");

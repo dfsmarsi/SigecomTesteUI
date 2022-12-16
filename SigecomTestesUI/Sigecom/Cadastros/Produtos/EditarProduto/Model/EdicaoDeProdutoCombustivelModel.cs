@@ -2,7 +2,6 @@
 {
     public class EdicaoDeProdutoCombustivelModel
     {
-        public static string NomeDoProdutoParaPesquisar => "PRODUTO COMBUSTIVEL EDITAR TESTE";
         public static string NomeDoProdutoAlterado => "PRODUTO COMBUSTIVEL EDITAR TESTE ALTERADO";
         public static string CodigoAnp => "12345678";
         public static string Codif => "123";

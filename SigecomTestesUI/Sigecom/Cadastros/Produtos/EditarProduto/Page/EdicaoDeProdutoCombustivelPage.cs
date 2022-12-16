@@ -5,6 +5,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using System;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Model.CompararProduto;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 {
@@ -20,12 +21,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             edicaoDeProdutoBasePage.AbrirTelaDeCadastroDoProduto();
             edicaoDeProdutoBasePage.ClicarNoAtalhoDePesquisar();
             edicaoDeProdutoBasePage.RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
-            pesquisaDeProdutoPage.PesquisarProdutoComEnter(EdicaoDeProdutoCombustivelModel.NomeDoProdutoParaPesquisar);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(OriginalCombustivelModel.NomeDoProdutoParaPesquisar);
         }
 
         public void VerificarCamposDoProduto()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoCombustivelModel.CategoriaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), OriginalCombustivelModel.CategoriaDoProduto);
         }
 
         public bool PreencherCamposDoProdutoAoEditar()
@@ -49,10 +50,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDaAba()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoGasNaturalNacional), CadastroDeProdutoCombustivelModel.GasNacionalDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoGasNaturalImportado), CadastroDeProdutoCombustivelModel.GasImportadoDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoValorDePartida), CadastroDeProdutoCombustivelModel.ValorPartidaDoProduto);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoQuantidadeDeGasNatural), CadastroDeProdutoCombustivelModel.QtdeGasNaturalDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoGasNaturalNacional), OriginalCombustivelModel.GasNacionalDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoGasNaturalImportado), OriginalCombustivelModel.GasImportadoDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoValorDePartida), OriginalCombustivelModel.ValorPartidaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoQuantidadeDeGasNatural), OriginalCombustivelModel.QtdeGasNaturalDoProduto);
         }
 
         public void PreencherCamposDaAbaAoEditar()

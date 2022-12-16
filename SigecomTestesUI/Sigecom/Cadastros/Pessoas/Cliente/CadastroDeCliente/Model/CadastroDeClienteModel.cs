@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.Model
+﻿namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Model
 {
     public static class CadastroDeClienteModel
     {
@@ -9,11 +9,16 @@
         public static string BotaoGravar => "F5 - Gravar";
         public static string BotaoPesquisar => "F9 - Pesquisar";
         public static string ElementoTipoPessoa => "cbxPessoaClassificacao";
+        public static string ElementoNacionalidade => "cbxNacionalidade";
         public static string ElementoNome => "txtNome";
         public static string ElementoCpf => "txtCPF";
         public static string ElementoCep => "txtCEP";
         public static string ElementoNumero => "txtNumero";
         public static string ElementoEndereco => "txtEndereco";
+        public static string ElementoCidade => "cbxCidade";
+        public static string ElementoEstado => "cbxEstado";
+        public static string ElementoContatos => "txtContatos";
+
         public static string ElementoIdentificador => "txtIdentificador";
         public static string ElementoInscricaoSuframa => "txtInscricaoSuframa";
 
@@ -30,5 +35,9 @@
         public static string ElementoAvisoDeVenda => "txtAvisoDeVenda";
         public static string ElementoTipoContato => "cbxPessoaContatoTipo";
         public static string BotaoContato => "btnAddContato";
+        public static string ElementoBairro => "txtBairro";
+        public static string ElementoDescontoPadrao => "txtDescontoPadraoCliente";
+        public static string ElementoTabelaDePreco => "cbxTabelaPreco";
+        public static string ElementoGrupo => "cbxGrupoPessoa";
     }
 }

@@ -5,6 +5,7 @@ using System;
 using NUnit.Framework;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Model.CompararProduto;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 {
@@ -20,12 +21,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             edicaoDeProdutoBasePage.AbrirTelaDeCadastroDoProduto();
             edicaoDeProdutoBasePage.ClicarNoAtalhoDePesquisar();
             edicaoDeProdutoBasePage.RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
-            pesquisaDeProdutoPage.PesquisarProdutoComEnter(EdicaoDeProdutoGradeModel.NomeDoProdutoParaPesquisar);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(OriginalGradeModel.NomeDoProdutoParaPesquisar);
         }
 
         public void VerificarCamposDoProduto()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoGradeModel.CategoriaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), OriginalGradeModel.CategoriaDoProduto);
         }
 
         public bool PreencherCamposDoProdutoAoEditar()
@@ -49,14 +50,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDaAba()
         {
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade), "0000009");
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade), CadastroDeProdutoGradeModel.TamanhoDaGrade);
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade), CadastroDeProdutoGradeModel.CorDaGrade);
-
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaEstoqueDaGrade), CadastroDeProdutoGradeModel.EstoqueDaGrade);
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCustoDaGrade), CadastroDeProdutoGradeModel.CustoDaGrade);
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaMarkupDaGrade), CadastroDeProdutoGradeModel.MarkupDaGrade);
-            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaVendaDaGrade), CadastroDeProdutoGradeModel.VendaDaGrade);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade), OriginalGradeModel.CodigoDeBarras);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade), OriginalGradeModel.TamanhoDaGrade);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade), OriginalGradeModel.CorDaGrade);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaEstoqueDaGrade), OriginalGradeModel.EstoqueDaGrade);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaCustoDaGrade), OriginalGradeModel.CustoDaGrade);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaMarkupDaGrade), OriginalGradeModel.MarkupDaGrade);
+            Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid(CadastroDeProdutoModel.ElementoGridColunaVendaDaGrade), OriginalGradeModel.VendaDaGrade);
         }
 
         public void PreencherCamposDaAbaAoEditar()

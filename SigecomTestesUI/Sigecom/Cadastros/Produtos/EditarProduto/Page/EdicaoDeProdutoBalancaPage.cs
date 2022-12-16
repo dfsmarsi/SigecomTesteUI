@@ -5,6 +5,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using System;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Model.CompararProduto;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 {
@@ -20,12 +21,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             edicaoDeProdutoBasePage.AbrirTelaDeCadastroDoProduto();
             edicaoDeProdutoBasePage.ClicarNoAtalhoDePesquisar();
             edicaoDeProdutoBasePage.RetornarPesquisaDeProduto(out var pesquisaDeProdutoPage);
-            pesquisaDeProdutoPage.PesquisarProdutoComEnter(EdicaoDeProdutoBalancaModel.NomeDoProdutoParaPesquisar);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(OriginalBalancaModel.NomeDoProdutoParaPesquisar);
         }
 
         public void VerificarCamposDoProduto()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), CadastroDeProdutoBalancaModel.CategoriaDoProduto);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCategoria), OriginalBalancaModel.CategoriaDoProduto);
         }
 
         public bool PreencherCamposDoProdutoAoEditar()
@@ -49,7 +50,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDaAba()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasBalanca), "000002");
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCodigoDeBarrasBalanca), OriginalBalancaModel.CodigoDaBalanca);
         }
 
         public void PreencherCamposDaAbaAoEditar()

@@ -2,7 +2,6 @@
 {
     public class EdicaoDeProdutoMedicamentoModel
     {
-        public static string NomeDoProdutoParaPesquisar => "PRODUTO MEDICAMENTO EDITAR TESTE";
         public static string NomeDoProdutoAlterado => "PRODUTO MEDICAMENTO EDITAR TESTE ALTERADO";
         public static string RegistroNaAnvisa => "123456789";
         public static string PrecoMaximoAoConsumidor => "50,00";
