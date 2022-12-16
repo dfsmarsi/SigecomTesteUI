@@ -16,14 +16,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             {
                 containerBuilder.RegisterType<EdicaoDeColaboradorBasePage>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoSimplesPage>();
-                //containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoCompletoPage>();
+                containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoCompletoPage>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorFisicoSimplesPage>();
-                //containerBuilder.RegisterType<EdicaoDeColaboradorFisicoCompletoPage>();
+                containerBuilder.RegisterType<EdicaoDeColaboradorFisicoCompletoPage>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorPageFactory>().As<IEdicaoDeColaboradorPageFactory>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoSimplesTeste>();
                 //containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoCompletoTeste>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorFisicoSimplesTeste>();
-                //containerBuilder.RegisterType<EdicaoDeColaboradorFisicoCompletoTeste>();
+                containerBuilder.RegisterType<EdicaoDeColaboradorFisicoCompletoTeste>();
             }
             catch (Exception exception)
             {
