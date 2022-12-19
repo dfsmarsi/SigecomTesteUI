@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Model
+﻿namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeColaborador.Model
 {
     public class CadastroDeFornecedorModel
     {
