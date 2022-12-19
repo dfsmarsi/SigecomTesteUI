@@ -4,6 +4,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Pa
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Factory;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Interfaces;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Teste;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Injection
 {
@@ -15,14 +16,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             {
                 containerBuilder.RegisterType<EdicaoDeFornecedorBasePage>();
                 containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoSimplesPage>();
-                //containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoCompletoPage>();
+                containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoCompletoPage>();
                 containerBuilder.RegisterType<EdicaoDeFornecedorFisicoSimplesPage>();
-                //containerBuilder.RegisterType<EdicaoDeFornecedorFisicoCompletoPage>();
+                containerBuilder.RegisterType<EdicaoDeFornecedorFisicoCompletoPage>();
                 containerBuilder.RegisterType<EdicaoDeFornecedorPageFactory>().As<IEdicaoDeFornecedorPageFactory>();
-                //containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoSimplesTeste>();
-                //containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoCompletoTeste>();
-                //containerBuilder.RegisterType<EdicaoDeFornecedorFisicoSimplesTeste>();
-                //containerBuilder.RegisterType<EdicaoDeFornecedorFisicoCompletoTeste>();
+                containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoSimplesTeste>();
+                containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoCompletoTeste>();
+                containerBuilder.RegisterType<EdicaoDeFornecedorFisicoSimplesTeste>();
+                containerBuilder.RegisterType<EdicaoDeFornecedorFisicoCompletoTeste>();
             }
             catch (Exception exception)
             {

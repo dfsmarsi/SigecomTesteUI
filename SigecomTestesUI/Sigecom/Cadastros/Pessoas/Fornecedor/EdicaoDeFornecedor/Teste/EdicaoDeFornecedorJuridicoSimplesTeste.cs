@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Teste
 {
-    public class EdicaoDeFornecedorJuridicaSimplesTeste: BaseTestes
+    public class EdicaoDeFornecedorJuridicoSimplesTeste: BaseTestes
     {
         [Test(Description = "Edição de fornecedor físico somente campos obrigatórios com endereço")]
         [AllureTag("CI")]

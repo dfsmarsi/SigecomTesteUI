@@ -80,7 +80,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             _driverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoEstado, 1);
             _driverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoCidade, 1);
             _driverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoComplemento, EdicaoDeFornecedorFisicoCompletoModel.Complemento);
-            _driverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoDescontoPadrao, EdicaoDeFornecedorFisicoCompletoModel.DescontoPadrao);
             _driverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoObservacao, EdicaoDeFornecedorFisicoCompletoModel.Observacao);
         }
 
@@ -100,7 +99,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoEstado), EdicaoDeFornecedorFisicoCompletoModel.Estado);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoCidade), EdicaoDeFornecedorFisicoCompletoModel.Cidade);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoComplemento), EdicaoDeFornecedorFisicoCompletoModel.Complemento);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoDescontoPadrao), EdicaoDeFornecedorFisicoCompletoModel.DescontoPadrao);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoObservacao), EdicaoDeFornecedorFisicoCompletoModel.Observacao);
         }
 
@@ -108,7 +106,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             PesquisaDePessoaPage pesquisaDePessoaPage)
         {
             edicaoDeFornecedorBasePage.ClicarNoAtalhoDePesquisar();
-            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("Fornecedor", EdicaoDeFornecedorFisicoCompletoModel.NomeDoFornecedorAlterado);
+            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("fornecedor", EdicaoDeFornecedorFisicoCompletoModel.NomeDoFornecedorAlterado);
         }
     }
 }

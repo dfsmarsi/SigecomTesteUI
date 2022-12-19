@@ -41,14 +41,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
 
         public void PreencherAsInformacoesDaPessoasNaEdicao()
         {
-            _driverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNome, EdicaoDeFornecedorJuridicoSimplesModel.NomeDoColaboradorAlterado);
+            _driverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNome, EdicaoDeFornecedorJuridicoSimplesModel.NomeDoFornecedorAlterado);
             _driverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoEstado, 1);
             _driverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoCidade, 1);
         }
 
         public void VerificarDadosDaPessoaEditados()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoNome), EdicaoDeFornecedorJuridicoSimplesModel.NomeDoColaboradorAlterado);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoNome), EdicaoDeFornecedorJuridicoSimplesModel.NomeDoFornecedorAlterado);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoEstado), EdicaoDeFornecedorJuridicoSimplesModel.Estado);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoCidade), EdicaoDeFornecedorJuridicoSimplesModel.Cidade);
         }
@@ -57,7 +57,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             PesquisaDePessoaPage pesquisaDePessoaPage)
         {
             edicaoDeFornecedorBasePage.ClicarNoAtalhoDePesquisar();
-            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("fornecedor", EdicaoDeFornecedorJuridicoSimplesModel.NomeDoColaboradorAlterado);
+            pesquisaDePessoaPage.PesquisarPessoaComConfirmar("fornecedor", EdicaoDeFornecedorJuridicoSimplesModel.NomeDoFornecedorAlterado);
         }
     }
 }

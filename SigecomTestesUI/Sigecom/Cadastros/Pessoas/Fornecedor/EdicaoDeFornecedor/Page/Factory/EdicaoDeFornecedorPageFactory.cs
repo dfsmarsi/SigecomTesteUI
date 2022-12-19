@@ -16,6 +16,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
                 ClassificacaoDePessoa.FisicaSimples => life.Resolve<Func<DriverService, EdicaoDeFornecedorFisicoSimplesPage>>()(driverService),
                 ClassificacaoDePessoa.JuridicaSimples => life.Resolve<Func<DriverService, EdicaoDeFornecedorJuridicoSimplesPage>>()(driverService),
                 ClassificacaoDePessoa.FisicaCompleta => life.Resolve<Func<DriverService, EdicaoDeFornecedorFisicoCompletoPage>>()(driverService),
+                ClassificacaoDePessoa.JuridicaCompleta => life.Resolve<Func<DriverService, EdicaoDeFornecedorJuridicoCompletoPage>>()(driverService),
+                _ => throw new ArgumentOutOfRangeException(nameof(classificacaoDePessoa), classificacaoDePessoa, null)
             };
         }
     }

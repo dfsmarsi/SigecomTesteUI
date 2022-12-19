@@ -12,7 +12,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
 {
     public class EdicaoDeFornecedorBasePage : PageObjectModel
     {
-        private EdicaoDeFornecedorBasePage(DriverService driver) : base(driver) { }
+        public EdicaoDeFornecedorBasePage(DriverService driver) : base(driver) { }
 
         private void ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(CadastroDeFornecedorModel.BotaoMenu);

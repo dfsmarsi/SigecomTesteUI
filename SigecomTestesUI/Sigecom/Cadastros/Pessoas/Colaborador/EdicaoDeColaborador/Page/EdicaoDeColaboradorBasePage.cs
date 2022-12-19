@@ -12,7 +12,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
 {
     public class EdicaoDeColaboradorBasePage : PageObjectModel
     {
-        private EdicaoDeColaboradorBasePage(DriverService driver) : base(driver) { }
+        public EdicaoDeColaboradorBasePage(DriverService driver) : base(driver) { }
 
         private void ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(CadastroDeColaboradorModel.BotaoMenu);
