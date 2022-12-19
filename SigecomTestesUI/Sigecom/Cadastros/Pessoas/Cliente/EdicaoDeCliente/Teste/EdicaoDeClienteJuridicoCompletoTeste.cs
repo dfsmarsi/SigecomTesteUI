@@ -22,9 +22,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Test
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeClienteFisicoPage =
-                beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteBasePage>>();
-            var edicaoDeClienteBasePage = resolveCadastroDeClienteFisicoPage(DriverService);
+            var resolveEdicaoDeClienteBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteBasePage>>();
+            var edicaoDeClienteBasePage = resolveEdicaoDeClienteBasePage(DriverService);
             const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.JuridicaCompleta;
             edicaoDeClienteBasePage.PesquisarClienteQueSeraEditado(classificacaoDePessoa);
 

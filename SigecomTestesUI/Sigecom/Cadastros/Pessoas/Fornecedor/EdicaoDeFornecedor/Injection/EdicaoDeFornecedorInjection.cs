@@ -14,7 +14,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             try
             {
                 containerBuilder.RegisterType<EdicaoDeFornecedorBasePage>();
-                //containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoSimplesPage>();
+                containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoSimplesPage>();
                 //containerBuilder.RegisterType<EdicaoDeFornecedorJuridicoCompletoPage>();
                 containerBuilder.RegisterType<EdicaoDeFornecedorFisicoSimplesPage>();
                 //containerBuilder.RegisterType<EdicaoDeFornecedorFisicoCompletoPage>();

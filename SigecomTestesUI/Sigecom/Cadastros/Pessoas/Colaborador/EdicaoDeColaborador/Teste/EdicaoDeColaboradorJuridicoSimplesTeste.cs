@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Page;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Teste
 {
@@ -25,20 +22,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeColaboradorBasePage>>();
-            var edicaoDeClienteBasePage = resolveCadastroDeClienteFisicoPage(DriverService);
+            var resolveEdicaoDeColaboradorBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeColaboradorBasePage>>();
+            var edicaoDeColaboradorBasePage = resolveEdicaoDeColaboradorBasePage(DriverService);
             const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.JuridicaSimples;
-            edicaoDeClienteBasePage.PesquisarColaboradorQueSeraEditado(classificacaoDePessoa);
+            edicaoDeColaboradorBasePage.PesquisarColaboradorQueSeraEditado(classificacaoDePessoa);
 
             // Act
-            edicaoDeClienteBasePage.VerificarInformacoesDoColaborador(classificacaoDePessoa);
-            edicaoDeClienteBasePage.PreencherAsInformacoesDaPessoasNaEdicao(classificacaoDePessoa);
-            edicaoDeClienteBasePage.Gravar();
+            edicaoDeColaboradorBasePage.VerificarInformacoesDoColaborador(classificacaoDePessoa);
+            edicaoDeColaboradorBasePage.PreencherAsInformacoesDaPessoasNaEdicao(classificacaoDePessoa);
+            edicaoDeColaboradorBasePage.Gravar();
 
             // Assert
-            edicaoDeClienteBasePage.FluxoDePesquisaDaPessoaEditado(classificacaoDePessoa);
-            edicaoDeClienteBasePage.VerificarDadosDaPessoaEditados(classificacaoDePessoa);
-            edicaoDeClienteBasePage.FecharJanelaCadastroDeColaboradorComEsc();
+            edicaoDeColaboradorBasePage.FluxoDePesquisaDaPessoaEditado(classificacaoDePessoa);
+            edicaoDeColaboradorBasePage.VerificarDadosDaPessoaEditados(classificacaoDePessoa);
+            edicaoDeColaboradorBasePage.FecharJanelaCadastroDeColaboradorComEsc();
         }
     }
 }

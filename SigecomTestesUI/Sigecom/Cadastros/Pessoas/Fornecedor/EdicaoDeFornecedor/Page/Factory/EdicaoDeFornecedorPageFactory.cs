@@ -13,7 +13,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             using var life = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             return classificacaoDePessoa switch
             {
-                ClassificacaoDePessoa.FisicaSimples => life.Resolve<Func<DriverService, EdicaoDeFornecedorFisicoSimplesPage>>()(driverService)
+                ClassificacaoDePessoa.FisicaSimples => life.Resolve<Func<DriverService, EdicaoDeFornecedorFisicoSimplesPage>>()(driverService),
+                ClassificacaoDePessoa.JuridicaSimples => life.Resolve<Func<DriverService, EdicaoDeFornecedorJuridicoSimplesPage>>()(driverService),
+                ClassificacaoDePessoa.FisicaCompleta => life.Resolve<Func<DriverService, EdicaoDeFornecedorFisicoCompletoPage>>()(driverService),
             };
         }
     }

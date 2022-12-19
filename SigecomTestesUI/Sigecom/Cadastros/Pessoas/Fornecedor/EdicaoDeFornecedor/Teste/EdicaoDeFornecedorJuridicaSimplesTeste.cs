@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Teste
 {
-    public class EdicaoDeFornecedorFisicoSimplesTeste: BaseTestes
+    public class EdicaoDeFornecedorJuridicaSimplesTeste: BaseTestes
     {
         [Test(Description = "Edição de fornecedor físico somente campos obrigatórios com endereço")]
         [AllureTag("CI")]
@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeFornecedorBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeFornecedorBasePage>>();
             var edicaoDeFornecedorBasePage = resolveEdicaoDeFornecedorBasePage(DriverService);
-            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.FisicaSimples;
+            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.JuridicaSimples;
             edicaoDeFornecedorBasePage.PesquisarFornecedorQueSeraEditado(classificacaoDePessoa);
 
             // Act

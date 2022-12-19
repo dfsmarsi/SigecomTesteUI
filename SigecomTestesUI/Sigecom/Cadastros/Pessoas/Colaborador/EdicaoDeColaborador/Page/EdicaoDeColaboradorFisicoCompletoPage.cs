@@ -56,7 +56,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNome), DadosDoColaborador["Nome"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCpf), DadosDoColaborador["Cpf"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoRg), DadosDoColaborador["Rg"]);
-
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoApelido), DadosDoColaborador["Apelido"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoSexo), DadosDoColaborador["Sexo"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDataDeNascimento), DadosDoColaborador["DataNascimento"]);
@@ -67,18 +66,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoBairro), DadosDoColaborador["Bairro"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEstado), DadosDoColaborador["Estado"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCidade), DadosDoColaborador["Cidade"]);
-
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoComplemento), DadosDoColaborador["Complemento"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDescontoPadrao), DadosDoColaborador["DescontoPadrao"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoObservacao), DadosDoColaborador["Observacao"]);
-
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDataAdmissao), DadosDoColaborador["DataAdmissao"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEmailFuncionario), DadosDoColaborador["EmailFuncionario"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDiaPagamento), DadosDoColaborador["DiaPagamento"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoSalario), DadosDoColaborador["Salario"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoTelefoneFuncionario), DadosDoColaborador["TelefoneFuncionario"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCargo), DadosDoColaborador["Cargo"]);
-
         }
 
         public void PreencherAsInformacoesDaPessoasNaEdicao()
@@ -91,7 +87,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDataDeNascimento, EdicaoDeColaboradorFisicoCompletoModel.DataNascimento);
             _driverService.SelecionarItemComboBox(CadastroDeColaboradorModel.ElementoEstadoCivil, 1);
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoCep, EdicaoDeColaboradorFisicoCompletoModel.Cep);
-
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoEndereco, EdicaoDeColaboradorFisicoCompletoModel.Endereco);
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoNumero, EdicaoDeColaboradorFisicoCompletoModel.Numero);
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoBairro, EdicaoDeColaboradorFisicoCompletoModel.Bairro);
@@ -100,7 +95,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoComplemento, EdicaoDeColaboradorFisicoCompletoModel.Complemento);
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDescontoPadrao, EdicaoDeColaboradorFisicoCompletoModel.DescontoPadrao);
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoObservacao, EdicaoDeColaboradorFisicoCompletoModel.Observacao);
-
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDataAdmissao, EdicaoDeColaboradorFisicoCompletoModel.DataAdmissao);
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoEmailFuncionario, EdicaoDeColaboradorFisicoCompletoModel.EmailFuncionario);
             _driverService.DigitarNoCampoId(CadastroDeColaboradorModel.ElementoDiaPagamento, EdicaoDeColaboradorFisicoCompletoModel.DiaPagamento);
@@ -124,11 +118,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoBairro), EdicaoDeColaboradorFisicoCompletoModel.Bairro);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEstado), EdicaoDeColaboradorFisicoCompletoModel.Estado);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCidade), EdicaoDeColaboradorFisicoCompletoModel.Cidade);
-
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoComplemento), EdicaoDeColaboradorFisicoCompletoModel.Complemento);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDescontoPadrao), EdicaoDeColaboradorFisicoCompletoModel.DescontoPadrao);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoObservacao), EdicaoDeColaboradorFisicoCompletoModel.Observacao);
-
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDataAdmissao), EdicaoDeColaboradorFisicoCompletoModel.DataAdmissao);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEmailFuncionario), EdicaoDeColaboradorFisicoCompletoModel.EmailFuncionario);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDiaPagamento), EdicaoDeColaboradorFisicoCompletoModel.DiaPagamento);
