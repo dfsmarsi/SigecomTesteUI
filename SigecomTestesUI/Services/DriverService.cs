@@ -165,7 +165,7 @@ namespace SigecomTestesUI.Services
         public void FecharJanelaComEsc(string nomeJanela) => 
             _driver.FindElementByName(nomeJanela).SendKeys(Keys.Escape);
 
-        public void AbrirPesquisaDeProdutoComF9(string nomeJanela) =>
+        public void AbrirPesquisaComF9(string nomeJanela) =>
             _driver.FindElementByName(nomeJanela).SendKeys(Keys.F9);
 
         public void GravarCadastroDeProdutoAoEditar(string nomeJanela) =>

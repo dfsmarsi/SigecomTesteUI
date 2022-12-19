@@ -25,7 +25,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Test
             var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeClienteBasePage>>();
             var edicaoDeClienteBasePage = resolveCadastroDeClienteFisicoPage(DriverService);
             const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.FisicaSimples;
-            edicaoDeClienteBasePage.PesquisarProdutoQueSeraEditado(classificacaoDePessoa);
+            edicaoDeClienteBasePage.PesquisarClienteQueSeraEditado(classificacaoDePessoa);
 
             // Act
             edicaoDeClienteBasePage.VerificarInformacoesDoCliente(classificacaoDePessoa);

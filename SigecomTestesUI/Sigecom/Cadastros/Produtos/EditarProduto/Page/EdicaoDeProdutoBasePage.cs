@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             AcessarOpcaoSubMenu(CadastroDeProdutoModel.BotaoSubMenuProduto);
 
         public void ClicarNoAtalhoDePesquisar() =>
-            DriverService.AbrirPesquisaDeProdutoComF9(CadastroDeProdutoModel.BotaoPesquisar);
+            DriverService.AbrirPesquisaComF9(CadastroDeProdutoModel.BotaoPesquisar);
 
         public bool Gravar()
         {
