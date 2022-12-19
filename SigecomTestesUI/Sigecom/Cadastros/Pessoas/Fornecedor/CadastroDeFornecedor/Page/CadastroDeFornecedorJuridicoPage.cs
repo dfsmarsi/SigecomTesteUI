@@ -5,11 +5,11 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeColaborador.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeColaborador.Page
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Page
 {
     public class CadastroDeFornecedorJuridicoPage : PageObjectModel
     {

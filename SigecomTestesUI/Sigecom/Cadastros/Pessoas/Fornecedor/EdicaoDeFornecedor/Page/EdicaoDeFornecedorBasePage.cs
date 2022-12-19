@@ -1,14 +1,14 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using System;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeColaborador.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeCliente.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeCliente.Page
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page
 {
     public class EdicaoDeFornecedorBasePage : PageObjectModel
     {

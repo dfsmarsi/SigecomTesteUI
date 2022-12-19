@@ -1,6 +1,6 @@
 ﻿using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeCliente.Page.Interfaces
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Interfaces
 {
     public interface IEdicaoDeFornecedorPage
     {
@@ -8,7 +8,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeCliente.P
         void VerificarDadosDaPessoa();
         void PreencherAsInformacoesDaPessoasNaEdicao();
         void VerificarDadosDaPessoaEditados();
-        void FluxoDePesquisaDaPessoaEditado(EdicaoDeFornecedorBasePage edicaoDeColaboradorBasePage,
+        void FluxoDePesquisaDaPessoaEditado(EdicaoDeFornecedorBasePage edicaoDeFornecedorBasePage,
             PesquisaDePessoaPage pesquisaDePessoaPage);
     }
 }

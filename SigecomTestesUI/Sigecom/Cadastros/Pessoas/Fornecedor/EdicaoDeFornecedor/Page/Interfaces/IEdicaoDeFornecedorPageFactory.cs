@@ -1,6 +1,6 @@
 ﻿using SigecomTestesUI.Services;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeCliente.Page.Interfaces
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Interfaces
 {
     public interface IEdicaoDeFornecedorPageFactory
     {
