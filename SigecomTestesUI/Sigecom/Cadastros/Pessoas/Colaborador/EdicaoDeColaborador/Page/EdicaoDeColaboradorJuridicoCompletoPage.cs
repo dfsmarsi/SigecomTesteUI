@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         private readonly DriverService _driverService;
         private static Dictionary<string, string> DadosDoColaborador => new Dictionary<string, string>
         {
-            {"TipoPessoa", "JURÍDICO"},
+            {"TipoPessoa", "JURÍDICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
             {"Nome", "FELIPE DE ARGOLO BENICIO 02713305543"},
             {"Cnpj", "26.726.069/0001-90"},
@@ -67,7 +67,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         {
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNome), EdicaoDeColaboradorJuridicoCompletoModel.NomeDoColaboradorAlterado);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCpf), EdicaoDeColaboradorJuridicoCompletoModel.CnpjComPontos);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoApelido), EdicaoDeColaboradorJuridicoCompletoModel.Apelido);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCep), EdicaoDeColaboradorJuridicoCompletoModel.CepComPontos);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEndereco), EdicaoDeColaboradorJuridicoCompletoModel.Endereco);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNumero), EdicaoDeColaboradorJuridicoCompletoModel.Numero);

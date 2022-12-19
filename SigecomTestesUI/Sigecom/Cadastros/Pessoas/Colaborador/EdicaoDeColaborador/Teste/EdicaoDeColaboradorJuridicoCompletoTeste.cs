@@ -9,9 +9,9 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Teste
 {
-    public class EdicaoDeColaboradorFisicoCompletoTeste : BaseTestes
+    public class EdicaoDeColaboradorJuridicoCompletoTeste: BaseTestes
     {
-        [Test(Description = "Edição de colaborador físico completo")]
+        [Test(Description = "Editar do colaborador jurídico completo")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -19,13 +19,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         [AllureOwner("Takaki")]
         [AllureSuite("Editar")]
         [AllureSubSuite("Colaborador")]
-        public void EdicaoDeColaboradorFisicoCompleto()
+        public void EdicaoDeColaboradorJuridicoCompleto()
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeColaboradorBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeColaboradorBasePage>>();
             var edicaoDeColaboradorBasePage = resolveEdicaoDeColaboradorBasePage(DriverService);
-            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.FisicaCompleta;
+            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.JuridicaCompleta;
             edicaoDeColaboradorBasePage.PesquisarColaboradorQueSeraEditado(classificacaoDePessoa);
 
             // Act

@@ -34,7 +34,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
             {"Cargo", "TESTER"}
         };
 
-        [Test(Description = "Cadastro de colaborador completo")]
+        [Test(Description = "Cadastro de colaborador físico completo")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("3")]
@@ -42,7 +42,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
         [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Colaborador")]
-        public void CadastrarColaboradorCompleto()
+        public void CadastrarColaboradorFisicoCompleto()
         {
             // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();

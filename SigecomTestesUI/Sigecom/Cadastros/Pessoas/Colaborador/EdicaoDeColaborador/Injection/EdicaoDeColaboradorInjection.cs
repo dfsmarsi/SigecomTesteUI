@@ -21,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
                 containerBuilder.RegisterType<EdicaoDeColaboradorFisicoCompletoPage>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorPageFactory>().As<IEdicaoDeColaboradorPageFactory>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoSimplesTeste>();
-                //containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoCompletoTeste>();
+                containerBuilder.RegisterType<EdicaoDeColaboradorJuridicoCompletoTeste>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorFisicoSimplesTeste>();
                 containerBuilder.RegisterType<EdicaoDeColaboradorFisicoCompletoTeste>();
             }
