@@ -20,22 +20,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
         [AllureSubSuite("Fornecedor")]
         public void EdicaoDeFornecedorFisicoSimples()
         {
-            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeFornecedorBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeFornecedorBasePage>>();
             var edicaoDeFornecedorBasePage = resolveEdicaoDeFornecedorBasePage(DriverService);
-            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.FisicaSimples;
-            edicaoDeFornecedorBasePage.PesquisarFornecedorQueSeraEditado(classificacaoDePessoa);
-
-            // Act
-            edicaoDeFornecedorBasePage.VerificarInformacoesDoFornecedor(classificacaoDePessoa);
-            edicaoDeFornecedorBasePage.PreencherAsInformacoesDaPessoasNaEdicao(classificacaoDePessoa);
-            edicaoDeFornecedorBasePage.Gravar();
-
-            // Assert
-            edicaoDeFornecedorBasePage.FluxoDePesquisaDaPessoaEditado(classificacaoDePessoa);
-            edicaoDeFornecedorBasePage.VerificarDadosDaPessoaEditados(classificacaoDePessoa);
-            edicaoDeFornecedorBasePage.FecharJanelaCadastroDeFornecedorComEsc();
+            edicaoDeFornecedorBasePage.RealizarFluxoDaEdicaoDeFornecedor( ClassificacaoDePessoa.FisicaSimples);
         }
     }
 }

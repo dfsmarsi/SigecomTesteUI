@@ -15,7 +15,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
         {
             {"TipoPessoa", "JURÍDICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "CLIENTE JURIDICO SIMPLES EDITAR TESTE"},
+            {"Nome", "CLIENTE JURIDICA SIMPLES EDITAR TESTE"},
             {"Cidade", "JALES"},
             {"Estado", "SÃO PAULO"}
         };

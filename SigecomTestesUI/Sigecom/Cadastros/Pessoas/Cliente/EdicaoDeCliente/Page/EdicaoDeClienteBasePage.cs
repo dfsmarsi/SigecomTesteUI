@@ -29,26 +29,45 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             ClicarNaOpcaoDoSubMenu();
         }
 
-        public void PesquisarClienteQueSeraEditado(ClassificacaoDePessoa classificacaoDePessoa)
+        public void RealizarFluxoDaEdicaoDeCliente(ClassificacaoDePessoa classificacaoDePessoa)
+        {
+            // Arange
+            PesquisarClienteQueSeraEditado(classificacaoDePessoa);
+
+            // Act
+            VerificarInformacoesDoCliente(classificacaoDePessoa);
+            PreencherAsInformacoesDaPessoasNaEdicao(classificacaoDePessoa);
+            Gravar();
+
+            // Assert
+            FluxoDePesquisaDaPessoaEditado(classificacaoDePessoa);
+            VerificarDadosDaPessoaEditados(classificacaoDePessoa);
+            FecharJanelaCadastroDeClienteComEsc();
+        }
+
+        private void PesquisarClienteQueSeraEditado(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeClientePage.PesquisarClienteQueSeraEditado(this);
         }
 
-        public void VerificarInformacoesDoCliente(ClassificacaoDePessoa classificacaoDePessoa)
+        private void VerificarInformacoesDoCliente(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeClientePage.VerificarDadosDaPessoa();
         }
 
-        public void PreencherAsInformacoesDaPessoasNaEdicao(ClassificacaoDePessoa classificacaoDePessoa)
+        private void PreencherAsInformacoesDaPessoasNaEdicao(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeClientePage.PreencherAsInformacoesDaPessoasNaEdicao();
         }
+
+        private void Gravar() =>
+            DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoGravar);
 
         internal void RetornarPesquisaDePessoa(out PesquisaDePessoaPage pesquisaDePessoaPage)
         {
@@ -57,7 +76,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
         }
 
-        public void FluxoDePesquisaDaPessoaEditado(ClassificacaoDePessoa classificacaoDePessoa)
+        private void FluxoDePesquisaDaPessoaEditado(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
@@ -65,17 +84,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             edicaoDeClientePage.FluxoDePesquisaDaPessoaEditado(this, pesquisaDePessoaPage);
         }
 
-        public void VerificarDadosDaPessoaEditados(ClassificacaoDePessoa classificacaoDePessoa)
+        private void VerificarDadosDaPessoaEditados(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeClientePage = lifetimeScope.Resolve<IEdicaoDeClientePageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeClientePage.VerificarDadosDaPessoaEditados();
         }
 
-        public void Gravar() => 
-            DriverService.ClicarBotaoName(CadastroDeClienteModel.BotaoGravar);
-
-        public void FecharJanelaCadastroDeClienteComEsc()
+        private void FecharJanelaCadastroDeClienteComEsc()
         {
             try
             {

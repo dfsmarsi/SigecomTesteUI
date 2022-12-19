@@ -12,7 +12,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
 {
     public class EdicaoDeColaboradorBasePage : PageObjectModel
     {
-        public EdicaoDeColaboradorBasePage(DriverService driver) : base(driver) { }
+        private EdicaoDeColaboradorBasePage(DriverService driver) : base(driver) { }
 
         private void ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(CadastroDeColaboradorModel.BotaoMenu);
@@ -29,26 +29,45 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             ClicarNaOpcaoDoSubMenu();
         }
 
-        public void PesquisarColaboradorQueSeraEditado(ClassificacaoDePessoa classificacaoDePessoa)
+        public void RealizarFluxoDaEdicaoDeColaborador(ClassificacaoDePessoa classificacaoDePessoa)
+        {
+            // Arange
+            PesquisarColaboradorQueSeraEditado(classificacaoDePessoa);
+
+            // Act
+            VerificarInformacoesDoColaborador(classificacaoDePessoa);
+            PreencherAsInformacoesDaPessoasNaEdicao(classificacaoDePessoa);
+            Gravar();
+
+            // Assert
+            FluxoDePesquisaDaPessoaEditado(classificacaoDePessoa);
+            VerificarDadosDaPessoaEditados(classificacaoDePessoa);
+            FecharJanelaCadastroDeColaboradorComEsc();
+        }
+
+        private void PesquisarColaboradorQueSeraEditado(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeColaboradorPage = lifetimeScope.Resolve<IEdicaoDeColaboradorPageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeColaboradorPage.PesquisarColaboradorQueSeraEditado(this);
         }
 
-        public void VerificarInformacoesDoColaborador(ClassificacaoDePessoa classificacaoDePessoa)
+        private void VerificarInformacoesDoColaborador(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeColaboradorPage = lifetimeScope.Resolve<IEdicaoDeColaboradorPageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeColaboradorPage.VerificarDadosDaPessoa();
         }
 
-        public void PreencherAsInformacoesDaPessoasNaEdicao(ClassificacaoDePessoa classificacaoDePessoa)
+        private void PreencherAsInformacoesDaPessoasNaEdicao(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeColaboradorPage = lifetimeScope.Resolve<IEdicaoDeColaboradorPageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeColaboradorPage.PreencherAsInformacoesDaPessoasNaEdicao();
         }
+
+        private void Gravar() =>
+            DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoGravar);
 
         internal void RetornarPesquisaDePessoa(out PesquisaDePessoaPage pesquisaDePessoaPage)
         {
@@ -57,7 +76,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
         }
 
-        public void FluxoDePesquisaDaPessoaEditado(ClassificacaoDePessoa classificacaoDePessoa)
+        private void FluxoDePesquisaDaPessoaEditado(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeColaboradorPage = lifetimeScope.Resolve<IEdicaoDeColaboradorPageFactory>().Fabricar(DriverService, classificacaoDePessoa);
@@ -65,17 +84,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             edicaoDeColaboradorPage.FluxoDePesquisaDaPessoaEditado(this, pesquisaDePessoaPage);
         }
 
-        public void VerificarDadosDaPessoaEditados(ClassificacaoDePessoa classificacaoDePessoa)
+        private void VerificarDadosDaPessoaEditados(ClassificacaoDePessoa classificacaoDePessoa)
         {
             using var lifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var edicaoDeColaboradorPage = lifetimeScope.Resolve<IEdicaoDeColaboradorPageFactory>().Fabricar(DriverService, classificacaoDePessoa);
             edicaoDeColaboradorPage.VerificarDadosDaPessoaEditados();
         }
 
-        public void Gravar() =>
-            DriverService.ClicarBotaoName(CadastroDeColaboradorModel.BotaoGravar);
-
-        public void FecharJanelaCadastroDeColaboradorComEsc()
+        private void FecharJanelaCadastroDeColaboradorComEsc()
         {
             try
             {

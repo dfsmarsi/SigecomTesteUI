@@ -15,7 +15,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         {
             {"TipoPessoa", "FÍSICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "COLABORADOR FISICO COMPLETO EDITAR TESTE"},
+            {"Nome", "COLABORADOR FISICA COMPLETO EDITAR TESTE"},
             {"Cpf", "860.920.330-11"},
             {"Rg", "204917633"},
             {"Apelido", "COMPLETO EDITAR TESTE"},

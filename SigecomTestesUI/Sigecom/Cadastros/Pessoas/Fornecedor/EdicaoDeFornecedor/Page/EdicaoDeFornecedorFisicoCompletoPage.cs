@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
         {
             {"TipoPessoa", "FÍSICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "FORNECEDOR FISICO COMPLETO EDITAR TESTE"},
+            {"Nome", "FORNECEDOR FISICA COMPLETO EDITAR TESTE"},
             {"Cpf", "860.920.330-11"},
             {"Rg", "204917633"},
             {"Apelido", "COMPLETO EDITAR TESTE"},
@@ -30,14 +30,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             {"Estado", "SÃO PAULO"},
             {"Cidade", "JALES"},
             {"Complemento", "CASA"},
-            {"DescontoPadrao", "5,00"},
-            {"Observacao", "OBSERVAÇÃO TESTE"},
-            {"DataAdmissao", "01/01/1998"},
-            {"EmailFuncionario", "teste@sistemasbr.net"},
-            {"DiaPagamento", "07"},
-            {"Salario", "800,00"},
-            {"TelefoneFuncionario", "(11) 96405-6467"},
-            {"Cargo", "TESTER"}
+            {"Observacao", "OBSERVAÇÃO TESTE"}
         };
 
         public EdicaoDeFornecedorFisicoCompletoPage(DriverService driverService) => _driverService = driverService;
@@ -68,7 +61,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoEstado), DadosDoFornecedor["Estado"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoCidade), DadosDoFornecedor["Cidade"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoComplemento), DadosDoFornecedor["Complemento"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoDescontoPadrao), DadosDoFornecedor["DescontoPadrao"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoObservacao), DadosDoFornecedor["Observacao"]);
         }
 

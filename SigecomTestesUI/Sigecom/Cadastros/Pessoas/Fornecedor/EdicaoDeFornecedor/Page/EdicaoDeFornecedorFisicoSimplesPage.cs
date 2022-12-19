@@ -15,7 +15,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
         {
             {"TipoPessoa", "FÍSICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "FORNECEDOR FISICO SIMPLES EDITAR TESTE"},
+            {"Nome", "FORNECEDOR FISICA SIMPLES EDITAR TESTE"},
             {"Cidade", "JALES"},
             {"Estado", "SÃO PAULO"}
         };

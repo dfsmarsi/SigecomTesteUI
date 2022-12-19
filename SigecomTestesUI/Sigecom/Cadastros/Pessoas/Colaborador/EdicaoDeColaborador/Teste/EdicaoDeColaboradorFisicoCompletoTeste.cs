@@ -20,22 +20,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         [AllureSubSuite("Colaborador")]
         public void EdicaoDeColaboradorFisicoCompleto()
         {
-            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeColaboradorBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeColaboradorBasePage>>();
             var edicaoDeColaboradorBasePage = resolveEdicaoDeColaboradorBasePage(DriverService);
-            const ClassificacaoDePessoa classificacaoDePessoa = ClassificacaoDePessoa.FisicaCompleta;
-            edicaoDeColaboradorBasePage.PesquisarColaboradorQueSeraEditado(classificacaoDePessoa);
-
-            // Act
-            edicaoDeColaboradorBasePage.VerificarInformacoesDoColaborador(classificacaoDePessoa);
-            edicaoDeColaboradorBasePage.PreencherAsInformacoesDaPessoasNaEdicao(classificacaoDePessoa);
-            edicaoDeColaboradorBasePage.Gravar();
-
-            // Assert
-            edicaoDeColaboradorBasePage.FluxoDePesquisaDaPessoaEditado(classificacaoDePessoa);
-            edicaoDeColaboradorBasePage.VerificarDadosDaPessoaEditados(classificacaoDePessoa);
-            edicaoDeColaboradorBasePage.FecharJanelaCadastroDeColaboradorComEsc();
+            edicaoDeColaboradorBasePage.RealizarFluxoDaEdicaoDeColaborador(ClassificacaoDePessoa.FisicaCompleta);
         }
     }
 }

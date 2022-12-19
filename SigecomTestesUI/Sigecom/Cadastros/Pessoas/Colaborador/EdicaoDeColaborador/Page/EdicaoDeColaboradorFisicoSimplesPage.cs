@@ -15,7 +15,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         {
             {"TipoPessoa", "FÍSICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "COLABORADOR FISICO SIMPLES EDITAR TESTE"},
+            {"Nome", "COLABORADOR FISICA SIMPLES EDITAR TESTE"},
             {"Cidade", "JALES"},
             {"Estado", "SÃO PAULO"}
         };
