@@ -18,7 +18,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Injection
                 containerBuilder.RegisterType<CadastroDeCategoriaCombustivelTeste>();
                 containerBuilder.RegisterType<CadastroDeCategoriaMedicamentoTeste>();
                 containerBuilder.RegisterType<PesquisaDeCategoriaPage>();
-                containerBuilder.RegisterType<CadastroDeCategoriaBaseTeste>();
             }
             catch (Exception exception)
             {

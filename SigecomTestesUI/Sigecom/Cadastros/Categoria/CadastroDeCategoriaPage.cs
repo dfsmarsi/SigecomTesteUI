@@ -3,6 +3,10 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
 using System;
 using System.Collections.Generic;
+using Autofac;
+using NUnit.Framework;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
 {
@@ -18,32 +22,27 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
         public bool ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CadastroDeCategoriaModel.BotaoSubMenuCategoria);
 
-        public bool ClicarNaOpcaoDoPesquisar() =>
-            AcessarOpcaoMenu(CadastroDeCategoriaModel.BotaoPesquisar);
-
-        public bool ClicarNoBotaoNovoCategoria()
+        private void ClicarNoBotaoNovoCategoria()
         {
             try
             {
                 DriverService.ClicarBotaoName(CadastroDeCategoriaModel.BotaoNovoCategoria);
-                return true;
             }
             catch (Exception)
             {
-                return false;
+                // ignored
             }
         }
 
-        public bool ClicarNoBotaoNovo()
+        private void ClicarNoBotaoNovo()
         {
             try
             {
                 DriverService.ClicarBotaoName(CadastroDeCategoriaModel.BotaoNovo);
-                return true;
             }
             catch (Exception)
             {
-                return false;
+                // ignored
             }
         }
 
@@ -62,17 +61,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             }
         }
 
-        public bool PreencherCamposDaCategoria(string toggleDeCategoria)
+        private void PreencherCamposDaCategoria(string toggleDeCategoria)
         {
             try
             {
                 PreencherCamposBaseDaCategoria();
                 DriverService.ClicarNoToggleSwitchPeloId(toggleDeCategoria);
-                return true;
             }
             catch (Exception)
             {
-                return false;
+                // ignored
             }
         }
 
@@ -96,17 +94,53 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             }
         }
 
-        public bool FecharJanelaCadastroDeCategoriaComEsc(string telaAtual)
+        private void FecharJanelaCadastroDeCategoriaComEsc(string telaAtual)
         {
             try
             {
                 DriverService.FecharJanelaComEsc(telaAtual);
-                return true;
             }
             catch (Exception)
             {
-                return false;
+                // ignored
             }
+        }
+
+        public void RealizarFluxoDeCadastroDeCategoria(string toggle)
+        {
+            // Arange
+            AbrirTelaDeCategoriaParaTeste();
+
+            // Act
+            PreencherCamposDaCategoria(toggle);
+            Gravar();
+
+            // Assert
+            PesquisarCategoriaGravada();
+        }
+
+        public void AbrirTelaDeCategoriaParaTeste()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarNoBotaoNovoCategoria();
+            ClicarNoBotaoNovo();
+        }
+
+        public void PesquisarCategoriaGravada()
+        {
+            FecharJanelaCadastroDeCategoriaComEsc(CadastroDeCategoriaModel.ElementoTelaCadastroDeCategoria);
+            var pesquisaDeCategoriaPage = RetornarPesquisaDeCategoriaPage();
+            pesquisaDeCategoriaPage.PesquisarCategoriaNaTelaDeControle(_dadosDeCategoria["Grupo"]);
+            Assert.True(pesquisaDeCategoriaPage.VerificarSeExisteCategoriaNaGrid(_dadosDeCategoria["Grupo"]));
+            FecharJanelaCadastroDeCategoriaComEsc(CadastroDeCategoriaModel.ElementoTelaControleDeCategoria);
+        }
+
+        private PesquisaDeCategoriaPage RetornarPesquisaDeCategoriaPage()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolvePesquisaDeCategoriaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeCategoriaPage>>();
+            return resolvePesquisaDeCategoriaPage(DriverService);
         }
     }
 }

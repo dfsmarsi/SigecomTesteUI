@@ -1,10 +1,14 @@
-﻿using NUnit.Allure.Attributes;
+﻿using System;
+using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Autofac;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {
-    public class CadastroDeCategoriaTeste: CadastroDeCategoriaBaseTeste
+    public class CadastroDeCategoriaTeste: BaseTestes
     {
         [Test(Description = "Cadastro de Categoria Somente Campos Obrigatorios")]
         [AllureTag("CI")]
@@ -21,16 +25,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
                 {"Grupo", "GRUPO GRADE"},
                 {"Markup", "0"}
             };
-            // Arange
-            RetornarCadastroDeCategoria(dadosDeCategoria, out var cadastroDeCategoriaPage);
-            AbrirTelaDeCategoriaParaTeste(cadastroDeCategoriaPage);
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var resolveCadastroDeCategoriaPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeCategoriaPage>>();
+            var cadastroDeCategoriaPage = resolveCadastroDeCategoriaPage(DriverService, dadosDeCategoria);
+            cadastroDeCategoriaPage.AbrirTelaDeCategoriaParaTeste();
 
             // Act
             cadastroDeCategoriaPage.PreencherCamposDaCategoriaGrade();
             cadastroDeCategoriaPage.Gravar();
 
             // Assert
-            PesquisarCategoriaGravada(cadastroDeCategoriaPage, dadosDeCategoria);
+            cadastroDeCategoriaPage.PesquisarCategoriaGravada();
         }
     }
 }
