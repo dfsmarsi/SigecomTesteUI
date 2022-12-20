@@ -1,21 +1,21 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using System;
-using System.Collections.Generic;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Page
 {
-    public class CadastroDeFornecedorJuridicoPage : PageObjectModel
+    public class CadastroDeFornecedorFisicoPage : PageObjectModel
     {
         private readonly Dictionary<string, string> _dadosDeFornecedor;
 
-        public CadastroDeFornecedorJuridicoPage(DriverService driver, Dictionary<string, string> dadosDeFornecedor) :
+        public CadastroDeFornecedorFisicoPage(DriverService driver, Dictionary<string, string> dadosDeFornecedor) :
             base(driver) =>
             _dadosDeFornecedor = dadosDeFornecedor;
 
@@ -70,16 +70,17 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
         public bool VerificarTipoPessoa()
         {
             var valorTipoPessoa = DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoTipoPessoa);
-            return valorTipoPessoa.Equals("JURÍDICA");
+            return valorTipoPessoa == "FÍSICA";
         }
 
         public bool PreencherCamposSimples()
         {
             try
             {
-                DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoTipoPessoa, 1);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNome, _dadosDeFornecedor["Nome"]);
-                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoCep, _dadosDeFornecedor["Cep"]);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoCpf, _dadosDeFornecedor["Cpf"]);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeFornecedorModel.ElementoCep, _dadosDeFornecedor["Cep"], Keys.Enter);
+                EsperarAcaoEmSegundos(3);
                 DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoNumero, _dadosDeFornecedor["Numero"]);
                 return true;
             }
@@ -93,22 +94,37 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
         {
             try
             {
-                DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoTipoPessoa, 1);
-                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeFornecedorModel.ElementoCpf, _dadosDeFornecedor["Cnpj"], Keys.Enter);
+                PreencherCamposSimples();
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoRg, _dadosDeFornecedor["Rg"]);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoApelido,
+                    _dadosDeFornecedor["Apelido"]);
+                DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeFornecedorModel.ElementoDataDeNascimento,
+                    _dadosDeFornecedor["DataNascimento"], Keys.Enter);
+                DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoSexo, 1);
+                DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoEstadoCivil, 1);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoComplemento,
+                    _dadosDeFornecedor["Complemento"]);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoObservacao,
+                    _dadosDeFornecedor["Observacao"]);
+                DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoTipoContato, 3);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoContatoDoCliente,
+                    _dadosDeFornecedor["ContatoPrimario"]);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoObsContatoDoCliente,
+                    _dadosDeFornecedor["ObservacaoContatoPrimario"]);
+                DriverService.ClicarBotaoId(CadastroDeFornecedorModel.BotaoContato);
+                EsperarAcaoEmSegundos(2);
+                DriverService.SelecionarItemComboBox(CadastroDeFornecedorModel.ElementoTipoContato, 1);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoContatoDoCliente,
+                    _dadosDeFornecedor["ContatoSecundario"]);
+                DriverService.DigitarNoCampoId(CadastroDeFornecedorModel.ElementoObsContatoDoCliente,
+                    _dadosDeFornecedor["ObservacaoContatoSecundario"]);
+                DriverService.ClicarBotaoId(CadastroDeFornecedorModel.BotaoContato);
                 return true;
             }
             catch
             {
                 return false;
             }
-        }
-
-        public void VerificarCamposDoCarregados()
-        {
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoNome), _dadosDeFornecedor["Nome"]);
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoCep), _dadosDeFornecedor["Cep"]);
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoNumero), _dadosDeFornecedor["Numero"]);
-            Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeFornecedorModel.ElementoEndereco), _dadosDeFornecedor["Endereco"]);
         }
 
 
@@ -125,11 +141,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor
             }
         }
 
-        private void FecharJanelaCadastroFornecedorComEsc()
+        public bool FecharJanelaCadastroFornecedorComEsc()
         {
             try
             {
                 DriverService.FecharJanelaComEsc(CadastroDeFornecedorModel.TelaCadastroFornecedor);
+                return true;
             }
             catch (Exception exception)
             {

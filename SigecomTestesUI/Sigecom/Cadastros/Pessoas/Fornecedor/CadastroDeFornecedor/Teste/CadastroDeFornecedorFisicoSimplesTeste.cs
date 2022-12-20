@@ -1,12 +1,13 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using System;
-using System.Collections.Generic;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Page;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.Teste
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Teste
 {
     public class CadastroDeFornecedorFisicoSimplesTeste : BaseTestes
     {

@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
         {
             {"TipoPessoa", "FÍSICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "CLIENTE FISICO COMPLETO EDITAR TESTE"},
+            {"Nome", "CLIENTE FISICA COMPLETO EDITAR TESTE"},
             {"Cpf", "941.543.670-05"},
             {"Rg", "204917633"},
             {"Apelido", "COMPLETO EDITAR TESTE"},
