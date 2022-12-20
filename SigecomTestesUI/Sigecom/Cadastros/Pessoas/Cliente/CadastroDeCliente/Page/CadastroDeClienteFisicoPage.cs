@@ -153,6 +153,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Pa
             }
         }
 
+        public void AcessarTelaDeCadastroDeClienteEPesquisar()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoPesquisar();
+            VerificarTipoPessoa();
+        }
+
         public void AcessarTelaDeCadastroDeCliente()
         {
             ClicarNaOpcaoDoMenu();
