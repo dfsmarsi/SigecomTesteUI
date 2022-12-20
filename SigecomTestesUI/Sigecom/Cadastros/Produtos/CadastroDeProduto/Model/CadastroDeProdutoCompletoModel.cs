@@ -10,7 +10,7 @@
         public static string EstoqueMinimo => "5,00";
         public static string EstoqueMaximo => "120,00";
         public static string Marca => "MARCA TESTE";
-        public static string Fornecedor => "FORNECEDOR";
+        public static string Fornecedor => "FORNECEDOR CADASTRAR PRODUTO COMPLETO";
         public static string Cstpis => "49 - Outras Operações de Saída";
         public static string CstCofins => "49 - Outras Operações de Saída";
         public static string ClassificacaoPisCofins => "Não monofásica";

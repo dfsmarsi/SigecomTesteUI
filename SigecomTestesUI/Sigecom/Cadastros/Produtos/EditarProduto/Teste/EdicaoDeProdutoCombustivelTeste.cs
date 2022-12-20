@@ -21,26 +21,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
         [AllureSubSuite("Produto")]
         public void EdicaoDeProdutoCombustivel()
         {
-            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeProdutoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBasePage>>();
             var edicaoDeProdutoBasePage = resolveEdicaoDeProdutoBasePage(DriverService);
-            const TipoDeProduto tipoDeProduto = TipoDeProduto.Combustivel;
-
-            // Act
-            edicaoDeProdutoBasePage.PesquisarProdutoQueSeraEditado(tipoDeProduto);
-            edicaoDeProdutoBasePage.VerificarCamposDoProduto(tipoDeProduto);
-            edicaoDeProdutoBasePage.PreencherCamposDoProdutoAoEditar(tipoDeProduto);
-            edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaCombustivel);
-            edicaoDeProdutoBasePage.VerificarCamposDaAba(tipoDeProduto);
-            edicaoDeProdutoBasePage.PreencherCamposDaAbaAoEditar(tipoDeProduto);
-            edicaoDeProdutoBasePage.Gravar();
-
-            // Assert
-            edicaoDeProdutoBasePage.RealizarFluxoDePesquisaDoProdutoQueFoiEditado(tipoDeProduto);
-            edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaCombustivel);
-            edicaoDeProdutoBasePage.VerificarCamposDaAbaEditado(tipoDeProduto);
-            edicaoDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
+            edicaoDeProdutoBasePage.RealizarFluxoDoEditarProduto(TipoDeProduto.Combustivel, CadastroDeProdutoModel.AbaCombustivel);
         }
     }
 }

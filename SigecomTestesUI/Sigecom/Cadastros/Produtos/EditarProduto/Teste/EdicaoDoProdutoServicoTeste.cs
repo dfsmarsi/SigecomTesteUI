@@ -21,26 +21,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
         [AllureSubSuite("Produto")]
         public void EdicaoDeProdutoServico()
         {
-            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveEdicaoDeProdutoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeProdutoBasePage>>();
             var edicaoDeProdutoBasePage = resolveEdicaoDeProdutoBasePage(DriverService);
-            const TipoDeProduto tipoDeProduto = TipoDeProduto.Servico;
-
-            // Act
-            edicaoDeProdutoBasePage.PesquisarProdutoQueSeraEditado(tipoDeProduto);
-            edicaoDeProdutoBasePage.VerificarCamposDoProduto(tipoDeProduto);
-            edicaoDeProdutoBasePage.PreencherCamposDoProdutoAoEditar(tipoDeProduto);
-            edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
-            edicaoDeProdutoBasePage.VerificarCamposDaAba(tipoDeProduto);
-            edicaoDeProdutoBasePage.PreencherCamposDaAbaAoEditar(tipoDeProduto);
-            edicaoDeProdutoBasePage.Gravar();
-
-            // Assert
-            edicaoDeProdutoBasePage.RealizarFluxoDePesquisaDoProdutoQueFoiEditado(tipoDeProduto);
-            edicaoDeProdutoBasePage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
-            edicaoDeProdutoBasePage.VerificarCamposDaAbaEditado(tipoDeProduto);
-            edicaoDeProdutoBasePage.FecharJanelaCadastroDeProdutoComEsc();
+            edicaoDeProdutoBasePage.RealizarFluxoDoEditarProduto(TipoDeProduto.Servico, CadastroDeProdutoModel.AbaImpostos);
         }
     }
 }

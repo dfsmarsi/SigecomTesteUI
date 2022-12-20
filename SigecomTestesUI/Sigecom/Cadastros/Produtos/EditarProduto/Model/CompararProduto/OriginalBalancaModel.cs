@@ -4,6 +4,6 @@
     {
         public static string NomeDoProdutoParaPesquisar => "PRODUTO BALANCA EDITAR TESTE";
         public static string CategoriaDoProduto => "BALANCA";
-        public static string CodigoDaBalanca => "000002";
+        public static string CodigoDaBalanca => "000001";
     }
 }
