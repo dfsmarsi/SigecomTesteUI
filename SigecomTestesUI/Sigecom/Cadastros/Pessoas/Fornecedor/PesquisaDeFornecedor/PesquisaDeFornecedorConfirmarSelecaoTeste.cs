@@ -29,16 +29,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.PesquisaDeFornece
             var pesquisaDePessoaPage = resolvePesquisaDePessoaPage(DriverService);
 
             // Arange
-            var resolveCadastroDeColaboradorFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorFisicoPage>>();
-            var cadastroDeColaboradorFisicoPage = resolveCadastroDeColaboradorFisicoPage(DriverService, new Dictionary<string, string>());
-            cadastroDeColaboradorFisicoPage.AcessarTelaDeCadastroDeFornecedorEPesquisar();
+            var resolveCadastroDeFornecedorFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeFornecedorFisicoPage>>();
+            var cadastroDeFornecedorFisicoPage = resolveCadastroDeFornecedorFisicoPage(DriverService, new Dictionary<string, string>());
+            cadastroDeFornecedorFisicoPage.AcessarTelaDeCadastroDeFornecedor(false);
 
             // Act
             pesquisaDePessoaPage.PesquisarPessoaComConfirmar("fornecedor", PesquisaDeFornecedorInformacoesParaTesteModel.NomeDaPessoa);
 
             // Assert
             Assert.True(pesquisaDePessoaPage.VerificarSeCarregouOsDadosDaPessoa(CadastroDeClienteModel.ElementoNome, PesquisaDeFornecedorInformacoesParaTesteModel.NomeDaPessoa));
-            cadastroDeColaboradorFisicoPage.FecharJanelaCadastroFornecedorComEsc();
+            cadastroDeFornecedorFisicoPage.FecharJanelaCadastroFornecedorComEsc();
         }
     }
 }

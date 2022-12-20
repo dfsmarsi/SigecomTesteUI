@@ -31,7 +31,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.PesquisaDeColabo
             // Arange
             var resolveCadastroDeColaboradorFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorFisicoPage>>();
             var cadastroDeColaboradorFisicoPage = resolveCadastroDeColaboradorFisicoPage(DriverService, new Dictionary<string, string>());
-            cadastroDeColaboradorFisicoPage.AcessarTelaDeCadastroDeColaboradorEPesquisar();
+            cadastroDeColaboradorFisicoPage.AcessarTelaDeCadastroDeColaborador(false);
 
             // Act
             pesquisaDePessoaPage.PesquisarPessoaComConfirmar("colaborador", PesquisaDeColaboradorInformacoesParaTesteModel.NomeDaPessoa);

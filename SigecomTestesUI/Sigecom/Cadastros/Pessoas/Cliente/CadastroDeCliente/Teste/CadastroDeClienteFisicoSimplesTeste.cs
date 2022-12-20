@@ -33,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Te
             var resolveCadastroDeClienteFisicoPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
             var cadastroDeClienteFisicoPage = resolveCadastroDeClienteFisicoPage(DriverService, _dadosDoCliente);
             // Arange
-            cadastroDeClienteFisicoPage.AcessarTelaDeCadastroDeCliente();
+            cadastroDeClienteFisicoPage.AcessarTelaDeCadastroDeCliente(true);
 
             // Act
             cadastroDeClienteFisicoPage.PreencherCamposSimples();

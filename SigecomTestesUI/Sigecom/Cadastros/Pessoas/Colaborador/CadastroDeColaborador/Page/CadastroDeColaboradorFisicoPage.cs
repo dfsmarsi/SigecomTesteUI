@@ -161,20 +161,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
             }
         }
 
-        public void AcessarTelaDeCadastroDeColaboradorEPesquisar()
+        public void AcessarTelaDeCadastroDeColaborador(bool cadastro)
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoPesquisar();
+            RealizarAcaoInicialNaTelaDeCadastro(cadastro);
             VerificarTipoPessoa();
         }
 
-        public void AcessarTelaDeCadastroDeColaborador()
+        private void RealizarAcaoInicialNaTelaDeCadastro(bool cadastro)
         {
-            ClicarNaOpcaoDoMenu();
-            ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoNovo();
-            VerificarTipoPessoa();
+            if (cadastro)
+                ClicarBotaoNovo();
+            else
+                ClicarBotaoPesquisar();
         }
 
         public void PesquisarColaboradorGravado(ILifetimeScope beginLifetimeScope)

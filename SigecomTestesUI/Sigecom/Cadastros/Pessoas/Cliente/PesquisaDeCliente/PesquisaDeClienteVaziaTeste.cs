@@ -29,7 +29,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.PesquisaDeCliente
             // Arange
             var resolveCadastroDeCliente = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeClienteFisicoPage>>();
             var cadastroDeCliente = resolveCadastroDeCliente(DriverService, new Dictionary<string, string>());
-            cadastroDeCliente.AcessarTelaDeCadastroDeClienteEPesquisar();
+            cadastroDeCliente.AcessarTelaDeCadastroDeCliente(false);
 
             // Act
             pesquisaDePessoaPage.PesquisarPessoa("cliente", "");
