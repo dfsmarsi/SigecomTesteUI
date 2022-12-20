@@ -154,6 +154,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornece
             }
         }
 
+        public void AcessarTelaDeCadastroDeFornecedorEPesquisar()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoPesquisar();
+            VerificarTipoPessoa();
+        }
+
         public void AcessarTelaDeCadastroDeFornecedor()
         {
             ClicarNaOpcaoDoMenu();
