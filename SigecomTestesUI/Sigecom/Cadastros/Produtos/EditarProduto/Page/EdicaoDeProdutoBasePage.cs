@@ -57,6 +57,26 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
             ClicarNaOpcaoDoSubMenu();
         }
 
+        public void RealizarFluxoDoEditarProduto(TipoDeProduto tipoDeProduto, string aba)
+        {
+            // Arange
+            PesquisarProdutoQueSeraEditado(tipoDeProduto);
+
+            // Act
+            VerificarCamposDoProduto(tipoDeProduto);
+            PreencherCamposDoProdutoAoEditar(tipoDeProduto);
+            AcessarAba(aba);
+            VerificarCamposDaAba(tipoDeProduto);
+            PreencherCamposDaAbaAoEditar(tipoDeProduto);
+            Gravar();
+
+            // Assert
+            RealizarFluxoDePesquisaDoProdutoQueFoiEditado(tipoDeProduto);
+            AcessarAba(aba);
+            VerificarCamposDaAbaEditado(tipoDeProduto);
+            FecharJanelaCadastroDeProdutoComEsc();
+        }
+
         internal void RetornarPesquisaDeProduto(out PesquisaDeProdutoPage pesquisaDeProdutoPage)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
