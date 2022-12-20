@@ -4,10 +4,9 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Page;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Teste;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Page;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Teste;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using System;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Page;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Teste;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
 {
@@ -35,7 +34,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
                 containerBuilder.RegisterType<CadastroDeFornecedorJuridicoPage>();
                 containerBuilder.RegisterType<CadastroDeFornecedorJuridicoSimplesTeste>();
                 containerBuilder.RegisterType<CadastroDeFornecedorJuridicoCompletoTeste>();
-                containerBuilder.RegisterType<PesquisaDePessoaPage>();
             }
             catch (Exception exception)
             {

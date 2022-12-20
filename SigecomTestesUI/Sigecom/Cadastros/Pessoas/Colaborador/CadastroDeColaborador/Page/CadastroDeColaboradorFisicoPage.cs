@@ -161,6 +161,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
             }
         }
 
+        public void AcessarTelaDeCadastroDeColaboradorEPesquisar()
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoPesquisar();
+            VerificarTipoPessoa();
+        }
+
         public void AcessarTelaDeCadastroDeColaborador()
         {
             ClicarNaOpcaoDoMenu();

@@ -4,6 +4,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Injectio
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Injection;
@@ -22,6 +23,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Injection
             containerBuilder.RegisterModule<EditarProdutoInjection>();
             containerBuilder.RegisterModule<CadastroDeProdutoInjection>();
             containerBuilder.RegisterModule<PesquisaDeProdutoInjection>();
+            containerBuilder.RegisterModule<PesquisaDePessoaInjection>();
         }
     }
 }
