@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.Page;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {

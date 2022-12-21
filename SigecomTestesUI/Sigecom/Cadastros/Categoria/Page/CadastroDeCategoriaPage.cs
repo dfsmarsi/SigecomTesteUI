@@ -1,19 +1,22 @@
-﻿using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Autofac;
 using NUnit.Framework;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.ExceptionCategoria;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
+namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Page
 {
     public class CadastroDeCategoriaPage : PageObjectModel
     {
         private readonly Dictionary<string, string> _dadosDeCategoria;
-        public CadastroDeCategoriaPage(DriverService driver, Dictionary<string, string> dadosDeCategoria) : base(driver) => 
+
+        public CadastroDeCategoriaPage(DriverService driver, Dictionary<string, string> dadosDeCategoria) :
+            base(driver) =>
             _dadosDeCategoria = dadosDeCategoria;
 
         public bool ClicarNaOpcaoDoMenu() =>
@@ -28,9 +31,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             {
                 DriverService.ClicarBotaoName(CadastroDeCategoriaModel.BotaoNovoCategoria);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                throw new ErroAoConcluirAcaoDoCadastroDeCategoriaException(exception.ToString());
             }
         }
 
@@ -40,9 +43,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             {
                 DriverService.ClicarBotaoName(CadastroDeCategoriaModel.BotaoNovo);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                throw new ErroAoConcluirAcaoDoCadastroDeCategoriaException(exception.ToString());
             }
         }
 
@@ -55,9 +58,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
                 DriverService.SelecionarDoisItensDaGrid(CadastroDeCategoriaModel.ElementoGrid, 2);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDeCategoriaException(exception.ToString());
             }
         }
 
@@ -68,9 +71,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
                 PreencherCamposBaseDaCategoria();
                 DriverService.ClicarNoToggleSwitchPeloId(toggleDeCategoria);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                throw new ErroAoConcluirAcaoDoCadastroDeCategoriaException(exception.ToString());
             }
         }
 
@@ -88,9 +91,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
                 DriverService.ClicarBotaoName(CadastroDeCategoriaModel.BotaoGravar);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return false;
+                throw new ErroAoConcluirAcaoDoCadastroDeCategoriaException(exception.ToString());
             }
         }
 
@@ -100,9 +103,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
             {
                 DriverService.FecharJanelaComEsc(telaAtual);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                // ignored
+                throw new ErroAoConcluirAcaoDoCadastroDeCategoriaException(exception.ToString());
             }
         }
 
@@ -139,7 +142,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria
         private PesquisaDeCategoriaPage RetornarPesquisaDeCategoriaPage()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var resolvePesquisaDeCategoriaPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeCategoriaPage>>();
+            var resolvePesquisaDeCategoriaPage =
+                beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeCategoriaPage>>();
             return resolvePesquisaDeCategoriaPage(DriverService);
         }
     }
