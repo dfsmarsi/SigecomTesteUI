@@ -33,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
             var resolveCadastroDeColaboradorPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeColaboradorFisicoPage>>();
             var cadastroDeColaboradorPage = resolveCadastroDeColaboradorPage(DriverService, _dadosDeColaborador);
             // Arange
-            cadastroDeColaboradorPage.AcessarTelaDeCadastroDeColaborador();
+            cadastroDeColaboradorPage.AcessarTelaDeCadastroDeColaborador(true);
 
             // Act
             cadastroDeColaboradorPage.PreencherCamposSimples();

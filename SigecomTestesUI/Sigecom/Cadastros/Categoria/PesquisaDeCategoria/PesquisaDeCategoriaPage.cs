@@ -1,8 +1,6 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria
@@ -11,32 +9,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria
     {
         public PesquisaDeCategoriaPage(DriverService driver) : base(driver) { }
 
-        public void PesquisarCategoria(string nomeDaCategoria)
-        {
-            DriverService.ValidarElementoExistentePorNome(PesquisaDeCategoriaModel.TelaPesquisaDeCategoria);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDeCategoriaModel.ElementoParametroDePesquisa, nomeDaCategoria, Keys.Enter);
-        }
-
         public void PesquisarCategoriaNaTelaDeControle(string nomeDaCategoria) => 
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeCategoriaModel.ElementoPesquisar, nomeDaCategoria, Keys.Enter);
 
         public bool VerificarSeExisteCategoriaNaGrid(string nomeDaCategoria)
         {
             var nomeDaCategoriaNaGrid = DriverService.PegarValorDaColunaDaGrid("Descricao");
-            return nomeDaCategoria == nomeDaCategoriaNaGrid;
-        }
-
-        public bool FecharJanelaComEsc()
-        {
-            try
-            {
-                DriverService.FecharJanelaComEsc(PesquisaDeCategoriaModel.TelaPesquisaDeCategoria);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return nomeDaCategoria.Equals(nomeDaCategoriaNaGrid);
         }
     }
 }

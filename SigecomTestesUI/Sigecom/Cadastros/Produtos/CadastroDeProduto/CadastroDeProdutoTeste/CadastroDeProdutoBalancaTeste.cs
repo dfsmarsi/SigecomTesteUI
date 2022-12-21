@@ -4,6 +4,7 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoTeste
@@ -20,24 +21,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         [AllureSubSuite("Produto")]
         public void CadastrarProdutoDeBalancaSomenteCamposObrigatorios()
         {
-            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeProdutoPage =
-                beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
+                beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>();
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
-            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
-
-            // Act
-            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Balanca);
-            cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
-            cadastroDeProdutoPage.PreencherCamposDeImpostos();
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaBalanca);
-            cadastroDeProdutoPage.PreencherCamposDaAba(TipoDeProduto.Balanca);
-            cadastroDeProdutoPage.Gravar();
-
-            // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Balanca);
+            cadastroDeProdutoPage.RealizarFluxoDeCadastrarProduto(TipoDeProduto.Balanca, CadastroDeProdutoModel.AbaBalanca);
         }
     }
 }

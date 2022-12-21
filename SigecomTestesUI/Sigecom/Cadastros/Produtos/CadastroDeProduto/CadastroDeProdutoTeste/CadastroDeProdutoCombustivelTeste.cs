@@ -20,24 +20,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         [AllureSubSuite("Produto")]
         public void CadastrarProdutoDeCombustivelSomenteCamposObrigatorios()
         {
-            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeProdutoPage =
                 beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
-            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
-
-            // Act
-            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Combustivel);
-            cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
-            cadastroDeProdutoPage.PreencherCamposDeImpostos();
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaCombustivel);
-            cadastroDeProdutoPage.PreencherCamposDaAba(TipoDeProduto.Combustivel);
-            cadastroDeProdutoPage.Gravar();
-
-            // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Combustivel);
+            cadastroDeProdutoPage.RealizarFluxoDeCadastrarProduto(TipoDeProduto.Combustivel, CadastroDeProdutoModel.AbaCombustivel);
         }
     }
 }

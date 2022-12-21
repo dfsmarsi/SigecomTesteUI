@@ -3,6 +3,7 @@ using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.PesquisaDeCategoria;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Categoria.Page;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Injection
 {
@@ -18,7 +19,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Injection
                 containerBuilder.RegisterType<CadastroDeCategoriaCombustivelTeste>();
                 containerBuilder.RegisterType<CadastroDeCategoriaMedicamentoTeste>();
                 containerBuilder.RegisterType<PesquisaDeCategoriaPage>();
-                containerBuilder.RegisterType<CadastroDeCategoriaBaseTeste>();
             }
             catch (Exception exception)
             {

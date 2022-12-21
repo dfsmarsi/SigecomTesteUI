@@ -154,12 +154,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornece
             }
         }
 
-        public void AcessarTelaDeCadastroDeFornecedor()
+        public void AcessarTelaDeCadastroDeFornecedor(bool cadastro)
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoNovo();
+            RealizarAcaoInicialNaTelaDeCadastro(cadastro);
             VerificarTipoPessoa();
+        }
+
+        private void RealizarAcaoInicialNaTelaDeCadastro(bool cadastro)
+        {
+            if (cadastro)
+                ClicarBotaoNovo();
+            else
+                ClicarBotaoPesquisar();
         }
 
         public void PesquisarFornecedorGravado(ILifetimeScope beginLifetimeScope)

@@ -153,12 +153,20 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Pa
             }
         }
 
-        public void AcessarTelaDeCadastroDeCliente()
+        public void AcessarTelaDeCadastroDeCliente(bool cadastro)
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoNovo();
+            RealizarAcaoInicialNaTelaDeCadastro(cadastro);
             VerificarTipoPessoa();
+        }
+
+        private void RealizarAcaoInicialNaTelaDeCadastro(bool cadastro)
+        {
+            if (cadastro)
+                ClicarBotaoNovo();
+            else
+                ClicarBotaoPesquisar();
         }
 
         public void PesquisarClienteGravado(ILifetimeScope beginLifetimeScope)

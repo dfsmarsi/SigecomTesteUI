@@ -1,8 +1,14 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Autofac;
+using NUnit.Framework;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Page;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
@@ -28,8 +34,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)
         {
             var nomePessoaNaGrid = DriverService.PegarValorDaColunaDaGrid("Nome");
-            return nomePessoa == nomePessoaNaGrid;
+            return nomePessoa.Equals(nomePessoaNaGrid);
         }
+
+        public bool VerificarSeCarregouOsDadosDaPessoa(string campoDaPessoa, string nomeDaPessoa) =>
+            DriverService.ObterValorElementoId(campoDaPessoa).Equals(nomeDaPessoa);
+
+        public bool VerificarSeExisteQualquerPessoaNaGrid() =>
+            DriverService.PegarValorDaColunaDaGrid("Nome").Any();
 
         public bool FecharJanelaComEsc(string tipoPessoa)
         {
