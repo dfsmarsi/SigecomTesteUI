@@ -51,7 +51,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         {
             try
             {
-
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoDescricao, CadastroDeProdutoCompletoModel.Descricao);
                 return true;
             }
