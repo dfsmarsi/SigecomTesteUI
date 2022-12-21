@@ -20,24 +20,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         [AllureSubSuite("Produto")]
         public void CadastrarProdutoDeGradeSomenteCamposObrigatorios()
         {
-            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeProdutoPage =
                 beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
-            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
-
-            // Act
-            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Grade);
-            cadastroDeProdutoPage.VerificarSePrecoDeVendaFoiCalculado();
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
-            cadastroDeProdutoPage.PreencherCamposDeImpostos();
-            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaGrade);
-            cadastroDeProdutoPage.PreencherCamposDaAba(TipoDeProduto.Grade);
-            cadastroDeProdutoPage.Gravar();
-
-            // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Grade);
+            cadastroDeProdutoPage.RealizarFluxoDeCadastrarProduto(TipoDeProduto.Grade, CadastroDeProdutoModel.AbaGrade);
         }
     }
 }

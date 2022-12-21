@@ -49,8 +49,16 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
 
         public bool PreencherCamposDaAba()
         {
-            return false;
-            //Não usado
+            try
+            {
+
+                _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoDescricao, CadastroDeProdutoCompletoModel.Descricao);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void FluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage,

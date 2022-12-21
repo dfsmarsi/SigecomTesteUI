@@ -1,11 +1,11 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Page;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Teste;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Page;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Teste;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Page;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColaborador.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Injection;
 using System;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
@@ -16,24 +16,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection
         {
             try
             {
-                containerBuilder.RegisterType<CadastroDeClienteFisicoPage>();
-                containerBuilder.RegisterType<CadastroDeClienteJuridicoPage>();
-                containerBuilder.RegisterType<CadastroDeClienteJuridicoSimplesTeste>();
-                containerBuilder.RegisterType<CadastroDeClienteJuridicoCompletoTeste>();
-                containerBuilder.RegisterType<CadastroDeClienteFisicoSimplesTeste>();
-                containerBuilder.RegisterType<CadastroDeClienteFisicoCompletoTeste>();
-                containerBuilder.RegisterType<CadastroDeColaboradorFisicoPage>();
-                containerBuilder.RegisterType<CadastroDeColaboradorFisicoSimplesTeste>();
-                containerBuilder.RegisterType<CadastroDeColaboradorFisicoCompletoTeste>();
-                containerBuilder.RegisterType<CadastroDeColaboradorJuridicoPage>();
-                containerBuilder.RegisterType<CadastroDeColaboradorJuridicoSimplesTeste>();
-                containerBuilder.RegisterType<CadastroDeColaboradorJuridicoCompletoTeste>();
-                containerBuilder.RegisterType<CadastroDeFornecedorFisicoPage>();
-                containerBuilder.RegisterType<CadastroDeFornecedorFisicoSimplesTeste>();
-                containerBuilder.RegisterType<CadastroDeFornecedorFisicoCompletoTeste>();
-                containerBuilder.RegisterType<CadastroDeFornecedorJuridicoPage>();
-                containerBuilder.RegisterType<CadastroDeFornecedorJuridicoSimplesTeste>();
-                containerBuilder.RegisterType<CadastroDeFornecedorJuridicoCompletoTeste>();
+                containerBuilder.RegisterModule<CadastroDeClienteInjection>();
+                containerBuilder.RegisterModule<CadastroDeColaboradorInjection>();
+                containerBuilder.RegisterModule<CadastroDeFornecedorInjection>();
+                containerBuilder.RegisterModule<EdicaoDeClienteInjection>();
+                containerBuilder.RegisterModule<EdicaoDeColaboradorInjection>();
+                containerBuilder.RegisterModule<EdicaoDeFornecedorInjection>();
             }
             catch (Exception exception)
             {

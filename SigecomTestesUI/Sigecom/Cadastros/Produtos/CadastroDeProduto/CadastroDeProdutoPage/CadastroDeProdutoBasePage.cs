@@ -40,12 +40,25 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             }
         }
 
-        public bool PreencherCamposDoProduto(TipoDeProduto tipoDeProduto)
+        public void PreencherCamposDeImpostosDeServico()
+        {
+            DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
+            DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
+            var verificarNcm = DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm).Equals("00000000");
+            Assert.True(verificarNcm);
+        }
+
+        public void GravarAoEditarEFecharATela()
+        {
+            DriverService.GravarCadastroDeProdutoAoEditar(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
+            FecharJanelaCadastroDeProdutoComEsc();
+        }
+
+        public bool FecharJanelaCadastroDeProdutoComEsc()
         {
             try
             {
-                using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDoProduto();
+                DriverService.FecharJanelaComEsc(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
                 return true;
             }
             catch (Exception)
@@ -54,12 +67,37 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             }
         }
 
-        public bool PreencherCamposDaAba(TipoDeProduto tipoDeProduto)
+        public void RealizarFluxoDeCadastrarProduto(TipoDeProduto tipo, string aba)
+        {
+            // Arange
+            AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(this);
+
+            // Act
+            PreencherCamposDoProduto(tipo);
+            VerificarSePrecoDeVendaFoiCalculado();
+            AcessarAba(CadastroDeProdutoModel.AbaImpostos);
+            PreencherCamposDeImpostos();
+            AcessarAba(aba);
+            PreencherCamposDaAba(tipo);
+            Gravar();
+
+            // Assert
+            RealizarFluxoDePesquisaDoProduto(this, tipo);
+        }
+
+        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
+        {
+            cadastroDeProdutoBasePage.ClicarNaOpcaoDoMenu();
+            cadastroDeProdutoBasePage.ClicarNaOpcaoDoSubMenu();
+            cadastroDeProdutoBasePage.ClicarNoBotaoNovo();
+        }
+
+        public bool PreencherCamposDoProduto(TipoDeProduto tipoDeProduto)
         {
             try
             {
                 using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDaAba();
+                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDoProduto();
                 return true;
             }
             catch (Exception)
@@ -103,17 +141,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             }
         }
 
-        public void PreencherCamposDeImpostosDeServico()
+        public bool PreencherCamposDaAba(TipoDeProduto tipoDeProduto)
         {
-            DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoSituacaoTributaria, 1);
-            DriverService.SelecionarItemComboBox(CadastroDeProdutoModel.ElementoNaturezaCfop, 1);
-            var verificarNcm = DriverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm).Equals("00000000");
-            Assert.True(verificarNcm);
-        }
-
-        public void PreencherCamposDeDescricaoParaOCadastroCompleto()
-        {
-            DriverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoDescricao, CadastroDeProdutoCompletoModel.Descricao);
+            try
+            {
+                using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+                beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto).PreencherCamposDaAba();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool Gravar()
@@ -127,32 +166,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             {
                 return false;
             }
-        }
-
-        public void GravarAoEditarEFecharATela()
-        {
-            DriverService.GravarCadastroDeProdutoAoEditar(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
-            FecharJanelaCadastroDeProdutoComEsc();
-        }
-
-        public bool FecharJanelaCadastroDeProdutoComEsc()
-        {
-            try
-            {
-                DriverService.FecharJanelaComEsc(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
-        {
-            cadastroDeProdutoBasePage.ClicarNaOpcaoDoMenu();
-            cadastroDeProdutoBasePage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeProdutoBasePage.ClicarNoBotaoNovo();
         }
 
         public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage, TipoDeProduto tipoDeProduto)
