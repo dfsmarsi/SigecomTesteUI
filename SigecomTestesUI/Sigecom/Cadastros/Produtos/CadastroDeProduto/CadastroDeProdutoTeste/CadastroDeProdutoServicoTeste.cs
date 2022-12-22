@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoPage.CadastroDeProdutoBasePage>>();
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
-            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto();
 
             // Act
             cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Servico);
@@ -34,7 +34,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Servico);
+            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(TipoDeProduto.Servico);
         }
     }
 }

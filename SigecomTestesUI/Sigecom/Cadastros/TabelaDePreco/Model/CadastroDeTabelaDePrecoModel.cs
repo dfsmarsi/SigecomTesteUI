@@ -8,6 +8,7 @@
         public static string ElementoBotaoNovo => ", NOVO";
         public static string ElementoAplicarRegra => ", Aplicar regra";
         public static string ElementoGravar => ", GRAVAR";
+        public static string ElementoSairLogin => ", Sim (ENTER)";
 
         public static string ElementoDescricao => "txtDescricao";
         public static string ElementoToggleTodosOsProdutos => "tglTodosProdutos";

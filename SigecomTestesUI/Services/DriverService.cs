@@ -24,6 +24,17 @@ namespace SigecomTestesUI.Services
             _driver.Dispose();
         }
 
+        public void FecharSistemaComTelaAberta()
+        {
+            ClicarBotaoName("Sair/Login");
+            ClicarBotaoName(", Sim (ENTER)");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            TrocarJanela();
+            ValidarElementoExistentePorNome("Sistema de gestão comercial");
+            ClicarBotaoName("Fechar");
+            _driver.Dispose();
+        }
+
         public void ValidarElementoExistentePorNome(string valor)
         {
             var elemento = EncontrarElementoName(valor);
@@ -174,6 +185,12 @@ namespace SigecomTestesUI.Services
         public void Dispose()
         {
             FecharSistema();
+            _driver.Quit();
+        }
+
+        public void DisposeComTelaAberta()
+        {
+            FecharSistemaComTelaAberta();
             _driver.Quit();
         }
     }

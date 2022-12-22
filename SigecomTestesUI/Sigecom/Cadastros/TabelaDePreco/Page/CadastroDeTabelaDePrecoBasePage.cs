@@ -16,13 +16,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page
         {
         }
 
-        public void ClicarNaOpcaoDoMenu() =>
+        private void ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(CadastroDeTabelaDePrecoModel.BotaoMenuCadastro);
 
-        public void ClicarNaOpcaoDoSubMenu() =>
+        private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CadastroDeTabelaDePrecoModel.BotaoSubMenu);
 
-        public void ClicarNoBotaoNovo() =>
+        private void ClicarNoBotaoNovo() =>
             ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoBotaoNovo);
 
         public void ClicarNoBotaoAplicar() =>
@@ -38,7 +38,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page
         public void PreencherCamposDaTabela(QuantidadeDeProdutoParaTabelaDePreco quantidadeDeProdutoParaTabelaDePreco)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<ICadastroDeTabelaDePrecoPageFactory>().Fabricar(DriverService, quantidadeDeProdutoParaTabelaDePreco);
+            beginLifetimeScope.Resolve<ICadastroDeTabelaDePrecoPageFactory>().Fabricar(DriverService, quantidadeDeProdutoParaTabelaDePreco).PreencherCamposDaTabela();
         }
 
         public void VerificarCamposDaGridDeProdutos()
@@ -47,11 +47,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page
             Assert.Equals(DriverService.PegarValorDaColunaDaGrid("Valor na tabela"), CadastroDeTabelaDePrecoModel.ValorNaTabela);
         }
 
+        public void ClicarNoBotaoGravar() =>
+            ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoGravar);
+
         public void FecharJanelaCadastroComEsc()
         {
             try
             {
-                DriverService.FecharJanelaComEsc(CadastroDeTabelaDePrecoModel.ElementoTelaCadastroDeTabelaDePreco);
+                DriverService.DisposeComTelaAberta();
             }
             catch (Exception exception)
             {
