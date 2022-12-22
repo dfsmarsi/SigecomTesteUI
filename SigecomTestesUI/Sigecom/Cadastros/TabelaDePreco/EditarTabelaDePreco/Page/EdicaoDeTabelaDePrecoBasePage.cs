@@ -4,7 +4,7 @@ using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Model;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Model;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 
@@ -28,11 +28,18 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
         public void ClicarNoBotaoAplicar() =>
             ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoAplicarRegra);
 
-        public void AlterarATabelaDePreco()
+        public void AlterarATabelaDePreco(string nomeDaTabelaParaEditar)
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            BotaoDireitoParaAcessarOFiltro(nomeDaTabelaParaEditar);
             ClicarNoBotaoAlterar();
+        }
+
+        public void VerificarCamposPreenchidos(QuantidadeDeProdutoParaTabelaDePreco quantidadeDeProdutoParaTabelaDePreco)
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<IEdicaoDeTabelaDePrecoPageFactory>().Fabricar(DriverService, quantidadeDeProdutoParaTabelaDePreco).VerificarCamposPreenchidos();
         }
 
         public void PreencherCamposDaTabelaQueForamEditados(QuantidadeDeProdutoParaTabelaDePreco quantidadeDeProdutoParaTabelaDePreco)
@@ -43,8 +50,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
 
         public void VerificarCamposDaGridDeProdutos()
         {
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Markup na tabela(%)"), CadastroDeTabelaDePrecoModel.MarkupNaTabela);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Valor na tabela"), CadastroDeTabelaDePrecoModel.ValorNaTabela);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Markup na tabela(%)"), EdicaoDeTabelaDePrecoModel.MarkupNaTabela);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Valor na tabela"), EdicaoDeTabelaDePrecoModel.ValorNaTabela);
+        }
+
+        public void VerificarSeFoiGravadoComSucesso(string nomeDaTabelaDePreco)
+        {
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), nomeDaTabelaDePreco);
+        }
+
+        public void BotaoDireitoParaAcessarOFiltro(string nomeDaTabelaDePreco)
+        {
+            DriverService.BotaoDireitoNoElemento("Descrição");
+            DriverService.DigitarNoCampoId("teFind", nomeDaTabelaDePreco);
         }
 
         public void ClicarNoBotaoGravar() =>

@@ -6,15 +6,15 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Page
 {
-    public class EdicaoDeTabelaDePrecoComTodosOsProdutosPage : IEdicaoDeTabelaDePrecoPage
+    public class EdicaoDeTabelaDePrecoComProdutoEspecificoPage: IEdicaoDeTabelaDePrecoPage
     {
         private readonly DriverService _driverService;
 
-        public EdicaoDeTabelaDePrecoComTodosOsProdutosPage(DriverService driverService) => _driverService = driverService;
+        public EdicaoDeTabelaDePrecoComProdutoEspecificoPage(DriverService driverService) => _driverService = driverService;
 
         public void VerificarCamposPreenchidos()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeTabelaDePrecoModel.ElementoDescricao), TabelaDeProdutoComInformacoesAnteriorModel.NomeDescricaoTodosOsProdutos);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeTabelaDePrecoModel.ElementoDescricao), TabelaDeProdutoComInformacoesAnteriorModel.NomeDescricaoUnicoProduto);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeTabelaDePrecoModel.ElementoRegra), TabelaDeProdutoComInformacoesAnteriorModel.Regra);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeTabelaDePrecoModel.ElementoPorcentagem), TabelaDeProdutoComInformacoesAnteriorModel.ValorPorcentagem);
             Assert.AreEqual(_driverService.PegarValorDaColunaDaGrid("Markup na tabela(%)"), TabelaDeProdutoComInformacoesAnteriorModel.MarkupNaTabela);
@@ -23,8 +23,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
 
         public void PreencherCamposDaTabelaQueForamEditados()
         {
-            _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoDescricao, EdicaoDeTabelaDePrecoModel.NomeDescricaoTodosOsProdutos);
-            _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoAtalho, 3);
+            _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoDescricao, EdicaoDeTabelaDePrecoModel.NomeDescricaoUnicoProduto);
+            _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoAtalho, 4);
             _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoRegra, 1);
             _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoPorcentagem, EdicaoDeTabelaDePrecoModel.ValorPorcentagem);
         }

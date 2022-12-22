@@ -120,6 +120,31 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void BotaoDireitoNoElemento(string nomeColuna)
+        {
+            var botaoEncontrado = _driver.FindElementByName(nomeColuna);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(botaoEncontrado);
+            acao.ContextClick();
+            acao.Perform();
+
+            var acao2 = new Actions(_driver);
+            var windowsElement = _driver.FindElementById("262");
+            acao2.MoveToElement(windowsElement);
+            //for (var i = 1; i <= 11; i++)
+            //    acao2.SendKeys(Keys.ArrowDown);
+            acao2.Click();
+            acao2.Perform();
+        }
+
+        public void CliqueNoElementoDaGrid(string nomeColuna, string posicao)
+        {
+            var botaoEncontrado = _driver.FindElementByName($"{nomeColuna} row {posicao}");
+            var acao = new Actions(_driver);
+            acao.Click(botaoEncontrado);
+            acao.Perform();
+        }
+
         public void SelecionarItemComboBox(string nomeCampo, int posicao)
         {
             var campo = _driver.FindElementByAccessibilityId(nomeCampo);

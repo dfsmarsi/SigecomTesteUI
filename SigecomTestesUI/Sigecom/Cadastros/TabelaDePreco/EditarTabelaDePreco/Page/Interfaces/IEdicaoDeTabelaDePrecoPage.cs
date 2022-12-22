@@ -4,6 +4,5 @@
     {
         void VerificarCamposPreenchidos();
         void PreencherCamposDaTabelaQueForamEditados();
-        void VerificarCamposPreenchidosEditados();
     }
 }

@@ -6,6 +6,8 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Page;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Model;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Teste
 {
@@ -19,16 +21,19 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Te
         [AllureOwner("Takaki")]
         [AllureSuite("Editar")]
         [AllureSubSuite("TabelaDePreco")]
-        public void CadastrarTabelaDePrecoComProdutoEspecifico()
+        public void EditarTabelaDePrecoComProdutoEspecifico()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeTabelaDePrecoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeTabelaDePrecoBasePage>>();
             var cadastroDeTabelaDePrecoBasePage = resolveCadastroDeTabelaDePrecoBasePage(DriverService);
-            cadastroDeTabelaDePrecoBasePage.AlterarATabelaDePreco();
+            cadastroDeTabelaDePrecoBasePage.AlterarATabelaDePreco(TabelaDeProdutoComInformacoesAnteriorModel.NomeDescricaoUnicoProduto);
+            cadastroDeTabelaDePrecoBasePage.VerificarCamposPreenchidos(QuantidadeDeProdutoParaTabelaDePreco.ProdutoEspecifico);
             cadastroDeTabelaDePrecoBasePage.PreencherCamposDaTabelaQueForamEditados(QuantidadeDeProdutoParaTabelaDePreco.ProdutoEspecifico);
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoAplicar();
             cadastroDeTabelaDePrecoBasePage.VerificarCamposDaGridDeProdutos();
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoGravar();
+            cadastroDeTabelaDePrecoBasePage.BotaoDireitoParaAcessarOFiltro(EdicaoDeTabelaDePrecoModel.NomeDescricaoUnicoProduto);
+            cadastroDeTabelaDePrecoBasePage.VerificarSeFoiGravadoComSucesso(EdicaoDeTabelaDePrecoModel.NomeDescricaoUnicoProduto);
         }
     }
 }
