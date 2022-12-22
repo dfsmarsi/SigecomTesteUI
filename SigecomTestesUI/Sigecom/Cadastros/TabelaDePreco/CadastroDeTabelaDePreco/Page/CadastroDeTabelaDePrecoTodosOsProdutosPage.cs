@@ -1,10 +1,10 @@
-﻿using SigecomTestesUI.Services;
+﻿using System;
+using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Model;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.ExceptionTabelaDePreco;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Model;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page.Interfaces;
-using System;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page
+namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page
 {
     public class CadastroDeTabelaDePrecoTodosOsProdutosPage: ICadastroDeTabelaDePrecoPage
     {

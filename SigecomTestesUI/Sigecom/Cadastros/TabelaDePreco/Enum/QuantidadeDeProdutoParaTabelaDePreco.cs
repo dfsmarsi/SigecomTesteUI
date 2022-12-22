@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco
+namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum
 {
     public enum QuantidadeDeProdutoParaTabelaDePreco
     {

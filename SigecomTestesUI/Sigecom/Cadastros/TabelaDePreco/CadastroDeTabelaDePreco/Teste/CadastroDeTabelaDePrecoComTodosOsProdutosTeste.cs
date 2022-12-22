@@ -1,12 +1,13 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page;
-using System;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Teste
+namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Teste
 {
     public class CadastroDeTabelaDePrecoComTodosOsProdutosTeste: BaseTestesComTelaAbertaNoFechar
     {
@@ -18,7 +19,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("TabelaDePreco")]
-        public void CadastrarProdutoDeBalancaSomenteCamposObrigatorios()
+        public void CadastrarTabelaDePrecoComTodosOsProdutos()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeTabelaDePrecoBasePage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeTabelaDePrecoBasePage>>();

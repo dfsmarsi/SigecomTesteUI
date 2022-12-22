@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page.Interfaces
+﻿namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Interfaces
 {
     public interface ICadastroDeTabelaDePrecoPage
     {

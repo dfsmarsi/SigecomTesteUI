@@ -1,12 +1,12 @@
 ﻿using System;
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page.Factory;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page.Interfaces;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Teste;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Factory;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Teste;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Injection
+namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Injection
 {
     public class CadastroDeTabelaDePrecoInjection: Module
     {

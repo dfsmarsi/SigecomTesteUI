@@ -5,7 +5,8 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Injection;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Injection;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Injection
 {
@@ -20,6 +21,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Injection
             containerBuilder.RegisterModule<PesquisaDeProdutoInjection>();
             containerBuilder.RegisterModule<PesquisaDePessoaInjection>();
             containerBuilder.RegisterModule<CadastroDeTabelaDePrecoInjection>();
+            containerBuilder.RegisterModule<EdicaoDeTabelaDePrecoInjection>();
         }
     }
 }

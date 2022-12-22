@@ -1,10 +1,11 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page.Interfaces;
-using System;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Interfaces;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Page.Factory
+namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Factory
 {
     public class CadastroDeTabelaDePrecoPageFactory: ICadastroDeTabelaDePrecoPageFactory
     {
