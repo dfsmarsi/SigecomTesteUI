@@ -2,8 +2,6 @@
 {
     public class CadastroDeClienteSimplificadoModel
     {
-        public static string BotaoMenuCadastro => "Vendas";
-        public static string BotaoSubMenu => "Pedido";
         public static string ElementoTelaClienteSimplificado => "Cliente simplificado";
         public static string ElementoDeAtalhoDeClienteSimplificado => "Ctrl + F2";
         public static string ElementoCampoDeCpfECnpj => "textEditCpfCnpj";

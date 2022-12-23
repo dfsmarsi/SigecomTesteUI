@@ -184,7 +184,7 @@ namespace SigecomTestesUI.Services
         public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) => 
             ClicarBotaoId(nomeDoCampo);
 
-        private static void EncontrarElementoNaComboBox(int posicao, WindowsElement campo)
+        private static void EncontrarElementoNaComboBox(int posicao, IWebElement campo)
         {
             for (var i = 1; i <= posicao; i++)
                 campo.SendKeys(Keys.ArrowDown);
