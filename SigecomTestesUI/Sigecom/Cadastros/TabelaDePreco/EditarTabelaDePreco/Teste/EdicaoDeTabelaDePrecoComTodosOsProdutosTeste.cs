@@ -6,7 +6,6 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Page;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 using System;
-using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Teste
 {
@@ -25,12 +24,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Te
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeTabelaDePrecoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeTabelaDePrecoBasePage>>();
             var cadastroDeTabelaDePrecoBasePage = resolveCadastroDeTabelaDePrecoBasePage(DriverService);
-            cadastroDeTabelaDePrecoBasePage.AlterarATabelaDePreco(TabelaDeProdutoComInformacoesAnteriorModel.NomeDescricaoTodosOsProdutos);
+            cadastroDeTabelaDePrecoBasePage.AlterarATabelaDePreco("1");
             cadastroDeTabelaDePrecoBasePage.PreencherCamposDaTabelaQueForamEditados(QuantidadeDeProdutoParaTabelaDePreco.TodosOsProdutos);
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoAplicar();
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoGravar();
-            cadastroDeTabelaDePrecoBasePage.BotaoDireitoParaAcessarOFiltro(EdicaoDeTabelaDePrecoModel.NomeDescricaoTodosOsProdutos);
-            cadastroDeTabelaDePrecoBasePage.VerificarSeFoiGravadoComSucesso(EdicaoDeTabelaDePrecoModel.NomeDescricaoTodosOsProdutos);
         }
     }
 }

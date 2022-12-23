@@ -1,14 +1,14 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.ExceptionProduto;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using System;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 {

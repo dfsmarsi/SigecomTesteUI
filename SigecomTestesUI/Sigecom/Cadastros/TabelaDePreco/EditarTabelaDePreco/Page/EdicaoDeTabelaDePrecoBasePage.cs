@@ -28,11 +28,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
         public void ClicarNoBotaoAplicar() =>
             ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoAplicarRegra);
 
-        public void AlterarATabelaDePreco(string nomeDaTabelaParaEditar)
+        public void AlterarATabelaDePreco(string posicao)
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            BotaoDireitoParaAcessarOFiltro(nomeDaTabelaParaEditar);
+            DriverService.CliqueNoElementoDaGrid("Descrição", posicao);
             ClicarNoBotaoAlterar();
         }
 
@@ -52,17 +52,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
         {
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Markup na tabela(%)"), EdicaoDeTabelaDePrecoModel.MarkupNaTabela);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Valor na tabela"), EdicaoDeTabelaDePrecoModel.ValorNaTabela);
-        }
-
-        public void VerificarSeFoiGravadoComSucesso(string nomeDaTabelaDePreco)
-        {
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), nomeDaTabelaDePreco);
-        }
-
-        public void BotaoDireitoParaAcessarOFiltro(string nomeDaTabelaDePreco)
-        {
-            DriverService.BotaoDireitoNoElemento("Descrição");
-            DriverService.DigitarNoCampoId("teFind", nomeDaTabelaDePreco);
         }
 
         public void ClicarNoBotaoGravar() =>

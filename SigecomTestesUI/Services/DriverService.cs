@@ -127,14 +127,6 @@ namespace SigecomTestesUI.Services
             acao.MoveToElement(botaoEncontrado);
             acao.ContextClick();
             acao.Perform();
-
-            var acao2 = new Actions(_driver);
-            var windowsElement = _driver.FindElementById("262");
-            acao2.MoveToElement(windowsElement);
-            //for (var i = 1; i <= 11; i++)
-            //    acao2.SendKeys(Keys.ArrowDown);
-            acao2.Click();
-            acao2.Perform();
         }
 
         public void CliqueNoElementoDaGrid(string nomeColuna, string posicao)
@@ -198,14 +190,17 @@ namespace SigecomTestesUI.Services
                 campo.SendKeys(Keys.ArrowDown);
         }
 
-        public void FecharJanelaComEsc(string nomeJanela) => 
-            _driver.FindElementByName(nomeJanela).SendKeys(Keys.Escape);
+        public void FecharJanelaComEsc(string nomeJanela) =>
+            RealizarAcaoDaTeclaDeAtalho(nomeJanela,Keys.Escape);
 
         public void AbrirPesquisaComF9(string nomeJanela) =>
-            _driver.FindElementByName(nomeJanela).SendKeys(Keys.F9);
+            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F9);
 
-        public void GravarCadastroDeProdutoAoEditar(string nomeJanela) =>
-            _driver.FindElementByName(nomeJanela).SendKeys(Keys.F5);
+        public void ConfirmarPesquisa(string nomeJanela) =>
+            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F5);
+
+        private void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
+            _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
         public void Dispose()
         {
