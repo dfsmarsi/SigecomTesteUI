@@ -13,9 +13,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
 {
     public class ClienteSimplificadoBasePage: PageObjectModel
     {
-        public ClienteSimplificadoBasePage(DriverService driver) : base(driver)
-        {
-        }
+        public ClienteSimplificadoBasePage(DriverService driver) : base(driver) { }
 
         private void ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(PedidoModel.BotaoMenuCadastro);
@@ -23,10 +21,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(PedidoModel.BotaoSubMenu);
 
-        private void AbrirTelaDeClienteSimplificado() =>
-            ClicarBotao(CadastroDeClienteSimplificadoModel.ElementoDeAtalhoDeClienteSimplificado);
+        private void AbrirTelaDeClienteSimplificado()
+        {
+            ClicarBotao(PedidoModel.BotaoAtalhosVenda);
+            ClicarBotao(PedidoModel.BotaoClienteSimplificado);
+        }
 
-        public void VerificarCamposDoClienteCompletoCarregado()
+        private void VerificarCamposDoClienteCompletoCarregado()
         {
             try
             {
@@ -42,10 +43,30 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
             }
         }
 
-        public void PreencherCamposDoCliente(TipoDeClienteSimplificado tipoDeClienteSimplificado)
+        private void PreencherCamposDoCliente(TipoDeClienteSimplificado tipoDeClienteSimplificado)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<IClienteSimplificadoPageFactory>().Fabricar(DriverService, tipoDeClienteSimplificado);
+            beginLifetimeScope.Resolve<IClienteSimplificadoPageFactory>().Fabricar(DriverService, tipoDeClienteSimplificado).PreencherCamposDoCliente();
+        }
+
+        private void GravarClienteSimplificado() => 
+            ClicarBotao(CadastroDeClienteSimplificadoModel.BotaoDoConfirmar);
+
+        private void FecharTelaDeVendaComEsc() =>
+            DriverService.FecharJanelaComEsc(PedidoModel.ElementoTelaDeVenda);
+
+        public void RealizarFluxoDeCadastroDeClienteSimplificado(TipoDeClienteSimplificado tipoDeClienteSimplificado)
+        {
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            AbrirTelaDeClienteSimplificado();
+            PreencherCamposDoCliente(tipoDeClienteSimplificado);
+            
+            if (tipoDeClienteSimplificado.Equals(TipoDeClienteSimplificado.FisicoCompleto))
+                VerificarCamposDoClienteCompletoCarregado();
+
+            GravarClienteSimplificado();
+            FecharTelaDeVendaComEsc();
         }
     }
 }

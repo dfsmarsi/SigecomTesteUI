@@ -15,11 +15,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
         {
             try
             {
-                _driverService.DigitarNoCampoName(CadastroDeClienteSimplificadoModel.ElementoCampoDeCpfECnpj, CadastroDeClienteSimplificadoFisicoCompletoModel.Cpf);
+                _driverService.DigitarNoCampoId(CadastroDeClienteSimplificadoModel.ElementoCampoDeCpfECnpj, CadastroDeClienteSimplificadoFisicoCompletoModel.Cpf);
                 _driverService.SelecionarItemComboBox(CadastroDeClienteSimplificadoModel.ElementoSelecaoDeCpfECnpj, 1);
-                _driverService.DigitarNoCampoName(CadastroDeClienteSimplificadoModel.ElementoCelularDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.CelularDoCliente);
-                _driverService.DigitarNoCampoName(CadastroDeClienteSimplificadoModel.ElementoNomeDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.NomeDoCliente);
-                _driverService.DigitarNoCampoName(CadastroDeClienteSimplificadoModel.ElementoCepDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.CepDoCliente);
+                _driverService.DigitarNoCampoId(CadastroDeClienteSimplificadoModel.ElementoCelularDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.CelularDoCliente);
+                _driverService.DigitarNoCampoId(CadastroDeClienteSimplificadoModel.ElementoNomeDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.NomeDoCliente);
+                _driverService.DigitarNoCampoId(CadastroDeClienteSimplificadoModel.ElementoCepDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.CepDoCliente);
             }
             catch (Exception exception)
             {

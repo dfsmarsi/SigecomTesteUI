@@ -16,6 +16,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
             {
                 TipoDeClienteSimplificado.FisicoCompleto => beginLifetimeScope.Resolve<Func<DriverService, ClienteSimplificadoFisicoCompletoPage>>()(
                     driverService),
+                TipoDeClienteSimplificado.FisicoComNome => beginLifetimeScope.Resolve<Func<DriverService,ClienteSimplificadoFisicoComNomePage>>()(driverService),
+                TipoDeClienteSimplificado.FisicoComNomeECpf => beginLifetimeScope.Resolve<Func<DriverService, ClienteSimplificadoFisicoComNomeECpfPage>>()(driverService),
+                TipoDeClienteSimplificado.JuridicoComNome => beginLifetimeScope.Resolve<Func<DriverService, ClienteSimplificadoJuridicoComNomePage>>()(driverService),
+                TipoDeClienteSimplificado.JuridicoComNomeECpf => beginLifetimeScope.Resolve<Func<DriverService, ClienteSimplificadoJuridicoComNomeECpfPage>>()(driverService),
+                _ => throw new ArgumentOutOfRangeException(nameof(tipoDeClienteSimplificado), tipoDeClienteSimplificado, null)
             };
         }
     }

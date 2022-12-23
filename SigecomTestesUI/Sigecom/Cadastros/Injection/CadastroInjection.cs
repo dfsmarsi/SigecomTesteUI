@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using SigecomTestesUI.Sigecom.Cadastros.Categoria.Injection;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Injection;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Injection;
@@ -22,6 +23,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Injection
             containerBuilder.RegisterModule<PesquisaDePessoaInjection>();
             containerBuilder.RegisterModule<CadastroDeTabelaDePrecoInjection>();
             containerBuilder.RegisterModule<EdicaoDeTabelaDePrecoInjection>();
+            containerBuilder.RegisterModule<CadastroDeClienteSimplificadoInjection>();
         }
     }
 }

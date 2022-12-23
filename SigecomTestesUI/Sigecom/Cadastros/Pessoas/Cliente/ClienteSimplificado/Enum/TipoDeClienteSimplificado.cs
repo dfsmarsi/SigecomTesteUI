@@ -4,10 +4,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
 {
     public enum TipoDeClienteSimplificado
     {
-        [Description("Fisíco com nome")] FisicoNome = 0,
-        [Description("Fisíco completo")] FisicoCompleto = 1,
-        [Description("Fisíco com nome e cpf")] FisicoNomeCpf = 2,
-        [Description("Jurídico com nome")] JuridicoNome = 3,
-        [Description("Jurídico com nome e cnpj")] JuridicoNomeCnpj = 3,
+        [Description("Físico com nome")] FisicoComNome = 0,
+        [Description("Físico completo")] FisicoCompleto = 1,
+        [Description("Físico com nome e cpf")] FisicoComNomeECpf = 2,
+        [Description("Jurídico com nome")] JuridicoComNome = 3,
+        [Description("Jurídico com nome e cnpj")] JuridicoComNomeECpf = 4
     }
 }
