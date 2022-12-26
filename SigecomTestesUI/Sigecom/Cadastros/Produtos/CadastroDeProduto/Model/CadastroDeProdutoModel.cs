@@ -34,6 +34,7 @@
         public static string ElementoSituacaoTributaria => "cbxSituacaoTributaria";
         public static string ElementoNaturezaCfop => "cbxNaturezaCfop";
         public static string ElementoNcm => "txtNCM";
+        public static string ElementoCest => "txtCEST";
         public static string ElementoIbptNacional => "txtIBPTNacional";
         public static string ElementoIbptEstatual => "txtIBPTEstadual";
         public static string ElementoIbptImportado => "txtIBPTImportado";
