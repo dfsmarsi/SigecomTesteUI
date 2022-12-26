@@ -31,10 +31,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
         {
             try
             {
-                Assert.AreEqual(DriverService.EncontrarElementoName(CadastroDeClienteSimplificadoModel.ElementoEnderecoDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.EnderecoDoCliente);
-                Assert.AreEqual(DriverService.EncontrarElementoName(CadastroDeClienteSimplificadoModel.ElementoBairroDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.BairroDoCliente);
-                Assert.AreEqual(DriverService.EncontrarElementoName(CadastroDeClienteSimplificadoModel.ElementoCidadeDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.CidadeDoCliente);
-                Assert.AreEqual(DriverService.EncontrarElementoName(CadastroDeClienteSimplificadoModel.ElementoEstadoDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.EstadoDoCliente);
+                Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteSimplificadoModel.ElementoEnderecoDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.EnderecoDoCliente);
+                Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteSimplificadoModel.ElementoBairroDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.BairroDoCliente);
+                Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteSimplificadoModel.ElementoCidadeDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.CidadeDoCliente);
+                Assert.AreEqual(DriverService.ObterValorElementoId(CadastroDeClienteSimplificadoModel.ElementoEstadoDoCliente), CadastroDeClienteSimplificadoFisicoCompletoModel.EstadoDoCliente);
             }
             catch (Exception exception)
             {

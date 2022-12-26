@@ -8,6 +8,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
         [Description("Físico completo")] FisicoCompleto = 1,
         [Description("Físico com nome e cpf")] FisicoComNomeECpf = 2,
         [Description("Jurídico com nome")] JuridicoComNome = 3,
-        [Description("Jurídico com nome e cnpj")] JuridicoComNomeECpf = 4
+        [Description("Jurídico com nome e cnpj")] JuridicoComNomeECnpj = 4
     }
 }

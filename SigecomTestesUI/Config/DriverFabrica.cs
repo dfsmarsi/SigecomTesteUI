@@ -3,6 +3,7 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Diagnostics;
+using OpenQA.Selenium.Remote;
 
 namespace SigecomTestesUI.Config
 {
@@ -16,12 +17,12 @@ namespace SigecomTestesUI.Config
             AbrirWinAppDriver();
 
             var appOptions = new AppiumOptions();
+            appOptions.AddAdditionalCapability("isHeadless", true);
             appOptions.AddAdditionalCapability("app", AppId);
             var driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
             Assert.NotNull(driver);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-
 
             return driver;
         }

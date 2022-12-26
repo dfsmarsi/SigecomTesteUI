@@ -87,6 +87,7 @@ namespace SigecomTestesUI.Services
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
             elemento.SendKeys(texto);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
             elemento.SendKeys(teclaDeAtalho);
         }
 
