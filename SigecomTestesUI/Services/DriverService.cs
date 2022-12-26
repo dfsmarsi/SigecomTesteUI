@@ -87,7 +87,14 @@ namespace SigecomTestesUI.Services
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
             elemento.SendKeys(texto);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            elemento.SendKeys(teclaDeAtalho);
+        }
+
+        public void DigitarNoCampoComTeclaDeAtalhoIdComThread(string idElemento, string texto, string teclaDeAtalho)
+        {
+            var elemento = _driver.FindElementByAccessibilityId(idElemento);
+            elemento.SendKeys(texto);
+            Thread.Sleep(TimeSpan.FromSeconds(4));
             elemento.SendKeys(teclaDeAtalho);
         }
 

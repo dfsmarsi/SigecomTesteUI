@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
             {
                 _driverService.DigitarNoCampoId(CadastroDeClienteSimplificadoModel.ElementoCampoDeCpfECnpj, CadastroDeClienteSimplificadoFisicoCompletoModel.Cpf);
                 _driverService.DigitarNoCampoId(CadastroDeClienteSimplificadoModel.ElementoNomeDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.NomeDoCliente);
-                _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeClienteSimplificadoModel.ElementoCepDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.CepDoCliente, Keys.Tab);
+                _driverService.DigitarNoCampoComTeclaDeAtalhoIdComThread(CadastroDeClienteSimplificadoModel.ElementoCepDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.CepDoCliente, Keys.Tab);
                 _driverService.DigitarNoCampoId(CadastroDeClienteSimplificadoModel.ElementoCelularDoCliente, CadastroDeClienteSimplificadoFisicoCompletoModel.CelularDoCliente);
             }
             catch (Exception exception)
