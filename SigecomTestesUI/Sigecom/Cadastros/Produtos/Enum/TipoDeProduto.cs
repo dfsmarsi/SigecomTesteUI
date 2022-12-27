@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Produtos
+namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum
 {
     public enum TipoDeProduto
     {

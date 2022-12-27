@@ -3,6 +3,7 @@ using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Factory
 {

@@ -2,6 +2,7 @@
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Enum;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Interfaces;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Factory

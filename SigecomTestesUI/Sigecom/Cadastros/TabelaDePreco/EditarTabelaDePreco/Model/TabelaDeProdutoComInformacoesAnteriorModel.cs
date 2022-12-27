@@ -2,8 +2,8 @@
 {
     public class TabelaDeProdutoComInformacoesAnteriorModel
     {
-        public static string NomeDescricaoTodosOsProdutos => "AAEDITAR TABELA DE PRECO TESTE TODOS PRODUTOS";
-        public static string NomeDescricaoUnicoProduto => "AAEDITAR TABELA DE PRECO TESTE UNICO PRODUTO";
+        public static string NomeDescricaoTodosOsProdutos => "EDITAR TABELA DE PRECO TESTE TODOS PRODUTOS";
+        public static string NomeDescricaoUnicoProduto => "EDITAR TABELA DE PRECO TESTE UNICO PRODUTO";
         public static string AtalhoTodosOsProdutos => "Ctrl + G";
         public static string AtalhoUnicoProduto => "Ctrl + D";
         public static string Regra => "Markup sobre a última compra";

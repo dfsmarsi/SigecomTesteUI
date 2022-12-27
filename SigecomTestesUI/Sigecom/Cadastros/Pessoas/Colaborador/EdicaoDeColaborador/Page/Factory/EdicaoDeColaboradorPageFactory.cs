@@ -3,6 +3,7 @@ using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Page.Interfaces;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Enum;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColaborador.Page.Factory
 {

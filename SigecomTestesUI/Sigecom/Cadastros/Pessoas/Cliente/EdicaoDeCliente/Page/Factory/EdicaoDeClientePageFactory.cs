@@ -3,6 +3,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Int
 using System;
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Enum;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page.Factory
 {
