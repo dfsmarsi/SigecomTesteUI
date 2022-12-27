@@ -31,6 +31,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Te
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoAplicar();
             cadastroDeTabelaDePrecoBasePage.VerificarCamposDaGridDeProdutos();
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoGravar();
-            }
+        }
     }
 }
