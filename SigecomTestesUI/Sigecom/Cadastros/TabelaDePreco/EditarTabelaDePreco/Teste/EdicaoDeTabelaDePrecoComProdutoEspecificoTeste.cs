@@ -6,6 +6,7 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Page;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Teste
 {
@@ -24,7 +25,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Te
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeTabelaDePrecoBasePage = beginLifetimeScope.Resolve<Func<DriverService, EdicaoDeTabelaDePrecoBasePage>>();
             var cadastroDeTabelaDePrecoBasePage = resolveCadastroDeTabelaDePrecoBasePage(DriverService);
-            cadastroDeTabelaDePrecoBasePage.AlterarATabelaDePreco("2");
+            cadastroDeTabelaDePrecoBasePage.AlterarATabelaDePreco(TabelaDeProdutoComInformacoesAnteriorModel.NomeDescricaoUnicoProduto);
             cadastroDeTabelaDePrecoBasePage.VerificarCamposPreenchidos(QuantidadeDeProdutoParaTabelaDePreco.ProdutoEspecifico);
             cadastroDeTabelaDePrecoBasePage.PreencherCamposDaTabelaQueForamEditados(QuantidadeDeProdutoParaTabelaDePreco.ProdutoEspecifico);
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoAplicar();

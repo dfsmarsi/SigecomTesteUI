@@ -16,7 +16,6 @@ namespace SigecomTestesUI.Services
         public void FecharSistema()
         {
             ClicarBotaoName("Sair/Login");
-            //ClicarBotaoName(", Sim (ENTER)");
             Thread.Sleep(TimeSpan.FromSeconds(2));
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
@@ -128,18 +127,22 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
-        public void BotaoDireitoNoElemento(string nomeColuna)
+        public void CliqueNoElementoDaGridComVarios(string nomeColuna, string nome)
         {
-            var botaoEncontrado = _driver.FindElementByName(nomeColuna);
-            var acao = new Actions(_driver);
-            acao.MoveToElement(botaoEncontrado);
-            acao.ContextClick();
-            acao.Perform();
+            var campoDaGrid = 0;
+
+            while (!ObterValorDoBotaoEncontrado(nomeColuna, campoDaGrid).Text.Equals(nome)) 
+                campoDaGrid++;
+
+            RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterValorDoBotaoEncontrado(nomeColuna, campoDaGrid));
         }
 
-        public void CliqueNoElementoDaGrid(string nomeColuna, string posicao)
+        private WindowsElement ObterValorDoBotaoEncontrado(string nomeColuna, int campoDaGrid) => 
+            _driver.FindElementByName($"{nomeColuna} row {campoDaGrid}");
+
+        private void RealizarAcaoDeClicarNoCampoDaGrid(string nome, IWebElement botaoEncontrado)
         {
-            var botaoEncontrado = _driver.FindElementByName($"{nomeColuna} row {posicao}");
+            if (!botaoEncontrado.Text.Equals(nome)) return;
             var acao = new Actions(_driver);
             acao.Click(botaoEncontrado);
             acao.Perform();

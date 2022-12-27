@@ -28,11 +28,11 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
         public void ClicarNoBotaoAplicar() =>
             ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoAplicarRegra);
 
-        public void AlterarATabelaDePreco(string posicao)
+        public void AlterarATabelaDePreco(string nome)
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            DriverService.CliqueNoElementoDaGrid("Descrição", posicao);
+            DriverService.CliqueNoElementoDaGridComVarios("Descrição", nome);
             ClicarNoBotaoAlterar();
         }
 
