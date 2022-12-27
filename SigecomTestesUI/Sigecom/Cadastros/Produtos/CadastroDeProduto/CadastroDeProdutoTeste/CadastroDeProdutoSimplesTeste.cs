@@ -26,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
 
             // Arange
-            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoPage);
+            cadastroDeProdutoPage.AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto();
 
             // Act
             cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Simples);
@@ -36,7 +36,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             cadastroDeProdutoPage.Gravar();
 
             // Assert
-            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(cadastroDeProdutoPage, TipoDeProduto.Simples);
+            cadastroDeProdutoPage.RealizarFluxoDePesquisaDoProduto(TipoDeProduto.Simples);
         }
     }
 }

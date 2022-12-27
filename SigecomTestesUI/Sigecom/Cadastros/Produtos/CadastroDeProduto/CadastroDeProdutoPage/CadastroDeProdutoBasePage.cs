@@ -1,14 +1,15 @@
 ﻿using System;
 using Autofac;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Login.Model;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.ExceptionProduto;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage
 {
@@ -53,7 +54,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
 
         public void GravarAoEditarEFecharATela()
         {
-            DriverService.GravarCadastroDeProdutoAoEditar(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
+            DriverService.ConfirmarPesquisa(CadastroDeProdutoModel.ElementoTelaCadastroDeProduto);
             FecharJanelaCadastroDeProdutoComEsc();
         }
 
@@ -73,7 +74,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         public void RealizarFluxoDeCadastrarProduto(TipoDeProduto tipo, string aba)
         {
             // Arange
-            AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(this);
+            AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto();
 
             // Act
             PreencherCamposDoProduto(tipo);
@@ -85,14 +86,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             Gravar();
 
             // Assert
-            RealizarFluxoDePesquisaDoProduto(this, tipo);
+            RealizarFluxoDePesquisaDoProduto(tipo);
         }
 
-        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
+        public void AdicionarUmNovoProdutoNaTelaDeCadastroDeProduto()
         {
-            cadastroDeProdutoBasePage.ClicarNaOpcaoDoMenu();
-            cadastroDeProdutoBasePage.ClicarNaOpcaoDoSubMenu();
-            cadastroDeProdutoBasePage.ClicarNoBotaoNovo();
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            ClicarNoBotaoNovo();
         }
 
         public bool PreencherCamposDoProduto(TipoDeProduto tipoDeProduto)
@@ -175,14 +176,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
             }
         }
 
-        public void RealizarFluxoDePesquisaDoProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage,
-            TipoDeProduto tipoDeProduto)
+        public void RealizarFluxoDePesquisaDoProduto(TipoDeProduto tipoDeProduto)
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolvePesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>();
             var pesquisaDeProdutoPage = resolvePesquisaDeProdutoPage(DriverService);
             beginLifetimeScope.Resolve<ICadastroDeProdutoFactory>().Fabricar(DriverService, tipoDeProduto)
-                .FluxoDePesquisaDoProduto(cadastroDeProdutoBasePage, pesquisaDeProdutoPage);
+                .FluxoDePesquisaDoProduto(this, pesquisaDeProdutoPage);
         }
     }
 }

@@ -16,7 +16,17 @@ namespace SigecomTestesUI.Services
         public void FecharSistema()
         {
             ClicarBotaoName("Sair/Login");
-            //ClicarBotaoName(", Sim (ENTER)");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            TrocarJanela();
+            ValidarElementoExistentePorNome("Sistema de gestão comercial");
+            ClicarBotaoName("Fechar");
+            _driver.Dispose();
+        }
+
+        public void FecharSistemaComTelaAberta()
+        {
+            ClicarBotaoName("Sair/Login");
+            ClicarBotaoName(", Sim (ENTER)");
             Thread.Sleep(TimeSpan.FromSeconds(2));
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
@@ -79,6 +89,14 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(teclaDeAtalho);
         }
 
+        public void DigitarNoCampoComTeclaDeAtalhoIdComThread(string idElemento, string texto, string teclaDeAtalho)
+        {
+            var elemento = _driver.FindElementByAccessibilityId(idElemento);
+            elemento.SendKeys(texto);
+            Thread.Sleep(TimeSpan.FromSeconds(4));
+            elemento.SendKeys(teclaDeAtalho);
+        }
+
         public void DigitarNoCampoComTeclaDeAtalhoIdComF5(string idElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
@@ -106,6 +124,27 @@ namespace SigecomTestesUI.Services
             var acao = new Actions(_driver);
             acao.MoveToElement(botaoEncontrado);
             acao.DoubleClick();
+            acao.Perform();
+        }
+
+        public void CliqueNoElementoDaGridComVarios(string nomeColuna, string nome)
+        {
+            var campoDaGrid = 0;
+
+            while (!ObterValorDoBotaoEncontrado(nomeColuna, campoDaGrid).Text.Equals(nome)) 
+                campoDaGrid++;
+
+            RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterValorDoBotaoEncontrado(nomeColuna, campoDaGrid));
+        }
+
+        private WindowsElement ObterValorDoBotaoEncontrado(string nomeColuna, int campoDaGrid) => 
+            _driver.FindElementByName($"{nomeColuna} row {campoDaGrid}");
+
+        private void RealizarAcaoDeClicarNoCampoDaGrid(string nome, IWebElement botaoEncontrado)
+        {
+            if (!botaoEncontrado.Text.Equals(nome)) return;
+            var acao = new Actions(_driver);
+            acao.Click(botaoEncontrado);
             acao.Perform();
         }
 
@@ -156,24 +195,33 @@ namespace SigecomTestesUI.Services
         public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) => 
             ClicarBotaoId(nomeDoCampo);
 
-        private static void EncontrarElementoNaComboBox(int posicao, WindowsElement campo)
+        private static void EncontrarElementoNaComboBox(int posicao, IWebElement campo)
         {
             for (var i = 1; i <= posicao; i++)
                 campo.SendKeys(Keys.ArrowDown);
         }
 
-        public void FecharJanelaComEsc(string nomeJanela) => 
-            _driver.FindElementByName(nomeJanela).SendKeys(Keys.Escape);
+        public void FecharJanelaComEsc(string nomeJanela) =>
+            RealizarAcaoDaTeclaDeAtalho(nomeJanela,Keys.Escape);
 
         public void AbrirPesquisaComF9(string nomeJanela) =>
-            _driver.FindElementByName(nomeJanela).SendKeys(Keys.F9);
+            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F9);
 
-        public void GravarCadastroDeProdutoAoEditar(string nomeJanela) =>
-            _driver.FindElementByName(nomeJanela).SendKeys(Keys.F5);
+        public void ConfirmarPesquisa(string nomeJanela) =>
+            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F5);
+
+        private void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
+            _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
         public void Dispose()
         {
             FecharSistema();
+            _driver.Quit();
+        }
+
+        public void DisposeComTelaAberta()
+        {
+            FecharSistemaComTelaAberta();
             _driver.Quit();
         }
     }

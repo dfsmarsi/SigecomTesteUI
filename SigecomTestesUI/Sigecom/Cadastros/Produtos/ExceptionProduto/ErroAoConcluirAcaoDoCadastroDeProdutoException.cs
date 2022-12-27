@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.ExceptionProduto
 {
@@ -15,11 +14,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.ExceptionProduto
 
         public ErroAoConcluirAcaoDoCadastroDeProdutoException(string mensagem, Exception innerException) : base(mensagem,
             innerException)
-        {
-        }
-
-        protected ErroAoConcluirAcaoDoCadastroDeProdutoException(SerializationInfo info, StreamingContext context) :
-            base(info, context)
         {
         }
     }

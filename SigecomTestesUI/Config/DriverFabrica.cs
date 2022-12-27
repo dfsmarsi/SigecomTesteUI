@@ -22,7 +22,6 @@ namespace SigecomTestesUI.Config
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
-
             return driver;
         }
 

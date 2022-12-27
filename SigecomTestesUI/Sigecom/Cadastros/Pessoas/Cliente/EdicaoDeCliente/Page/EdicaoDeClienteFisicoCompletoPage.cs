@@ -100,7 +100,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             _driverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoContatos, EdicaoDeClienteFisicoCompletoModel.Contatos);
             _driverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoDescontoPadrao, EdicaoDeClienteFisicoCompletoModel.DescontoPadrao);
             _driverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoObservacao, EdicaoDeClienteFisicoCompletoModel.Observacao);
-            _driverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoTabelaDePreco, EdicaoDeClienteFisicoCompletoModel.TabelaDePreco);
+            //_driverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoTabelaDePreco, 1);
             _driverService.SelecionarItemComboBox(CadastroDeClienteModel.ElementoGrupo, 1);
             _driverService.DigitarNoCampoId(CadastroDeClienteModel.ElementoAvisoDeVenda, EdicaoDeClienteFisicoCompletoModel.AvisoDeVenda);
         }

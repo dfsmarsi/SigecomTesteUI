@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa
 {
@@ -15,11 +14,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa
 
         public ErroAoConcluirAcaoDoCadastroDePessoaException(string mensagem, Exception innerException) : base(mensagem,
             innerException)
-        {
-        }
-
-        protected ErroAoConcluirAcaoDoCadastroDePessoaException(SerializationInfo info, StreamingContext context) :
-            base(info, context)
         {
         }
     }

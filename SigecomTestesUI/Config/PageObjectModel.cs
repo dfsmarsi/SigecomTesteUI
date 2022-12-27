@@ -57,5 +57,8 @@ namespace SigecomTestesUI.Config
 
         public void FecharSistema() => 
             DriverService.Dispose();
+
+        public void FecharSistemaComTelaAberta() =>
+            DriverService.DisposeComTelaAberta();
     }
 }
