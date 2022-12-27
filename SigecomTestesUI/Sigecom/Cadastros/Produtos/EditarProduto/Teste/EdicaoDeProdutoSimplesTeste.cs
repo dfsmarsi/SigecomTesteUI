@@ -6,6 +6,7 @@ using SigecomTestesUI.Services;
 using System;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Teste
 {

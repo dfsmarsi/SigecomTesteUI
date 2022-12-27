@@ -6,6 +6,7 @@ using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoTeste
 {

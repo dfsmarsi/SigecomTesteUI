@@ -5,6 +5,7 @@ using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Enum;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Teste
 {

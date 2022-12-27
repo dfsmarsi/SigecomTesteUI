@@ -6,6 +6,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornecedor.
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Enum;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedor.Page

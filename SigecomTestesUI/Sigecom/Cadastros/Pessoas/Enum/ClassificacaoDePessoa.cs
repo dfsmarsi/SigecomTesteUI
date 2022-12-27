@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas
+namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Enum
 {
     public enum ClassificacaoDePessoa
     {

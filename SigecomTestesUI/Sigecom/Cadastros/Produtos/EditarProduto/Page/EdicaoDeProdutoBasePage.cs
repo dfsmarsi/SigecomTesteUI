@@ -8,6 +8,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page.Interface;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.ExceptionProduto;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page

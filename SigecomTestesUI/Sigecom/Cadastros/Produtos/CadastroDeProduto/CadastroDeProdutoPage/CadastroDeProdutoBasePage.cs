@@ -1,7 +1,5 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Login.Model;
@@ -9,6 +7,8 @@ using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDePro
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.ExceptionProduto;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage
