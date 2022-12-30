@@ -114,6 +114,23 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void RealizarSelecaoDaFormaDePagamentoADireita(string idElemento, int posicao)
+        {
+            var elemento = _driver.FindElementByAccessibilityId(idElemento);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(elemento);
+
+            var index = 1;
+            while (index < posicao)
+            {
+                index++;
+                acao.SendKeys(Keys.ArrowRight);
+            }
+
+            acao.SendKeys(Keys.Enter);
+            acao.Perform();
+        }
+
         public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) =>
             ClicarBotaoId(nomeDoCampo);
 
