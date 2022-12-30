@@ -4,6 +4,7 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
@@ -22,7 +23,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var lancarItensNoPdvPage = beginLifetimeScope.Resolve<Func<DriverService, LancarItensNoPdvPage>>()(DriverService);
-            lancarItensNoPdvPage.RealizarFluxoDeLancarItemNoPdv();
+            lancarItensNoPdvPage.RealizarFluxoDeLancarItemNoPdv(FormaDePagamento.Dinheiro);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SigecomTestesUI.Config
     public class DriverFabrica
     {
         public const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        public const string AppId = @"C:\SIGECOM\SIGECOM.exe";
+        public const string AppId = @"C:\AUTOMACAO\SIGECOM\SIGECOM.exe";
 
         public WindowsDriver<WindowsElement> CriarDriver()
         {
@@ -17,6 +17,8 @@ namespace SigecomTestesUI.Config
 
             var appOptions = new AppiumOptions();
             appOptions.AddAdditionalCapability("app", AppId);
+            appOptions.AddAdditionalCapability("ms:waitForAppLaunch", 8);
+            appOptions.AddAdditionalCapability("appArguments", "-internal -NoSplash");
             var driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
             Assert.NotNull(driver);
 

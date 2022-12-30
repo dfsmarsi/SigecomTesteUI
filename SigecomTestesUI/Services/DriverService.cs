@@ -82,13 +82,6 @@ namespace SigecomTestesUI.Services
         public void DigitarNoCampoName(string nomeElemento, string texto) => 
             _driver.FindElementByName(nomeElemento).SendKeys(texto);
 
-        public void DigitarNoCampoComTeclaDeAtalhoId(string idElemento, string texto, string teclaDeAtalho)
-        {
-            var elemento = _driver.FindElementByAccessibilityId(idElemento);
-            elemento.SendKeys(texto);
-            elemento.SendKeys(teclaDeAtalho);
-        }
-
         public void DigitarNoCampoComTeclaDeAtalhoIdComThread(string idElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
@@ -97,20 +90,32 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(teclaDeAtalho);
         }
 
-        public void DigitarNoCampoComTeclaDeAtalhoIdComF5(string idElemento, string texto, string teclaDeAtalho)
+        public void DigitarNoCampoComTeclaDeAtalhoIdMaisF5(string idElemento, string texto, string teclaDeAtalho)
+        {
+            var elemento = DigitarNoCampoComTeclaDeAtalhoId(idElemento, texto, teclaDeAtalho);
+            elemento.SendKeys(Keys.F5);
+        }
+
+        public WindowsElement DigitarNoCampoComTeclaDeAtalhoId(string idElemento, string texto, string teclaDeAtalho)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
             elemento.SendKeys(texto);
             elemento.SendKeys(teclaDeAtalho);
-            elemento.SendKeys(Keys.F5);
+            return elemento;
         }
 
-        public void DigitarNoCampoEnterName(string nomeElemento, string texto, string teclaDeAtalho)
+        public void RealizarAtalhoEnterNaFormaDePagamento(string idElemento)
         {
-            var elemento = _driver.FindElementByAccessibilityId(nomeElemento);
-            elemento.SendKeys(texto);
-            elemento.SendKeys(teclaDeAtalho);
+            var elemento = _driver.FindElementByAccessibilityId(idElemento);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(elemento);
+            acao.Click();
+            acao.SendKeys(Keys.Enter);
+            acao.Perform();
         }
+
+        public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) =>
+            ClicarBotaoId(nomeDoCampo);
 
         public void ClicarBotaoName(string nomeBotao) => 
             _driver.FindElementByName(nomeBotao).Click();
@@ -131,13 +136,13 @@ namespace SigecomTestesUI.Services
         {
             var campoDaGrid = 0;
 
-            while (!ObterValorDoBotaoEncontrado(nomeColuna, campoDaGrid).Text.Equals(nome)) 
+            while (!ObterElementoDaGridComName(nomeColuna, campoDaGrid).Text.Equals(nome)) 
                 campoDaGrid++;
 
-            RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterValorDoBotaoEncontrado(nomeColuna, campoDaGrid));
+            RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterElementoDaGridComName(nomeColuna, campoDaGrid));
         }
 
-        private WindowsElement ObterValorDoBotaoEncontrado(string nomeColuna, int campoDaGrid) => 
+        private WindowsElement ObterElementoDaGridComName(string nomeColuna, int campoDaGrid) => 
             _driver.FindElementByName($"{nomeColuna} row {campoDaGrid}");
 
         private void RealizarAcaoDeClicarNoCampoDaGrid(string nome, IWebElement botaoEncontrado)
@@ -151,31 +156,37 @@ namespace SigecomTestesUI.Services
         public void SelecionarItemComboBox(string nomeCampo, int posicao)
         {
             var campo = _driver.FindElementByAccessibilityId(nomeCampo);
-            campo.Click();
-            EncontrarElementoNaComboBox(posicao, campo);
-            campo.SendKeys(Keys.Enter);
+            ConcluirSelecionarItens(posicao, campo);
         }
 
         public void SelecionarDoisItensDaGrid(string nomeCampo, int posicao)
         {
             var elementoEncontrado = _driver.FindElementByName(nomeCampo);
+            ConcluirSelecionarItens(posicao, elementoEncontrado);
+            elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
+        private static void ConcluirSelecionarItens(int posicao, IWebElement elementoEncontrado)
+        {
             elementoEncontrado.Click();
             EncontrarElementoNaComboBox(posicao, elementoEncontrado);
             elementoEncontrado.SendKeys(Keys.Enter);
-            elementoEncontrado.SendKeys(Keys.Tab);
         }
 
         public void DigitarItensNaGrid(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} new item row");
-            elementoEncontrado.Click();
-            elementoEncontrado.SendKeys(texto);
-            elementoEncontrado.SendKeys(Keys.Tab);
+            DigitarEIrParaProximoCampoDaGrid(texto, elementoEncontrado);
         }
 
         public void EditarItensNaGrid(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
+            DigitarEIrParaProximoCampoDaGrid(texto, elementoEncontrado);
+        }
+
+        private static void DigitarEIrParaProximoCampoDaGrid(string texto, WindowsElement elementoEncontrado)
+        {
             elementoEncontrado.Click();
             elementoEncontrado.SendKeys(texto);
             elementoEncontrado.SendKeys(Keys.Tab);
@@ -192,9 +203,6 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
-        public void ClicarNoToggleSwitchPeloId(string nomeDoCampo) => 
-            ClicarBotaoId(nomeDoCampo);
-
         private static void EncontrarElementoNaComboBox(int posicao, IWebElement campo)
         {
             for (var i = 1; i <= posicao; i++)
@@ -210,7 +218,7 @@ namespace SigecomTestesUI.Services
         public void ConfirmarPesquisa(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F5);
 
-        public void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
+        private void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
         public void Dispose()

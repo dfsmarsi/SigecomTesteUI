@@ -3,6 +3,8 @@ using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Teste;
 using System;
+using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Factory;
+using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Injection
 {
@@ -13,6 +15,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Injection
             try
             {
                 containerBuilder.RegisterType<LancarItensNoPdvPage>();
+                containerBuilder.RegisterType<LancarVendaNoDinheiroPage>();
+                containerBuilder.RegisterType<LancarFormaDePagamentoPageFactory>().As<ILancarFormaDePagamentoPageFactory>();
                 containerBuilder.RegisterType<PdvLancarItensTeste>();
             }
             catch (Exception exception)

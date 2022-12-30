@@ -3,12 +3,7 @@ using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.ExceptionPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using Autofac;
-using NUnit.Framework;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Page;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
@@ -28,7 +23,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa
         public void PesquisarPessoaComConfirmar(string tipoPessoa, string nomePessoa)
         {
             DriverService.ValidarElementoExistentePorNome(PesquisaDePessoaModel.TelaPesquisaPessoaPrefixo + tipoPessoa);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoIdComF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, nomePessoa, Keys.Enter);
         }
 
         public bool VerificarSeExistePessoaNaGrid(string nomePessoa)
