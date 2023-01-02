@@ -1,17 +1,17 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
 {
-    public class PdvLancarItensTeste: BaseTestes
+    public class LancarVendaNoChequeTeste: BaseTestes
     {
-        [Test(Description = "Lançar itens no PDV")]
+        [Test(Description = "Lançar itens no cheque do PDV")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -19,11 +19,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("LancarItens")]
         [AllureSubSuite("PDV")]
-        public void LancarItensNoDinheiroDoPdv()
+        public void LancarItensNoChequeDoPdv()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var lancarItensNoPdvPage = beginLifetimeScope.Resolve<Func<DriverService, LancarItensNoPdvPage>>()(DriverService);
-            lancarItensNoPdvPage.RealizarFluxoDeLancarItemNoPdv(FormaDePagamento.Dinheiro);
+            lancarItensNoPdvPage.RealizarFluxoDeLancarItemNoPdv(FormaDePagamento.Cheque);
         }
     }
 }

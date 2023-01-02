@@ -5,17 +5,16 @@ using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 {
-    public class LancarVendaNoPrazoPage:ILancarFormaDePagamentoPage
+    public class LancarVendaNoChequePage: ILancarFormaDePagamentoPage
     {
         private readonly DriverService _driverService;
 
-        public LancarVendaNoPrazoPage(DriverService driverService) => _driverService = driverService;
+        public LancarVendaNoChequePage(DriverService driverService) => _driverService = driverService;
 
         public void RealizarFluxoDeLancarItemNoPdv(LancarItensNoPdvPage lancarItensNoPdvPage, FormaDePagamento formaDePagamento)
         {
             lancarItensNoPdvPage.ClicarNaOpcaoDoMenu();
             lancarItensNoPdvPage.ClicarNaOpcaoDoSubMenu();
-            lancarItensNoPdvPage.EditarClienteDoPedido();
             lancarItensNoPdvPage.LancarItemNoPedido();
             lancarItensNoPdvPage.EditarItemDoPedido();
             lancarItensNoPdvPage.PagarPedido();
@@ -25,6 +24,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         }
 
         public void SelecionarFormaDePagamento() => 
-            _driverService.RealizarSelecaoDaFormaDePagamentoADireita(PdvModel.GridDeFormaDePagamento, 3);
+            _driverService.RealizarSelecaoDaFormaDePagamentoADireita(PdvModel.GridDeFormaDePagamento, 2);
     }
 }

@@ -17,5 +17,7 @@
         public static string AtalhoDoPdv => ", Atalhos/Opções - F1";
         public static string AtalhoDeSairDoPdv => ", [ ESC ] - Sair";
         public static string AtalhoDeEditarItemDoPdv => ", [ F5 ] - Editar item";
+        public static string AtalhoDeEditarClienteDoPdv => ", [ F2 ] - Inserir cliente";
+
     }
 }

@@ -9,9 +9,9 @@ using SigecomTestesUI.Sigecom.Vendas.PDV.Page;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
 {
-    public class LancarVendaNoPrazoTeste: BaseTestes
+    public class LancarVendaNoDinheiroTeste: BaseTestes
     {
-        [Test(Description = "Lançar itens no prazo do PDV")]
+        [Test(Description = "Lançar itens no dinheiro no PDV")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -19,11 +19,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("LancarItens")]
         [AllureSubSuite("PDV")]
-        public void LancarItensNoPrazoDoPdv()
+        public void LancarItensNoDinheiroDoPdv()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var lancarItensNoPdvPage = beginLifetimeScope.Resolve<Func<DriverService, LancarItensNoPdvPage>>()(DriverService);
-            lancarItensNoPdvPage.RealizarFluxoDeLancarItemNoPdv(FormaDePagamento.Prazo);
+            lancarItensNoPdvPage.RealizarFluxoDeLancarItemNoPdv(FormaDePagamento.Dinheiro);
         }
     }
 }

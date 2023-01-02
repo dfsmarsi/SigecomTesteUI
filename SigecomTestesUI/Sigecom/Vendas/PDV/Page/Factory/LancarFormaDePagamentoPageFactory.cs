@@ -17,6 +17,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page.Factory
             {
                 FormaDePagamento.Dinheiro => lifetimeScope.Resolve<Func<DriverService, LancarVendaNoDinheiroPage>>()(driverService),
                 FormaDePagamento.Prazo => lifetimeScope.Resolve<Func<DriverService, LancarVendaNoPrazoPage>>()(driverService),
+                FormaDePagamento.Credito => lifetimeScope.Resolve<Func<DriverService, LancarVendaNoCreditoPage>>()(driverService),
+                FormaDePagamento.Cheque => lifetimeScope.Resolve<Func<DriverService,LancarVendaNoChequePage>>()(driverService),
             };
         }
     }
