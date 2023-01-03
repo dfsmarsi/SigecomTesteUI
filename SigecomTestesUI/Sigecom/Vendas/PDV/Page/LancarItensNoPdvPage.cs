@@ -30,12 +30,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             beginLifetimeScope.Resolve<ILancarFormaDePagamentoPageFactory>().Fabricar(DriverService, formaDePagamento).RealizarFluxoDeLancarItemNoPdv(this, formaDePagamento);
         }
 
-        internal void SelecionarFormaDePagamento(FormaDePagamento formaDePagamento)
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<ILancarFormaDePagamentoPageFactory>().Fabricar(DriverService, formaDePagamento).SelecionarFormaDePagamento();
-        }
-
         internal void PagarPedido() =>
             ClicarBotao(PdvModel.PagarPedido);
 

@@ -19,10 +19,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Injection
                 containerBuilder.RegisterType<LancarVendaNoPrazoPage>();
                 containerBuilder.RegisterType<LancarVendaNoCreditoPage>();
                 containerBuilder.RegisterType<LancarVendaNoChequePage>();
+                containerBuilder.RegisterType<LancarVendaComTrocoPage>();
+                containerBuilder.RegisterType<LancarVendaNoBancoPage>();
+                containerBuilder.RegisterType<VoltarNoPdvComEscPage>();
                 containerBuilder.RegisterType<LancarFormaDePagamentoPageFactory>().As<ILancarFormaDePagamentoPageFactory>();
                 containerBuilder.RegisterType<LancarVendaNoDinheiroTeste>();
                 containerBuilder.RegisterType<LancarVendaNoPrazoTeste>();
                 containerBuilder.RegisterType<LancarVendaNoCreditoTeste>();
+                containerBuilder.RegisterType<LancarVendaComTrocoTeste>();
+                containerBuilder.RegisterType<LancarVendaNoBancoTeste>();
+                containerBuilder.RegisterType<VoltarNoPdvComEscTeste>();
             }
             catch (Exception exception)
             {

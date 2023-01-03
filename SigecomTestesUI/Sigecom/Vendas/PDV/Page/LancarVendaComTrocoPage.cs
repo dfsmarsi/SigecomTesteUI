@@ -1,16 +1,16 @@
-﻿using SigecomTestesUI.Services;
+﻿using OpenQA.Selenium;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 {
-    public class LancarVendaNoDinheiroPage: ILancarFormaDePagamentoPage
+    public class LancarVendaComTrocoPage: ILancarFormaDePagamentoPage
     {
         private readonly DriverService _driverService;
 
-        public LancarVendaNoDinheiroPage(DriverService driverService) => 
-            _driverService = driverService;
+        public LancarVendaComTrocoPage(DriverService driverService) => _driverService = driverService;
 
         public void RealizarFluxoDeLancarItemNoPdv(LancarItensNoPdvPage lancarItensNoPdvPage, FormaDePagamento formaDePagamento)
         {
@@ -19,11 +19,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             lancarItensNoPdvPage.LancarItemNoPedido();
             lancarItensNoPdvPage.PagarPedido();
             SelecionarFormaDePagamento();
+            _driverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.TotalPagamento, "100", Keys.Enter);
             lancarItensNoPdvPage.ConcluirPedido();
             lancarItensNoPdvPage.FecharTelaDeVendaComEsc();
         }
 
         public void SelecionarFormaDePagamento() => 
-            _driverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1);
+            _driverService.RealizarAtalhoEnterNaFormaDePagamentoComTroco(PdvModel.GridDeFormaDePagamento);
     }
 }

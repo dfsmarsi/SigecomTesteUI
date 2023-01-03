@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             lancarItensNoPdvPage.EditarClienteDoPedido();
             lancarItensNoPdvPage.LancarItemNoPedido();
             lancarItensNoPdvPage.PagarPedido();
-            lancarItensNoPdvPage.SelecionarFormaDePagamento(formaDePagamento);
+            SelecionarFormaDePagamento();
             lancarItensNoPdvPage.ConcluirPedido();
             lancarItensNoPdvPage.FecharTelaDeVendaComEsc();
         }
