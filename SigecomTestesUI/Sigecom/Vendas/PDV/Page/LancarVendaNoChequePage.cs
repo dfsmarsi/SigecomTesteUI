@@ -15,15 +15,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             lancarItensNoPdvPage.ClicarNaOpcaoDoMenu();
             lancarItensNoPdvPage.ClicarNaOpcaoDoSubMenu();
+            lancarItensNoPdvPage.EditarClienteDoPedido();
             lancarItensNoPdvPage.LancarItemNoPedido();
-            lancarItensNoPdvPage.EditarItemDoPedido();
             lancarItensNoPdvPage.PagarPedido();
-            lancarItensNoPdvPage.SelecionarFormaDePagamento(formaDePagamento);
+            SelecionarFormaDePagamento();
+            _driverService.ClicarBotaoName(", Confirmar (ENTER)");
             lancarItensNoPdvPage.ConcluirPedido();
             lancarItensNoPdvPage.FecharTelaDeVendaComEsc();
         }
 
         public void SelecionarFormaDePagamento() => 
-            _driverService.RealizarSelecaoDaFormaDePagamentoADireita(PdvModel.GridDeFormaDePagamento, 2);
+            _driverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 4);
     }
 }

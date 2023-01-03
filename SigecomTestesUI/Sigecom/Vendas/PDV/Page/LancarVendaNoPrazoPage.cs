@@ -17,7 +17,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             lancarItensNoPdvPage.ClicarNaOpcaoDoSubMenu();
             lancarItensNoPdvPage.EditarClienteDoPedido();
             lancarItensNoPdvPage.LancarItemNoPedido();
-            lancarItensNoPdvPage.EditarItemDoPedido();
             lancarItensNoPdvPage.PagarPedido();
             lancarItensNoPdvPage.SelecionarFormaDePagamento(formaDePagamento);
             lancarItensNoPdvPage.ConcluirPedido();
@@ -25,6 +24,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         }
 
         public void SelecionarFormaDePagamento() => 
-            _driverService.RealizarSelecaoDaFormaDePagamentoADireita(PdvModel.GridDeFormaDePagamento, 3);
+            _driverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 3);
     }
 }

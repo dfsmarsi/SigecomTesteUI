@@ -114,19 +114,12 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
-        public void RealizarSelecaoDaFormaDePagamentoADireita(string idElemento, int posicao)
+        public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);
             var acao = new Actions(_driver);
             acao.MoveToElement(elemento);
-
-            var index = 1;
-            while (index < posicao)
-            {
-                index++;
-                acao.SendKeys(Keys.ArrowRight);
-            }
-
+            acao.SendKeys(posicao.ToString());
             acao.SendKeys(Keys.Enter);
             acao.Perform();
         }
@@ -234,6 +227,9 @@ namespace SigecomTestesUI.Services
 
         public void ConfirmarPesquisa(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F5);
+
+        public void ConcluirAcaoComEnter(string nomeJanela) =>
+            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.Enter);
 
         private void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
