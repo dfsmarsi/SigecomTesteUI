@@ -21,8 +21,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         public void VoltarItensNoPdv()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var lancarItensNoPdvPage = beginLifetimeScope.Resolve<Func<DriverService, VoltarNoPdvComEscPage>>()(DriverService);
-            lancarItensNoPdvPage.RealizarFluxoDeVoltarNoPdv();
+            var voltarNoPdvComEscPage = beginLifetimeScope.Resolve<Func<DriverService, VoltarNoPdvComEscPage>>()(DriverService);
+            voltarNoPdvComEscPage.RealizarFluxoDeVoltarNoPdv();
         }
     }
 }

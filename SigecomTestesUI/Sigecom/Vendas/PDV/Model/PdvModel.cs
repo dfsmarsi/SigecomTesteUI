@@ -5,7 +5,7 @@
         public static string BotaoMenuCadastro => "Vendas";
         public static string BotaoSubMenu => "PDV";
         public static string PesquisaDeProduto => "scProdutos";
-        public static string EditarQuantidade => "txtQuantidade";
+        public static string GridDoProdutos => "gridProdutos";
         public static string EditarValor => "txtValorUn";
         public static string GridDePedido => "gridProdutos";
         public static string GridDeFormaDePagamento => "gridFormasPagamento";

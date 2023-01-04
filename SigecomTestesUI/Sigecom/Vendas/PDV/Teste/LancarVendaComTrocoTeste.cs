@@ -22,8 +22,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         public void LancarItensComTrocoNoDinheiroDoPdv()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var lancarItensNoPdvPage = beginLifetimeScope.Resolve<Func<DriverService, LancarItensNoPdvPage>>()(DriverService);
-            lancarItensNoPdvPage.RealizarFluxoDeLancarItemNoPdv(FormaDePagamento.DinheiroComTroco);
+            var lancarVendaNaFormaDePagamentoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaNaFormaDePagamentoPage>>()(DriverService);
+            lancarVendaNaFormaDePagamentoPage.RealizarFluxoDeLancarVendaNoPdv(FormaDePagamento.DinheiroComTroco);
         }
     }
 }

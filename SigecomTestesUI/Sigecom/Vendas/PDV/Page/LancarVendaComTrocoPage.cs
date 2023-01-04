@@ -12,16 +12,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 
         public LancarVendaComTrocoPage(DriverService driverService) => _driverService = driverService;
 
-        public void RealizarFluxoDeLancarItemNoPdv(LancarItensNoPdvPage lancarItensNoPdvPage, FormaDePagamento formaDePagamento)
+        public void RealizarFluxoDeLancarVendaNoPdv(LancarVendaNaFormaDePagamentoPage lancarVendaNaFormaDePagamentoPage, FormaDePagamento formaDePagamento)
         {
-            lancarItensNoPdvPage.ClicarNaOpcaoDoMenu();
-            lancarItensNoPdvPage.ClicarNaOpcaoDoSubMenu();
-            lancarItensNoPdvPage.LancarItemNoPedido();
-            lancarItensNoPdvPage.PagarPedido();
+            lancarVendaNaFormaDePagamentoPage.ClicarNaOpcaoDoMenu();
+            lancarVendaNaFormaDePagamentoPage.ClicarNaOpcaoDoSubMenu();
+            lancarVendaNaFormaDePagamentoPage.LancarItemNoPedido();
+            lancarVendaNaFormaDePagamentoPage.PagarPedido();
             SelecionarFormaDePagamento();
             _driverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.TotalPagamento, "100", Keys.Enter);
-            lancarItensNoPdvPage.ConcluirPedido();
-            lancarItensNoPdvPage.FecharTelaDeVendaComEsc();
+            lancarVendaNaFormaDePagamentoPage.ConcluirPedido();
+            lancarVendaNaFormaDePagamentoPage.FecharTelaDeVendaComEsc();
         }
 
         public void SelecionarFormaDePagamento() => 

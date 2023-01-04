@@ -4,6 +4,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces
 {
     public interface ILancarFormaDePagamentoPage
     {
-        void RealizarFluxoDeLancarItemNoPdv(LancarItensNoPdvPage lancarItensNoPdvPage, FormaDePagamento formaDePagamento);
+        void RealizarFluxoDeLancarVendaNoPdv(LancarVendaNaFormaDePagamentoPage lancarVendaNaFormaDePagamentoPage, FormaDePagamento formaDePagamento);
     }
 }

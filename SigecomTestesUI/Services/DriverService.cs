@@ -213,6 +213,16 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
+        public void RemoverItensDaGridComBotaoDireito(string nomeCampo)
+        {
+            var elementoEncontrado = _driver.FindElementByAccessibilityId(nomeCampo);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(elementoEncontrado);
+            acao.Click();
+            acao.Perform();
+            elementoEncontrado.SendKeys(Keys.Delete);
+        }
+
         private static void EncontrarElementoNaComboBox(int posicao, IWebElement campo)
         {
             for (var i = 1; i <= posicao; i++)

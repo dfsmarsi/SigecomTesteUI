@@ -14,7 +14,9 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Injection
         {
             try
             {
-                containerBuilder.RegisterType<LancarItensNoPdvPage>();
+                containerBuilder.RegisterType<RemoverItemDoPdvPage>();
+                containerBuilder.RegisterType<LancarItemNoPdvPage>();
+                containerBuilder.RegisterType<LancarVendaNaFormaDePagamentoPage>();
                 containerBuilder.RegisterType<LancarVendaNoDinheiroPage>();
                 containerBuilder.RegisterType<LancarVendaNoPrazoPage>();
                 containerBuilder.RegisterType<LancarVendaNoCreditoPage>();
@@ -23,6 +25,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Injection
                 containerBuilder.RegisterType<LancarVendaNoBancoPage>();
                 containerBuilder.RegisterType<VoltarNoPdvComEscPage>();
                 containerBuilder.RegisterType<LancarFormaDePagamentoPageFactory>().As<ILancarFormaDePagamentoPageFactory>();
+                containerBuilder.RegisterType<RemoverItemDoPdvTeste>();
+                containerBuilder.RegisterType<LancarItemNoPdvTeste>();
                 containerBuilder.RegisterType<LancarVendaNoDinheiroTeste>();
                 containerBuilder.RegisterType<LancarVendaNoPrazoTeste>();
                 containerBuilder.RegisterType<LancarVendaNoCreditoTeste>();

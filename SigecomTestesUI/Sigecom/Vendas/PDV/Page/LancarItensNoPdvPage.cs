@@ -1,20 +1,15 @@
-﻿using Autofac;
+﻿using System;
+using System.Threading;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
-using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces;
-using System;
-using System.Threading;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 {
-    public class LancarItensNoPdvPage : PageObjectModel
+    public class LancarItemNoPdvPage: PageObjectModel
     {
-        public LancarItensNoPdvPage(DriverService driver) : base(driver)
+        public LancarItemNoPdvPage(DriverService driver) : base(driver)
         {
         }
 
@@ -24,10 +19,18 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         internal void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(PdvModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarItemNoPdv(FormaDePagamento formaDePagamento)
+        public void RealizarFluxoDeLancarItemNoPdv()
         {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<ILancarFormaDePagamentoPageFactory>().Fabricar(DriverService, formaDePagamento).RealizarFluxoDeLancarItemNoPdv(this, formaDePagamento);
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemCodInterno, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemReferencia, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemMultiplicadorDeQuantidade, Keys.Enter);
+            PagarPedido();
+            DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1); 
+            ConcluirPedido();
+            FecharTelaDeVendaComEsc();
         }
 
         internal void PagarPedido() =>
@@ -35,30 +38,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 
         internal void ConcluirPedido() =>
             ClicarBotao(PdvModel.ConfirmarPdv);
-
-        internal void LancarItemNoPedido() => 
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
-
-        internal void EditarItemDoPedido()
-        {
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeEditarItemDoPdv);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.EditarQuantidade, LancarItemNoPdvModel.QuantidadeDeItens, Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.EditarValor, LancarItemNoPdvModel.ValorDosItens, Keys.Enter);
-        }
-
-        internal void EditarClienteDoPedido()
-        {
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeEditarClienteDoPdv);
-            SelecionarCliente();
-        }
-
-        private void SelecionarCliente()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
-        }
 
         internal void FecharTelaDeVendaComEsc()
         {

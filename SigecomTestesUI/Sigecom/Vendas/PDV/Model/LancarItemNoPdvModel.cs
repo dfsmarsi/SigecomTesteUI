@@ -3,7 +3,9 @@
     public class LancarItemNoPdvModel
     {
         public static string PesquisarItem => "PRODUTO TESTE PESQUISA";
-        public static string QuantidadeDeItens => "10";
-        public static string ValorDosItens => "10";
+        public static string PesquisarItemId => "1";
+        public static string PesquisarItemCodInterno => "int teste";
+        public static string PesquisarItemReferencia => "ref teste";
+        public static string PesquisarItemMultiplicadorDeQuantidade => "1*1";
     }
 }
