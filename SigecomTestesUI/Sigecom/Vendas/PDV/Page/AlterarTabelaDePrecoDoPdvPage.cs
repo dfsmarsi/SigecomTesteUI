@@ -1,15 +1,16 @@
-﻿using System;
-using System.Threading;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
+using System;
+using System.Threading;
+using NUnit.Framework;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 {
-    public class LancarItemNoPdvPage: PageObjectModel
+    public class AlterarTabelaDePrecoDoPdvPage: PageObjectModel
     {
-        public LancarItemNoPdvPage(DriverService driver) : base(driver)
+        public AlterarTabelaDePrecoDoPdvPage(DriverService driver) : base(driver)
         {
         }
 
@@ -19,19 +20,26 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(PdvModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarItemNoPdv()
+        public void RealizarFluxoDeAlterarTabelaDePrecoNoPdv()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemCodInterno, Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemReferencia, Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemMultiplicadorDeQuantidade, Keys.Enter);
+            DriverService.ClicarBotaoId(PdvModel.TabelaDePreco);
+            DriverService.SelecionarItemComboBox(PdvModel.TabelaDePreco, 1);
+            
+            VerificarValorDoPedidoEspecifico();
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
+            ClicarBotao(PdvModel.TabelaDePreco);
+            DriverService.SelecionarItemComboBox(PdvModel.TabelaDePreco, 2);
             PagarPedido();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1); 
+            DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1);
             ConcluirPedido();
             FecharTelaDeVendaComEsc();
         }
+
+        private void VerificarValorDoPedidoEspecifico() =>
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PdvModel.GridDoProdutos), "R$11,00");
 
         private void PagarPedido() =>
             ClicarBotao(PdvModel.PagarPedido);

@@ -11,10 +11,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
         }
 
-        internal void ClicarNaOpcaoDoMenu() =>
+        private void ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(PdvModel.BotaoMenuCadastro);
 
-        internal void ClicarNaOpcaoDoSubMenu() =>
+        private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(PdvModel.BotaoSubMenu);
 
         public void RealizarFluxoDeVoltarNoPdv()
@@ -29,13 +29,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             FecharTelaDeVendaComEsc();
         }
 
-        internal void LancarItemNoPedido() =>
+        private void LancarItemNoPedido() =>
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
 
-        internal void PagarPedido() =>
+        private void PagarPedido() =>
             ClicarBotao(PdvModel.PagarPedido);
 
-        internal void FecharTelaDeVendaComEsc()
+        private void FecharTelaDeVendaComEsc()
         {
             DriverService.FecharJanelaComEsc("Pdv");
             DriverService.FecharJanelaComEsc("Pdv");

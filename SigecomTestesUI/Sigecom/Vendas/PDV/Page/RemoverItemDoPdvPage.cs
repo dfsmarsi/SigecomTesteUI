@@ -11,10 +11,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
         }
 
-        internal void ClicarNaOpcaoDoMenu() =>
+        private void ClicarNaOpcaoDoMenu() =>
             AcessarOpcaoMenu(PdvModel.BotaoMenuCadastro);
 
-        internal void ClicarNaOpcaoDoSubMenu() =>
+        private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(PdvModel.BotaoSubMenu);
 
         public void RealizarFluxoDeRemoverItemNoPdv()
@@ -26,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             FecharTelaDeVendaComEsc();
         }
 
-        internal void FecharTelaDeVendaComEsc()
+        private void FecharTelaDeVendaComEsc()
         {
             ClicarBotao(PdvModel.AtalhoDoPdv);
             ClicarBotao(PdvModel.AtalhoDeSairDoPdv);

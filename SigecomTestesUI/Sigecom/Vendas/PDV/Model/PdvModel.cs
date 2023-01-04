@@ -5,6 +5,9 @@
         public static string BotaoMenuCadastro => "Vendas";
         public static string BotaoSubMenu => "PDV";
         public static string PesquisaDeProduto => "scProdutos";
+        public static string TabelaDePreco => "cbxTabelaPreco";
+        public static string TabelaDeTodosOsProdutos => "EDITAR TABELA DE PRECO TESTE TODOS PRODUTOS";
+        public static string TabelaDeProdutoEspecifico => "EDITAR TABELA DE PRECO TESTE UNICO PRODUTO";
         public static string GridDoProdutos => "gridProdutos";
         public static string EditarValor => "txtValorUn";
         public static string GridDePedido => "gridProdutos";
