@@ -24,16 +24,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             LancarItemNoPedido();
             PagarPedido();
             DriverService.DigitarNoCampoId(PdvModel.GridDeFormaDePagamento, "1");
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.TotalPagamento, "5", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoTotalPagamento, "5", Keys.Enter);
             DriverService.DigitarNoCampoId(PdvModel.GridDeFormaDePagamento, "3");
             FecharTelaDeVendaComEsc();
         }
 
         private void LancarItemNoPedido() =>
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
 
         private void PagarPedido() =>
-            ClicarBotao(PdvModel.PagarPedido);
+            ClicarBotao(PdvModel.ElementoNamePagarPedido);
 
         private void FecharTelaDeVendaComEsc()
         {

@@ -19,7 +19,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             lancarVendaNaFormaDePagamentoPage.LancarItemNoPedido();
             lancarVendaNaFormaDePagamentoPage.PagarPedido();
             SelecionarFormaDePagamento();
-            _driverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.TotalPagamento, "100", Keys.Enter);
+            _driverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoTotalPagamento, "100", Keys.Enter);
             lancarVendaNaFormaDePagamentoPage.ConcluirPedido();
             lancarVendaNaFormaDePagamentoPage.FecharTelaDeVendaComEsc();
         }

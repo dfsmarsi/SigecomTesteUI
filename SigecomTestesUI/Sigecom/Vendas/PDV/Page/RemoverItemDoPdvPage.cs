@@ -21,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
             DriverService.RemoverItensDaGridComBotaoDireito(PdvModel.GridDoProdutos);
             FecharTelaDeVendaComEsc();
         }

@@ -24,28 +24,38 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
-            DriverService.ClicarBotaoId(PdvModel.TabelaDePreco);
-            DriverService.SelecionarItemComboBox(PdvModel.TabelaDePreco, 1);
-            
-            VerificarValorDoPedidoEspecifico();
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
-            ClicarBotao(PdvModel.TabelaDePreco);
-            DriverService.SelecionarItemComboBox(PdvModel.TabelaDePreco, 2);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
+            DriverService.SelecionarItemComboBoxSemEnter(PdvModel.ElementoTabelaDePreco, 3);
+            VerificarValorDaTabelaDoPrimeiroProduto();
+            DriverService.SelecionarItemComboBoxSemEnter(PdvModel.ElementoTabelaDePreco, 4);
+            VerificarValorDaTabelaDoPrimeiroProduto();
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemIdDoSegundoProduto, Keys.Enter);
+            VerificarValorDaTabelaDoSegundoProduto();
             PagarPedido();
             DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1);
             ConcluirPedido();
             FecharTelaDeVendaComEsc();
         }
 
-        private void VerificarValorDoPedidoEspecifico() =>
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PdvModel.GridDoProdutos), "R$11,00");
+        private void VerificarValorDaTabelaDoPrimeiroProduto() => 
+            VerificarValorDaTabelaDePreco(LancarItemNoPdvModel.ValorUnitarioDoPrimeiroProdutoNoPdv);
+
+        private void VerificarValorDaTabelaDoSegundoProduto() =>
+            VerificarValorDaTabelaDePreco(LancarItemNoPdvModel.ValorUnitarioDoSegundoProdutoNoPdv);
+
+        private void VerificarValorDaTabelaDePreco(string valorUnitario)
+        {
+            ClicarBotao(PdvModel.AtalhoDoPdv);
+            ClicarBotao(PdvModel.AtalhoDeEditarItemDoPdv);
+            Assert.AreEqual(DriverService.ObterValorElementoId(PdvModel.ElementoDeEditarValor), valorUnitario);
+            ClicarBotao(PdvModel.ElementoNameDoConfirmarDesconto);
+        }
 
         private void PagarPedido() =>
-            ClicarBotao(PdvModel.PagarPedido);
+            ClicarBotao(PdvModel.ElementoNamePagarPedido);
 
         private void ConcluirPedido() =>
-            ClicarBotao(PdvModel.ConfirmarPdv);
+            ClicarBotao(PdvModel.ElementoNameConfirmarPdv);
 
         private void FecharTelaDeVendaComEsc()
         {

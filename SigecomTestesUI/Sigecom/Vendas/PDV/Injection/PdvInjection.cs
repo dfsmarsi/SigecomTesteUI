@@ -24,6 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Injection
                 containerBuilder.RegisterType<LancarVendaComTrocoPage>();
                 containerBuilder.RegisterType<LancarVendaNoBancoPage>();
                 containerBuilder.RegisterType<AlterarTabelaDePrecoDoPdvPage>();
+                containerBuilder.RegisterType<DarDescontoNoPdvPage>();
                 containerBuilder.RegisterType<VoltarNoPdvComEscPage>();
                 containerBuilder.RegisterType<LancarFormaDePagamentoPageFactory>().As<ILancarFormaDePagamentoPageFactory>();
                 containerBuilder.RegisterType<RemoverItemDoPdvTeste>();
@@ -34,6 +35,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Injection
                 containerBuilder.RegisterType<LancarVendaComTrocoTeste>();
                 containerBuilder.RegisterType<LancarVendaNoBancoTeste>();
                 containerBuilder.RegisterType<AlterarTabelaDePrecoDoPdvTeste>();
+                containerBuilder.RegisterType<DarDescontoNoPdvTeste>();
                 containerBuilder.RegisterType<VoltarNoPdvComEscTeste>();
             }
             catch (Exception exception)

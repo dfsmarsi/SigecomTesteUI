@@ -16,18 +16,19 @@ namespace SigecomTestesUI.Services
         public void FecharSistema()
         {
             ClicarBotaoName("Sair/Login");
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            TrocarJanela();
-            ValidarElementoExistentePorNome("Sistema de gestão comercial");
-            ClicarBotaoName("Fechar");
-            _driver.Dispose();
+            FinalizarFecharDoSistema();
         }
 
         public void FecharSistemaComTelaAberta()
         {
             ClicarBotaoName("Sair/Login");
             ClicarBotaoName(", Sim (ENTER)");
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+            FinalizarFecharDoSistema();
+        }
+
+        private void FinalizarFecharDoSistema()
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(3));
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
             ClicarBotaoName("Fechar");
@@ -57,6 +58,9 @@ namespace SigecomTestesUI.Services
 
         public string PegarValorDaColunaDaGrid(string nomeColuna) => 
             _driver.FindElementByName($"{nomeColuna} row 0").Text;
+
+        public string PegarValorDaColunaDaGridPosicao(string nomeColuna, string posicao) =>
+            _driver.FindElementByName($"{nomeColuna} row {posicao}").Text;
 
         public void TrocarJanela()
         {
@@ -90,11 +94,8 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(teclaDeAtalho);
         }
 
-        public void DigitarNoCampoComTeclaDeAtalhoIdMaisF5(string idElemento, string texto, string teclaDeAtalho)
-        {
-            var elemento = DigitarNoCampoComTeclaDeAtalhoId(idElemento, texto, teclaDeAtalho);
-            elemento.SendKeys(Keys.F5);
-        }
+        public void DigitarNoCampoComTeclaDeAtalhoIdMaisF5(string idElemento, string texto, string teclaDeAtalho) => 
+            DigitarNoCampoComTeclaDeAtalhoId(idElemento, texto, teclaDeAtalho).SendKeys(Keys.F5);
 
         public WindowsElement DigitarNoCampoComTeclaDeAtalhoId(string idElemento, string texto, string teclaDeAtalho)
         {
@@ -163,10 +164,22 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void SelecionarItemComboBoxSemEnter(string nomeCampo, int posicao)
+        {
+            var campo = _driver.FindElementByAccessibilityId(nomeCampo);
+            SelecionarItens(posicao, campo);
+        }
+
         public void SelecionarItemComboBox(string nomeCampo, int posicao)
         {
             var campo = _driver.FindElementByAccessibilityId(nomeCampo);
             ConcluirSelecionarItens(posicao, campo);
+        }
+
+        private static void ConcluirSelecionarItens(int posicao, IWebElement elementoEncontrado)
+        {
+            SelecionarItens(posicao, elementoEncontrado);
+            elementoEncontrado.SendKeys(Keys.Enter);
         }
 
         public void SelecionarDoisItensDaGrid(string nomeCampo, int posicao)
@@ -176,11 +189,11 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
-        private static void ConcluirSelecionarItens(int posicao, IWebElement elementoEncontrado)
+        private static void SelecionarItens(int posicao, IWebElement elementoEncontrado)
         {
             elementoEncontrado.Click();
             EncontrarElementoNaComboBox(posicao, elementoEncontrado);
-            elementoEncontrado.SendKeys(Keys.Enter);
+            elementoEncontrado.SendKeys(Keys.Tab);
         }
 
         public void DigitarItensNaGrid(string nomeCampo, string texto)

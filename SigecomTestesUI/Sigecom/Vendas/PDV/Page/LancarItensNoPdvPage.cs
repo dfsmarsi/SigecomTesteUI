@@ -23,10 +23,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemCodInterno, Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemReferencia, Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemMultiplicadorDeQuantidade, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemCodInterno, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemReferencia, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemMultiplicadorDeQuantidade, Keys.Enter);
             PagarPedido();
             DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1); 
             ConcluirPedido();
@@ -34,10 +34,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         }
 
         private void PagarPedido() =>
-            ClicarBotao(PdvModel.PagarPedido);
+            ClicarBotao(PdvModel.ElementoNamePagarPedido);
 
         private void ConcluirPedido() =>
-            ClicarBotao(PdvModel.ConfirmarPdv);
+            ClicarBotao(PdvModel.ElementoNameConfirmarPdv);
 
         private void FecharTelaDeVendaComEsc()
         {

@@ -31,13 +31,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         }
 
         internal void PagarPedido() =>
-            ClicarBotao(PdvModel.PagarPedido);
+            ClicarBotao(PdvModel.ElementoNamePagarPedido);
 
         internal void ConcluirPedido() =>
-            ClicarBotao(PdvModel.ConfirmarPdv);
+            ClicarBotao(PdvModel.ElementoNameConfirmarPdv);
 
         internal void LancarItemNoPedido() => 
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.PesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
 
         internal void EditarClienteDoPedido()
         {
