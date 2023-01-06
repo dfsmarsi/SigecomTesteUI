@@ -9,7 +9,7 @@
         public static string Regra => "Acréscimo sobre o valor de venda";
         public static string ValorPorcentagem => "20,00";
         public static string NomeDoProdutoParaPesquisar => "PRODUTO TESTE PESQUISA";
-        public static string MarkupNaTabela => "140,00";
-        public static string ValorNaTabela => "R$12,00";
+        public static string MarkupNaTabela => "60,00";
+        public static string ValorNaTabela => "R$8,00";
     }
 }
