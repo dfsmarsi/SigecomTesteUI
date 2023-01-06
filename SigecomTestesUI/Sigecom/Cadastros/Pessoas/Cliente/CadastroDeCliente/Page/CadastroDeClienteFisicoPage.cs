@@ -47,7 +47,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Pa
         {
             try
             {
-                ClicarBotao(CadastroDeClienteModel.BotaoNovo);
+                ClicarBotaoName(CadastroDeClienteModel.BotaoNovo);
             }
             catch (Exception exception)
             {
@@ -59,7 +59,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.CadastroDeCliente.Pa
         {
             try
             {
-                ClicarBotao(CadastroDeClienteModel.BotaoPesquisar);
+                ClicarBotaoName(CadastroDeClienteModel.BotaoPesquisar);
                 return true;
             }
             catch (Exception exception)

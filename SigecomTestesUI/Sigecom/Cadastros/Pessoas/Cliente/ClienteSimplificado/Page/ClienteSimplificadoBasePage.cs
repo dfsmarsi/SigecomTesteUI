@@ -23,8 +23,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
 
         private void AbrirTelaDeClienteSimplificado()
         {
-            ClicarBotao(PedidoModel.BotaoAtalhosVenda);
-            ClicarBotao(PedidoModel.BotaoClienteSimplificado);
+            ClicarBotaoName(PedidoModel.BotaoAtalhosVenda);
+            ClicarBotaoName(PedidoModel.BotaoClienteSimplificado);
         }
 
         private void VerificarCamposDoClienteCompletoCarregado()
@@ -50,7 +50,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.
         }
 
         private void GravarClienteSimplificado() => 
-            ClicarBotao(CadastroDeClienteSimplificadoModel.BotaoDoConfirmar);
+            ClicarBotaoName(CadastroDeClienteSimplificadoModel.BotaoDoConfirmar);
 
         private void FecharTelaDeVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PedidoModel.ElementoTelaDeVenda);

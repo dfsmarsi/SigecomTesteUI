@@ -34,17 +34,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         }
 
         private void PagarPedido() =>
-            ClicarBotao(PdvModel.ElementoNamePagarPedido);
+            ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
 
         private void ConcluirPedido() =>
-            ClicarBotao(PdvModel.ElementoNameConfirmarPdv);
+            ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
 
         private void FecharTelaDeVendaComEsc()
         {
             DriverService.ClicarBotaoId(PdvModel.BotaoDeFecharPerguntaDeImpressaoPdv);
             Thread.Sleep(TimeSpan.FromSeconds(2));
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeSairDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
         }
     }
 }

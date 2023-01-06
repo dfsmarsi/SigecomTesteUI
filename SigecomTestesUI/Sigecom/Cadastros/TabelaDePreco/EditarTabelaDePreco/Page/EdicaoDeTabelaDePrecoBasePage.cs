@@ -23,10 +23,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
             AcessarOpcaoSubMenu(CadastroDeTabelaDePrecoModel.BotaoSubMenu);
 
         private void ClicarNoBotaoAlterar() =>
-            ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoBotaoAlterar);
+            ClicarBotaoName(CadastroDeTabelaDePrecoModel.ElementoBotaoAlterar);
 
         public void ClicarNoBotaoAplicar() =>
-            ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoAplicarRegra);
+            ClicarBotaoName(CadastroDeTabelaDePrecoModel.ElementoAplicarRegra);
 
         public void AlterarATabelaDePreco(string nome)
         {
@@ -55,6 +55,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.EditarTabelaDePreco.Pa
         }
 
         public void ClicarNoBotaoGravar() =>
-            ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoGravar);
+            ClicarBotaoName(CadastroDeTabelaDePrecoModel.ElementoGravar);
     }
 }

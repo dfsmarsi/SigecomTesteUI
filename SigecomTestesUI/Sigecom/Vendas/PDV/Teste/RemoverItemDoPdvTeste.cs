@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("LancarItens")]
+        [AllureSuite("RemoverItens")]
         [AllureSubSuite("PDV")]
         public void RemoverItensDoPdv()
         {

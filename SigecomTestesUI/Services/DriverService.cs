@@ -59,7 +59,7 @@ namespace SigecomTestesUI.Services
         public string PegarValorDaColunaDaGrid(string nomeColuna) => 
             _driver.FindElementByName($"{nomeColuna} row 0").Text;
 
-        public string PegarValorDaColunaDaGridPosicao(string nomeColuna, string posicao) =>
+        public string PegarValorDaColunaDaGridNaPosicao(string nomeColuna, string posicao) =>
             _driver.FindElementByName($"{nomeColuna} row {posicao}").Text;
 
         public void TrocarJanela()

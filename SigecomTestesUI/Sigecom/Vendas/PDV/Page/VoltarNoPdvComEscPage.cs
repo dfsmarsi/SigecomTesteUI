@@ -33,16 +33,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
 
         private void PagarPedido() =>
-            ClicarBotao(PdvModel.ElementoNamePagarPedido);
+            ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
 
         private void FecharTelaDeVendaComEsc()
         {
             DriverService.FecharJanelaComEsc("Pdv");
             DriverService.FecharJanelaComEsc("Pdv");
-            ClicarBotao(", Sim (ENTER)");
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeSairDoPdv);
-            ClicarBotao(", Sim (ENTER)");
+            ClicarBotaoName(", Sim (ENTER)");
+            ClicarBotaoName(PdvModel.AtalhoDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
+            ClicarBotaoName(", Sim (ENTER)");
         }
 
     }

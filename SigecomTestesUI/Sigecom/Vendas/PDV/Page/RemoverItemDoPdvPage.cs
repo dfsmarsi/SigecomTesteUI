@@ -28,8 +28,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 
         private void FecharTelaDeVendaComEsc()
         {
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeSairDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
         }
     }
 }
