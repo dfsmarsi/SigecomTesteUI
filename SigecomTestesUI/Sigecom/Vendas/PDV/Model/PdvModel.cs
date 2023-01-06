@@ -19,7 +19,7 @@
         public static string AtalhoDeEditarClienteDoPdv => ", [ F2 ] - Inserir cliente";
         public static string AtalhoDeDescontoDoPdv => ", [ F4 ] - Desconto/Acréscimo";
         public static string ElementoDoDesconto => "txtDescontoOuAcrescimo";
-        public static string ElementoNameDoConfirmarDesconto => ", Confirmar (ENTER)";
+        public static string ElementoNameDoConfirmar => ", Confirmar (ENTER)";
         public static string ElementoTotalParaPagar => "lblTotalPagar";
     }
 }

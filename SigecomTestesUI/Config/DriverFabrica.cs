@@ -17,8 +17,6 @@ namespace SigecomTestesUI.Config
 
             var appOptions = new AppiumOptions();
             appOptions.AddAdditionalCapability("app", AppId);
-            appOptions.AddAdditionalCapability("ms:waitForAppLaunch", 8);
-            appOptions.AddAdditionalCapability("appArguments", "-internal -NoSplash");
             var driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
             Assert.NotNull(driver);
 

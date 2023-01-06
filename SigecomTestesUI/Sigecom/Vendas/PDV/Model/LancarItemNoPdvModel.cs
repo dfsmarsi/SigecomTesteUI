@@ -9,6 +9,7 @@
         public static string ItemComDescontoNoPdv => "R$5,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPdv => "R$5,50";
         public static string ValorUnitarioDoSegundoProdutoNoPdv => "R$5,25";
+        public static string ValorTotalParaVoltarTroco => "100";
         public static string PesquisarItemCodInterno => "int teste";
         public static string PesquisarItemReferencia => "ref teste";
         public static string PesquisarItemMultiplicadorDeQuantidade => "1*1";

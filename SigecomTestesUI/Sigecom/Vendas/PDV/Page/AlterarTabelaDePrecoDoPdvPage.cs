@@ -48,7 +48,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             ClicarBotao(PdvModel.AtalhoDoPdv);
             ClicarBotao(PdvModel.AtalhoDeEditarItemDoPdv);
             Assert.AreEqual(DriverService.ObterValorElementoId(PdvModel.ElementoDeEditarValor), valorUnitario);
-            ClicarBotao(PdvModel.ElementoNameDoConfirmarDesconto);
+            ClicarBotao(PdvModel.ElementoNameDoConfirmar);
         }
 
         private void PagarPedido() =>
