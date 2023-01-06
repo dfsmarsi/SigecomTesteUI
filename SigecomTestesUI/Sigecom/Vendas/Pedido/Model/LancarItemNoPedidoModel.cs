@@ -9,8 +9,8 @@
         public static string PesquisarItemMultiplicadorDeQuantidade => "1*1";
         public static string QuantidadeDeProduto => "5,00";
         public static string Observacao => "TESTE";
-        public static string DescontoNoItemPedido => "5";
-        public static string ItemComDescontoNoPedido => "R$5,00";
+        public static string DescontoNoItemPedido => "1";
+        public static string ItemComDescontoNoPedido => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPedido => "R$5,50";
     }
 }

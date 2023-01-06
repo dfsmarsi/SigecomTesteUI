@@ -196,7 +196,7 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
-        public void DigitarItensNaGrid(string nomeCampo, string texto)
+        public void DigitarItensNaGridDeProdutoGrade(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} new item row");
             DigitarEIrParaProximoCampoDaGrid(texto, elementoEncontrado);

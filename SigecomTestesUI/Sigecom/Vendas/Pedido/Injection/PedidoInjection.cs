@@ -14,6 +14,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Injection
             {
                 containerBuilder.RegisterType<LancarItensNoPedidoPage>();
                 containerBuilder.RegisterType<RemoverItemDoPedidoPage>();
+                containerBuilder.RegisterType<DarDescontoNoPedidoPage>();
+                containerBuilder.RegisterType<DarDescontoNoPedidoTeste>();
                 containerBuilder.RegisterType<RemoverItemDoPedidoTeste>();
                 containerBuilder.RegisterType<LancarItensNoPedidoTeste>();
             }
