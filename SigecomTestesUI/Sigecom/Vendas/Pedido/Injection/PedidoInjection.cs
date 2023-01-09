@@ -15,6 +15,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Injection
                 containerBuilder.RegisterType<LancarItensNoPedidoPage>();
                 containerBuilder.RegisterType<RemoverItemDoPedidoPage>();
                 containerBuilder.RegisterType<DarDescontoNoPedidoPage>();
+                containerBuilder.RegisterType<VoltarNoPedidoComEscPage>();
+                containerBuilder.RegisterType<LancarVendaNoCartaoNoPedidoPage>();
+                containerBuilder.RegisterType<LancarVendaNoPrazoNoPedidoPage>();
+                containerBuilder.RegisterType<LancarVendaNoPrazoNoPedidoTeste>();
+                containerBuilder.RegisterType<LancarVendaNoCartaoNoPedidoTeste>();
+                containerBuilder.RegisterType<VoltarNoPedidoComEscTeste>();
                 containerBuilder.RegisterType<DarDescontoNoPedidoTeste>();
                 containerBuilder.RegisterType<RemoverItemDoPedidoTeste>();
                 containerBuilder.RegisterType<LancarItensNoPedidoTeste>();
