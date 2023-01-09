@@ -1,17 +1,17 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
 {
-    public class LancarVendaNoPrazoNoPedidoPage: PageObjectModel
+    public class LancarVendaDeChequeNoPedidoPage: PageObjectModel
     {
-        public LancarVendaNoPrazoNoPedidoPage(DriverService driver) : base(driver)
+        public LancarVendaDeChequeNoPedidoPage(DriverService driver) : base(driver)
         {
         }
 
@@ -21,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(PedidoModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarVendaDePrazoNoPedido()
+        public void RealizarFluxoDeLancarVendaDeChequeNoPedido()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();

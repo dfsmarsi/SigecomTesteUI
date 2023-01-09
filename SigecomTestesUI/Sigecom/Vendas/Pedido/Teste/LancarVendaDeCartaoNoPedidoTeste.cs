@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
 {
-    public class LancarVendaNoCartaoNoPedidoTeste:BaseTestes
+    public class LancarVendaDeCartaoNoPedidoTeste:BaseTestes
     {
         [Test(Description = "Lançar venda do cartão no pedido")]
         [AllureTag("CI")]
@@ -21,8 +21,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
         public void LancarVendaDoCartaoNoPedido()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var voltarNoPedidoComEscPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaNoCartaoNoPedidoPage>>()(DriverService);
-            voltarNoPedidoComEscPage.RealizarFluxoDeLancarVendaDeCreditoNoPedido();
+            var lancarVendaDeCartaoNoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaDeCartaoNoPedidoPage>>()(DriverService);
+            lancarVendaDeCartaoNoPedidoPage.RealizarFluxoDeLancarVendaDeCreditoNoPedido();
         }
     }
 }

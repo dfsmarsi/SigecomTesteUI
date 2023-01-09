@@ -1,13 +1,17 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using Autofac;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
 {
-    public class LancarVendaNoCartaoNoPedidoPage: PageObjectModel
+    public class LancarVendaDePrazoNoPedidoPage: PageObjectModel
     {
-        public LancarVendaNoCartaoNoPedidoPage(DriverService driver) : base(driver)
+        public LancarVendaDePrazoNoPedidoPage(DriverService driver) : base(driver)
         {
         }
 
@@ -17,18 +21,25 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(PedidoModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarVendaDeCreditoNoPedido()
+        public void RealizarFluxoDeLancarVendaDePrazoNoPedido()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            ClicarBotaoName(PedidoModel.BotaoAtalhosVenda);
+            ClicarBotaoName(PedidoModel.AtalhoDeEditarClienteDoPedido);
+            SelecionarCliente();
             LancarProduto(LancarItemNoPedidoModel.PesquisarItemId);
             AvancarVenda();
             AvancarVenda();
             DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.GridDeFormaDePagamento, 2);
-            ClicarBotaoName(PedidoModel.ElementoNameDoConfirmar);
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
+            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.GridDeFormaDePagamento, 3);
             FecharTelaDeVendaComEsc();
+        }
+
+        private void SelecionarCliente()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
         }
 
         private void LancarProduto(string textoDePesquisa)

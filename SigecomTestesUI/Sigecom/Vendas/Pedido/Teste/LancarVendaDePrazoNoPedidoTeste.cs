@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
 {
-    public class LancarVendaNoPrazoNoPedidoTeste: BaseTestes
+    public class LancarVendaDePrazoNoPedidoTeste: BaseTestes
     {
         [Test(Description = "Lançar venda do prazo no pedido")]
         [AllureTag("CI")]
@@ -21,8 +21,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
         public void LancarVendaDoPrazoNoPedido()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var voltarNoPedidoComEscPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaNoPrazoNoPedidoPage>>()(DriverService);
-            voltarNoPedidoComEscPage.RealizarFluxoDeLancarVendaDePrazoNoPedido();
+            var lancarVendaDePrazoNoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaDePrazoNoPedidoPage>>()(DriverService);
+            lancarVendaDePrazoNoPedidoPage.RealizarFluxoDeLancarVendaDePrazoNoPedido();
         }
     }
 }
