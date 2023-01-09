@@ -105,16 +105,6 @@ namespace SigecomTestesUI.Services
             return elemento;
         }
 
-        public void RealizarAtalhoEnterNaFormaDePagamentoComTroco(string idElemento)
-        {
-            var elemento = _driver.FindElementByAccessibilityId(idElemento);
-            var acao = new Actions(_driver);
-            acao.MoveToElement(elemento);
-            acao.Click();
-            acao.SendKeys(Keys.Enter);
-            acao.Perform();
-        }
-
         public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);

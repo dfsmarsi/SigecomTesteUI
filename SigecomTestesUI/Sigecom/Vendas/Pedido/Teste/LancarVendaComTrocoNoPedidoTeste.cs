@@ -8,21 +8,21 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
 {
-    public class RemoverItemDoPedidoTeste : BaseTestes
+    public class LancarVendaComTrocoNoPedidoTeste: BaseTestes
     {
-        [Test(Description = "Remover itens do Pedido")]
+        [Test(Description = "Lançar venda com troco no pedido")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("Remover")]
+        [AllureSuite("Lancar")]
         [AllureSubSuite("Pedido")]
-        public void RemoverItensDoPedido()
+        public void LancarVendaComTrocoNoPedido()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var removerItemDoPdvPage = beginLifetimeScope.Resolve<Func<DriverService, RemoverItemDoPedidoPage>>()(DriverService);
-            removerItemDoPdvPage.RealizarFluxoDeRemoverItemDoPedido();
+            var lancarVendaComTrocoNoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaComTrocoNoPedidoPage>>()(DriverService);
+            lancarVendaComTrocoNoPedidoPage.RealizarFluxoDeLancarVendaComTrocoNoPedido();
         }
     }
 }

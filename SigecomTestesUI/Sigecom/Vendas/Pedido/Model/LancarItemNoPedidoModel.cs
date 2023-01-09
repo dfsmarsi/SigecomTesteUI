@@ -10,6 +10,8 @@
         public static string QuantidadeDeProduto => "5,00";
         public static string Observacao => "TESTE";
         public static string DescontoNoItemPedido => "1";
+        public static string ValorTotalParaGerarTroco => "40,00";
+
         public static string ItemComDescontoNoPedido => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPedido => "R$5,50";
     }

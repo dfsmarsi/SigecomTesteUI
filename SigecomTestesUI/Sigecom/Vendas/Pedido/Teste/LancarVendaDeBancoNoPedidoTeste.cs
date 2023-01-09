@@ -3,13 +3,12 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
-using SigecomTestesUI.Sigecom.Vendas.PDV.Page;
+using SigecomTestesUI.Sigecom.Vendas.Pedido.Page;
 using System;
 
-namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
+namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
 {
-    public class LancarVendaNoBancoTeste: BaseTestes
+    public class LancarVendaDeBancoNoPedidoTeste: BaseTestes
     {
         [Test(Description = "Lançar itens no banco do PDV")]
         [AllureTag("CI")]
@@ -18,12 +17,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         [AllureTms("1")]
         [AllureOwner("Takaki")]
         [AllureSuite("Lancar")]
-        [AllureSubSuite("PDV")]
+        [AllureSubSuite("Pedido")]
         public void LancarItensNoBancoDoPdv()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var lancarVendaNaFormaDePagamentoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaNaFormaDePagamentoPage>>()(DriverService);
-            lancarVendaNaFormaDePagamentoPage.RealizarFluxoDeLancarVendaNoPdv(FormaDePagamento.Banco);
+            var lancarVendaDeBancoNoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaDeBancoNoPedidoPage>>()(DriverService);
+            lancarVendaDeBancoNoPedidoPage.RealizarFluxoDeLancarVendaDeBancoNoPedido();
         }
     }
 }

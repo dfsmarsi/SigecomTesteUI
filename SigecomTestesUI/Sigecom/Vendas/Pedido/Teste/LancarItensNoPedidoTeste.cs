@@ -16,13 +16,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("LancarItens")]
+        [AllureSuite("Lancar")]
         [AllureSubSuite("Pedido")]
         public void LancarItensNoPdv()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var itensNoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarItensNoPedidoPage>>()(DriverService);
-            itensNoPedidoPage.RealizarFluxoDeLancarItemNoPedido();
+            var lancarItensNoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarItensNoPedidoPage>>()(DriverService);
+            lancarItensNoPedidoPage.RealizarFluxoDeLancarItemNoPedido();
         }
     }
 }

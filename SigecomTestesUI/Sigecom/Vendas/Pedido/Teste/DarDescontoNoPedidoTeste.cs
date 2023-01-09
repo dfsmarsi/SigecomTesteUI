@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("Desconto nos itens")]
+        [AllureSuite("Desconto")]
         [AllureSubSuite("Pedido")]
         public void LancarItensNoPdv()
         {
