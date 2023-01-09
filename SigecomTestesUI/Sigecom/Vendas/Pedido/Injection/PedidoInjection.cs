@@ -20,6 +20,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Injection
                 containerBuilder.RegisterType<LancarVendaDePrazoNoPedidoPage>();
                 containerBuilder.RegisterType<LancarVendaDeChequeNoPedidoPage>();
                 containerBuilder.RegisterType<LancarVendaComTrocoNoPedidoPage>();
+                containerBuilder.RegisterType<LancarVendaDeBancoNoPedidoPage>();
+                containerBuilder.RegisterType<LancarVendaDeDinheiroNoPedidoPage>();
+                containerBuilder.RegisterType<LancarVendaDeDinheiroNoPedidoTeste>();
+                containerBuilder.RegisterType<LancarVendaDeBancoNoPedidoTeste>();
                 containerBuilder.RegisterType<LancarVendaComTrocoNoPedidoTeste>();
                 containerBuilder.RegisterType<LancarVendaDeChequeNoPedidoTeste>();
                 containerBuilder.RegisterType<LancarVendaDePrazoNoPedidoTeste>();
