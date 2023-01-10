@@ -10,7 +10,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
 {
     public class VoltarNoPedidoComEscTeste: BaseTestes
     {
-        [Test(Description = "Voltar itens no pedido com Esc")]
+        [Test(Description = "Voltar no pedido com Esc")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Voltar")]
         [AllureSubSuite("Pedido")]
-        public void VoltarItensNoPedido()
+        public void VoltarNoPedidoComEsc()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var voltarNoPedidoComEscPage = beginLifetimeScope.Resolve<Func<DriverService, VoltarNoPedidoComEscPage>>()(DriverService);

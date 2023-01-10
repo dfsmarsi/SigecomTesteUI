@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Lancar")]
         [AllureSubSuite("Pedido")]
-        public void LancarItensNoBancoDoPdv()
+        public void LancarItensNoBancoDoPedido()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var lancarVendaDeBancoNoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaDeBancoNoPedidoPage>>()(DriverService);
