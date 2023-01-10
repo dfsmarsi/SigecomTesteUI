@@ -36,12 +36,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         {
             try
             {
-                _driverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, CadastroDeProdutoGradeModel.CodigoDeBarras);
-                _driverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, CadastroDeProdutoGradeModel.TamanhoDaGrade);
-                _driverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, CadastroDeProdutoGradeModel.CorDaGrade);
-                _driverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaEstoqueDaGrade, CadastroDeProdutoGradeModel.EstoqueDaGrade);
-                _driverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCustoDaGrade, CadastroDeProdutoGradeModel.CustoDaGrade);
-                _driverService.DigitarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaMarkupDaGrade, CadastroDeProdutoGradeModel.MarkupDaGrade);
+                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, CadastroDeProdutoGradeModel.CodigoDeBarras);
+                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, CadastroDeProdutoGradeModel.TamanhoDaGrade);
+                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, CadastroDeProdutoGradeModel.CorDaGrade);
+                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaEstoqueDaGrade, CadastroDeProdutoGradeModel.EstoqueDaGrade);
+                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaCustoDaGrade, CadastroDeProdutoGradeModel.CustoDaGrade);
+                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaMarkupDaGrade, CadastroDeProdutoGradeModel.MarkupDaGrade);
                 return true;
             }
             catch (Exception)

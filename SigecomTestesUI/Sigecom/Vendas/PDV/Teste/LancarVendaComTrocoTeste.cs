@@ -3,7 +3,6 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page;
 using System;
 
@@ -17,13 +16,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("LancarItens")]
+        [AllureSuite("Lancar")]
         [AllureSubSuite("PDV")]
         public void LancarItensComTrocoNoDinheiroDoPdv()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var lancarVendaNaFormaDePagamentoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaNaFormaDePagamentoPage>>()(DriverService);
-            lancarVendaNaFormaDePagamentoPage.RealizarFluxoDeLancarVendaNoPdv(FormaDePagamento.DinheiroComTroco);
+            var lancarVendaComTrocoPage = beginLifetimeScope.Resolve<Func<DriverService, LancarVendaComTrocoPage>>()(DriverService);
+            lancarVendaComTrocoPage.RealizarFluxoDeLancarVendaNoPdv();
         }
     }
 }

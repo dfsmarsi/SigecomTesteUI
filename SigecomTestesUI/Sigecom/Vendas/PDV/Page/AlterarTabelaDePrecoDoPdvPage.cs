@@ -45,24 +45,24 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 
         private void VerificarValorDaTabelaDePreco(string valorUnitario)
         {
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeEditarItemDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDeEditarItemDoPdv);
             Assert.AreEqual(DriverService.ObterValorElementoId(PdvModel.ElementoDeEditarValor), valorUnitario);
-            ClicarBotao(PdvModel.ElementoNameDoConfirmar);
+            ClicarBotaoName(PdvModel.ElementoNameDoConfirmar);
         }
 
         private void PagarPedido() =>
-            ClicarBotao(PdvModel.ElementoNamePagarPedido);
+            ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
 
         private void ConcluirPedido() =>
-            ClicarBotao(PdvModel.ElementoNameConfirmarPdv);
+            ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
 
         private void FecharTelaDeVendaComEsc()
         {
             DriverService.ClicarBotaoId(PdvModel.BotaoDeFecharPerguntaDeImpressaoPdv);
             Thread.Sleep(TimeSpan.FromSeconds(2));
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeSairDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
         }
     }
 }

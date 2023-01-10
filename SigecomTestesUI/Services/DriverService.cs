@@ -59,7 +59,7 @@ namespace SigecomTestesUI.Services
         public string PegarValorDaColunaDaGrid(string nomeColuna) => 
             _driver.FindElementByName($"{nomeColuna} row 0").Text;
 
-        public string PegarValorDaColunaDaGridPosicao(string nomeColuna, string posicao) =>
+        public string PegarValorDaColunaDaGridNaPosicao(string nomeColuna, string posicao) =>
             _driver.FindElementByName($"{nomeColuna} row {posicao}").Text;
 
         public void TrocarJanela()
@@ -103,16 +103,6 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(texto);
             elemento.SendKeys(teclaDeAtalho);
             return elemento;
-        }
-
-        public void RealizarAtalhoEnterNaFormaDePagamentoComTroco(string idElemento)
-        {
-            var elemento = _driver.FindElementByAccessibilityId(idElemento);
-            var acao = new Actions(_driver);
-            acao.MoveToElement(elemento);
-            acao.Click();
-            acao.SendKeys(Keys.Enter);
-            acao.Perform();
         }
 
         public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
@@ -196,7 +186,7 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
-        public void DigitarItensNaGrid(string nomeCampo, string texto)
+        public void DigitarItensNaGridDeProdutoGrade(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} new item row");
             DigitarEIrParaProximoCampoDaGrid(texto, elementoEncontrado);

@@ -47,7 +47,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
         {
             try
             {
-                ClicarBotao(CadastroDeColaboradorModel.BotaoNovo);
+                ClicarBotaoName(CadastroDeColaboradorModel.BotaoNovo);
             }
             catch (Exception exception)
             {
@@ -59,7 +59,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
         {
             try
             {
-                ClicarBotao(CadastroDeColaboradorModel.BotaoPesquisar);
+                ClicarBotaoName(CadastroDeColaboradorModel.BotaoPesquisar);
             }
             catch (Exception exception)
             {

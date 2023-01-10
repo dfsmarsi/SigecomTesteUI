@@ -31,18 +31,18 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         }
 
         internal void PagarPedido() =>
-            ClicarBotao(PdvModel.ElementoNamePagarPedido);
+            ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
 
         internal void ConcluirPedido() =>
-            ClicarBotao(PdvModel.ElementoNameConfirmarPdv);
+            ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
 
         internal void LancarItemNoPedido() => 
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
 
         internal void EditarClienteDoPedido()
         {
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeEditarClienteDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDeEditarClienteDoPdv);
             SelecionarCliente();
         }
 
@@ -56,8 +56,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             DriverService.ClicarBotaoId(PdvModel.BotaoDeFecharPerguntaDeImpressaoPdv);
             Thread.Sleep(TimeSpan.FromSeconds(2));
-            ClicarBotao(PdvModel.AtalhoDoPdv);
-            ClicarBotao(PdvModel.AtalhoDeSairDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDoPdv);
+            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
         }
     }
 }

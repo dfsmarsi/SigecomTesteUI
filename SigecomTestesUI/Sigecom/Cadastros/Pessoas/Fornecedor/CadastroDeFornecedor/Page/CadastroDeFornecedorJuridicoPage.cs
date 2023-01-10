@@ -47,7 +47,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornece
         {
             try
             {
-                ClicarBotao(CadastroDeFornecedorModel.BotaoNovo);
+                ClicarBotaoName(CadastroDeFornecedorModel.BotaoNovo);
             }
             catch (Exception exception)
             {
@@ -59,7 +59,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.CadastroDeFornece
         {
             try
             {
-                ClicarBotao(CadastroDeFornecedorModel.BotaoPesquisar);
+                ClicarBotaoName(CadastroDeFornecedorModel.BotaoPesquisar);
             }
             catch (Exception exception)
             {

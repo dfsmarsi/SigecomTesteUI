@@ -22,10 +22,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
             AcessarOpcaoSubMenu(CadastroDeTabelaDePrecoModel.BotaoSubMenu);
 
         private void ClicarNoBotaoNovo() =>
-            ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoBotaoNovo);
+            ClicarBotaoName(CadastroDeTabelaDePrecoModel.ElementoBotaoNovo);
 
         public void ClicarNoBotaoAplicar() =>
-            ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoAplicarRegra);
+            ClicarBotaoName(CadastroDeTabelaDePrecoModel.ElementoAplicarRegra);
 
         public void AdicionarUmaNovaTabelaDePreco()
         {
@@ -47,6 +47,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
         }
 
         public void ClicarNoBotaoGravar() =>
-            ClicarBotao(CadastroDeTabelaDePrecoModel.ElementoGravar);
+            ClicarBotaoName(CadastroDeTabelaDePrecoModel.ElementoGravar);
     }
 }

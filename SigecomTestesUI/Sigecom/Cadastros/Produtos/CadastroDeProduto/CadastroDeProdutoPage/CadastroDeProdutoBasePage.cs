@@ -35,7 +35,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         {
             try
             {
-                ClicarBotao(CadastroDeProdutoModel.BotaoNovoCadastro);
+                ClicarBotaoName(CadastroDeProdutoModel.BotaoNovoCadastro);
             }
             catch (Exception exception)
             {

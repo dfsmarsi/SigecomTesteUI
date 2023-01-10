@@ -28,11 +28,10 @@ namespace SigecomTestesUI.Login
 
         public bool Logar()
         {
-            EsperarAcaoEmSegundos(3);
             if (!ValidarAberturaDeTela(LoginPageModel.ElementoTelaLogin)) return false;
 
             PreencherLogin();
-            EsperarAcaoEmSegundos(6);
+            EsperarAcaoEmSegundos(3);
             DriverService.TrocarJanela();
             return ValidarAberturaDeTela(LoginPageModel.ElementoTelaPrincipal);
         }

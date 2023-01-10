@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Config
             }
         }
 
-        public bool ClicarBotao(string nomeDoBotao)
+        public bool ClicarBotaoName(string nomeDoBotao)
         {
             try
             {
