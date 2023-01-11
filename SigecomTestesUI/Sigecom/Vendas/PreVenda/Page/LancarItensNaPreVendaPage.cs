@@ -22,7 +22,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            LancarProduto(LancarItemNaPreVendaModel.PesquisarItem);
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItemId);
+            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemReferencia);
+            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemCodInterno);
+            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemMultiplicadorDeQuantidade);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Qtde"), LancarItemNaPreVendaModel.QuantidadeDeProduto);
             AvancarVenda();
             DriverService.DigitarNoCampoId(PreVendaModel.ElementoDeObservação, LancarItemNaPreVendaModel.Observacao);

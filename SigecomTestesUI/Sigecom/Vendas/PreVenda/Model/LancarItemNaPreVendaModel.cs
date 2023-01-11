@@ -8,10 +8,12 @@
         public static string PesquisarItemReferencia => "ref teste";
         public static string PesquisarItemMultiplicadorDeQuantidade => "1*1";
         public static string QuantidadeDeProduto => "5,00";
+        public static string LancarValorDaEntrega => "5";
         public static string Observacao => "TESTE";
         public static string QuantidadeNoItemPreVenda => "5";
         public static string DescontoNoItemPreVenda => "1";
         public static string ValorTotalParaGerarTroco => "40,00";
+        public static string ValorTotalComFrete => "R$15,00";
         public static string ItemComDescontoNoPreVenda => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPreVenda => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNoPreVenda => "5,25";

@@ -22,6 +22,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.Injection
                 containerBuilder.RegisterType<DarDescontoNaPreVendaTeste>();
                 containerBuilder.RegisterType<VoltarNaPreVendaComEscPage>();
                 containerBuilder.RegisterType<VoltarNaPreVendaComEscTeste>();
+                containerBuilder.RegisterType<MarcarEntregaComFreteNaPreVendaPage>();
+                containerBuilder.RegisterType<MarcarEntregaComFreteNaPreVendaTeste>();
             }
             catch (Exception exception)
             {

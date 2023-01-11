@@ -133,6 +133,15 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void DarDuploCliqueNoBotaoId(string nomeBotao)
+        {
+            var botaoEncontrado = _driver.FindElementByAccessibilityId(nomeBotao);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(botaoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+        }
+
         public void CliqueNoElementoDaGridComVarios(string nomeColuna, string nome)
         {
             var campoDaGrid = 0;
