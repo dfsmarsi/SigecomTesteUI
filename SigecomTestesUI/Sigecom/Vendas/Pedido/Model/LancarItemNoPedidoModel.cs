@@ -11,7 +11,6 @@
         public static string Observacao => "TESTE";
         public static string DescontoNoItemPedido => "1";
         public static string ValorTotalParaGerarTroco => "40,00";
-
         public static string ItemComDescontoNoPedido => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPedido => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNoPedido => "5,25";

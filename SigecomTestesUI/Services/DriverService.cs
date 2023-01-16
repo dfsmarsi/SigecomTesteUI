@@ -80,6 +80,22 @@ namespace SigecomTestesUI.Services
             _driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
+        public void FecharTelaDePreVisualizar()
+        {
+            TrocarJanela();
+            ValidarElementoExistentePorNome("Pré-visualizar");
+            ClicarBotaoName("Fechar");
+            _driver.SwitchTo().Window(_driver.WindowHandles[0]);
+        }
+
+        public void FecharTelaDeImpressaoTermica()
+        {
+            TrocarJanela();
+            ClicarBotaoName("Fechar");
+            var allWindowHandles = _driver.WindowHandles;
+            _driver.SwitchTo().Window(allWindowHandles[1]);
+        }
+
         public void DigitarNoCampoId(string idElemento, string texto) => 
             _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);
 
@@ -127,6 +143,15 @@ namespace SigecomTestesUI.Services
         public void DarDuploCliqueNoBotaoName(string nomeBotao)
         {
             var botaoEncontrado = _driver.FindElementByName(nomeBotao);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(botaoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+        }
+
+        public void DarDuploCliqueNoBotaoId(string nomeBotao)
+        {
+            var botaoEncontrado = _driver.FindElementByAccessibilityId(nomeBotao);
             var acao = new Actions(_driver);
             acao.MoveToElement(botaoEncontrado);
             acao.DoubleClick();

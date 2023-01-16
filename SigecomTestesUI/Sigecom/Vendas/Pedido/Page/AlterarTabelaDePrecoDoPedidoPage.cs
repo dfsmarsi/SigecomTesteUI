@@ -24,10 +24,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             ClicarNaOpcaoDoSubMenu();
             LancarProduto(LancarItemNoPedidoModel.PesquisarItemId);
             DriverService.SelecionarItemComboBoxSemEnter(PedidoModel.ElementoDoComboDaTabelaDePreco,3);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Total"), LancarItemNoPedidoModel.ValorUnitarioDoPrimeiroProdutoNoPedido);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PedidoModel.CampoDaGridDeTotalDoProduto), LancarItemNoPedidoModel.ValorUnitarioDoPrimeiroProdutoNoPedido);
             DriverService.SelecionarItemComboBoxSemEnter(PedidoModel.ElementoDoComboDaTabelaDePreco, 4);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PedidoModel.CampoDaGridDeTotalDoProduto), LancarItemNoPedidoModel.ValorUnitarioDoPrimeiroProdutoNoPedido);
             LancarProduto(LancarItemNoPedidoModel.PesquisarItemIdDoSegundoProdutoNoPedido);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Total", "1"), LancarItemNoPedidoModel.ValorUnitarioDoSegundoProdutoNoPedido);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao(PedidoModel.CampoDaGridDeTotalDoProduto, "1"), LancarItemNoPedidoModel.ValorUnitarioDoSegundoProdutoNoPedido);
             AvancarVenda();
             AvancarVenda();
             DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
