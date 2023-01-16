@@ -158,14 +158,30 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void CliqueNoElementoDaGridComVariosEVerificar(string nomeColuna, string nome)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
+
+            var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
+            RealizarAcaoDeClicarNoCampoDaGrid(nome, elementoDaGridComName);
+            Assert.AreEqual(elementoDaGridComName.Text, nome);
+        }
+
         public void CliqueNoElementoDaGridComVarios(string nomeColuna, string nome)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
+
+            RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterElementoDaGridComName(nomeColuna, campoDaGrid));
+        }
+
+        private int ObterPosicaoDoElementoNaGrid(string nomeColuna, string nome)
         {
             var campoDaGrid = 0;
 
-            while (!ObterElementoDaGridComName(nomeColuna, campoDaGrid).Text.Equals(nome)) 
+            while (!ObterElementoDaGridComName(nomeColuna, campoDaGrid).Text.Equals(nome))
                 campoDaGrid++;
 
-            RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterElementoDaGridComName(nomeColuna, campoDaGrid));
+            return campoDaGrid;
         }
 
         private WindowsElement ObterElementoDaGridComName(string nomeColuna, int campoDaGrid) => 

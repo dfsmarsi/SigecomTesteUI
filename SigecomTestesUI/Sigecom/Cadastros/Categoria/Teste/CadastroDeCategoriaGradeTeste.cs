@@ -11,7 +11,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {
     public class CadastroDeCategoriaTeste: BaseTestes
     {
-        [Test(Description = "Cadastro de Categoria Somente Campos Obrigatorios")]
+        [Test(Description = "Cadastro de Categoria grade Somente Campos Obrigatorios")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
@@ -19,13 +19,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("Cadastros")]
         [AllureSubSuite("Categoria")]
-        public void CadastrarCategoriaSomenteCamposObrigatorios()
+        public void CadastrarCategoriaGradeSomenteCamposObrigatorios()
         {
             var dadosDeCategoria = new Dictionary<string, string>
             {
                 {"Grupo", "GRUPO GRADE"},
                 {"Markup", "0"}
             };
+            
+            // Arange
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var resolveCadastroDeCategoriaPage = beginLifetimeScope.Resolve<Func<DriverService, Dictionary<string, string>, CadastroDeCategoriaPage>>();
             var cadastroDeCategoriaPage = resolveCadastroDeCategoriaPage(DriverService, dadosDeCategoria);

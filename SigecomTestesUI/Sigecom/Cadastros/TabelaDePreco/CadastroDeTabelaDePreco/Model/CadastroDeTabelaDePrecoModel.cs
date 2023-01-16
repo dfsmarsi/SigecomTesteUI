@@ -18,6 +18,7 @@
         public static string ElementoRegra => "cbxRegra";
         public static string ElementoPorcentagem => "txtPorcentagem";
         public static string ElementoPesquisaDeProduto => "scProdutos";
+        public static string BotaoVoltarParaTelaDeCadastro => "picVoltar";
 
         public static string NomeDescricaoTodosOsProdutos => "CADASTRAR TABELA DE PRECO TESTE TODOS PRODUTOS";
         public static string NomeDescricaoUnicoProduto => "CADASTRAR TABELA DE PRECO TESTE UNICO PRODUTO";
