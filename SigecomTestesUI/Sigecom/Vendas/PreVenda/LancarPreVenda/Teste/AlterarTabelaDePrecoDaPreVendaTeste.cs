@@ -1,12 +1,12 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Vendas.PreVenda.Page;
-using System;
+using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page;
 
-namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.Teste
+namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Teste
 {
     public class AlterarTabelaDePrecoDaPreVendaTeste: BaseTestes
     {

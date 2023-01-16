@@ -4,9 +4,9 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Vendas.PreVenda.Page;
+using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page;
 
-namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.Teste
+namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Teste
 {
     public class DarDescontoNaPreVendaTeste: BaseTestes
     {

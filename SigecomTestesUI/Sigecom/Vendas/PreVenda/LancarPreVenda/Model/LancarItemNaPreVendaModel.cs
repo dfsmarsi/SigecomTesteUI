@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.Model
+﻿namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model
 {
     public class LancarItemNaPreVendaModel
     {

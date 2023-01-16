@@ -1,10 +1,10 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using System;
-using SigecomTestesUI.Sigecom.Vendas.PreVenda.Page;
-using SigecomTestesUI.Sigecom.Vendas.PreVenda.Teste;
+using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page;
+using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Teste;
 
-namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.Injection
+namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Injection
 {
     public class PreVendaInjection : Module
     {

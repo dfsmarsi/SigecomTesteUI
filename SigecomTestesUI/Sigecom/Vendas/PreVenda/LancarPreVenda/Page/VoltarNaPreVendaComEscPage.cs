@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Sigecom.Vendas.PreVenda.Model;
+using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.Page
+namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
 {
     public class VoltarNaPreVendaComEscPage: PageObjectModel
     {

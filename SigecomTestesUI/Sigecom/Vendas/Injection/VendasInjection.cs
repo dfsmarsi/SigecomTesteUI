@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Injection;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.Injection;
-using SigecomTestesUI.Sigecom.Vendas.PreVenda.Injection;
+using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Injection;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Injection
 {
