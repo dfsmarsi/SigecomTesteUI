@@ -48,5 +48,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
 
         public void ClicarNoBotaoGravar() =>
             ClicarBotaoName(CadastroDeTabelaDePrecoModel.ElementoGravar);
+
+        public void VoltarTelaDeCadastro() => 
+            DriverService.ClicarBotaoId(CadastroDeTabelaDePrecoModel.BotaoVoltarParaTelaDeCadastro);
+
+        public void VerificarSeFoiCadastradoCorretamente(string nome) => DriverService.CliqueNoElementoDaGridComVariosEVerificar("Descrição", nome);
     }
 }

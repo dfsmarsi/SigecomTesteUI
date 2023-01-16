@@ -27,7 +27,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
             DriverService.SelecionarItemComboBoxSemEnter(PdvModel.ElementoTabelaDePreco, 3);
             VerificarValorDaTabelaDoPrimeiroProduto();
-            DriverService.SelecionarItemComboBoxSemEnter(PdvModel.ElementoTabelaDePreco, 4);
+            DriverService.SelecionarItemComboBoxSemEnter(PdvModel.ElementoTabelaDePreco, 1);
             VerificarValorDaTabelaDoPrimeiroProduto();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemIdDoSegundoProduto, Keys.Enter);
             VerificarValorDaTabelaDoSegundoProduto();

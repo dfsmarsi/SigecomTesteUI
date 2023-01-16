@@ -4,6 +4,7 @@ using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
+using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Model;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 
@@ -27,7 +28,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
             cadastroDeTabelaDePrecoBasePage.AdicionarUmaNovaTabelaDePreco();
             cadastroDeTabelaDePrecoBasePage.PreencherCamposDaTabela(QuantidadeDeProdutoParaTabelaDePreco.TodosOsProdutos);
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoAplicar();
-            cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoGravar(); 
+            cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoGravar();
+            cadastroDeTabelaDePrecoBasePage.VoltarTelaDeCadastro();
+            cadastroDeTabelaDePrecoBasePage.VerificarSeFoiCadastradoCorretamente(CadastroDeTabelaDePrecoModel.NomeDescricaoTodosOsProdutos);
         }
     }
 }
