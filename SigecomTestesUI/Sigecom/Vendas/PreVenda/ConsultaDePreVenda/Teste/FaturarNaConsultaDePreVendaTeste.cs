@@ -8,21 +8,21 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Teste
 {
-    public class EditarNoConsultaDePreVendaTeste: BaseTestesComTelaAbertaNoFechar
+    public class FaturarNaConsultaDePreVendaTeste: BaseTestesComTelaAbertaNoFechar
     {
-        [Test(Description = "Editar pré venda pela consulta de pré venda")]
+        [Test(Description = "Faturar pré venda pela consulta de pré venda")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("Editar")]
+        [AllureSuite("Faturar")]
         [AllureSubSuite("Consulta de pré venda")]
-        public void EditarPreVemdaPelaConsultaDePreVenda()
+        public void FaturarPreVendaPelaConsultaDePreVenda()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var editarNoConsultaDePreVendaPage = beginLifetimeScope.Resolve<Func<DriverService, EditarNoConsultaDePreVendaPage>>()(DriverService);
-            editarNoConsultaDePreVendaPage.RealizarFluxoDeEditarNaConsultaDePreVenda();
+            var faturarNaConsultaDePreVendaPage = beginLifetimeScope.Resolve<Func<DriverService, FaturarNaConsultaDePreVendaPage>>()(DriverService);
+            faturarNaConsultaDePreVendaPage.RealizarFluxoDeFaturarNaConsultaDePreVenda();
         }
     }
 }

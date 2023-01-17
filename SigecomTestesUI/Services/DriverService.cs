@@ -164,6 +164,13 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
+            var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
+            Assert.AreEqual(elementoDaGridComName.Text, nome);
+        }
+
         public void CliqueNoElementoDaGridComVariosEVerificar(string nomeColuna, string nome)
         {
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);

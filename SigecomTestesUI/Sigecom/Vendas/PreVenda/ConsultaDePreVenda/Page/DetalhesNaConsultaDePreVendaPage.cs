@@ -5,9 +5,9 @@ using SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Model;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
 {
-    public class DetalhesNoConsultaDePreVendaPage: PageObjectModel
+    public class DetalhesNaConsultaDePreVendaPage: PageObjectModel
     {
-        public DetalhesNoConsultaDePreVendaPage(DriverService driver) : base(driver)
+        public DetalhesNaConsultaDePreVendaPage(DriverService driver) : base(driver)
         {
         }
 

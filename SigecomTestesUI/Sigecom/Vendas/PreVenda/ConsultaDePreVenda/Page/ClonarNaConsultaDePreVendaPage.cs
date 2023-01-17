@@ -1,13 +1,13 @@
 ﻿using SigecomTestesUI.Config;
+using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Model;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
-using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
 {
-    public class EditarNoConsultaDePreVendaPage:PageObjectModel
+    public class ClonarNaConsultaDePreVendaPage: PageObjectModel
     {
-        public EditarNoConsultaDePreVendaPage(DriverService driver) : base(driver)
+        public ClonarNaConsultaDePreVendaPage(DriverService driver) : base(driver)
         {
         }
 
@@ -17,16 +17,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ConsultaDePreVendaModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeEditarNaConsultaDePreVenda()
+        public void RealizarFluxoDeClonarNaConsultaDePreVenda()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaEditarPreVenda);
-            DriverService.DigitarNoCampoName(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto, PreVendaModel.ValorUnitarioNaPreVenda);
+            ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaClonarPreVenda);
+            DriverService.EditarItensNaGridComDuploClick(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto, PreVendaModel.ValorTotalParaClonarPreVenda);
             AvancarPreVenda();
             AvancarPreVenda();
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
+            DriverService.CliqueNoElementoDaGridComVariosEVerificar(PreVendaModel.CampoDaGridDeValorTotalDaTelaDeConsultaDePreVenda, PreVendaModel.VerificarValorTotalParaClonarPreVenda);
         }
 
         private void AvancarPreVenda()

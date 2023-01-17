@@ -12,8 +12,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Injection
         {
             try
             {
-                containerBuilder.RegisterType<EditarNoConsultaDePreVendaPage>();
-                containerBuilder.RegisterType<EditarNoConsultaDePreVendaTeste>();
+                containerBuilder.RegisterType<EditarNaConsultaDePreVendaPage>();
+                containerBuilder.RegisterType<EditarNaConsultaDePreVendaTeste>();
+                containerBuilder.RegisterType<DetalhesNaConsultaDePreVendaPage>();
+                containerBuilder.RegisterType<DetalhesNaConsultaDePreVendaTeste>();
+                containerBuilder.RegisterType<ClonarNaConsultaDePreVendaPage>();
+                containerBuilder.RegisterType<ClonarNaConsultaDePreVendaTeste>();
+                containerBuilder.RegisterType<EstornarNaConsultaDePreVendaPage>();
+                containerBuilder.RegisterType<EstornarNaConsultaDePreVendaTeste>();
+                containerBuilder.RegisterType<FaturarNaConsultaDePreVendaPage>();
+                containerBuilder.RegisterType<FaturarNaConsultaDePreVendaTeste>();
             }
             catch (Exception exception)
             {
