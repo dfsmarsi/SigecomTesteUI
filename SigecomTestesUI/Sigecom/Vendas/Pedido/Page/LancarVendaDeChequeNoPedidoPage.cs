@@ -31,7 +31,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             LancarProduto(LancarItemNoPedidoModel.PesquisarItemId);
             AvancarVenda();
             AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
+            DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.GridDeFormaDePagamento, 3);
             FecharTelaDeVendaComEsc();
         }

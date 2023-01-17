@@ -24,10 +24,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             LancarProduto(LancarItemNoPedidoModel.PesquisarItem);
             AvancarVenda();
             AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
-            DriverService.DigitarNoCampoId(PedidoModel.GridDeFormaDePagamento, "1");
+            DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PedidoModel.GridDeFormaDePagamento, "1");
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PedidoModel.ElementoTotalPagamento, "5", Keys.Enter);
-            DriverService.DigitarNoCampoId(PedidoModel.GridDeFormaDePagamento, "3");
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PedidoModel.GridDeFormaDePagamento, "3");
             FecharTelaDeVendaComEsc();
         }
 

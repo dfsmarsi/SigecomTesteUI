@@ -121,6 +121,12 @@ namespace SigecomTestesUI.Services
             return elemento;
         }
 
+        public void RealizarSelecaoDaAcao(string idElemento, int posicao) => 
+            RealizarSelecaoDaFormaDePagamento(idElemento, posicao);
+
+        public void RealizarSelecaoDaFormaDePagamentoSemEnter(string idElemento, string texto) =>
+            DigitarNoCampoId(idElemento, texto);
+
         public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
         {
             var elemento = _driver.FindElementByAccessibilityId(idElemento);

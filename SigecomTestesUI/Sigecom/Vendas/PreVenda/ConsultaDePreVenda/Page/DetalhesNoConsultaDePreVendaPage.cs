@@ -17,17 +17,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ConsultaDePreVendaModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeEditarNaConsultaDePreVenda()
+        public void RealizarFluxoDeDetalhesNaConsultaDePreVenda()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaDetalhesPreVenda);
             Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoValorTotal), DetalhesNaConsultaDePreVendaModel.ValorDoValorTotal);
             Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoValorTotal), DetalhesNaConsultaDePreVendaModel.ValorDoValorTotal);
-            FecharTelaDeDetalhesVenda();  
+            FecharTelaDeDetalhesDaPreVenda();  
         }
 
-        private void FecharTelaDeDetalhesVenda()
+        private void FecharTelaDeDetalhesDaPreVenda()
             => DriverService.ClicarBotaoId(DetalhesNaConsultaDePreVendaModel.BotaoDeFecharTelaDeDetalhes);
     }
 }

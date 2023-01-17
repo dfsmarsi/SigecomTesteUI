@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             LancarProduto(LancarItemNoPedidoModel.PesquisarItemId);
             AvancarVenda();
             AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
+            DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
             DriverService.DigitarNoCampoId(PedidoModel.GridDeFormaDePagamento, "1");
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PedidoModel.ElementoTotalPagamento,
                 LancarItemNoPedidoModel.ValorTotalParaGerarTroco, Keys.Enter);

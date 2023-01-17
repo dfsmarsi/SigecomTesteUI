@@ -23,13 +23,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             ClicarNaOpcaoDoSubMenu();
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaEditarPreVenda);
             DriverService.DigitarNoCampoName(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto, PreVendaModel.ValorUnitarioNaPreVenda);
-            AvancarVenda();
-            AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.AcoesDaPreVenda, 2);
+            AvancarPreVenda();
+            AvancarPreVenda();
+            DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
         }
 
-        private void AvancarVenda()
+        private void AvancarPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
     }
 }

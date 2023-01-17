@@ -29,7 +29,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             AvancarVenda();
             DriverService.DigitarNoCampoId(PedidoModel.ElementoDeObservação, LancarItemNoPedidoModel.Observacao);
             AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
+            DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.GridDeFormaDePagamento, 1);
             FecharTelaDeVendaComEsc();
         }

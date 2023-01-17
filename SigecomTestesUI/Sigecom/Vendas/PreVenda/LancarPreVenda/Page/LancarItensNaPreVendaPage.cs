@@ -28,21 +28,21 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItemCodInterno);
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItemMultiplicadorDeQuantidade);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Qtde"), LancarItemNaPreVendaModel.QuantidadeDeProduto);
-            AvancarVenda();
+            AvancarNaPreVenda();
             DriverService.DigitarNoCampoId(PreVendaModel.ElementoDeObservação, LancarItemNaPreVendaModel.Observacao);
-            AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.AcoesDaPreVenda, 2);
+            AvancarNaPreVenda();
+            DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDePreVendaComEsc();
         }
 
         private void LancarProduto(string textoDePesquisa)
             => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
 
-        private void AvancarVenda()
+        private void AvancarNaPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
 
-        private void FecharTelaDeVendaComEsc() =>
+        private void FecharTelaDePreVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }
