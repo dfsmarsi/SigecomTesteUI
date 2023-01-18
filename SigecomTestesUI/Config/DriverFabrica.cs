@@ -4,7 +4,7 @@ using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Diagnostics;
 
-namespace SigecomTesteUI.Config
+namespace SigecomTestesUI.Config
 {
     public class DriverFabrica
     {
@@ -13,24 +13,21 @@ namespace SigecomTesteUI.Config
 
         public WindowsDriver<WindowsElement> CriarDriver()
         {
-            WindowsDriver<WindowsElement> driver;
-
             AbrirWinAppDriver();
 
-            AppiumOptions appOptions = new AppiumOptions();
+            var appOptions = new AppiumOptions();
             appOptions.AddAdditionalCapability("app", AppId);
-            driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
+            var driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
             Assert.NotNull(driver);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-
 
             return driver;
         }
 
         public void AbrirWinAppDriver()
         {
-            string WinAppDriver = @"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe";
+            const string WinAppDriver = @"C:\Program Files (x86)\Windows Application Driver\\WinAppDriver.exe";
             Process.Start(WinAppDriver);
         }
     }

@@ -1,17 +1,14 @@
 ﻿using SigecomTestesUI.Config;
-using SigecomTestesUI.Services;
 using System.Collections.Generic;
+using OpenQA.Selenium;
+using SigecomTestesUI.Login.Model;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Login
 {
     public class LoginPage : PageObjectModel
     {
-
-        private string _elementoUsuario = "txtUsuario";
-        private string _elementoSenha = "txtSenha";
-        private string _elementoTelaLogin = "Sistema de gestão comercial";
-        private string _elementoTelaPrincipal = "SIGECOM - Sistema de Gestão Comercial - SISTEMASBR";
-        private Dictionary<string, string> _dadosLogin
+        private readonly Dictionary<string, string> _dadosDoLogin
             = new Dictionary<string, string>{
                 {"Usuario","Douglas"},
                 {"Senha", "123"}
@@ -21,33 +18,22 @@ namespace SigecomTestesUI.Login
 
         public void PreencherLogin()
         {
-            DriverService.DigitarNoCampoId(_elementoUsuario, _dadosLogin["Usuario"]);
-            DriverService.DigitarNoCampoEnterId(_elementoSenha, _dadosLogin["Senha"]);
+            DriverService.DigitarNoCampoId(LoginPageModel.ElementoUsuario, _dadosDoLogin["Usuario"]);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LoginPageModel.ElementoSenha, _dadosDoLogin["Senha"], Keys.Enter);
         }
 
-        public bool ValidarPreenchimentoFormLogin()
-        {
-            if (DriverService.ObterValorElementoId(_elementoUsuario) != _dadosLogin["Usuario"])
-                return false;
-            if (DriverService.ObterValorElementoId(_elementoSenha) != _dadosLogin["Senha"])
-                return false;
-
-            return true;
-        }
+        public bool ValidarPreenchimentoFormLogin() =>
+            DriverService.ObterValorElementoId(LoginPageModel.ElementoUsuario) == _dadosDoLogin["Usuario"] &&
+            DriverService.ObterValorElementoId(LoginPageModel.ElementoSenha) == _dadosDoLogin["Senha"];
 
         public bool Logar()
         {
-            if (!ValidarAberturaDeTela(_elementoTelaLogin))
-                return false;
+            if (!ValidarAberturaDeTela(LoginPageModel.ElementoTelaLogin)) return false;
 
             PreencherLogin();
-            EsperarAcaoEmSegundos(2);
+            EsperarAcaoEmSegundos(3);
             DriverService.TrocarJanela();
-
-            if(!ValidarAberturaDeTela(_elementoTelaPrincipal))
-                return false;
-
-            return true;
+            return ValidarAberturaDeTela(LoginPageModel.ElementoTelaPrincipal);
         }
     }
 }
