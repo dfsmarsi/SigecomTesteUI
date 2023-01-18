@@ -20,6 +20,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Injection
                 containerBuilder.RegisterType<AplicarDescontoNaCondicionalTeste>();
                 containerBuilder.RegisterType<VoltarNaCondicionalComEscPage>();
                 containerBuilder.RegisterType<VoltarNaCondicionalComEscTeste>();
+                containerBuilder.RegisterType<AlterarTabelaDePrecoDaCondicionalPage>();
+                containerBuilder.RegisterType<AlterarTabelaDePrecoDaCondicionalTeste>();
             }
             catch (Exception exception)
             {
