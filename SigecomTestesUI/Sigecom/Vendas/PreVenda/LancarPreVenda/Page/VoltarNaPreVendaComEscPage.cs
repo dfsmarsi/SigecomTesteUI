@@ -24,11 +24,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItem);
             AvancarPreVenda();
             AvancarPreVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.AcoesDaPreVenda, 2);
-            DriverService.DigitarNoCampoId(PreVendaModel.GridDeFormaDePagamento, "1");
+            SelecionarAcaoDaPreVenda();
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PreVendaModel.GridDeFormaDePagamento, "1");
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoTotalPagamento, "5", Keys.Enter);
-            DriverService.DigitarNoCampoId(PreVendaModel.GridDeFormaDePagamento, "3");
-            FecharTelaDeVendaComEsc();
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PreVendaModel.GridDeFormaDePagamento, "3");
+            FecharTelaDePreVendaComEsc();
         }
 
         private void LancarProduto(string textoDePesquisa)
@@ -37,15 +37,21 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         private void AvancarPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
 
-        private void FecharTelaDeVendaComEsc()
+        private void SelecionarAcaoDaPreVenda() => 
+            DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
+
+        private void FecharTelaDePreVendaComEsc()
         {
-            DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
-            DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
+            FecharJanelaComEsc();
+            FecharJanelaComEsc();
             ClicarBotaoName(", Sim (ENTER)");
-            DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
-            DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
-            DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
+            FecharJanelaComEsc();
+            FecharJanelaComEsc();
+            FecharJanelaComEsc();
             ClicarBotaoName(", Sim (ENTER)");
         }
+
+        private void FecharJanelaComEsc() => 
+            DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }

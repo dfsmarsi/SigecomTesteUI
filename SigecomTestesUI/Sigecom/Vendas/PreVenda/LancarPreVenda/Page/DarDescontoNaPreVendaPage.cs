@@ -28,9 +28,9 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PreVendaModel.CampoDaGridDeTotalDoProduto), LancarItemNaPreVendaModel.ItemComDescontoNoPreVenda);
             AvancarPreVenda();
             AvancarPreVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.AcoesDaPreVenda, 2);
+            DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDePreVendaComEsc();
         }
 
         private void LancarProduto(string textoDePesquisa)
@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         private void AvancarPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
 
-        private void FecharTelaDeVendaComEsc() =>
+        private void FecharTelaDePreVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }

@@ -80,22 +80,6 @@ namespace SigecomTestesUI.Services
             _driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
-        public void FecharTelaDePreVisualizar()
-        {
-            TrocarJanela();
-            ValidarElementoExistentePorNome("Pré-visualizar");
-            ClicarBotaoName("Fechar");
-            _driver.SwitchTo().Window(_driver.WindowHandles[0]);
-        }
-
-        public void FecharTelaDeImpressaoTermica()
-        {
-            TrocarJanela();
-            ClicarBotaoName("Fechar");
-            var allWindowHandles = _driver.WindowHandles;
-            _driver.SwitchTo().Window(allWindowHandles[1]);
-        }
-
         public void DigitarNoCampoId(string idElemento, string texto) => 
             _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);
 
@@ -120,6 +104,12 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(teclaDeAtalho);
             return elemento;
         }
+
+        public void RealizarSelecaoDaAcao(string idElemento, int posicao) => 
+            RealizarSelecaoDaFormaDePagamento(idElemento, posicao);
+
+        public void RealizarSelecaoDaFormaDePagamentoSemEnter(string idElemento, string texto) =>
+            DigitarNoCampoId(idElemento, texto);
 
         public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
         {
@@ -156,6 +146,13 @@ namespace SigecomTestesUI.Services
             acao.MoveToElement(botaoEncontrado);
             acao.DoubleClick();
             acao.Perform();
+        }
+
+        public void VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
+            var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
+            Assert.AreEqual(elementoDaGridComName.Text, nome);
         }
 
         public void CliqueNoElementoDaGridComVariosEVerificar(string nomeColuna, string nome)

@@ -31,7 +31,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao(PedidoModel.CampoDaGridDeTotalDoProduto, "1"), LancarItemNoPedidoModel.ValorUnitarioDoSegundoProdutoNoPedido);
             AvancarVenda();
             AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
+            DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.GridDeFormaDePagamento, 1);
             FecharTelaDeVendaComEsc();
         }

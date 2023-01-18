@@ -23,13 +23,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             ClicarNaOpcaoDoSubMenu();
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItem);
             ClicarBotaoName(PreVendaModel.ElementoNameRemoverProduto);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDePreVendaComEsc();
         }
 
         private void LancarProduto(string textoDePesquisa)
             => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
 
-        private void FecharTelaDeVendaComEsc() =>
+        private void FecharTelaDePreVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }

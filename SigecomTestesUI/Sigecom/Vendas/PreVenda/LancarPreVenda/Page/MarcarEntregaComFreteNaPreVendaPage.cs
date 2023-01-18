@@ -30,15 +30,15 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             ClicarBotaoName(PreVendaModel.AtalhoDeEditarClienteDaPreVenda);
             SelecionarCliente();
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItemId);
-            AvancarVenda();
+            AvancarNaPreVenda();
             ClicarBotaoName(PreVendaModel.ElementoNameSelecionar);
             DriverService.DarDuploCliqueNoBotaoId(PreVendaModel.ElementoDeTaxaEntrega);
             DriverService.DigitarNoCampoId(PreVendaModel.ElementoDeTaxaEntrega, LancarItemNaPreVendaModel.LancarValorDaEntrega);
-            AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.AcoesDaPreVenda, 4);
+            AvancarNaPreVenda();
+            DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 4);
             Assert.AreEqual(DriverService.ObterValorElementoId(PreVendaModel.ValorTotalParaPagarAoFaturar), LancarItemNaPreVendaModel.ValorTotalComFrete);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDePreVendaComEsc();
         }
 
         private void SelecionarCliente()
@@ -50,10 +50,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         private void LancarProduto(string textoDePesquisa)
             => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
 
-        private void AvancarVenda()
+        private void AvancarNaPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
 
-        private void FecharTelaDeVendaComEsc() =>
+        private void FecharTelaDePreVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }
