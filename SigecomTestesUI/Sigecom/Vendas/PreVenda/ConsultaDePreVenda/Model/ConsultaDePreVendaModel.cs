@@ -11,7 +11,5 @@
         public static string BotaoDaDetalhesPreVenda => "Detalhes";
         public static string BotaoDaEstornarPreVenda => "Estornar";
         public static string BotaoDaFaturarPreVenda => "Faturar";
-        public static string AcoesDoPedido => "gridAcoes";
-        public static string GridDeFormaDePagamento => "gridFormasPagamento";
     }
 }

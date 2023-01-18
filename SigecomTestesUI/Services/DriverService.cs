@@ -80,13 +80,6 @@ namespace SigecomTestesUI.Services
             _driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
-        public void TrocarJanelaNumero1()
-        {
-            Thread.Sleep(TimeSpan.FromSeconds(3));
-            var allWindowHandles = _driver.WindowHandles;
-            _driver.SwitchTo().Window(allWindowHandles[1]);
-        }
-
         public void DigitarNoCampoId(string idElemento, string texto) => 
             _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);
 
