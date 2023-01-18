@@ -22,8 +22,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaDetalhesPreVenda);
-            Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoValorTotal), DetalhesNaConsultaDePreVendaModel.ValorDoValorTotal);
-            Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoValorTotal), DetalhesNaConsultaDePreVendaModel.ValorDoValorTotal);
+            Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoValorDaVenda), DetalhesNaConsultaDePreVendaModel.ValorDoValorTotalComDesconto);
+            Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoDesconto), DetalhesNaConsultaDePreVendaModel.ValorDoDesconto);
             FecharTelaDeDetalhesDaPreVenda();  
         }
 

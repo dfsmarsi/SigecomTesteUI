@@ -80,18 +80,9 @@ namespace SigecomTestesUI.Services
             _driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
-        public void FecharTelaDePreVisualizar()
+        public void TrocarJanelaNumero1()
         {
-            TrocarJanela();
-            ValidarElementoExistentePorNome("Pré-visualizar");
-            ClicarBotaoName("Fechar");
-            _driver.SwitchTo().Window(_driver.WindowHandles[0]);
-        }
-
-        public void FecharTelaDeImpressaoTermica()
-        {
-            TrocarJanela();
-            ClicarBotaoName("Fechar");
+            Thread.Sleep(TimeSpan.FromSeconds(3));
             var allWindowHandles = _driver.WindowHandles;
             _driver.SwitchTo().Window(allWindowHandles[1]);
         }
