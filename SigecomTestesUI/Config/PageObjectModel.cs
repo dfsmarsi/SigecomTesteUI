@@ -8,25 +8,16 @@ namespace SigecomTestesUI.Config
     {
         protected readonly DriverService DriverService;
 
-        protected PageObjectModel(DriverService driver)
-        {
-            DriverService = driver;
-        }
+        protected PageObjectModel(DriverService driver) => DriverService = driver;
 
-        public bool ValidarAberturaDeTela(string nomeTela)
-        {
-            if (DriverService.ObterValorElementoName(nomeTela) != nomeTela)
-                return false;
-
-            return true;
-        }
+        public bool ValidarAberturaDeTela(string nomeTela) => 
+            DriverService.ObterValorElementoName(nomeTela).Equals(nomeTela);
 
         public bool AcessarOpcaoMenu(string menu)
         {
             try
             {
                 DriverService.DarDuploCliqueNoBotaoName(menu);
-
                 return true;
             }
             catch (Exception)
@@ -34,12 +25,12 @@ namespace SigecomTestesUI.Config
                 return false;
             }
         }
+
         public bool AcessarOpcaoSubMenu(string opcaoSubMenu)
         {
             try
             {
                 DriverService.ClicarBotaoName(opcaoSubMenu);
-
                 return true;
             }
             catch (Exception)
@@ -48,14 +39,26 @@ namespace SigecomTestesUI.Config
             }
         }
 
-        public void EsperarAcaoEmSegundos(int tempoEmSegundos)
+        public bool ClicarBotaoName(string nomeDoBotao)
         {
-            Thread.Sleep(TimeSpan.FromSeconds(tempoEmSegundos));
+            try
+            {
+                DriverService.ClicarBotaoName(nomeDoBotao);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void FecharSistema()
-        {
+        public void EsperarAcaoEmSegundos(int tempoEmSegundos) => 
+            Thread.Sleep(TimeSpan.FromSeconds(tempoEmSegundos));
+
+        public void FecharSistema() => 
             DriverService.Dispose();
-        }
+
+        public void FecharSistemaComTelaAberta() =>
+            DriverService.DisposeComTelaAberta();
     }
 }

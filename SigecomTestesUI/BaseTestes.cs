@@ -1,7 +1,12 @@
+using Autofac;
 using NUnit.Allure.Core;
 using NUnit.Framework;
+using OpenQA.Selenium.Appium.Windows;
+using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Login;
 using SigecomTestesUI.Services;
+using System;
 
 namespace SigecomTestesUI
 {
@@ -14,20 +19,22 @@ namespace SigecomTestesUI
 
         public BaseTestes()
         {
-            DriverService = new DriverService();
-            _loginPage = new LoginPage(DriverService);
+            ControleDeInjecaoAutofac.ConstruirContainerComDependencias();
+            var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+
+            var resolveDriveFabrica = beginLifetimeScope.Resolve<Func<WindowsDriver<WindowsElement>, DriverService>>();
+            DriverService = resolveDriveFabrica(beginLifetimeScope.Resolve<DriverFabrica>().CriarDriver());
+
+            var resolveLoginPage = beginLifetimeScope.Resolve<Func<DriverService, LoginPage>>();
+            _loginPage = resolveLoginPage(DriverService);
         }
 
         [SetUp]
-        public void Setup()
-        {
+        public void Setup() => 
             Assert.IsTrue(_loginPage.Logar());
-        }
 
         [TearDown]
-        public void TearDown()
-        {
+        public void TearDown() =>
             _loginPage.FecharSistema();
-        }
     }
 }
