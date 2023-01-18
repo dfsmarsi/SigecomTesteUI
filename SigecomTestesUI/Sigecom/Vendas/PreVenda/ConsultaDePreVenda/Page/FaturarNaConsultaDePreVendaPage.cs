@@ -34,7 +34,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto,
                 LancarItemNaPreVendaModel.PesquisarItemId, Keys.Enter);
             DriverService.EditarItensNaGridComDuploClick(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto,
-                PreVendaModel.ValorTotalParaFaturarPreVenda);
+                LancarItemNaPreVendaModel.ValorTotalParaFaturarPreVenda);
             AvancarNaPreVenda();
             AvancarNaPreVenda();
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
@@ -45,7 +45,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
         {
             DriverService.CliqueNoElementoDaGridComVariosEVerificar(
                 PreVendaModel.CampoDaGridDeValorTotalDaTelaDeConsultaDePreVenda,
-                PreVendaModel.VerificarValorTotalParaFaturarPreVenda);
+                LancarItemNaPreVendaModel.VerificarValorTotalParaFaturarPreVenda);
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaFaturarPreVenda);
             AvancarNaPreVenda();
             AvancarNaPreVenda();
@@ -55,7 +55,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             EsperarAcaoEmSegundos(1);
             AcessarOpcaoSubMenu(PedidoModel.ElementoTelaConsultaDeVenda);
             DriverService.VerificarSePossuiOValorNaGrid(PreVendaModel.CampoDaGridDeValorTotalDaTelaDeConsultaDePreVenda,
-                PreVendaModel.VerificarValorTotalParaFaturarPreVenda);
+                LancarItemNaPreVendaModel.VerificarValorTotalParaFaturarPreVenda);
         }
 
         private void AvancarNaPreVenda()
