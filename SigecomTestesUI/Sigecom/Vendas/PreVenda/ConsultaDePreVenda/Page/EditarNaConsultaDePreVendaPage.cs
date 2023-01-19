@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaEditarPreVenda);
-            DriverService.DigitarNoCampoName(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto, PreVendaModel.ValorUnitarioNaPreVenda);
+            DriverService.DigitarNoCampoName(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto, LancarItemNaPreVendaModel.ValorUnitarioParaEditarPreVenda);
             AvancarPreVenda();
             AvancarPreVenda();
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);

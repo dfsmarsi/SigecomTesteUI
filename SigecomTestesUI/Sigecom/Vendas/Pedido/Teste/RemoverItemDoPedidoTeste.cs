@@ -21,8 +21,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Teste
         public void RemoverItensDoPedido()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var removerItemDoPdvPage = beginLifetimeScope.Resolve<Func<DriverService, RemoverItemDoPedidoPage>>()(DriverService);
-            removerItemDoPdvPage.RealizarFluxoDeRemoverItemDoPedido();
+            var removerItemDoPedidoPage = beginLifetimeScope.Resolve<Func<DriverService, RemoverItemDoPedidoPage>>()(DriverService);
+            removerItemDoPedidoPage.RealizarFluxoDeRemoverItemDoPedido();
         }
     }
 }
