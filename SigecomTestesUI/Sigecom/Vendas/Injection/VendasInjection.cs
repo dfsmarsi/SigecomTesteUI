@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Injection;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Injection;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Injection;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.Injection;
@@ -16,6 +17,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Injection
             containerBuilder.RegisterModule<PreVendaInjection>();
             containerBuilder.RegisterModule<ConsultaDaPreVendaInjection>();
             containerBuilder.RegisterModule<CondicionalInjection>();
+            containerBuilder.RegisterModule<ConsultaDeCondicionalInjection>();
         }
     }
 }

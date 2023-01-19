@@ -8,6 +8,8 @@
         public static string BotaoDaNovaCondicional=> "Nova condicional";
         public static string BotaoDaAlterarCondicional => "Alterar";
         public static string BotaoDeComprarParcialCondicional => "Comprar parcial";
-        public static string BotaoDeComprarTudoCondicional => "Comprar tudo";
+        public static string BotaoDeComprarTodosCondicional => "Comprar tudo";
+        public static string CampoQuantidadeCondicional => "Qtde condicional";
+        public static string CampoQuantidadeComprada => "Qtde comprada";
     }
 }

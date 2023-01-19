@@ -25,5 +25,7 @@
         public static string VerificarValorTotalParaClonarCondicional => "R$11,11";
         public static string ValorTotalParaFaturarCondicional => "22,22";
         public static string VerificarValorTotalParaFaturarCondicional => "R$22,22";
+        public static string QuantidadeCompradaParaCompraParcial => "3";
+
     }
 }
