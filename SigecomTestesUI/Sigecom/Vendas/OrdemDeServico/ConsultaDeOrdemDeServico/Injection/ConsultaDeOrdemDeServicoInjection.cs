@@ -1,8 +1,8 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico.Page;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico.Teste;
 using System;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Page;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Teste;
 
 namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico.Injection
 {
@@ -12,8 +12,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico
         {
             try
             {
-                containerBuilder.RegisterType<CadastrarObjetoPage>();
-                containerBuilder.RegisterType<CadastrarObjetoTeste>();
+                containerBuilder.RegisterType<EditarNaConsultaDeOrdemDeServicoPage>();
+                containerBuilder.RegisterType<EditarNaConsultaDeOrdemDeServicoTeste>();
+                containerBuilder.RegisterType<FaturarNaConsultaDeOrdemDeServicoPage>();
+                containerBuilder.RegisterType<FaturarNaConsultaDeOrdemDeServicoTeste>();
             }
             catch (Exception exception)
             {
