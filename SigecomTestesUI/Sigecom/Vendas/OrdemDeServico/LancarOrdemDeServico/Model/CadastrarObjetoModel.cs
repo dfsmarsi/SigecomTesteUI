@@ -1,9 +1,7 @@
-﻿namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Model
+﻿namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model
 {
     public class CadastrarObjetoModel
     {
-        public static string BotaoMenuCadastro => "Vendas";
-        public static string BotaoSubMenu => "Controle de objetos";
         public static string ElementoTelaDeControleDeObjetos => "Controle de objetos";
         public static string ElementoDoObjeto => "scObjeto";
         public static string ElementoDaMarca => "scMarca";

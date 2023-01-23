@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Model
+﻿namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model
 {
     public class LancarItensNaOrdemDeServicoModel
     {

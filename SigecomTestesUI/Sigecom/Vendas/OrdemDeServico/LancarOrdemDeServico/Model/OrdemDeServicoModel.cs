@@ -1,4 +1,4 @@
-﻿namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Model
+﻿namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model
 {
     public class OrdemDeServicoModel
     {
@@ -7,6 +7,7 @@
         public static string ElementoTelaDeOrdemDeServico => "Ordem de serviço";
         public static string GridDeFormaDePagamento => "gridFormasPagamento";
         public static string AcoesDaOrdemDeServico => "gridAcoes";
+        public static string GridDeCaracteristicas => "...";
         public static string ElementoPesquisaDeProduto => "scProdutos";
         public static string ElementoDeObservação => "txtObservacao";
         public static string ElementoDoComboDaTabelaDePreco => "cbxTabelaPreco";

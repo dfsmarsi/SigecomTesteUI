@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Model;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page
+namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Page
 {
     public class AlterarTabelaDePrecoNaOrdemDeServicoPage: PageObjectModel
     {

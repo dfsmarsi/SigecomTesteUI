@@ -1,12 +1,12 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page;
-using System;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Page;
 
-namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Teste
+namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Teste
 {
     public class VoltarNaOrdemDeServicoComEscTeste: BaseTestes
     {

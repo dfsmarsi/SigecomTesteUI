@@ -1,10 +1,10 @@
 ﻿using System;
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Teste;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Page;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Teste;
 
-namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Injection
+namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Injection
 {
     public class OrdemDeServicoInjection : Module
     {
@@ -22,6 +22,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Injection
                 containerBuilder.RegisterType<AlterarTabelaDePrecoNaOrdemDeServicoTeste>();
                 containerBuilder.RegisterType<VoltarNaOrdemDeServicoComEscPage>();
                 containerBuilder.RegisterType<VoltarNaOrdemDeServicoComEscTeste>();
+                containerBuilder.RegisterType<CadastrarObjetoPage>();
+                containerBuilder.RegisterType<CadastrarObjetoTeste>();
+                containerBuilder.RegisterType<CaracteristicasDaOrdemDeServicoPage>();
+                containerBuilder.RegisterType<CaracteristicasDaOrdemDeServicoTeste>();
             }
             catch (Exception exception)
             {

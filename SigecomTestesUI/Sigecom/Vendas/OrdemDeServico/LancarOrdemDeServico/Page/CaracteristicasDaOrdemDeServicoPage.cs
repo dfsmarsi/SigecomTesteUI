@@ -1,23 +1,23 @@
 ﻿using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Model;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page
+namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Page
 {
-    public class VoltarNaOrdemDeServicoComEscPage : PageObjectModel
+    public class CaracteristicasDaOrdemDeServicoPage: PageObjectModel
     {
-        public VoltarNaOrdemDeServicoComEscPage(DriverService driver) : base(driver)
+        public CaracteristicasDaOrdemDeServicoPage(DriverService driver) : base(driver)
         {
         }
 
         private void ClicarNaOpcaoDoMenu() =>
-           AcessarOpcaoMenu(OrdemDeServicoModel.BotaoMenuCadastro);
+            AcessarOpcaoMenu(OrdemDeServicoModel.BotaoMenuCadastro);
 
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(OrdemDeServicoModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeVoltarNaOrdemDeServicoComEsc()
+        public void RealizarFluxoDeLancarCaracteristicasNaOrdemDeServico()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
@@ -30,9 +30,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoConfirmarDoPesquisar);
             LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemId);
             AvancarNaOrdemDeServico();
+            DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
+            DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 1);
+            DriverService.ClicarNoCheckEditaDaGrid(OrdemDeServicoModel.GridDeCaracteristicas);
+            DriverService.RealizarSelecaoDaAcao(OrdemDeServicoModel.AcoesDaOrdemDeServico, 2);
             FecharTelaDeOrdemDeServicoComEsc();
-            FecharTelaDeOrdemDeServicoComEsc();
-            ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoSim);
         }
 
         private void LancarProduto(string textoDePesquisa)

@@ -1,23 +1,19 @@
-﻿using System;
-using Autofac;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Model;
+using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
-namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page
+namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Page
 {
-    public class LancarItensNaOrdemDeServicoPage: PageObjectModel
+    public class AplicarDescontoNaOrdemDeServicoPage: PageObjectModel
     {
-        public LancarItensNaOrdemDeServicoPage(DriverService driver) : base(driver)
+        public AplicarDescontoNaOrdemDeServicoPage(DriverService driver) : base(driver)
         {
         }
 
         private void ClicarNaOpcaoDoMenu() =>
-            AcessarOpcaoMenu(OrdemDeServicoModel.BotaoMenuCadastro);
+           AcessarOpcaoMenu(OrdemDeServicoModel.BotaoMenuCadastro);
 
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(OrdemDeServicoModel.BotaoSubMenu);
@@ -25,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page
         public void RealizarFluxoDeLancarItensNaOrdemDeServico()
         {
             ClicarNaOpcaoDoMenu();
-            ClicarNaOpcaoDoSubMenu(); 
+            ClicarNaOpcaoDoSubMenu();
             ClicarBotaoName(OrdemDeServicoModel.BotaoAtalhosOrdemDeServico);
             ClicarBotaoName(OrdemDeServicoModel.AtalhoDePesquisarObjetoDaOrdemDeServico);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastrarObjetoModel.ElementoDoObjeto, CadastrarObjetoModel.ValorDoObjeto, Keys.Enter);
@@ -33,15 +29,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastrarObjetoModel.ElementoDaMarca, CadastrarObjetoModel.ValorDaMarca, Keys.Enter);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoCadastrar);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoConfirmarDoPesquisar);
-            ClicarBotaoName(OrdemDeServicoModel.BotaoAtalhosOrdemDeServico);
-            ClicarBotaoName(OrdemDeServicoModel.AtalhoDeEditarClienteDaOrdemDeServico);
-            SelecionarCliente();
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItem);
             LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemId);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemReferencia);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemCodInterno);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemMultiplicadorDeQuantidade);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
+            DriverService.EditarItensNaGridComDuploClick(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
+            DriverService.EditarItensNaGridComDuploClick(OrdemDeServicoModel.CampoDaGridDeDescontoDoProduto, LancarItensNaOrdemDeServicoModel.DescontoNoItemOrdemDeServico);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrdemDeServicoModel.CampoDaGridDeTotalDoProduto), LancarItensNaOrdemDeServicoModel.ItemComDescontoNaOrdemDeServico);
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 1);
@@ -50,12 +41,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrdemDeServicoModel.ElementoDeObservação, LancarItensNaOrdemDeServicoModel.Observacao, Keys.Enter);
             DriverService.RealizarSelecaoDaAcao(OrdemDeServicoModel.AcoesDaOrdemDeServico, 2);
             FecharTelaDeOrdemDeServicoComEsc();
-        }
-
-        private void SelecionarCliente()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
         }
 
         private void LancarProduto(string textoDePesquisa)
