@@ -35,7 +35,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrdemDeServicoModel.CampoDaGridDeTotalDoProduto), LancarItensNaOrdemDeServicoModel.ItemComDescontoNaOrdemDeServico);
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
-            DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 1);
+            DriverService.SelecionarItemComboBox(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 1);
             DriverService.RealizarSelecaoDaAcao(OrdemDeServicoModel.AcoesDaOrdemDeServico, 2);
             FecharTelaDeOrdemDeServicoComEsc();
         }
