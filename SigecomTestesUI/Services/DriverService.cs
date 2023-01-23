@@ -230,6 +230,13 @@ namespace SigecomTestesUI.Services
             DigitarEIrParaProximoCampoDaGrid(texto, elementoEncontrado);
         }
 
+        public void ClicarNoCheckEditDaGrid(string nomeCampo)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
+            elementoEncontrado.Click();
+            elementoEncontrado.SendKeys(Keys.Enter);
+        }
+
         public void EditarItensNaGrid(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
