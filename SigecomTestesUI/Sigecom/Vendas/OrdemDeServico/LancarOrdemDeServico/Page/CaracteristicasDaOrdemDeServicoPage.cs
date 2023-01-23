@@ -32,7 +32,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 1);
-            DriverService.ClicarNoCheckEditaDaGrid(OrdemDeServicoModel.GridDeCaracteristicas);
+            DriverService.ClicarNoCheckEditDaGrid(OrdemDeServicoModel.GridDeCaracteristicas);
             DriverService.RealizarSelecaoDaAcao(OrdemDeServicoModel.AcoesDaOrdemDeServico, 2);
             FecharTelaDeOrdemDeServicoComEsc();
         }

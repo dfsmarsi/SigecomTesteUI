@@ -20,13 +20,11 @@
         public static string AtalhoDePesquisarObjetoDaOrdemDeServico => ", [ F7 ] - Pesquisar objeto";
         public static string ElementoNameDoAvancar => ", Avançar";
         public static string ElementoNameDoConfirmarDoPesquisar => ", Confirmar (F5)";
-        public static string ElementoNameDoConfirmar => ", Confirmar (ENTER)";
         public static string ElementoNameDoCadastrar => ",  Cadastrar (F6)";
         public static string ElementoNameDoSim => ", Sim (ENTER)";
         public static string CampoDaGridParaRemoverProduto => "Remover produto da lista. row 0";
         public static string CampoDaGridDeTotalDoProduto => "Total";
         public static string CampoDaGridDeDescontoDoProduto => "Desconto (R$)";
         public static string CampoDaGridDeQuantidadeDoProduto => "Qtde";
-        public static string CampoDaGridDeValorUnitarioDoProduto => "Unitário";
     }
 }

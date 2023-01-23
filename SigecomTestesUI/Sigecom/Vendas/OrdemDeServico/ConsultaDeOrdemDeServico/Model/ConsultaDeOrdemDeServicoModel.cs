@@ -7,7 +7,6 @@
         public static string ElementoTelaDeOrdemDeServico => "Consulta de ordens de serviço";
         public static string BotaoDaNovaOrdemDeServico => "Nova OS";
         public static string BotaoDaAtualizarOrdemDeServico => "Atualizar";
-
         public static string BotaoDaAlterarOrdemDeServico => "Alterar";
         public static string BotaoDeFaturarDaOrdemDeServico => "Faturar";
     }
