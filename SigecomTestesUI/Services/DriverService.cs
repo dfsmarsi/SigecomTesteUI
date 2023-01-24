@@ -250,6 +250,16 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
+        public void EditarItensComDuploClickName(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = _driver.FindElementByName(nomeCampo);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(elementoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+            elementoEncontrado.SendKeys(texto);
+        }
+
         public void EditarItensNaGridComDuploClick(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
