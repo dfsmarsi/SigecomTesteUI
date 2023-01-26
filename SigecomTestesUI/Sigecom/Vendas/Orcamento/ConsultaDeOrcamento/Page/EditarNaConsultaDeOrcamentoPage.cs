@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaAlterarOrcamento);
-            DriverService.EditarItensNaGridComDuploClick(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNoOrcamentoModel.QuantidadeDeProduto);
+            DriverService.EditarItensNaGridComDuploClickComTab(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNoOrcamentoModel.QuantidadeDeProduto);
             AvancarNoOrcamento();
             DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDeTipoDoOrcamento, 1);
             DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDoStatusDoOrcamento, 1);

@@ -14,6 +14,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Injection
             {
                 containerBuilder.RegisterType<LancarItensNoOrcamentoPage>();
                 containerBuilder.RegisterType<LancarItensNoOrcamentoTeste>();
+                containerBuilder.RegisterType<RemoverItemDoOrcamentoPage>();
+                containerBuilder.RegisterType<RemoverItemDoOrcamentoTeste>();
+                containerBuilder.RegisterType<AlterarTabelaDePrecoNoOrcamentoPage>();
+                containerBuilder.RegisterType<AlterarTabelaDePrecoNoOrcamentoTeste>();
+                containerBuilder.RegisterType<AplicarDescontoNoOrcamentoPage>();
+                containerBuilder.RegisterType<AplicarDescontoNoOrcamentoTeste>();
             }
             catch (Exception exception)
             {

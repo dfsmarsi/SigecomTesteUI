@@ -31,14 +31,15 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
             AvancarNoOrcamento();
             DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDeTipoDoOrcamento, 1);
             DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDoStatusDoOrcamento, 1);
-            DriverService.EditarItensComDuploClickName(OrcamentoModel.ElementoDaPrevisaoDeEntrega, LancarItensNoOrcamentoModel.PrevisaoDeEntrega);
-            DriverService.EditarItensComDuploClickName(OrcamentoModel.ElementoDoPrazoDeEntrega, LancarItensNoOrcamentoModel.PrazoDeEntrega);
-            DriverService.EditarItensComDuploClickName(OrcamentoModel.ElementoDaValidadeProposta, LancarItensNoOrcamentoModel.ValidadeProposta);
-            DriverService.EditarItensComDuploClickName(OrcamentoModel.ElementoDaGarantiaNacional, LancarItensNoOrcamentoModel.GarantiaNacional);
-            DriverService.EditarItensComDuploClickName(OrcamentoModel.ElementoDaFormaDePagamento, LancarItensNoOrcamentoModel.FormaDePagamento);
-            DriverService.EditarItensComDuploClickName(OrcamentoModel.ElementoDaCondicoesDePagamento, LancarItensNoOrcamentoModel.CondicoesDePagamento);
-            DriverService.EditarItensComDuploClickName(OrcamentoModel.ElementoDoValorFrete, LancarItensNoOrcamentoModel.ValorFrete);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrcamentoModel.ElementoDeObservação, LancarItensNoOrcamentoModel.Observacao, Keys.Enter);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDaPrevisaoDeEntrega, LancarItensNoOrcamentoModel.PrevisaoDeEntrega);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDoPrazoDeEntrega, LancarItensNoOrcamentoModel.PrazoDeEntrega);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDaValidadeProposta, LancarItensNoOrcamentoModel.ValidadeProposta);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDaGarantiaNacional, LancarItensNoOrcamentoModel.GarantiaNacional);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDaFormaDePagamento, LancarItensNoOrcamentoModel.FormaDePagamento);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDaCondicoesDePagamento, LancarItensNoOrcamentoModel.CondicoesDePagamento);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDoValorFrete, LancarItensNoOrcamentoModel.ValorFrete);
+            DriverService.DigitarNoCampoId(OrcamentoModel.ElementoDeObservação, LancarItensNoOrcamentoModel.Observacao);
+            AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
             FecharTelaDeOrcamentoComEsc();
         }

@@ -25,7 +25,7 @@
         public static string ElementoNameDoConfirmarDoPesquisar => ", Confirmar (F5)";
         public static string ElementoNameDoCadastrar => ",  Cadastrar (F6)";
         public static string ElementoNameDoSim => ", Sim (ENTER)";
-        public static string CampoDaGridParaRemoverProduto => "Remover produto da lista. row 0";
+        public static string CampoDaGridParaRemoverProduto => "Remover produto row 0";
         public static string CampoDaGridDeTotalDoProduto => "Total";
         public static string CampoDaGridDeDescontoDoProduto => "Desconto (R$)";
         public static string CampoDaGridDeQuantidadeDoProduto => "Qtde";
