@@ -36,12 +36,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         {
             try
             {
-                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, CadastroDeProdutoGradeModel.CodigoDeBarras);
-                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, CadastroDeProdutoGradeModel.TamanhoDaGrade);
-                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, CadastroDeProdutoGradeModel.CorDaGrade);
-                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaEstoqueDaGrade, CadastroDeProdutoGradeModel.EstoqueDaGrade);
-                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaCustoDaGrade, CadastroDeProdutoGradeModel.CustoDaGrade);
-                _driverService.DigitarItensNaGridDeProdutoGrade(CadastroDeProdutoModel.ElementoGridColunaMarkupDaGrade, CadastroDeProdutoGradeModel.MarkupDaGrade);
+                _driverService.DigitarNovosItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, CadastroDeProdutoGradeModel.CodigoDeBarras);
+                _driverService.DigitarNovosItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, CadastroDeProdutoGradeModel.TamanhoDaGrade);
+                _driverService.DigitarNovosItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, CadastroDeProdutoGradeModel.CorDaGrade);
+                _driverService.DigitarNovosItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaEstoqueDaGrade, CadastroDeProdutoGradeModel.EstoqueDaGrade);
+                _driverService.DigitarNovosItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCustoDaGrade, CadastroDeProdutoGradeModel.CustoDaGrade);
+                _driverService.DigitarNovosItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaMarkupDaGrade, CadastroDeProdutoGradeModel.MarkupDaGrade);
                 return true;
             }
             catch (Exception)

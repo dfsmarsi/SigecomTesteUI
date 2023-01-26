@@ -28,7 +28,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarCondicionalNaConsulta();
             ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaAlterarCondicional);
-            DriverService.EditarItensNaGridComDuploClick(CondicionalModel.CampoDaGridDeValorUnitarioDoProduto, LancarItensNaCondicionalModel.ValorUnitarioParaEditarCondicional);
+            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeValorUnitarioDoProduto, LancarItensNaCondicionalModel.ValorUnitarioParaEditarCondicional);
             AvancarNaCondicional();
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
@@ -43,7 +43,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             SelecionarCliente();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto,
                 LancarItensNaCondicionalModel.PesquisarItemId, Keys.Enter);
-            DriverService.EditarItensNaGridComDuploClick(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
+            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
                 LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();
             AvancarNaCondicional();

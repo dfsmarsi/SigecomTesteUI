@@ -41,7 +41,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             SelecionarCliente();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto,
                 LancarItensNaCondicionalModel.PesquisarItemId, Keys.Enter);
-            DriverService.EditarItensNaGridComDuploClick(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
+            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
                 LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();
             AvancarNaCondicional();
@@ -53,7 +53,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDeComprarParcialCondicional);
             Assert.Greater(DriverService.ObterValorElementoName(ConsultaDeCondicionalModel.CampoQuantidadeCondicional),
                 DriverService.ObterValorElementoName(ConsultaDeCondicionalModel.CampoQuantidadeComprada));
-            DriverService.EditarItensNaGridComDuploClick(ConsultaDeCondicionalModel.CampoQuantidadeComprada,
+            DriverService.EditarItensNaGridComDuploClickComTab(ConsultaDeCondicionalModel.CampoQuantidadeComprada,
                 LancarItensNaCondicionalModel.QuantidadeCompradaParaCompraParcial);
             Assert.Greater(DriverService.ObterValorElementoName(ConsultaDeCondicionalModel.CampoQuantidadeCondicional),
                 DriverService.ObterValorElementoName(ConsultaDeCondicionalModel.CampoQuantidadeComprada));

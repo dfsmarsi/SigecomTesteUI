@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             ClicarNaOpcaoDoSubMenu();
             LancarProduto(LancarItemNoPedidoModel.PesquisarItem);
             DriverService.DigitarNoCampoName(PedidoModel.CampoDaGridDeQuantidadeDoProduto, LancarItemNoPedidoModel.QuantidadeDeProduto);
-            DriverService.EditarItensNaGrid(PedidoModel.CampoDaGridDeDescontoDoProduto, LancarItemNoPedidoModel.DescontoNoItemPedido);
+            DriverService.EditarItensNaGridComDuploClickComEnter(PedidoModel.CampoDaGridDeDescontoDoProduto, LancarItemNoPedidoModel.DescontoNoItemPedido);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PedidoModel.CampoDaGridDeTotalDoProduto), LancarItemNoPedidoModel.ItemComDescontoNoPedido);
             AvancarVenda();
             AvancarVenda();

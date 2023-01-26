@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(OrdemDeServicoModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarItensNaOrdemDeServico()
+        public void RealizarFluxoDeAplicarDescontoNaOrdemDeServico()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
@@ -30,8 +30,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoCadastrar);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoConfirmarDoPesquisar);
             LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemId);
-            DriverService.EditarItensNaGridComDuploClick(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
-            DriverService.EditarItensNaGridComDuploClick(OrdemDeServicoModel.CampoDaGridDeDescontoDoProduto, LancarItensNaOrdemDeServicoModel.DescontoNoItemOrdemDeServico);
+            DriverService.EditarItensNaGridComDuploClickComTab(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
+            DriverService.EditarItensNaGridComDuploClickComTab(OrdemDeServicoModel.CampoDaGridDeDescontoDoProduto, LancarItensNaOrdemDeServicoModel.DescontoNoItemOrdemDeServico);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrdemDeServicoModel.CampoDaGridDeTotalDoProduto), LancarItensNaOrdemDeServicoModel.ItemComDescontoNaOrdemDeServico);
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);

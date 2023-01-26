@@ -40,7 +40,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             SelecionarCliente();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto,
                 LancarItensNaCondicionalModel.PesquisarItemId, Keys.Enter);
-            DriverService.EditarItensNaGridComDuploClick(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
+            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
                 LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();
             AvancarNaCondicional();

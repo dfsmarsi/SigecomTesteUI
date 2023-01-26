@@ -63,7 +63,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
         {
             try
             {
-                _driverService.EditarItensNaGridComDuploClick(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, EdicaoDeProdutoGradeModel.CodigoDeBarras);
+                _driverService.EditarItensNaGridComDuploClickComTab(CadastroDeProdutoModel.ElementoGridColunaCodigoDeBarrasDaGrade, EdicaoDeProdutoGradeModel.CodigoDeBarras);
                 _driverService.EditarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaTamanhoDaGrade, EdicaoDeProdutoGradeModel.TamanhoDaGrade);
                 _driverService.EditarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCorDaGrade, EdicaoDeProdutoGradeModel.CorDaGrade);
                 _driverService.EditarItensNaGrid(CadastroDeProdutoModel.ElementoGridColunaCustoDaGrade, EdicaoDeProdutoGradeModel.CustoDaGrade);

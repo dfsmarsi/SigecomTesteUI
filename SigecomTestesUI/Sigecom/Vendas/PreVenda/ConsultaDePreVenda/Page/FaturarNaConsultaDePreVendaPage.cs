@@ -33,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaNovaPreVenda);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto,
                 LancarItemNaPreVendaModel.PesquisarItemId, Keys.Enter);
-            DriverService.EditarItensNaGridComDuploClick(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto,
+            DriverService.EditarItensNaGridComDuploClickComTab(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto,
                 LancarItemNaPreVendaModel.ValorTotalParaFaturarPreVenda);
             AvancarNaPreVenda();
             AvancarNaPreVenda();

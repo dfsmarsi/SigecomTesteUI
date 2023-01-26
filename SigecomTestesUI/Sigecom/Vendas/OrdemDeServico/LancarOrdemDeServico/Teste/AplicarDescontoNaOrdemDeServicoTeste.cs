@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Tes
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var aplicarDescontoNaOrdemDeServicoPage = beginLifetimeScope.Resolve<Func<DriverService, AplicarDescontoNaOrdemDeServicoPage>>()(DriverService);
-            aplicarDescontoNaOrdemDeServicoPage.RealizarFluxoDeLancarItensNaOrdemDeServico();
+            aplicarDescontoNaOrdemDeServicoPage.RealizarFluxoDeAplicarDescontoNaOrdemDeServico();
         }
     }
 }
