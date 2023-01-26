@@ -1,10 +1,9 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
@@ -25,19 +24,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            var idDoProduto = CriarProdutoTeste();
-            LancarProduto(idDoProduto);
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var condicionalBasePage = beginLifetimeScope.Resolve<Func<DriverService, CondicionalBasePage>>()(DriverService);
+            LancarProduto(condicionalBasePage.RetornarIdDoProduto());
             ClicarBotaoName(CondicionalModel.CampoDaGridParaRemoverProduto);
             FecharTelaDeCondicionalComEsc();
-        }
-
-        private string CriarProdutoTeste()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var pesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>()(DriverService);
-            return pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(beginLifetimeScope, CondicionalModel.ElementoTelaDeCondicional)
-                ? DriverService.PegarValorDaColunaDaGrid("Código")
-                : pesquisaDeProdutoPage.CriarNovoProduto(beginLifetimeScope);
         }
 
         private void LancarProduto(string textoDePesquisa)
