@@ -6,6 +6,7 @@ using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
 using System;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
@@ -26,10 +27,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            var idDoProduto = CriarProdutoTeste();
             ClicarBotaoName(CondicionalModel.BotaoAtalhosCondicional);
             ClicarBotaoName(CondicionalModel.AtalhoDeEditarClienteDaCondicional);
             SelecionarCliente();
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemId);
+            LancarProduto(idDoProduto);
             DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, 3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNaCondicionalModel.ValorUnitarioDoPrimeiroProdutoNaCondicional);
@@ -44,6 +46,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
             FecharTelaDeCondicionalComEsc();
+        }
+
+        private string CriarProdutoTeste()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var pesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>()(DriverService);
+            var idDoProduto = pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(beginLifetimeScope, CondicionalModel.ElementoTelaDeCondicional)
+                ? DriverService.PegarValorDaColunaDaGrid("Código")
+                : pesquisaDeProdutoPage.CriarNovoProduto(beginLifetimeScope);
+            pesquisaDeProdutoPage.FecharJanelaComEsc();
+            return idDoProduto;
         }
 
         private void SelecionarCliente()

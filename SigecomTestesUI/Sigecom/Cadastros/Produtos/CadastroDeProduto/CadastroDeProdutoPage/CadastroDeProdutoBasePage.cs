@@ -31,7 +31,10 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
         public void ClicarNoAtalhoDePesquisarNaTelaPrincipal() =>
             DriverService.AbrirPesquisaComF9(LoginPageModel.ElementoTelaPrincipal);
 
-        private void ClicarNoBotaoNovo()
+        public void ClicarNoAtalhoDePesquisarNaTelasDeVenda(string elementoDaTela) =>
+            DriverService.AbrirPesquisaComF9(elementoDaTela);
+
+        public void ClicarNoBotaoNovo()
         {
             try
             {

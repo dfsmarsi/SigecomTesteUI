@@ -310,7 +310,7 @@ namespace SigecomTestesUI.Services
         public void ConcluirAcaoComEnter(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.Enter);
 
-        private void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
+        public void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
         public void Dispose()

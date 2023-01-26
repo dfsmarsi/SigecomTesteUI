@@ -30,6 +30,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Injection
                 containerBuilder.RegisterType<CadastroDeProdutoServicoPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoCompletoPage>();
                 containerBuilder.RegisterType<CadastroDeProdutoCodigoDeBarrasValidoPage>();
+                containerBuilder.RegisterType<CadastroDeProdutoPesquisaPage>();
             }
             catch (Exception exception)
             {

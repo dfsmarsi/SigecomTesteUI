@@ -1,12 +1,12 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Model;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
+using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
@@ -27,22 +27,20 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarOFluxoDeGerarCondicionalNaConsulta();
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var condicionalBasePage = beginLifetimeScope.Resolve<Func<DriverService, CondicionalBasePage>>()(DriverService);
+            RealizarOFluxoDeGerarCondicionalNaConsulta(condicionalBasePage.RetornarIdDoProduto(), condicionalBasePage);
             EsperarAcaoEmSegundos(1);
             RealizarOCompraParcialNaConsulta();
             FecharTelaDeCondicionalComEsc();
         }
 
-        private void RealizarOFluxoDeGerarCondicionalNaConsulta()
+        private void RealizarOFluxoDeGerarCondicionalNaConsulta(string idDoProduto, CondicionalBasePage condicionalBasePage)
         {
             ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaNovaCondicional);
-            ClicarBotaoName(CondicionalModel.BotaoAtalhosCondicional);
-            ClicarBotaoName(CondicionalModel.AtalhoDeEditarClienteDaCondicional);
-            SelecionarCliente();
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto,
-                LancarItensNaCondicionalModel.PesquisarItemId, Keys.Enter);
-            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
-                LancarItensNaCondicionalModel.QuantidadeDeProduto);
+            condicionalBasePage.AbrirOAtalhoParaSelecionarCliente();
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, idDoProduto, Keys.Enter);
+            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
@@ -60,12 +58,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             AvancarNaCondicional();
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaFormaDePagamento(CondicionalModel.GridDeFormaDePagamento, 1);
-        }
-
-        private void SelecionarCliente()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
         }
 
         private void AvancarNaCondicional()

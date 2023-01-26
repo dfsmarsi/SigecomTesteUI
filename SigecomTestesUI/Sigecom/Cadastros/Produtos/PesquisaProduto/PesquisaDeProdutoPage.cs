@@ -1,18 +1,21 @@
 ﻿using Autofac;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using System;
 using System.Linq;
-using OpenQA.Selenium;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
 {
     public class PesquisaDeProdutoPage : PageObjectModel
     {
-        public PesquisaDeProdutoPage(DriverService driver) : base(driver) { }
+        public PesquisaDeProdutoPage(DriverService driver) : base(driver)
+        {
+        }
 
         public void PesquisarProdutoDoConfirmacaoDeItem(string nomeDoProduto)
         {
@@ -30,6 +33,21 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
         {
             DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto, Keys.Enter);
+        }
+
+        public string CriarNovoProduto(ILifetimeScope beginLifetimeScope)
+        {
+            DriverService.RealizarAcaoDaTeclaDeAtalho(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo, Keys.F2);
+            var cadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>()(DriverService);
+            DriverService.TrocarJanela();
+            cadastroDeProdutoPage.ClicarNoBotaoNovo();
+            cadastroDeProdutoPage.PreencherCamposDoProduto(TipoDeProduto.Pesquisa);
+            cadastroDeProdutoPage.AcessarAba(CadastroDeProdutoModel.AbaImpostos);
+            cadastroDeProdutoPage.PreencherCamposDeImpostos();
+            cadastroDeProdutoPage.Gravar();
+            cadastroDeProdutoPage.FecharJanelaCadastroDeProdutoComEsc();
+            PesquisarProdutoComEnter(PesquisaDeProdutoParaVendasTesteModel.NomeDoProduto);
+            return DriverService.PegarValorDaColunaDaGrid("Código");
         }
 
         public bool VerificarSeExisteProdutoNaGrid(string nomeDoProduto)
@@ -59,16 +77,22 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
 
         public void PesquisarComF9UmProdutoNaTelaDeCadastroDeProduto(ILifetimeScope beginLifetimeScope, out CadastroDeProdutoBasePage cadastroDeProdutoBasePage)
         {
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>();
-            cadastroDeProdutoBasePage = resolveCadastroDeProdutoPage(DriverService);
+            cadastroDeProdutoBasePage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>()(DriverService);
             PesquisarUmProdutoNaTelaDeCadastroDeProduto(cadastroDeProdutoBasePage);
         }
 
         public void PesquisarComF9UmProdutoNaTelaPrincipal(ILifetimeScope beginLifetimeScope)
         {
-            var resolveCadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>();
-            var cadastroDeProdutoPage = resolveCadastroDeProdutoPage(DriverService);
+            var cadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>()(DriverService);
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelaPrincipal();
+        }
+
+        public bool PesquisarComF9UmProdutoNaTelaDeVenda(ILifetimeScope beginLifetimeScope, string telaDeVenda)
+        {
+            var cadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>()(DriverService);
+            cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelasDeVenda(telaDeVenda);
+            PesquisarProdutoComEnter(PesquisaDeProdutoParaVendasTesteModel.NomeDoProduto);
+            return VerificarSeExisteProdutoNaGrid(PesquisaDeProdutoParaVendasTesteModel.NomeDoProduto);
         }
 
         private static void PesquisarUmProdutoNaTelaDeCadastroDeProduto(CadastroDeProdutoBasePage cadastroDeProdutoBasePage)

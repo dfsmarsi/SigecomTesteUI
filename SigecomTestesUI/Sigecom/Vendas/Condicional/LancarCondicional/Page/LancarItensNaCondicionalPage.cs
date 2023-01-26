@@ -5,6 +5,7 @@ using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -26,20 +27,32 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            var idDoProduto = CriarProdutoTeste();
             ClicarBotaoName(CondicionalModel.BotaoAtalhosCondicional);
             ClicarBotaoName(CondicionalModel.AtalhoDeEditarClienteDaCondicional);
             SelecionarCliente();
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItem);
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemId);
+            LancarProduto(idDoProduto);
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItemReferencia);
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItemCodInterno);
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemMultiplicadorDeQuantidade);
+            LancarProduto($"1*{idDoProduto}");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();
             DriverService.DigitarNoCampoId(CondicionalModel.ElementoDeObservação, LancarItensNaCondicionalModel.Observacao);
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
             FecharTelaDeCondicionalComEsc();
+        }
+
+        private string CriarProdutoTeste()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var pesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>()(DriverService);
+            var idDoProduto = pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(beginLifetimeScope, CondicionalModel.ElementoTelaDeCondicional)
+                ? DriverService.PegarValorDaColunaDaGrid("Código")
+                : pesquisaDeProdutoPage.CriarNovoProduto(beginLifetimeScope);
+            pesquisaDeProdutoPage.FecharJanelaComEsc();
+            return idDoProduto;
         }
 
         private void SelecionarCliente()
