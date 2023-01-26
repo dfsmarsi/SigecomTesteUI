@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Model;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Model;
@@ -22,19 +23,18 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
+            RealizarOFluxoDeGerarOrcamentoNaConsulta();
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaAlterarOrcamento);
             DriverService.EditarItensNaGridComDuploClickComTab(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNoOrcamentoModel.QuantidadeDeProduto);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrcamentoModel.CampoDaGridDeTotalDoProduto), LancarItensNoOrcamentoModel.ValorTotalSemDesconto);
             AvancarNoOrcamento();
-            DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDeTipoDoOrcamento, 1);
-            DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDoStatusDoOrcamento, 1);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrcamentoModel.ElementoDaPrevisaoDeEntrega, LancarItensNoOrcamentoModel.PrevisaoDeEntrega, Keys.Enter);
+            AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
             FecharTelaDoOrcamentoComEsc();
             DriverService.FecharJanelaComEsc(OrcamentoModel.ElementoTelaDeOrcamento);
         }
 
-        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta()
+        private void RealizarOFluxoDeGerarOrcamentoNaConsulta()
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
             LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemId);

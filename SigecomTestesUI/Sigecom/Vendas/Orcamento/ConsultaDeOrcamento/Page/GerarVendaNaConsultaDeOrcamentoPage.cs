@@ -22,13 +22,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
+            RealizarOFluxoDeGerarOrcamentoNaConsulta();
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeFaturarDaOrcamento);
             DriverService.RealizarSelecaoDaFormaDePagamento(OrcamentoModel.GridDeFormaDePagamento, 1);
             FecharTelaDoOrcamentoComEsc();
         }
 
-        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta()
+        private void RealizarOFluxoDeGerarOrcamentoNaConsulta()
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
             LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemId);
