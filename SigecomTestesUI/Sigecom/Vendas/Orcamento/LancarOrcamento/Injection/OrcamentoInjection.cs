@@ -20,6 +20,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Injection
                 containerBuilder.RegisterType<AlterarTabelaDePrecoNoOrcamentoTeste>();
                 containerBuilder.RegisterType<AplicarDescontoNoOrcamentoPage>();
                 containerBuilder.RegisterType<AplicarDescontoNoOrcamentoTeste>();
+                containerBuilder.RegisterType<VoltarNoOrcamentoComEscPage>();
+                containerBuilder.RegisterType<VoltarNoOrcamentoComEscTeste>();
             }
             catch (Exception exception)
             {
