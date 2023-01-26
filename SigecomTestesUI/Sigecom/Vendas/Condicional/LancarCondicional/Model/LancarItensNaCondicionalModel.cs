@@ -9,7 +9,7 @@
         public static string PesquisarItemMultiplicadorDeQuantidade => "1*1";
         public static string QuantidadeDeProduto => "5,00";
         public static string Observacao => "TESTE";
-        public static string DescontoNoItemCondicional => "1";
+        public static string DescontoNoItemCondicional => "10";
         public static string ItemComDescontoNaCondicional => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNaCondicional => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNaCondicional => "5,25";

@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
             ClicarBotaoName(ConsultaDeOrdemDeServicoModel.BotaoDaAlterarOrdemDeServico);
-            DriverService.EditarItensNaGridComDuploClick(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
+            DriverService.EditarItensNaGridComDuploClickComTab(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 2);
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 2);
