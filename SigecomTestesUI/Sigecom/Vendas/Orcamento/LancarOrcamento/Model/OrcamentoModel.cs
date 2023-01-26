@@ -19,11 +19,7 @@
         public static string ElementoDaCondicoesDePagamento => "txtCondicoesPgto";
         public static string ElementoDoValorFrete => "txtValorFrete";
         public static string ElementoDeObservação => "txtObservacao";
-        public static string BotaoAtalhosOrcamento => ", Atalhos/Opções - F1";
-        public static string AtalhoDeEditarClienteDoOrcamento => ", [ F2 ] - Inserir cliente";
         public static string ElementoNameDoAvancar => ", Avançar";
-        public static string ElementoNameDoConfirmarDoPesquisar => ", Confirmar (F5)";
-        public static string ElementoNameDoCadastrar => ",  Cadastrar (F6)";
         public static string ElementoNameDoSim => ", Sim (ENTER)";
         public static string CampoDaGridParaRemoverProduto => "Remover produto row 0";
         public static string CampoDaGridDeTotalDoProduto => "Total";
