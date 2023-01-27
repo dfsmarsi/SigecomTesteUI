@@ -1,5 +1,4 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
@@ -7,6 +6,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Model;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page

@@ -3,10 +3,9 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
 using System;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
@@ -28,9 +27,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var condicionalBasePage = beginLifetimeScope.Resolve<Func<DriverService, CondicionalBasePage>>()(DriverService);
-            condicionalBasePage.AbrirOAtalhoParaSelecionarCliente();
-            LancarProduto(condicionalBasePage.RetornarIdDoProduto());
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            var idDoProduto = vendasBasePage.RetornarIdDoProduto();
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
+            LancarProduto(idDoProduto);
             DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, 3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNaCondicionalModel.ValorUnitarioDoPrimeiroProdutoNaCondicional);
@@ -45,12 +45,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
             FecharTelaDeCondicionalComEsc();
-        }
-
-        private void SelecionarCliente()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
         }
 
         private void LancarProduto(string textoDePesquisa)

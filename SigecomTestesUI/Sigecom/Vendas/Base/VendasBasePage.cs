@@ -1,17 +1,18 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
-using System;
 
-namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
+namespace SigecomTestesUI.Sigecom.Vendas.Base
 {
-    public class CondicionalBasePage:PageObjectModel
+    public class VendasBasePage:PageObjectModel, IVendasBasePage
     {
-        public CondicionalBasePage(DriverService driver) : base(driver)
+        public VendasBasePage(DriverService driver) : base(driver)
         {
         }
 

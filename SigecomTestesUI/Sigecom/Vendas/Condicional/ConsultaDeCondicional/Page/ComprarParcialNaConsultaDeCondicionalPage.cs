@@ -3,9 +3,9 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Model;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
-using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page;
 using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -28,17 +28,18 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var condicionalBasePage = beginLifetimeScope.Resolve<Func<DriverService, CondicionalBasePage>>()(DriverService);
-            RealizarOFluxoDeGerarCondicionalNaConsulta(condicionalBasePage.RetornarIdDoProduto(), condicionalBasePage);
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            var idDoProduto = vendasBasePage.RetornarIdDoProduto();
+            RealizarOFluxoDeGerarCondicionalNaConsulta(idDoProduto, vendasBasePage);
             EsperarAcaoEmSegundos(1);
             RealizarOCompraParcialNaConsulta();
             FecharTelaDeCondicionalComEsc();
         }
 
-        private void RealizarOFluxoDeGerarCondicionalNaConsulta(string idDoProduto, CondicionalBasePage condicionalBasePage)
+        private void RealizarOFluxoDeGerarCondicionalNaConsulta(string idDoProduto, IVendasBasePage vendasBasePage)
         {
             ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaNovaCondicional);
-            condicionalBasePage.AbrirOAtalhoParaSelecionarCliente();
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, idDoProduto, Keys.Enter);
             DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();

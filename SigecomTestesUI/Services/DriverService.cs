@@ -148,17 +148,22 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
-        public void VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
+        public bool VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
         {
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
             var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
-            Assert.AreEqual(elementoDaGridComName.Text, nome);
+            return elementoDaGridComName.Text.Equals(nome);
+        }
+
+        public bool VerificarSePossuiOValorNaGrid(string nome)
+        {
+            var driverPageSource = _driver.PageSource;
+            return driverPageSource.Contains(nome);
         }
 
         public void CliqueNoElementoDaGridComVariosEVerificar(string nomeColuna, string nome)
         {
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
-
             var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
             RealizarAcaoDeClicarNoCampoDaGrid(nome, elementoDaGridComName);
             Assert.AreEqual(elementoDaGridComName.Text, nome);
@@ -243,7 +248,7 @@ namespace SigecomTestesUI.Services
             DigitarItensNaGrid(texto, elementoEncontrado);
         }
 
-        private static void DigitarItensNaGrid(string texto, WindowsElement elementoEncontrado)
+        private static void DigitarItensNaGrid(string texto, IWebElement elementoEncontrado)
         {
             elementoEncontrado.SendKeys(texto);
             elementoEncontrado.SendKeys(Keys.Tab);
@@ -252,6 +257,17 @@ namespace SigecomTestesUI.Services
         public void EditarItensComDuploClickName(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName(nomeCampo);
+            SelecionarEEditarCampo(texto, elementoEncontrado);
+        }
+
+        public void EditarItensComDuploClickId(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = _driver.FindElementByAccessibilityId(nomeCampo);
+            SelecionarEEditarCampo(texto, elementoEncontrado);
+        }
+
+        private void SelecionarEEditarCampo(string texto, IWebElement elementoEncontrado)
+        {
             var acao = new Actions(_driver);
             acao.MoveToElement(elementoEncontrado);
             acao.DoubleClick();

@@ -1,5 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using Autofac;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Model;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
@@ -22,7 +26,9 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta(vendasBasePage.RetornarIdDoProduto());
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaAlterarOrcamento);
             DriverService.EditarItensNaGridComDuploClickComTab(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNoOrcamentoModel.QuantidadeDeProduto);
             AvancarNoOrcamento();
@@ -34,10 +40,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
             DriverService.FecharJanelaComEsc(OrcamentoModel.ElementoTelaDeOrcamento);
         }
 
-        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta()
+        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta(string idDoProduto)
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemId);
+            LancarProduto(idDoProduto);
             AvancarNoOrcamento();
             AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);

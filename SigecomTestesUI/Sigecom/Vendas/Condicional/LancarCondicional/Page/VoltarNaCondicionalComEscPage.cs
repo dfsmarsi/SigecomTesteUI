@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
 using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
@@ -25,9 +26,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var condicionalBasePage = beginLifetimeScope.Resolve<Func<DriverService, CondicionalBasePage>>()(DriverService);
-            condicionalBasePage.AbrirOAtalhoParaSelecionarCliente();
-            LancarProduto(condicionalBasePage.RetornarIdDoProduto());
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            var idDoProduto = vendasBasePage.RetornarIdDoProduto();
+            LancarProduto(idDoProduto);
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
             AvancarNaCondicional();
             AvancarNaCondicional();
             FecharTelaDeCondicionalComEsc();

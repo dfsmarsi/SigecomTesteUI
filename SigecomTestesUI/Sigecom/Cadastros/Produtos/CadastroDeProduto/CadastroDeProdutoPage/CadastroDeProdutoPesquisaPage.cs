@@ -22,6 +22,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoNomeProduto, PesquisaDeProdutoParaVendasTesteModel.NomeDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoUnidade, PesquisaDeProdutoParaVendasTesteModel.UnidadeDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCodigoInterno, PesquisaDeProdutoParaVendasTesteModel.CodigoInternoDoProduto);
+                _driverService.EditarItensComDuploClickId(CadastroDeProdutoModel.ElementoEstoque, PesquisaDeProdutoParaVendasTesteModel.Estoque);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoCusto, PesquisaDeProdutoParaVendasTesteModel.CustoDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, PesquisaDeProdutoParaVendasTesteModel.MarkupDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, PesquisaDeProdutoParaVendasTesteModel.ReferenciaDoProduto);
