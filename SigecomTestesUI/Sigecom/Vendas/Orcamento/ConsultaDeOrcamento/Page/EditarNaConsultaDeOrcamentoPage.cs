@@ -26,27 +26,39 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
-            ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaAlterarOrcamento);
-            DriverService.EditarItensNaGridComDuploClickComTab(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNoOrcamentoModel.QuantidadeDeProduto);
-            AvancarNoOrcamento();
-            DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDeTipoDoOrcamento, 1);
-            DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDoStatusDoOrcamento, 1);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrcamentoModel.ElementoDaPrevisaoDeEntrega, LancarItensNoOrcamentoModel.PrevisaoDeEntrega, Keys.Enter);
-            DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
-            FecharTelaDoOrcamentoComEsc();
+            RealizarOFluxoDeGerarOrcamentoNaConsulta();
+            RealizarOFluxoDeAlterarOrcamento();
             DriverService.FecharJanelaComEsc(OrcamentoModel.ElementoTelaDeOrcamento);
         }
 
-        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta()
+        private void RealizarOFluxoDeGerarOrcamentoNaConsulta()
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoNaVenda();
+            LancarProduto();
             AvancarNoOrcamento();
             AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
+        }
+
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoNaVenda();
+        }
+
+        private void RealizarOFluxoDeAlterarOrcamento()
+        {
+            ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaAlterarOrcamento);
+            DriverService.EditarItensNaGridComDuploClickComTab(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto,
+                LancarItensNoOrcamentoModel.QuantidadeDeProduto);
+            AvancarNoOrcamento();
+            DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDeTipoDoOrcamento, 1);
+            DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDoStatusDoOrcamento, 1);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrcamentoModel.ElementoDaPrevisaoDeEntrega,
+                LancarItensNoOrcamentoModel.PrevisaoDeEntrega, Keys.Enter);
+            DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
+            FecharTelaDoOrcamentoComEsc();
         }
 
         private void AvancarNoOrcamento()

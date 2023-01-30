@@ -25,13 +25,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
-            ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeFaturarDaOrcamento);
-            DriverService.RealizarSelecaoDaFormaDePagamento(OrcamentoModel.GridDeFormaDePagamento, 1);
+            RealizarOFluxoDeGerarOrcamentoNaConsulta();
+            RealizarOFluxoDeFaturarOrcamento();
             FecharTelaDoOrcamentoComEsc();
         }
 
-        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta()
+        private void RealizarOFluxoDeGerarOrcamentoNaConsulta()
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
             LancarProduto();
@@ -49,6 +48,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
 
         private void AvancarNoOrcamento()
             => ClicarBotaoName(OrcamentoModel.ElementoNameDoAvancar);
+
+        private void RealizarOFluxoDeFaturarOrcamento()
+        {
+            ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeFaturarDaOrcamento);
+            DriverService.RealizarSelecaoDaFormaDePagamento(OrcamentoModel.GridDeFormaDePagamento, 1);
+        }
 
         private void FecharTelaDoOrcamentoComEsc() =>
             DriverService.FecharJanelaComEsc(ConsultaDeOrcamentoModel.ElementoTelaDoOrcamento);
