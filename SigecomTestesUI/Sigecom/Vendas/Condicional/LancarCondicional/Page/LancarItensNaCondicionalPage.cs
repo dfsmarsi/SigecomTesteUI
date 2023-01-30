@@ -26,22 +26,25 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            var idDoProduto = vendasBasePage.RetornarIdDoProduto();
-            LancarProduto(idDoProduto);
-            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItem);
-            LancarProduto(idDoProduto);
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemReferencia);
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemCodInterno);
-            LancarProduto($"1*{idDoProduto}");
+            LancarProdutoEAtribuirCliente();
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();
             DriverService.DigitarNoCampoId(CondicionalModel.ElementoDeObservação, LancarItensNaCondicionalModel.Observacao);
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
             FecharTelaDeCondicionalComEsc();
+        }
+
+        private void LancarProdutoEAtribuirCliente()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            var idDoProduto = vendasBasePage.LancarProdutoNaVenda();
+            LancarProduto(LancarItensNaCondicionalModel.PesquisarItem);
+            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemReferencia);
+            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemCodInterno);
+            LancarProduto($"1*{idDoProduto}");
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
         }
 
         private void LancarProduto(string textoDePesquisa)

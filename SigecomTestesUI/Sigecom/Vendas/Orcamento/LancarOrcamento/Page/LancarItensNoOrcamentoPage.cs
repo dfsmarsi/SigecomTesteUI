@@ -26,14 +26,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            var idDoProduto = vendasBasePage.RetornarIdDoProduto();
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItem);
-            LancarProduto(idDoProduto);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemReferencia);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemCodInterno);
-            LancarProduto($"1*{idDoProduto}");
+            LancarProduto();
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNoOrcamentoModel.QuantidadeDeProduto);
             AvancarNoOrcamento();
             DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDeTipoDoOrcamento, 1);
@@ -49,6 +42,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
             AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
             FecharTelaDeOrcamentoComEsc();
+        }
+
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            var idDoProduto = vendasBasePage.LancarProdutoNaVenda();
+            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItem);
+            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemReferencia);
+            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemCodInterno);
+            LancarProduto($"1*{idDoProduto}");
         }
 
         private void LancarProduto(string textoDePesquisa)

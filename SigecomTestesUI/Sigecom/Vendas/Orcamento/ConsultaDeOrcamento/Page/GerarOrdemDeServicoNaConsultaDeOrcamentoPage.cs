@@ -27,9 +27,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta(vendasBasePage.RetornarIdDoProduto());
+            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
             ClicarBotaoName("Gerar");
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeGerarOrdemDeServicoDaOrcamento);
             ClicarBotaoName(OrdemDeServicoModel.BotaoAtalhosOrdemDeServico);
@@ -46,17 +44,21 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
             FecharTelaDoOrcamentoComEsc();
         }
 
-        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta(string idDoProduto)
+        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta()
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
-            LancarProduto(idDoProduto);
+            LancarProduto();
             AvancarNoOrcamento();
             AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrcamentoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoNaVenda();
+        }
 
         private void AvancarNoOrcamento()
             => ClicarBotaoName(OrcamentoModel.ElementoNameDoAvancar);
