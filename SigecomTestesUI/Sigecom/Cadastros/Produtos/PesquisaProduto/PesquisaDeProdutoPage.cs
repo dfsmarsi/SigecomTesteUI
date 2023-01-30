@@ -91,6 +91,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
         {
             var cadastroDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoBasePage>>()(DriverService);
             cadastroDeProdutoPage.ClicarNoAtalhoDePesquisarNaTelasDeVenda(telaDeVenda);
+            PesquisarProdutoComEnter(PesquisaDeProdutoParaVendasTesteModel.NomeDoProduto);
             return DriverService.VerificarSePossuiOValorNaGrid("Nome", PesquisaDeProdutoParaVendasTesteModel.NomeDoProduto);
         }
 

@@ -3,6 +3,9 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Diagnostics;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SigecomTestesUI.Login.Model;
 
 namespace SigecomTestesUI.Config
 {
@@ -19,7 +22,6 @@ namespace SigecomTestesUI.Config
             appOptions.AddAdditionalCapability("app", AppId);
             var driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
             Assert.NotNull(driver);
-
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
 
             return driver;

@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 
@@ -12,6 +13,27 @@ namespace SigecomTestesUI.Services
         private readonly WindowsDriver<WindowsElement> _driver;
 
         public DriverService(WindowsDriver<WindowsElement> windowsDriver) => _driver = windowsDriver;
+
+        public bool EsperarAbrirTelaDeLogin(WindowsDriver<WindowsElement> driver, int timeoutInSeconds, string elementoDaTela)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            return wait.Until(condition =>
+            {
+                try
+                {
+                    var elementToBeDisplayed = driver.FindElementByName(elementoDaTela);
+                    return elementToBeDisplayed.Displayed;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return false;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
 
         public void FecharSistema()
         {
