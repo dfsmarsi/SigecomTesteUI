@@ -1,10 +1,9 @@
-﻿using System;
-using Autofac;
-using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
@@ -25,23 +24,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            var idDoProduto = CriarProdutoTeste();
-            LancarProduto(idDoProduto);
+            LancarProduto();
             ClicarBotaoName(CondicionalModel.CampoDaGridParaRemoverProduto);
             FecharTelaDeCondicionalComEsc();
         }
 
-        private string CriarProdutoTeste()
+        private void LancarProduto()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var pesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>()(DriverService);
-            return pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(beginLifetimeScope, CondicionalModel.ElementoTelaDeCondicional)
-                ? DriverService.PegarValorDaColunaDaGrid("Código")
-                : pesquisaDeProdutoPage.CriarNovoProduto(beginLifetimeScope);
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(CondicionalModel.ElementoTelaDeCondicional);
         }
-
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
 
         private void FecharTelaDeCondicionalComEsc() =>
             DriverService.FecharJanelaComEsc(CondicionalModel.ElementoTelaDeCondicional);

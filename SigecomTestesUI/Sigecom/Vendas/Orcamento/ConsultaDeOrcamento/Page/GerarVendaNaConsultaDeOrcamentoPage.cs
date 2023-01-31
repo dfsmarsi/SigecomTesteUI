@@ -1,7 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Model;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
@@ -22,26 +25,35 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
-            ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeFaturarDaOrcamento);
-            DriverService.RealizarSelecaoDaFormaDePagamento(OrcamentoModel.GridDeFormaDePagamento, 1);
+            RealizarOFluxoDeGerarOrcamentoNaConsulta();
+            RealizarOFluxoDeFaturarOrcamento();
             FecharTelaDoOrcamentoComEsc();
         }
 
-        private void RealizarOFluxoDeGerarOrdemDeServicoNaConsulta()
+        private void RealizarOFluxoDeGerarOrcamentoNaConsulta()
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemId);
+            LancarProduto();
             AvancarNoOrcamento();
             AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrcamentoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(ConsultaDeOrcamentoModel.ElementoTelaDoOrcamento);
+        }
 
         private void AvancarNoOrcamento()
             => ClicarBotaoName(OrcamentoModel.ElementoNameDoAvancar);
+
+        private void RealizarOFluxoDeFaturarOrcamento()
+        {
+            ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeFaturarDaOrcamento);
+            DriverService.RealizarSelecaoDaFormaDePagamento(OrcamentoModel.GridDeFormaDePagamento, 1);
+        }
 
         private void FecharTelaDoOrcamentoComEsc() =>
             DriverService.FecharJanelaComEsc(ConsultaDeOrcamentoModel.ElementoTelaDoOrcamento);

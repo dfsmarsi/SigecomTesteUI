@@ -11,7 +11,7 @@
         public static string LancarValorDaEntrega => "5";
         public static string Observacao => "TESTE";
         public static string QuantidadeNoItemPreVenda => "5";
-        public static string DescontoNoItemPreVenda => "1";
+        public static string DescontoNoItemPreVenda => "10";
         public static string ValorTotalParaGerarTroco => "40,00";
         public static string ValorTotalComFrete => "R$15,00";
         public static string ItemComDescontoNoPreVenda => "40,00";

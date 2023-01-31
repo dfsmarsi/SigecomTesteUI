@@ -1,5 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using Autofac;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico.Model;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
@@ -23,16 +27,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarOrdemDeServicoNaConsulta();
-            ClicarBotaoName(ConsultaDeOrdemDeServicoModel.BotaoDaAlterarOrdemDeServico);
-            DriverService.EditarItensNaGridComDuploClickComTab(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
-            AvancarNaOrdemDeServico();
-            DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 2);
-            DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 2);
-            DriverService.DigitarNoCampoId(OrdemDeServicoModel.ElementoDoSolicitanteDaOrdemDeServico, LancarItensNaOrdemDeServicoModel.SolicitanteDaOrdemDeServico);
-            DriverService.DigitarNoCampoId(OrdemDeServicoModel.ElementoDoDefeitoDaOrdemDeServico, LancarItensNaOrdemDeServicoModel.DefeitoDaOrdemDeServico);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrdemDeServicoModel.ElementoDeObservação, LancarItensNaOrdemDeServicoModel.Observacao, Keys.Enter);
-            DriverService.RealizarSelecaoDaAcao(OrdemDeServicoModel.AcoesDaOrdemDeServico, 2);
-            FecharTelaDeOrdemDeServicoComEsc();
+            RealizarFluxoDeAltrarNaConsultaDaOrdemDeServico();
             DriverService.FecharJanelaComEsc(OrdemDeServicoModel.ElementoTelaDeOrdemDeServico);
         }
 
@@ -46,7 +41,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastrarObjetoModel.ElementoDaMarca, CadastrarObjetoModel.ValorDaMarca, Keys.Enter);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoCadastrar);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoConfirmarDoPesquisar);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemId);
+            LancarProduto();
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
             DriverService.SelecionarItemComboBox(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 1);
@@ -55,9 +50,31 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico
             ClicarBotaoName(ConsultaDeOrdemDeServicoModel.BotaoDaAtualizarOrdemDeServico);
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrdemDeServicoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(ConsultaDeOrdemDeServicoModel.ElementoTelaDeOrdemDeServico);
+        }
 
+        private void RealizarFluxoDeAltrarNaConsultaDaOrdemDeServico()
+        {
+            ClicarBotaoName(ConsultaDeOrdemDeServicoModel.BotaoDaAlterarOrdemDeServico);
+            DriverService.EditarItensNaGridComDuploClickComTab(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto,
+                LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
+            AvancarNaOrdemDeServico();
+            DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 2);
+            DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 2);
+            DriverService.DigitarNoCampoId(OrdemDeServicoModel.ElementoDoSolicitanteDaOrdemDeServico,
+                LancarItensNaOrdemDeServicoModel.SolicitanteDaOrdemDeServico);
+            DriverService.DigitarNoCampoId(OrdemDeServicoModel.ElementoDoDefeitoDaOrdemDeServico,
+                LancarItensNaOrdemDeServicoModel.DefeitoDaOrdemDeServico);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrdemDeServicoModel.ElementoDeObservação,
+                LancarItensNaOrdemDeServicoModel.Observacao, Keys.Enter);
+            DriverService.RealizarSelecaoDaAcao(OrdemDeServicoModel.AcoesDaOrdemDeServico, 2);
+            FecharTelaDeOrdemDeServicoComEsc();
+        }
+        
         private void AvancarNaOrdemDeServico()
             => ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoAvancar);
 

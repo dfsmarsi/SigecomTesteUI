@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 
@@ -12,6 +13,27 @@ namespace SigecomTestesUI.Services
         private readonly WindowsDriver<WindowsElement> _driver;
 
         public DriverService(WindowsDriver<WindowsElement> windowsDriver) => _driver = windowsDriver;
+
+        public bool EsperarAbrirTelaDeLogin(WindowsDriver<WindowsElement> driver, int timeoutInSeconds, string elementoDaTela)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            return wait.Until(condition =>
+            {
+                try
+                {
+                    var elementToBeDisplayed = driver.FindElementByName(elementoDaTela);
+                    return elementToBeDisplayed.Displayed;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return false;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
 
         public void FecharSistema()
         {
@@ -108,8 +130,8 @@ namespace SigecomTestesUI.Services
         public void RealizarSelecaoDaAcao(string idElemento, int posicao) => 
             RealizarSelecaoDaFormaDePagamento(idElemento, posicao);
 
-        public void RealizarSelecaoDaFormaDePagamentoSemEnter(string idElemento, string texto) =>
-            DigitarNoCampoId(idElemento, texto);
+        public void RealizarSelecaoDaFormaDePagamentoSemEnter(string idElemento, int posicao) =>
+            DigitarNoCampoId(idElemento, posicao.ToString());
 
         public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
         {
@@ -148,17 +170,22 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
-        public void VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
+        public bool VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
         {
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
             var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
-            Assert.AreEqual(elementoDaGridComName.Text, nome);
+            return elementoDaGridComName.Text.Equals(nome);
+        }
+
+        public bool VerificarSePossuiOValorNaGrid(string nome)
+        {
+            var driverPageSource = _driver.PageSource;
+            return driverPageSource.Contains(nome);
         }
 
         public void CliqueNoElementoDaGridComVariosEVerificar(string nomeColuna, string nome)
         {
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
-
             var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
             RealizarAcaoDeClicarNoCampoDaGrid(nome, elementoDaGridComName);
             Assert.AreEqual(elementoDaGridComName.Text, nome);
@@ -243,7 +270,7 @@ namespace SigecomTestesUI.Services
             DigitarItensNaGrid(texto, elementoEncontrado);
         }
 
-        private static void DigitarItensNaGrid(string texto, WindowsElement elementoEncontrado)
+        private static void DigitarItensNaGrid(string texto, IWebElement elementoEncontrado)
         {
             elementoEncontrado.SendKeys(texto);
             elementoEncontrado.SendKeys(Keys.Tab);
@@ -252,6 +279,17 @@ namespace SigecomTestesUI.Services
         public void EditarItensComDuploClickName(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName(nomeCampo);
+            SelecionarEEditarCampo(texto, elementoEncontrado);
+        }
+
+        public void EditarItensComDuploClickId(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = _driver.FindElementByAccessibilityId(nomeCampo);
+            SelecionarEEditarCampo(texto, elementoEncontrado);
+        }
+
+        private void SelecionarEEditarCampo(string texto, IWebElement elementoEncontrado)
+        {
             var acao = new Actions(_driver);
             acao.MoveToElement(elementoEncontrado);
             acao.DoubleClick();

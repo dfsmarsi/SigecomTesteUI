@@ -1,12 +1,10 @@
-﻿using System;
-using Autofac;
-using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Model;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
@@ -23,38 +21,19 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ConsultaDeCondicionalModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeAlterarCondicional()
+        public void RealizarFluxoDeAlterarCondicionalNaConsulta()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            var idDoProduto = CriarProdutoTeste();
-            RealizarOFluxoDeGerarCondicionalNaConsulta(idDoProduto);
-            ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaAlterarCondicional);
-            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeValorUnitarioDoProduto, LancarItensNaCondicionalModel.ValorUnitarioParaEditarCondicional);
-            AvancarNaCondicional();
-            AvancarNaCondicional();
-            DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
+            RealizarOFluxoDeGerarCondicionalNaConsulta();
+            RealizarFluxoDeAlterarCondicional();
             FecharTelaDeCondicionalComEsc();
         }
 
-        private string CriarProdutoTeste()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var pesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>()(DriverService);
-            var idDoProduto = pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(beginLifetimeScope, CondicionalModel.ElementoTelaDeCondicional)
-                ? DriverService.PegarValorDaColunaDaGrid("Código")
-                : pesquisaDeProdutoPage.CriarNovoProduto(beginLifetimeScope);
-            pesquisaDeProdutoPage.FecharJanelaComEsc();
-            return idDoProduto;
-        }
-
-        private void RealizarOFluxoDeGerarCondicionalNaConsulta(string idDoProduto)
+        private void RealizarOFluxoDeGerarCondicionalNaConsulta()
         {
             ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaNovaCondicional);
-            ClicarBotaoName(CondicionalModel.BotaoAtalhosCondicional);
-            ClicarBotaoName(CondicionalModel.AtalhoDeEditarClienteDaCondicional);
-            SelecionarCliente();
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, idDoProduto, Keys.Enter);
+            LancarProdutoEAtribuirCliente();
             DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeQuantidadeDoProduto,
                 LancarItensNaCondicionalModel.QuantidadeDeProduto);
             AvancarNaCondicional();
@@ -62,10 +41,22 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
         }
 
-        private void SelecionarCliente()
+        private void LancarProdutoEAtribuirCliente()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(ConsultaDeCondicionalModel.ElementoTelaDeCondicional);
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
+        }
+
+        private void RealizarFluxoDeAlterarCondicional()
+        {
+            ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaAlterarCondicional);
+            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeValorUnitarioDoProduto,
+                LancarItensNaCondicionalModel.ValorUnitarioParaEditarCondicional);
+            AvancarNaCondicional();
+            AvancarNaCondicional();
+            DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
         }
 
         private void AvancarNaCondicional()
