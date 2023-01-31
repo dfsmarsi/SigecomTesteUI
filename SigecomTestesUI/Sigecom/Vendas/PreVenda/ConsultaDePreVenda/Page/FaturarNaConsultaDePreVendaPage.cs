@@ -1,8 +1,11 @@
-﻿using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.Model;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Model;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
@@ -31,14 +34,20 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
         private void RealizarOFluxoDeGerarPreVendaNaConsulta()
         {
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaNovaPreVenda);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto,
-                LancarItemNaPreVendaModel.PesquisarItemId, Keys.Enter);
+            LancarProduto();
             DriverService.EditarItensNaGridComDuploClickComTab(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto,
                 LancarItemNaPreVendaModel.ValorTotalParaFaturarPreVenda);
             AvancarNaPreVenda();
             AvancarNaPreVenda();
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
+        }
+
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PreVendaModel.ElementoTelaDePreVenda);
         }
 
         private void RealizarOFaturaNaConsulta()

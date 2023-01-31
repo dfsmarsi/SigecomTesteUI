@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
@@ -39,17 +38,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            var idDoProduto = vendasBasePage.LancarProdutoPadraoNaVenda();
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItem);
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemReferencia);
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemCodInterno);
-            LancarProduto($"1*{idDoProduto}");
             vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
+            vendasBasePage.LancarProdutosNaVenda(CondicionalModel.ElementoTelaDeCondicional);
         }
-
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
-
+        
         private void AvancarNaCondicional()
             => ClicarBotaoName(CondicionalModel.ElementoNameDoAvancar);
 

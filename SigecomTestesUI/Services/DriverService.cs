@@ -130,8 +130,8 @@ namespace SigecomTestesUI.Services
         public void RealizarSelecaoDaAcao(string idElemento, int posicao) => 
             RealizarSelecaoDaFormaDePagamento(idElemento, posicao);
 
-        public void RealizarSelecaoDaFormaDePagamentoSemEnter(string idElemento, string texto) =>
-            DigitarNoCampoId(idElemento, texto);
+        public void RealizarSelecaoDaFormaDePagamentoSemEnter(string idElemento, int posicao) =>
+            DigitarNoCampoId(idElemento, posicao.ToString());
 
         public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
         {

@@ -33,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastrarObjetoModel.ElementoDaMarca, CadastrarObjetoModel.ValorDaMarca, Keys.Enter);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoCadastrar);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoConfirmarDoPesquisar);
-            LancarProdutoPadrao();
+            LancarProdutoEAtribuirCliente();
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
@@ -45,20 +45,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             FecharTelaDeOrdemDeServicoComEsc();
         }
 
-        private void LancarProdutoPadrao()
+        private void LancarProdutoEAtribuirCliente()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
             vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
-            var idDoProduto = vendasBasePage.LancarProdutoPadraoNaVenda();
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItem);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemReferencia);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemCodInterno);
-            LancarProduto($"1*{idDoProduto}");
+            vendasBasePage.LancarProdutosNaVenda(OrdemDeServicoModel.ElementoTelaDeOrdemDeServico);
         }
-
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrdemDeServicoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
 
         private void AvancarNaOrdemDeServico()
             => ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoAvancar);

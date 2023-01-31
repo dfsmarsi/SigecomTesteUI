@@ -24,8 +24,7 @@ namespace SigecomTestesUI
             var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
 
             var resolveDriveFabrica = beginLifetimeScope.Resolve<Func<WindowsDriver<WindowsElement>, DriverService>>();
-            _windowsDriver = beginLifetimeScope.Resolve<DriverFabrica>().CriarDriver();
-            DriverService = resolveDriveFabrica(_windowsDriver);
+            DriverService = resolveDriveFabrica(beginLifetimeScope.Resolve<DriverFabrica>().CriarDriver());
 
             var resolveLoginPage = beginLifetimeScope.Resolve<Func<DriverService, LoginPage>>();
             _loginPage = resolveLoginPage(DriverService);

@@ -44,7 +44,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoPadraoNaVenda();
+            vendasBasePage.LancarProdutoPadraoNaVenda(PedidoModel.ElementoTelaDeVenda);
         }
 
         private void LancarProduto(string textoDePesquisa)

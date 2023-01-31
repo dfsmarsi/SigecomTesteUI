@@ -29,9 +29,9 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             AvancarVenda();
             AvancarVenda();
             DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
-            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PedidoModel.GridDeFormaDePagamento, "1");
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PedidoModel.GridDeFormaDePagamento, 1);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PedidoModel.ElementoTotalPagamento, "5", Keys.Enter);
-            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PedidoModel.GridDeFormaDePagamento, "3");
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PedidoModel.GridDeFormaDePagamento, 3);
             FecharTelaDeVendaComEsc();
         }
 
@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoPadraoNaVenda();
+            vendasBasePage.LancarProdutoPadraoNaVenda(PedidoModel.ElementoTelaDeVenda);
         }
 
         private void AvancarVenda()

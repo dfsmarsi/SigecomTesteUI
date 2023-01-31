@@ -2,7 +2,8 @@
 {
     public interface IVendasBasePage
     {
-        string LancarProdutoPadraoNaVenda();
+        string LancarProdutoPadraoNaVenda(string nomeDaTela);
+        void LancarProdutosNaVenda(string nomeDaTela);
         void AbrirOAtalhoParaSelecionarCliente();
     }
 }

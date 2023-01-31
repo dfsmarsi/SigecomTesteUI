@@ -54,7 +54,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoPadraoNaVenda();
+            vendasBasePage.LancarProdutoPadraoNaVenda(ConsultaDeOrdemDeServicoModel.ElementoTelaDeOrdemDeServico);
         }
 
         private void RealizarFluxoDeFaturarDaOrdemDeServico()
