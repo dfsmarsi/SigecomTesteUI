@@ -1,7 +1,10 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
@@ -22,11 +25,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItem);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemId);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemReferencia);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemCodInterno);
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemMultiplicadorDeQuantidade);
+            LancarProdutoEAtribuirCliente();
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrcamentoModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNoOrcamentoModel.QuantidadeDeProduto);
             AvancarNoOrcamento();
             DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDeTipoDoOrcamento, 1);
@@ -44,8 +43,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
             FecharTelaDeOrcamentoComEsc();
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrcamentoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProdutoEAtribuirCliente()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
+            vendasBasePage.LancarProdutosNaVenda(OrcamentoModel.ElementoTelaDeOrcamento);
+        }
 
         private void AvancarNoOrcamento()
             => ClicarBotaoName(OrcamentoModel.ElementoNameDoAvancar);

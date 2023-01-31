@@ -1,5 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using Autofac;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -28,7 +32,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastrarObjetoModel.ElementoDaMarca, CadastrarObjetoModel.ValorDaMarca, Keys.Enter);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoCadastrar);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoConfirmarDoPesquisar);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemId);
+            LancarProdutoPadrao();
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDoStatusDaOrdemDeServico, 1);
@@ -37,8 +41,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             FecharTelaDeOrdemDeServicoComEsc();
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(OrdemDeServicoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(OrdemDeServicoModel.ElementoTelaDeOrdemDeServico);
+        }
 
         private void AvancarNaOrdemDeServico()
             => ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoAvancar);

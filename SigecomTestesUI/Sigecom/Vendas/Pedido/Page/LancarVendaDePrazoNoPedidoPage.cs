@@ -1,10 +1,9 @@
-﻿using System;
-using Autofac;
-using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
@@ -25,10 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoName(PedidoModel.BotaoAtalhosVenda);
-            ClicarBotaoName(PedidoModel.AtalhoDeEditarClienteDoPedido);
-            SelecionarCliente();
-            LancarProduto(LancarItemNoPedidoModel.PesquisarItemId);
+            LancarProdutoPadrao();
             AvancarVenda();
             AvancarVenda();
             DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
@@ -36,14 +32,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             FecharTelaDeVendaComEsc();
         }
 
-        private void SelecionarCliente()
+        private void LancarProdutoPadrao()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PedidoModel.ElementoTelaDeVenda);
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
         }
-
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PedidoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
 
         private void AvancarVenda()
             => ClicarBotaoName(PedidoModel.ElementoNameDoAvancar);

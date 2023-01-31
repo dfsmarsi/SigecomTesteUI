@@ -3,7 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
 using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
@@ -26,19 +26,15 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoName(CondicionalModel.BotaoAtalhosCondicional);
-            ClicarBotaoName(CondicionalModel.AtalhoDeEditarClienteDaCondicional);
-            SelecionarCliente();
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemId);
-            DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, 3);
+            LancarProdutoEAtribuirCliente();
+            AlterarTabelaDePreco(3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNaCondicionalModel.ValorUnitarioDoPrimeiroProdutoNaCondicional);
-            DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, 1);
+            AlterarTabelaDePreco(1);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNaCondicionalModel.ValorUnitarioDoPrimeiroProdutoNaCondicional);
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItemIdDoSegundoProdutoNaCondicional);
-            Assert.AreEqual(
-                DriverService.PegarValorDaColunaDaGridNaPosicao(CondicionalModel.CampoDaGridDeTotalDoProduto, "1"),
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao(CondicionalModel.CampoDaGridDeTotalDoProduto, "1"),
                 LancarItensNaCondicionalModel.ValorUnitarioDoSegundoProdutoNaCondicional);
             AvancarNaCondicional();
             AvancarNaCondicional();
@@ -46,11 +42,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             FecharTelaDeCondicionalComEsc();
         }
 
-        private void SelecionarCliente()
+        private void LancarProdutoEAtribuirCliente()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(CondicionalModel.ElementoTelaDeCondicional);
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
         }
+
+        private void AlterarTabelaDePreco(int posicao) =>
+            DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, posicao);
 
         private void LancarProduto(string textoDePesquisa)
             => DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);

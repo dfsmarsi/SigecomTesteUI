@@ -2,11 +2,9 @@
 {
     public class LancarItensNoOrcamentoModel
     {
-        public static string PesquisarItem => "PRODUTO TESTE PESQUISA";
-        public static string PesquisarItemId => "1";
-        public static string PesquisarItemCodInterno => "int teste";
-        public static string PesquisarItemReferencia => "ref teste";
-        public static string PesquisarItemMultiplicadorDeQuantidade => "1*1";
+        public static string PesquisarItem => "PRODUTO PARA TESTAR VENDAS";
+        public static string PesquisarItemCodInterno => "vendas teste";
+        public static string PesquisarItemReferencia => "ref vendas teste";
         public static string QuantidadeDeProduto => "5,00";
         public static string PrevisaoDeEntrega => "31/01/2023";
         public static string PrazoDeEntrega => "30 dias";

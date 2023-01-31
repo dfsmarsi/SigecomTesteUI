@@ -1,8 +1,7 @@
 ﻿using Autofac;
-using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
 using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
@@ -25,10 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoName(CondicionalModel.BotaoAtalhosCondicional);
-            ClicarBotaoName(CondicionalModel.AtalhoDeEditarClienteDaCondicional);
-            SelecionarCliente();
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemId);
+            LancarProdutoEAtribuirCliente();
             AvancarNaCondicional();
             AvancarNaCondicional();
             FecharTelaDeCondicionalComEsc();
@@ -37,14 +33,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             ClicarBotaoName(CondicionalModel.ElementoNameDoSim);
         }
 
-        private void SelecionarCliente()
+        private void LancarProdutoEAtribuirCliente()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(CondicionalModel.ElementoTelaDeCondicional);
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
         }
-
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
 
         private void AvancarNaCondicional()
             => ClicarBotaoName(CondicionalModel.ElementoNameDoAvancar);

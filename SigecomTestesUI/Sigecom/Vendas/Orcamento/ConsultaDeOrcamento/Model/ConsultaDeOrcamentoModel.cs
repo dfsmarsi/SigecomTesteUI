@@ -9,6 +9,7 @@
         public static string BotaoDaAtualizarOrcamento => "Atualizar";
         public static string BotaoDaAlterarOrcamento => "Alterar";
         public static string BotaoDeFaturarDaOrcamento => "Faturar";
-        public static string BotaoDeGerarOrdemDeServicoDaOrcamento => "Gerar OS";
+        public static string BotaoDeGerarOrdemDeServicoDoOrcamento => "Gerar OS";
+        public static string BotaoDeGerarDoOrcamento => "Gerar";
     }
 }

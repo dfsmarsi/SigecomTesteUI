@@ -1,5 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using Autofac;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -21,18 +25,22 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItem);
+            LancarProdutoPadrao();
             AvancarPreVenda();
             AvancarPreVenda();
             SelecionarAcaoDaPreVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PreVendaModel.GridDeFormaDePagamento, "1");
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PreVendaModel.GridDeFormaDePagamento, 1);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoTotalPagamento, "5", Keys.Enter);
-            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PreVendaModel.GridDeFormaDePagamento, "3");
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(PreVendaModel.GridDeFormaDePagamento, 3);
             FecharTelaDePreVendaComEsc();
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PreVendaModel.ElementoTelaDePreVenda);
+        }
 
         private void AvancarPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);

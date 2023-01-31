@@ -1,6 +1,8 @@
 ﻿using System;
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Teste;
 
@@ -22,6 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Injection
                 containerBuilder.RegisterType<VoltarNaCondicionalComEscTeste>();
                 containerBuilder.RegisterType<AlterarTabelaDePrecoDaCondicionalPage>();
                 containerBuilder.RegisterType<AlterarTabelaDePrecoDaCondicionalTeste>();
+                containerBuilder.RegisterType<VendasBasePage>().As<IVendasBasePage>();
             }
             catch (Exception exception)
             {

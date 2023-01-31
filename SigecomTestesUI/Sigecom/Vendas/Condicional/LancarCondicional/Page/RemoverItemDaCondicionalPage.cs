@@ -1,6 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
@@ -21,13 +24,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItensNaCondicionalModel.PesquisarItemId);
+            LancarProduto();
             ClicarBotaoName(CondicionalModel.CampoDaGridParaRemoverProduto);
             FecharTelaDeCondicionalComEsc();
         }
-        
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(CondicionalModel.ElementoTelaDeCondicional);
+        }
 
         private void FecharTelaDeCondicionalComEsc() =>
             DriverService.FecharJanelaComEsc(CondicionalModel.ElementoTelaDeCondicional);

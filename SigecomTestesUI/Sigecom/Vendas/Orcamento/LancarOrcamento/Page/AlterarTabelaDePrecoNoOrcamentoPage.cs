@@ -1,6 +1,10 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Autofac;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -22,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItensNoOrcamentoModel.PesquisarItemId);
+            LancarProduto();
             DriverService.SelecionarItemComboBoxSemEnter(OrcamentoModel.ElementoDoComboDaTabelaDePreco, 3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrcamentoModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNoOrcamentoModel.ValorUnitarioDoPrimeiroProdutoNoOrcamento);
@@ -36,6 +40,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
             AvancarNaOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
             FecharTelaDeOrcamentoComEsc();
+        }
+
+        private void LancarProduto()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(OrcamentoModel.ElementoTelaDeOrcamento);
         }
 
         private void LancarProduto(string textoDePesquisa)
