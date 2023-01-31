@@ -21,16 +21,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ConsultaDeCondicionalModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeAlterarCondicional()
+        public void RealizarFluxoDeAlterarCondicionalNaConsulta()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarCondicionalNaConsulta();
-            ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaAlterarCondicional);
-            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeValorUnitarioDoProduto, LancarItensNaCondicionalModel.ValorUnitarioParaEditarCondicional);
-            AvancarNaCondicional();
-            AvancarNaCondicional();
-            DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
+            RealizarFluxoDeAlterarCondicional();
             FecharTelaDeCondicionalComEsc();
         }
 
@@ -49,8 +45,18 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoNaVenda();
+            vendasBasePage.LancarProdutoPadraoNaVenda();
             vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
+        }
+
+        private void RealizarFluxoDeAlterarCondicional()
+        {
+            ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDaAlterarCondicional);
+            DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeValorUnitarioDoProduto,
+                LancarItensNaCondicionalModel.ValorUnitarioParaEditarCondicional);
+            AvancarNaCondicional();
+            AvancarNaCondicional();
+            DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
         }
 
         private void AvancarNaCondicional()

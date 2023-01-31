@@ -42,18 +42,18 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);
         }
 
-        private void RealizarOCompraTodosNaConsulta()
-        {
-            ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDeComprarTodosCondicional);
-            DriverService.RealizarSelecaoDaFormaDePagamento(CondicionalModel.GridDeFormaDePagamento, 1);
-        }
-
         private void LancarProdutoEAtribuirCliente()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoNaVenda();
+            vendasBasePage.LancarProdutoPadraoNaVenda();
             vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
+        }
+
+        private void RealizarOCompraTodosNaConsulta()
+        {
+            ClicarBotaoName(ConsultaDeCondicionalModel.BotaoDeComprarTodosCondicional);
+            DriverService.RealizarSelecaoDaFormaDePagamento(CondicionalModel.GridDeFormaDePagamento, 1);
         }
 
         private void AvancarNaCondicional()

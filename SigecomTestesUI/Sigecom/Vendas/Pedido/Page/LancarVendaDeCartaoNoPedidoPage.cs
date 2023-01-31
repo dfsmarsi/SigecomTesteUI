@@ -1,6 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
@@ -21,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItemNoPedidoModel.PesquisarItemId);
+            LancarProdutoPadrao();
             AvancarVenda();
             AvancarVenda();
             DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
@@ -31,8 +34,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             FecharTelaDeVendaComEsc();
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PedidoModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda();
+        }
 
         private void AvancarVenda()
             => ClicarBotaoName(PedidoModel.ElementoNameDoAvancar);

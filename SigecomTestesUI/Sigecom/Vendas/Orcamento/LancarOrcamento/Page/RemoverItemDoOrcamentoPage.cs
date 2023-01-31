@@ -33,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoNaVenda();
+            vendasBasePage.LancarProdutoPadraoNaVenda();
         }
 
         private void FecharTelaDeOrcamentoComEsc() =>

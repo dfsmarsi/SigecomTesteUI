@@ -39,7 +39,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            var idDoProduto = vendasBasePage.LancarProdutoNaVenda();
+            var idDoProduto = vendasBasePage.LancarProdutoPadraoNaVenda();
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItem);
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItemReferencia);
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItemCodInterno);

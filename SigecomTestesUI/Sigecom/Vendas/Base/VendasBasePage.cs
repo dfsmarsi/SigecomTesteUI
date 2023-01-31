@@ -17,7 +17,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Base
         {
         }
 
-        public string LancarProdutoNaVenda()
+        public string LancarProdutoPadraoNaVenda()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var pesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>()(DriverService);

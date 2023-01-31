@@ -2,7 +2,7 @@
 {
     public interface IVendasBasePage
     {
-        string LancarProdutoNaVenda();
+        string LancarProdutoPadraoNaVenda();
         void AbrirOAtalhoParaSelecionarCliente();
     }
 }

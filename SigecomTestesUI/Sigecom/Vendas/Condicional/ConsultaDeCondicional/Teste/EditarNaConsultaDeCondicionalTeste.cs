@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Teste
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var editarNaConsultaDeCondicionalPage = beginLifetimeScope.Resolve<Func<DriverService, EditarNaConsultaDeCondicionalPage>>()(DriverService);
-            editarNaConsultaDeCondicionalPage.RealizarFluxoDeAlterarCondicional();
+            editarNaConsultaDeCondicionalPage.RealizarFluxoDeAlterarCondicionalNaConsulta();
         }
     }
 }

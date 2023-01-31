@@ -27,10 +27,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoEAtribuirCliente();
-            DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, 3);
+            AlterarTabelaDePreco(3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNaCondicionalModel.ValorUnitarioDoPrimeiroProdutoNaCondicional);
-            DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, 1);
+            AlterarTabelaDePreco(1);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNaCondicionalModel.ValorUnitarioDoPrimeiroProdutoNaCondicional);
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItemIdDoSegundoProdutoNaCondicional);
@@ -46,9 +46,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoNaVenda();
+            vendasBasePage.LancarProdutoPadraoNaVenda();
             vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
         }
+
+        private void AlterarTabelaDePreco(int posicao) =>
+            DriverService.SelecionarItemComboBoxSemEnter(CondicionalModel.ElementoDoComboDaTabelaDePreco, posicao);
 
         private void LancarProduto(string textoDePesquisa)
             => DriverService.DigitarNoCampoComTeclaDeAtalhoId(CondicionalModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);

@@ -1,11 +1,11 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Page
@@ -33,14 +33,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastrarObjetoModel.ElementoDaMarca, CadastrarObjetoModel.ValorDaMarca, Keys.Enter);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoCadastrar);
             ClicarBotaoName(OrdemDeServicoModel.ElementoNameDoConfirmarDoPesquisar);
-            ClicarBotaoName(OrdemDeServicoModel.BotaoAtalhosOrdemDeServico);
-            ClicarBotaoName(OrdemDeServicoModel.AtalhoDeEditarClienteDaOrdemDeServico);
-            SelecionarCliente();
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItem);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemId);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemReferencia);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemCodInterno);
-            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemMultiplicadorDeQuantidade);
+            LancarProdutoPadrao();
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(OrdemDeServicoModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNaOrdemDeServicoModel.QuantidadeDeProduto);
             AvancarNaOrdemDeServico();
             DriverService.SelecionarItemComboBoxSemEnter(OrdemDeServicoModel.ElementoDeTipoDaOrdemDeServico, 1);
@@ -52,10 +45,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Pag
             FecharTelaDeOrdemDeServicoComEsc();
         }
 
-        private void SelecionarCliente()
+        private void LancarProdutoPadrao()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.AbrirOAtalhoParaSelecionarCliente();
+            var idDoProduto = vendasBasePage.LancarProdutoPadraoNaVenda();
+            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItem);
+            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemReferencia);
+            LancarProduto(LancarItensNaOrdemDeServicoModel.PesquisarItemCodInterno);
+            LancarProduto($"1*{idDoProduto}");
         }
 
         private void LancarProduto(string textoDePesquisa)
