@@ -15,7 +15,6 @@ namespace SigecomTestesUI
     {
         public DriverService DriverService;
         private readonly LoginPage _loginPage;
-        private readonly WindowsDriver<WindowsElement> _windowsDriver;
 
         public BaseTestesComTelaAbertaNoFechar()
         {
@@ -23,7 +22,6 @@ namespace SigecomTestesUI
             var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
 
             var resolveDriveFabrica = beginLifetimeScope.Resolve<Func<WindowsDriver<WindowsElement>, DriverService>>();
-            _windowsDriver = beginLifetimeScope.Resolve<DriverFabrica>().CriarDriver();
             DriverService = resolveDriveFabrica(beginLifetimeScope.Resolve<DriverFabrica>().CriarDriver());
 
             var resolveLoginPage = beginLifetimeScope.Resolve<Func<DriverService, LoginPage>>();

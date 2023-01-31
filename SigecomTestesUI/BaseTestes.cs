@@ -16,7 +16,6 @@ namespace SigecomTestesUI
     {
         public DriverService DriverService;
         private readonly LoginPage _loginPage;
-        private readonly WindowsDriver<WindowsElement> _windowsDriver;
 
         public BaseTestes()
         {
