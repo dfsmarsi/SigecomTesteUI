@@ -20,7 +20,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto
         public void PesquisarProdutoDoConfirmacaoDeItem(string nomeDoProduto)
         {
             DriverService.ValidarElementoExistentePorNome(PesquisaDeProdutoModel.TelaPesquisaDeProdutoPrefixo);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto, Keys.F5);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PesquisaDeProdutoModel.ElementoParametroDePesquisa, nomeDoProduto, Keys.Enter);
         }
 
         public void PesquisarProduto(string nomeDoProduto)
