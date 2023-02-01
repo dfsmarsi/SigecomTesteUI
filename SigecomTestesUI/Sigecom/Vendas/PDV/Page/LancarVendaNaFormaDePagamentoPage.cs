@@ -8,6 +8,7 @@ using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces;
 using System;
 using System.Threading;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
@@ -36,8 +37,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         internal void ConcluirPedido() =>
             ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
 
-        internal void LancarItemNoPedido() => 
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
+        public void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PdvModel.ElementoTelaDePdv);
+        }
 
         internal void EditarClienteDoPedido()
         {

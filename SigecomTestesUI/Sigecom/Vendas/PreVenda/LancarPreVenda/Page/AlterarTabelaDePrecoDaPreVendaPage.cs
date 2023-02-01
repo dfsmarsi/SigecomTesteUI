@@ -29,7 +29,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             LancarProdutoPadrao();
             SelecionarItemComboBox(3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Total"), LancarItemNaPreVendaModel.ValorUnitarioDoPrimeiroProdutoNoPreVenda);
-            SelecionarItemComboBox(4);
+            SelecionarItemComboBox(1);
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItemIdDoSegundoProdutoNoPreVenda);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Total", "1"), LancarItemNaPreVendaModel.ValorUnitarioDoSegundoProdutoNoPreVenda);
             AvancarPreVenda();
