@@ -8,21 +8,21 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Teste
 {
-    public class GerarOrdemDeServicoNaConsultaDeOrcamentoTeste: BaseTestes
+    public class GerarPreVendaGravandoNaConsultaDeOrcamentoTeste: BaseTestes
     {
-        [Test(Description = "Gerar ordem de serviço na consulta do orçamento")]
+        [Test(Description = "Gerar pré venda na consulta do orçamento")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("GerarOrdemDeServico")]
+        [AllureSuite("GerarPreVenda")]
         [AllureSubSuite("ConsultaDoOrcamento")]
-        public void GerarOrdemDeServicoNaConsultaDeOrcamento()
+        public void GerarPreVendaGravandoNaConsultaDeOrcamento()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var gerarOrdemDeServicoNaConsultaDeOrcamentoPage = beginLifetimeScope.Resolve<Func<DriverService, GerarOrdemDeServicoNaConsultaDeOrcamentoPage>>()(DriverService);
-            gerarOrdemDeServicoNaConsultaDeOrcamentoPage.RealizarFluxoDeGerarOrdemDeServicoNaConsultaDoOrcamento();
+            var gerarPreVendaNaConsultaDeOrcamentoPage = beginLifetimeScope.Resolve<Func<DriverService, GerarPreVendaGravandoNaConsultaDeOrcamentoPage>>()(DriverService);
+            gerarPreVendaNaConsultaDeOrcamentoPage.RealizarFluxoDeGerarPreVendaGravandoNaConsultaDoOrcamento();
         }
     }
 }
