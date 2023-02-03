@@ -1,18 +1,19 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
 using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Devolucao.Model;
-using System;
-using OpenQA.Selenium;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
 {
-    public class LancarItensNaDevolucaoPage: PageObjectModel
+    public class DevolucaoParcialNaDevolucaoPage: PageObjectModel
     {
-        public LancarItensNaDevolucaoPage(DriverService driver) : base(driver)
+        public DevolucaoParcialNaDevolucaoPage(DriverService driver) : base(driver)
         {
         }
 
@@ -22,12 +23,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(DevolucaoModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarItensNaDevolucao()
+        public void RealizarFluxoDeDevolucaoParcialNaDevolucao()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProduto();
             AvancarNaDevolucao();
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(DevolucaoModel.CampoDaGridDeSituacaoParaDevolver), "Devolução parcial");
             AvancarNaDevolucao();
             DriverService.RealizarSelecaoDaAcao(DevolucaoModel.AcoesDaDevolucao, 2);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, "CLIENTE TESTE PESQUISA", Keys.Enter);

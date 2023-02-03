@@ -1,18 +1,16 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Devolucao.Model;
-using System;
-using OpenQA.Selenium;
-using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
-using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
 {
-    public class LancarItensNaDevolucaoPage: PageObjectModel
+    public class VoltarNaDevolucaoComEscPage: PageObjectModel
     {
-        public LancarItensNaDevolucaoPage(DriverService driver) : base(driver)
+        public VoltarNaDevolucaoComEscPage(DriverService driver) : base(driver)
         {
         }
 
@@ -22,17 +20,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(DevolucaoModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarItensNaDevolucao()
+        public void RealizarFluxoDeVoltarNaDevolucaoComEsc()
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProduto();
             AvancarNaDevolucao();
             AvancarNaDevolucao();
-            DriverService.RealizarSelecaoDaAcao(DevolucaoModel.AcoesDaDevolucao, 2);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, "CLIENTE TESTE PESQUISA", Keys.Enter);
-            ClicarBotaoName(DevolucaoModel.ElementoNameDoNao);
             FecharTelaDeDevolucaoComEsc();
+            FecharTelaDeDevolucaoComEsc();
+            FecharTelaDeDevolucaoComEsc();
+            ClicarBotaoName(DevolucaoModel.ElementoNameDoSim);
         }
 
         private void LancarProduto()
