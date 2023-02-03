@@ -2,7 +2,7 @@
 {
     public class CondicionalModel
     {
-        public static string BotaoMenuCadastro => "Vendas";
+        public static string BotaoMenuVendas => "Vendas";
         public static string BotaoSubMenu => "Condicional";
         public static string ElementoTelaDeCondicional => "Condicional";
         public static string GridDeFormaDePagamento => "gridFormasPagamento";

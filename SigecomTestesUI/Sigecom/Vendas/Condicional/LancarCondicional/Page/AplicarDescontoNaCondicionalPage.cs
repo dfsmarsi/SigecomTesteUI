@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         }
 
         private void ClicarNaOpcaoDoMenu() =>
-            AcessarOpcaoMenu(CondicionalModel.BotaoMenuCadastro);
+            AcessarOpcaoMenu(CondicionalModel.BotaoMenuVendas);
 
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CondicionalModel.BotaoSubMenu);

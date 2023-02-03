@@ -21,6 +21,7 @@
 
         public static string ValorUnitarioParaEditarPreVenda => "10,50";
         public static string ValorTotalParaClonarPreVenda => "11,11";
+        public static string QuantidadeParaClonarPreVenda => "1";
         public static string DescontoParaClonarPreVenda => "0";
         public static string VerificarValorTotalParaClonarPreVenda => "R$11,11";
         public static string ValorTotalParaFaturarPreVenda => "22,22";

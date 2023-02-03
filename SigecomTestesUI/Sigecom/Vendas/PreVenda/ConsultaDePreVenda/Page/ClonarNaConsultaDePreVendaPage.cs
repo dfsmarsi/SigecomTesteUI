@@ -22,6 +22,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaClonarPreVenda);
+            DriverService.EditarItensNaGridComDuploClickComTab(PreVendaModel.CampoDaGridDeQuantidadeDoProduto, LancarItemNaPreVendaModel.QuantidadeParaClonarPreVenda);
             DriverService.EditarItensNaGridComDuploClickComTab(PreVendaModel.CampoDaGridDeValorUnitarioDoProduto, LancarItemNaPreVendaModel.ValorTotalParaClonarPreVenda);
             DriverService.EditarItensNaGridComDuploClickComTab(PreVendaModel.CampoDaGridDeDescontoDoProduto, LancarItemNaPreVendaModel.DescontoParaClonarPreVenda);
             AvancarPreVenda();

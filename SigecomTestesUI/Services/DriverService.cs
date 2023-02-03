@@ -14,15 +14,15 @@ namespace SigecomTestesUI.Services
 
         public DriverService(WindowsDriver<WindowsElement> windowsDriver) => _driver = windowsDriver;
 
-        public bool EsperarAbrirTelaDeLogin(WindowsDriver<WindowsElement> driver, int timeoutInSeconds, string elementoDaTela)
+        public bool EsperarAbrirTelaDeLogin(int timeoutInSeconds, string elementoDaTela)
         {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds));
             return wait.Until(condition =>
             {
                 try
                 {
-                    var elementToBeDisplayed = driver.FindElementByName(elementoDaTela);
-                    return elementToBeDisplayed.Displayed;
+                    var elementToBeDisplayed = _driver.FindElementByName(elementoDaTela).Text;
+                    return elementToBeDisplayed.Equals(elementoDaTela);
                 }
                 catch (StaleElementReferenceException)
                 {
@@ -249,6 +249,15 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.Click();
             EncontrarElementoNaComboBox(posicao, elementoEncontrado);
             elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
+        public void SelecionarItensDoDropDown(int posicao)
+        {
+            var acao = new Actions(_driver);
+            for (var i = 1; i <= posicao; i++)
+                acao.SendKeys(Keys.ArrowDown);
+            acao.SendKeys(Keys.Enter);
+            acao.Perform();
         }
 
         public void ClicarNoCheckEditDaGrid(string nomeCampo)
