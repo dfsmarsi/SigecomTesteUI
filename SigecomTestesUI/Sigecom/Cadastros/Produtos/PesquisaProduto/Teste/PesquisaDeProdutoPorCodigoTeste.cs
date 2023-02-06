@@ -27,7 +27,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Teste
 
             // Act
             pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaPrincipal(beginLifetimeScope);
-            pesquisaDeProdutoPage.PesquisarProdutoComEnter(PesquisaDeProdutoInformacoesParaTesteModel.CodigoDoProduto);
+            pesquisaDeProdutoPage.PesquisarProdutoComEnter(PesquisaDeProdutoInformacoesParaTesteModel.NomeDoProduto);
 
             // Assert
             Assert.True(pesquisaDeProdutoPage.VerificarSeExisteProdutoNaGrid(PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto));

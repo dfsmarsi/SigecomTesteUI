@@ -24,9 +24,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
 
         public void RealizarFluxoDeAlterarTabelaDePrecoNaCondicional()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoEAtribuirCliente();
+
+            // Act
             AlterarTabelaDePreco(3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto),
                 LancarItensNaCondicionalModel.ValorUnitarioDoPrimeiroProdutoNaCondicional);
@@ -36,6 +39,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             LancarProduto(LancarItensNaCondicionalModel.PesquisarItemIdDoSegundoProdutoNaCondicional);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao(CondicionalModel.CampoDaGridDeTotalDoProduto, "1"),
                 LancarItensNaCondicionalModel.ValorUnitarioDoSegundoProdutoNaCondicional);
+            
+            // Assert
             AvancarNaCondicional();
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);

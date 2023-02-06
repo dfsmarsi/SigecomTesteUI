@@ -22,14 +22,19 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
 
         public void RealizarFluxoDeRemoverItemDaCondicional()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto();
+            LancarProdutoPadrao();
+
+            // Act
             ClicarBotaoName(CondicionalModel.CampoDaGridParaRemoverProduto);
+
+            // Assert
             FecharTelaDeCondicionalComEsc();
         }
 
-        private void LancarProduto()
+        private void LancarProdutoPadrao()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);

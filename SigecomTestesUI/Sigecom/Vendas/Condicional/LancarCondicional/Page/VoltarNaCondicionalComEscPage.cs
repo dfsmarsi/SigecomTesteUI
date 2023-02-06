@@ -22,14 +22,17 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
 
         public void RealizarFluxoDeVoltarNaCondicionalComEsc()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoEAtribuirCliente();
+            // Act
             AvancarNaCondicional();
             AvancarNaCondicional();
             FecharTelaDeCondicionalComEsc();
             FecharTelaDeCondicionalComEsc();
             FecharTelaDeCondicionalComEsc();
+            // Assert
             ClicarBotaoName(CondicionalModel.ElementoNameDoSim);
         }
 

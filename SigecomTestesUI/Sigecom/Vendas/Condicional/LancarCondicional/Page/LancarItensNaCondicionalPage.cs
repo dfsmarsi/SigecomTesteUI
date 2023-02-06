@@ -23,10 +23,15 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
 
         public void RealizarFluxoDeLancarItemNaCondicional()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoEAtribuirCliente();
+
+            // Act
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeQuantidadeDoProduto), LancarItensNaCondicionalModel.QuantidadeDeProduto);
+
+            // Assert
             AvancarNaCondicional();
             DriverService.DigitarNoCampoId(CondicionalModel.ElementoDeObservação, LancarItensNaCondicionalModel.Observacao);
             AvancarNaCondicional();

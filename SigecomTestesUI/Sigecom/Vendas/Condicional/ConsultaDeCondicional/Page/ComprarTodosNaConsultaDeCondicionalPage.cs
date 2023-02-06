@@ -23,11 +23,14 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
 
         public void RealizarFluxoDeCompraTodosNaConsultaDeCondicional()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarCondicionalNaConsulta();
+            // Act
             EsperarAcaoEmSegundos(1);
             RealizarOCompraTodosNaConsulta();
+            // Assert
             FecharTelaDeCondicionalComEsc();
         }
 
