@@ -24,6 +24,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Injection
                 containerBuilder.RegisterType<VoltarNaDevolucaoComEscTeste>();
                 containerBuilder.RegisterType<GerarHaverNaDevolucaoPage>();
                 containerBuilder.RegisterType<GerarHaverNaDevolucaoTeste>();
+                containerBuilder.RegisterType<DevolverDinheiroNaDevolucaoPage>();
+                containerBuilder.RegisterType<DevolverDinheiroNaDevolucaoTeste>();
+                containerBuilder.RegisterType<ContasPagarNaDevolucaoPage>();
+                containerBuilder.RegisterType<ContasPagarNaDevolucaoTeste>();
             }
             catch (Exception exception)
             {
