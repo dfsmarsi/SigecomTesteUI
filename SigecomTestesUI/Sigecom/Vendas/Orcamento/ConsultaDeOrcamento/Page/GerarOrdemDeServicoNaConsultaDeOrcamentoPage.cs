@@ -44,7 +44,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         private void RealizarOFluxoDeGerarOrdemDeServico()
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeGerarDoOrcamento);
-            ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeGerarOrdemDeServicoDoOrcamento);
+            DriverService.SelecionarItensDoDropDown(1);
             ClicarBotaoName(OrdemDeServicoModel.BotaoAtalhosOrdemDeServico);
             ClicarBotaoName(OrdemDeServicoModel.AtalhoDePesquisarObjetoDaOrdemDeServico);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CadastrarObjetoModel.ElementoDoObjeto,

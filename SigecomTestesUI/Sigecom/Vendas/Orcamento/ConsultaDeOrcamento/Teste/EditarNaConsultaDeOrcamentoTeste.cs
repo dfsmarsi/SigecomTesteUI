@@ -21,8 +21,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Teste
         public void EditarNaConsultaDoOrcamento()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var consultaDeOrdemDeServicoPage = beginLifetimeScope.Resolve<Func<DriverService, EditarNaConsultaDeOrcamentoPage>>()(DriverService);
-            consultaDeOrdemDeServicoPage.RealizarFluxoDeEditarNaConsultaDoOrcamento();
+            var editarNaConsultaDeOrcamentoPage = beginLifetimeScope.Resolve<Func<DriverService, EditarNaConsultaDeOrcamentoPage>>()(DriverService);
+            editarNaConsultaDeOrcamentoPage.RealizarFluxoDeEditarNaConsultaDoOrcamento();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Appium.Windows;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Login.Model;
 using System.Collections.Generic;
@@ -27,19 +26,10 @@ namespace SigecomTestesUI.Login
             DriverService.ObterValorElementoId(LoginPageModel.ElementoUsuario) == _dadosDoLogin["Usuario"] &&
             DriverService.ObterValorElementoId(LoginPageModel.ElementoSenha) == _dadosDoLogin["Senha"];
 
-        public bool Logar(WindowsDriver<WindowsElement> windowsDriver)
-        {
-            DriverService.EsperarAbrirTelaDeLogin(windowsDriver, 60, LoginPageModel.ElementoTelaLogin);
-
-            PreencherLogin();
-            EsperarAcaoEmSegundos(3);
-            DriverService.TrocarJanela();
-            return ValidarAberturaDeTela(LoginPageModel.ElementoTelaPrincipal);
-        }
-
         public bool Logar()
         {
-            if (!ValidarAberturaDeTela(LoginPageModel.ElementoTelaLogin)) return false;
+            DriverService.EsperarAbrirTelaDeLogin(60, LoginPageModel.ElementoTelaLogin);
+
             PreencherLogin();
             EsperarAcaoEmSegundos(3);
             DriverService.TrocarJanela();

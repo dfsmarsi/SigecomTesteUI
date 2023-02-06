@@ -29,7 +29,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.Page
             LancarProdutoPadrao();
             DriverService.SelecionarItemComboBoxSemEnter(PedidoModel.ElementoDoComboDaTabelaDePreco,3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PedidoModel.CampoDaGridDeTotalDoProduto), LancarItemNoPedidoModel.ValorUnitarioDoPrimeiroProdutoNoPedido);
-            DriverService.SelecionarItemComboBoxSemEnter(PedidoModel.ElementoDoComboDaTabelaDePreco, 4);
+            DriverService.SelecionarItemComboBoxSemEnter(PedidoModel.ElementoDoComboDaTabelaDePreco, 1);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PedidoModel.CampoDaGridDeTotalDoProduto), LancarItemNoPedidoModel.ValorUnitarioDoPrimeiroProdutoNoPedido);
             LancarProduto(LancarItemNoPedidoModel.PesquisarItemIdDoSegundoProdutoNoPedido);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao(PedidoModel.CampoDaGridDeTotalDoProduto, "1"), LancarItemNoPedidoModel.ValorUnitarioDoSegundoProdutoNoPedido);

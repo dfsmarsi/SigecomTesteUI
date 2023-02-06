@@ -16,19 +16,24 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         }
 
         private void ClicarNaOpcaoDoMenu() =>
-            AcessarOpcaoMenu(CondicionalModel.BotaoMenuCadastro);
+            AcessarOpcaoMenu(CondicionalModel.BotaoMenuVendas);
 
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CondicionalModel.BotaoSubMenu);
 
         public void RealizarFluxoDeAplicarDescontoNaCondicional()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoEAtribuirCliente();
+
+            // Act
             DriverService.DigitarNoCampoName(CondicionalModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaCondicionalModel.QuantidadeDeProduto);
             DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeDescontoDoProduto, LancarItensNaCondicionalModel.DescontoNoItemCondicional);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto), LancarItensNaCondicionalModel.ItemComDescontoNaCondicional);
+
+            // Assert
             AvancarNaCondicional();
             AvancarNaCondicional();
             DriverService.RealizarSelecaoDaAcao(CondicionalModel.AcoesDaCondicional, 2);

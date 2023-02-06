@@ -18,6 +18,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Injection
                 containerBuilder.RegisterType<GerarVendaNaConsultaDeOrcamentoTeste>();
                 containerBuilder.RegisterType<GerarOrdemDeServicoNaConsultaDeOrcamentoPage>();
                 containerBuilder.RegisterType<GerarOrdemDeServicoNaConsultaDeOrcamentoTeste>();
+                containerBuilder.RegisterType<GerarPreVendaGravandoNaConsultaDeOrcamentoPage>();
+                containerBuilder.RegisterType<GerarPreVendaGravandoNaConsultaDeOrcamentoTeste>();
+                containerBuilder.RegisterType<GerarPreVendaFaturandoNaConsultaDeOrcamentoPage>();
+                containerBuilder.RegisterType<GerarPreVendaFaturandoNaConsultaDeOrcamentoTeste>();
             }
             catch (Exception exception)
             {

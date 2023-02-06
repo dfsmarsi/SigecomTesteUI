@@ -15,21 +15,26 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         }
 
         private void ClicarNaOpcaoDoMenu() =>
-            AcessarOpcaoMenu(CondicionalModel.BotaoMenuCadastro);
+            AcessarOpcaoMenu(CondicionalModel.BotaoMenuVendas);
 
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CondicionalModel.BotaoSubMenu);
 
         public void RealizarFluxoDeRemoverItemDaCondicional()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto();
+            LancarProdutoPadrao();
+
+            // Act
             ClicarBotaoName(CondicionalModel.CampoDaGridParaRemoverProduto);
+
+            // Assert
             FecharTelaDeCondicionalComEsc();
         }
 
-        private void LancarProduto()
+        private void LancarProdutoPadrao()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);

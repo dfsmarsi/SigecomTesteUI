@@ -16,6 +16,7 @@
         public static string Observacao => "TESTE";
         public static string DescontoNoItemOrcamento => "10";
         public static string ItemComDescontoNoOrcamento => "40,00";
+        public static string ValorTotalSemDesconto => "50,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoOrcamento => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNoOrcamento => "5,25";
         public static string PesquisarItemIdDoSegundoProdutoNoOrcamento => "2";

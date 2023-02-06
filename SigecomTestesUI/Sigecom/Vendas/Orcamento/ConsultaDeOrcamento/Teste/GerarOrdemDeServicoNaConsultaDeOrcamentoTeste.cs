@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("GerarOrdemDeServico")]
         [AllureSubSuite("ConsultaDoOrcamento")]
-        public void EditarNaConsultaDoOrcamento()
+        public void GerarOrdemDeServicoNaConsultaDeOrcamento()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var gerarOrdemDeServicoNaConsultaDeOrcamentoPage = beginLifetimeScope.Resolve<Func<DriverService, GerarOrdemDeServicoNaConsultaDeOrcamentoPage>>()(DriverService);

@@ -15,21 +15,24 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
         }
 
         private void ClicarNaOpcaoDoMenu() =>
-            AcessarOpcaoMenu(CondicionalModel.BotaoMenuCadastro);
+            AcessarOpcaoMenu(CondicionalModel.BotaoMenuVendas);
 
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CondicionalModel.BotaoSubMenu);
 
         public void RealizarFluxoDeVoltarNaCondicionalComEsc()
         {
+            // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoEAtribuirCliente();
+            // Act
             AvancarNaCondicional();
             AvancarNaCondicional();
             FecharTelaDeCondicionalComEsc();
             FecharTelaDeCondicionalComEsc();
             FecharTelaDeCondicionalComEsc();
+            // Assert
             ClicarBotaoName(CondicionalModel.ElementoNameDoSim);
         }
 
