@@ -2,10 +2,10 @@
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
-using SigecomTestesUI.Sigecom.Vendas.Pedido.Model;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Model;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
 using System;
+using SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page

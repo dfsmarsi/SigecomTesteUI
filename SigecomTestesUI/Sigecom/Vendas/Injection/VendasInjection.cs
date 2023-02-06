@@ -7,7 +7,7 @@ using SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Injection;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico.Injection;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Injection;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Injection;
-using SigecomTestesUI.Sigecom.Vendas.Pedido.Injection;
+using SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Injection;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Injection;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Injection;
 

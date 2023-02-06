@@ -28,6 +28,8 @@
   <ItemGroup>
     <Folder Include="Allure\Relatorios\" />
     <Folder Include="Allure\Resultados\" />
+    <Folder Include="Sigecom\Vendas\Pedido\ConsultaDePedido\Page\" />
+    <Folder Include="Sigecom\Vendas\Pedido\ConsultaDePedido\Teste\" />
   </ItemGroup>
 
 </Project>
