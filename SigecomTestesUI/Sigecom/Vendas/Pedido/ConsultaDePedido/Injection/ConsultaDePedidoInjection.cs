@@ -1,6 +1,8 @@
 ﻿using System;
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Page;
+using SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Teste;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Injection
 {
@@ -10,7 +12,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Injection
         {
             try
             {
-
+                containerBuilder.RegisterType<ConsultarVendasRealizadasPage>();
+                containerBuilder.RegisterType<ConsultarVendasRealizadasTeste>();
             }
             catch (Exception exception)
             {

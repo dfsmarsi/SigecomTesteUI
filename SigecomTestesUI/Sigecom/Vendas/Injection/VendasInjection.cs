@@ -7,6 +7,7 @@ using SigecomTestesUI.Sigecom.Vendas.Orcamento.LancarOrcamento.Injection;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.ConsultaDeOrdemDeServico.Injection;
 using SigecomTestesUI.Sigecom.Vendas.OrdemDeServico.LancarOrdemDeServico.Injection;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Injection;
+using SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Injection;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Injection;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Injection;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Injection;
@@ -19,6 +20,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Injection
         {
             containerBuilder.RegisterModule<PdvInjection>();
             containerBuilder.RegisterModule<PedidoInjection>();
+            containerBuilder.RegisterModule<ConsultaDePedidoInjection>();
             containerBuilder.RegisterModule<PreVendaInjection>();
             containerBuilder.RegisterModule<ConsultaDaPreVendaInjection>();
             containerBuilder.RegisterModule<CondicionalInjection>();

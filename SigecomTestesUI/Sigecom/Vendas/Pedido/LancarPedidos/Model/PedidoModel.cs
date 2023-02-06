@@ -21,6 +21,7 @@
         public static string ElementoNameDoConfirmar => ", Confirmar (ENTER)";
         public static string CampoDaGridDeTotalDoProduto => "Total";
         public static string CampoDaGridDeDescontoDoProduto => "Desconto (R$)";
+        public static string CampoDaGridDeUnitarioDoProduto => "Unitário";
         public static string CampoDaGridDeQuantidadeDoProduto => "Qtde";
     }
 }
