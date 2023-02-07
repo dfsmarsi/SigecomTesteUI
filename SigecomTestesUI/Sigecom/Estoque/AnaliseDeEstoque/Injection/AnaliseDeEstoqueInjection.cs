@@ -1,6 +1,8 @@
 ﻿using System;
 using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Page;
+using SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Teste;
 
 namespace SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Injection
 {
@@ -10,7 +12,10 @@ namespace SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Injection
         {
             try
             {
-
+                containerBuilder.RegisterType<FiltroDaAnaliseDeEstoquePage>();
+                containerBuilder.RegisterType<FiltroDaAnaliseDeEstoqueTeste>();
+                containerBuilder.RegisterType<HistoricoDeMovimentacaoPage>();
+                containerBuilder.RegisterType<HistoricoDeMovimentacaoTeste>();
             }
             catch (Exception exception)
             {
