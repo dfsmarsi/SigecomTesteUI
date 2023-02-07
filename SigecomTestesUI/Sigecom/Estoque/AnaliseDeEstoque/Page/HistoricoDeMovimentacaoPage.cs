@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Model;
+using SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Page
@@ -32,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Page
                 PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto, Keys.Enter);
 
             // Assert
-            Assert.AreEqual(DriverService.ObterValorElementoName(AnaliseDeEstoqueModel.BotaoDeManutencaoDeEstoque), AnaliseDeEstoqueModel.BotaoDeManutencaoDeEstoque);
+            Assert.AreEqual(DriverService.ObterValorElementoName(ManutencaoDeEstoqueModel.ElementoTelaDeManutencaoDeEstoque), ManutencaoDeEstoqueModel.ElementoTelaDeManutencaoDeEstoque);
         }
     }
 }
