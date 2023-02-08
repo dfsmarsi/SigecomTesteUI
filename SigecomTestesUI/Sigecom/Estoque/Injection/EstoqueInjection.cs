@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Injection;
+using SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Injection;
 
 namespace SigecomTestesUI.Sigecom.Estoque.Injection
 {
@@ -8,6 +9,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.Injection
         internal static void ConstruindoDependenciasDoEstoque(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterModule<AnaliseDeEstoqueInjection>();
+            containerBuilder.RegisterModule<ManutencaoDeEstoqueInjection>();
         }
     }
 }
