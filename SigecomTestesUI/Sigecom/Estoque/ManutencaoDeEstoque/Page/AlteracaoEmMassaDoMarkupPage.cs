@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
@@ -8,9 +7,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
 {
-    public class AlteracaoEmMassaDaVendaPage: PageObjectModel
+    public class AlteracaoEmMassaDoMarkupPage: PageObjectModel
     {
-        public AlteracaoEmMassaDaVendaPage(DriverService driver) : base(driver)
+        public AlteracaoEmMassaDoMarkupPage(DriverService driver) : base(driver)
         {
         }
 
@@ -20,32 +19,29 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ManutencaoDeEstoqueModel.BotaoSubMenu);
 
-        public void RealizarFluxoDaAlteracaoEmMassaDaVendaNaManutencaoDeEstoque()
+        public void RealizarFluxoDaAlteracaoEmMassaDoMarkupNaManutencaoDeEstoque()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDeProdutoModel.ElementoParametroDePesquisa,
                 PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto, Keys.Enter);
-            var pegarValorDaColunaDaGrid = Convert.ToInt32(DriverService.PegarValorDaColunaDaGrid("Preço venda").Replace(",00", ""));
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoDeAlteracaoEmMassa);
 
             // Act
             DriverService.TrocarJanela();
-            const string acrescentarNoValor = "1";
-            DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoTipoDeAlteracao, 1);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoValorDaVenda, acrescentarNoValor, Keys.Enter);
+            const string acrescentarNoValor = "100";
+            ClicarBotaoName(AlteracaoEmMassaModel.ElementoDeGroupButtomMarkup);
+            DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoTipoDeAlteracao, 3);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoValorDaVendaPorcentagem, acrescentarNoValor, Keys.Enter);
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
 
             // Assert
             DriverService.TrocarJanela();
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Preço venda"), SomarValorDaVenda(pegarValorDaColunaDaGrid, acrescentarNoValor));
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Markup"), $"{acrescentarNoValor},00%");
             FecharTelaDeManutencaoDeEstoqueComEsc();
         }
-
-        private static string SomarValorDaVenda(int valorOriginal, string acrescentarNoValor) =>
-            $"{valorOriginal + Convert.ToInt32(acrescentarNoValor)},00";
 
         private void FecharTelaDeManutencaoDeEstoqueComEsc() =>
             DriverService.FecharJanelaComEsc(ManutencaoDeEstoqueModel.ElementoTelaDeManutencaoDeEstoque);

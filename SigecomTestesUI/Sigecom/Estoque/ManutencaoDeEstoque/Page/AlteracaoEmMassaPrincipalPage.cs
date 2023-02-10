@@ -35,8 +35,8 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDaSituacaoTribuitaria, 2);
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaNaturezaCfop);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDaNaturezaCfop, 2);
-            ClicarBotaoName(AlteracaoEmMassaModel.BotaoConfirmar);
-            ClicarBotaoName(AlteracaoEmMassaModel.BotaoSim);
+            ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
+            ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
 
             // Assert
             DriverService.TrocarJanela();

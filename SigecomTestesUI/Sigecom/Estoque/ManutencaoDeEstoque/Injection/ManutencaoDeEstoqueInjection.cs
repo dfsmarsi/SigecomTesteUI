@@ -20,6 +20,12 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Injection
                 containerBuilder.RegisterType<AlteracaoEmMassaPrincipalTeste>();
                 containerBuilder.RegisterType<AlteracaoEmMassaDaVendaPage>();
                 containerBuilder.RegisterType<AlteracaoEmMassaDaVendaTeste>();
+                containerBuilder.RegisterType<AlteracaoEmMassaDoCustoPage>();
+                containerBuilder.RegisterType<AlteracaoEmMassaDoCustoTeste>();
+                containerBuilder.RegisterType<AlteracaoEmMassaDoMarkupPage>();
+                containerBuilder.RegisterType<AlteracaoEmMassaDoMarkupTeste>();
+                containerBuilder.RegisterType<AlteracaoEmMassaComTodasAsTogglesPage>();
+                containerBuilder.RegisterType<AlteracaoEmMassaComTodasAsTogglesTeste>();
             }
             catch (Exception exception)
             {

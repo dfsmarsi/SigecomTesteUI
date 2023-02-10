@@ -1,16 +1,16 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
 {
-    public class AlteracaoEmMassaDaVendaPage: PageObjectModel
+    public class AlteracaoEmMassaDoCustoPage:PageObjectModel
     {
-        public AlteracaoEmMassaDaVendaPage(DriverService driver) : base(driver)
+        public AlteracaoEmMassaDoCustoPage(DriverService driver) : base(driver)
         {
         }
 
@@ -20,19 +20,20 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ManutencaoDeEstoqueModel.BotaoSubMenu);
 
-        public void RealizarFluxoDaAlteracaoEmMassaDaVendaNaManutencaoDeEstoque()
+        public void RealizarFluxoDaAlteracaoEmMassaDoCustoNaManutencaoDeEstoque()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDeProdutoModel.ElementoParametroDePesquisa,
                 PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto, Keys.Enter);
-            var pegarValorDaColunaDaGrid = Convert.ToInt32(DriverService.PegarValorDaColunaDaGrid("Preço venda").Replace(",00", ""));
+            var pegarValorDaColunaDaGrid = Convert.ToInt32(DriverService.PegarValorDaColunaDaGrid("Última compra").Replace(",00", ""));
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoDeAlteracaoEmMassa);
 
             // Act
             DriverService.TrocarJanela();
             const string acrescentarNoValor = "1";
+            ClicarBotaoName(AlteracaoEmMassaModel.ElementoDeGroupButtomCusto);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoTipoDeAlteracao, 1);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoValorDaVenda, acrescentarNoValor, Keys.Enter);
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
@@ -40,11 +41,11 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
 
             // Assert
             DriverService.TrocarJanela();
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Preço venda"), SomarValorDaVenda(pegarValorDaColunaDaGrid, acrescentarNoValor));
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Última compra"), SomarValorDoCusto(pegarValorDaColunaDaGrid, acrescentarNoValor));
             FecharTelaDeManutencaoDeEstoqueComEsc();
         }
 
-        private static string SomarValorDaVenda(int valorOriginal, string acrescentarNoValor) =>
+        private static string SomarValorDoCusto(int valorOriginal, string acrescentarNoValor) =>
             $"{valorOriginal + Convert.ToInt32(acrescentarNoValor)},00";
 
         private void FecharTelaDeManutencaoDeEstoqueComEsc() =>
