@@ -17,7 +17,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.ConsultaDeCondicional.Page
         }
 
         private void ClicarNaOpcaoDoMenu() =>
-            AcessarOpcaoMenu(ConsultaDeCondicionalModel.BotaoMenuCadastro);
+            AcessarOpcaoMenu(ConsultaDeCondicionalModel.BotaoMenuVendas);
 
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ConsultaDeCondicionalModel.BotaoSubMenu);
