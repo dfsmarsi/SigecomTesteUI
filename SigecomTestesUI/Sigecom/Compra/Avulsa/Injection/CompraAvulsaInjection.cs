@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using System;
+using SigecomTestesUI.Sigecom.Compra.Avulsa.Page;
+using SigecomTestesUI.Sigecom.Compra.Avulsa.Teste;
 
 namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Injection
 {
@@ -10,7 +12,8 @@ namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Injection
         {
             try
             {
-
+                containerBuilder.RegisterType<CompraAvulsaCompletaPage>();
+                containerBuilder.RegisterType<CompraAvulsaCompletaTeste>();
             }
             catch (Exception exception)
             {

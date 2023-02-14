@@ -1,13 +1,8 @@
-﻿using Autofac;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto;
-using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using SigecomTestesUI.Sigecom.Compra.Avulsa.Model;
-using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Page
@@ -35,53 +30,47 @@ namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Page
                 "6", Keys.Enter);
 
             // Act
-            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDeProdutoModel.ElementoParametroDePesquisa,
-                PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto, Keys.Enter);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDeQuantidadeDoProduto), "5");
+            LancarProdutosNaVenda();
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDeQuantidadeDoProduto), "5,0000");
             DriverService.EditarItensNaGridComDuploClickComTab(CompraAvulsaModel.CampoDaGridDeCustoDoProduto, "10");
-            DriverService.EditarItensNaGridComDuploClickComTab(CompraAvulsaModel.CampoDaGridDeDiferencialDoProduto, "50");
+            DriverService.EditarItensNaGridComDuploClickComTab(CompraAvulsaModel.CampoDaGridDeDiferencialDoProduto, "10");
             ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosCompra);
             ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosDeDespesas);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraAvulsaModel.ElementoDoValorDeDespesas, "50", Keys.Enter);
             ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosCompra);
             ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosDeFrete);
-            ClicarBotaoName(CompraAvulsaModel.ElementoDoTransportador);
+            DriverService.ClicarBotaoId(CompraAvulsaModel.ElementoDoTransportador);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, "", Keys.Enter);
-            DriverService.EditarItensNaGridComDuploClickComTab(CompraAvulsaModel.CampoDaGridDeCustoDoProduto, "10");
-
+            DriverService.DigitarNoCampoId(CompraAvulsaModel.ElementoDoValorDeFrete, "50");
+            ClicarBotaoName(CompraAvulsaModel.ElementoDoConfirmar);
+            ClicarBotaoName(CompraAvulsaModel.ElementoDoConfirmarFinalDoFrete);
+            ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosCompra);
+            ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosDeNfe);
+            DriverService.DigitarNoCampoId(CompraAvulsaModel.ElementoDeSerieDoNfe, "1");
+            DriverService.DigitarNoCampoId(CompraAvulsaModel.ElementoDoNumeroDoNfe, "1");
+            ClicarBotaoName(CompraAvulsaModel.ElementoDoConfirmar);
+            DriverService.EditarItensNaGridComDuploClickComTab(CompraAvulsaModel.CampoDaGridDeMarkupDoProduto, "100");
 
 
             // Assert
-            DriverService.TrocarJanela();
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDeCustoDoProduto), "31,00");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDePrecoDeVendaDoProduto), "62,00");
+            ClicarBotaoName(CompraAvulsaModel.ElementoDoAvancarCompra);
+            ClicarBotaoName(CompraAvulsaModel.ElementoDoAvancarCompra);
+            Assert.AreEqual(DriverService.ObterValorElementoId(CompraAvulsaModel.ElementoDoTotalDuplicatas), "R$105,00");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDeValorDuplicatas), "105,00");
+            ClicarBotaoName(CompraAvulsaModel.ElementoDoAvancarCompra);
+            ClicarBotaoName(CompraAvulsaModel.ElementoDoAvancarCompra);
             FecharTelaDeCompraAvulsaComEsc();
         }
 
-        public string LancarProdutoPadraoNaVenda(string nomeDaTela)
+        private void LancarProdutosNaVenda()
         {
-            if (!PesquisarProduto(nomeDaTela, out var idDoProduto)) throw new Exception("Não encontrado produto");
-
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraAvulsaModel.ElementoPesquisaDeProduto, idDoProduto, Keys.Enter);
-            LancarProdutosNaVenda(CompraAvulsaModel.ElementoTelaDeCompra);
-            return idDoProduto;
-        }
-
-        private bool PesquisarProduto(string nomeDaTela, out string idDoProduto)
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var pesquisaDeProdutoPage = beginLifetimeScope.Resolve<Func<DriverService, PesquisaDeProdutoPage>>()(DriverService);
-            var pesquisarComF9UmProdutoNaTelaDeVenda = pesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(beginLifetimeScope, nomeDaTela);
-            idDoProduto = DriverService.PegarValorDaColunaDaGrid("Código");
-            pesquisaDeProdutoPage.FecharJanelaComEsc();
-            return pesquisarComF9UmProdutoNaTelaDeVenda;
-        }
-
-        public void LancarProdutosNaVenda(string nomeDaTela)
-        {
-            var idDoProduto = LancarProdutoPadraoNaVenda(nomeDaTela);
+            LancarProduto(CompraAvulsaModel.PesquisarItemId);
             LancarProduto(CompraAvulsaModel.PesquisarItem);
             LancarProduto(CompraAvulsaModel.PesquisarItemReferencia);
             LancarProduto(CompraAvulsaModel.PesquisarItemCodInterno);
-            LancarProduto($"1*{idDoProduto}");
+            LancarProduto($"1*{CompraAvulsaModel.PesquisarItemId}");
         }
 
         private void LancarProduto(string textoDePesquisa)
