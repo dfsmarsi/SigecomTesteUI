@@ -198,6 +198,25 @@ namespace SigecomTestesUI.Services
             RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterElementoDaGridComName(nomeColuna, campoDaGrid));
         }
 
+        public int RetornarPosicaoDoRegistroDesejado(string nomeColunaParaEncontrarValor, string valorParaSerEncontrado)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColunaParaEncontrarValor, valorParaSerEncontrado);
+
+            RealizarAcaoDeClicarNoCampoDaGrid(valorParaSerEncontrado, ObterElementoDaGridComName(nomeColunaParaEncontrarValor, campoDaGrid));
+            return campoDaGrid;
+        }
+
+        public void EditarNaGridNaPosicao(string nomeColunaParaEditar, string valorParaEditar, int campoDaGrid)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeColunaParaEditar} row {campoDaGrid}");
+            var acao = new Actions(_driver);
+            acao.MoveToElement(elementoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+            elementoEncontrado.SendKeys(valorParaEditar);
+            elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
         private int ObterPosicaoDoElementoNaGrid(string nomeColuna, string nome)
         {
             var campoDaGrid = 0;
@@ -285,27 +304,6 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
-        public void EditarItensComDuploClickName(string nomeCampo, string texto)
-        {
-            var elementoEncontrado = _driver.FindElementByName(nomeCampo);
-            SelecionarEEditarCampo(texto, elementoEncontrado);
-        }
-
-        public void EditarItensComDuploClickId(string nomeCampo, string texto)
-        {
-            var elementoEncontrado = _driver.FindElementByAccessibilityId(nomeCampo);
-            SelecionarEEditarCampo(texto, elementoEncontrado);
-        }
-
-        private void SelecionarEEditarCampo(string texto, IWebElement elementoEncontrado)
-        {
-            var acao = new Actions(_driver);
-            acao.MoveToElement(elementoEncontrado);
-            acao.DoubleClick();
-            acao.Perform();
-            elementoEncontrado.SendKeys(texto);
-        }
-
         public void EditarItensNaGridComDuploClickComTab(string nomeCampo, string texto)
         {
             var elementoEncontrado = EditarItemDaGridComDuploClick(nomeCampo, texto);
@@ -353,9 +351,6 @@ namespace SigecomTestesUI.Services
 
         public void ConfirmarPesquisa(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F5);
-
-        public void ConcluirAcaoComEnter(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.Enter);
 
         public void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
