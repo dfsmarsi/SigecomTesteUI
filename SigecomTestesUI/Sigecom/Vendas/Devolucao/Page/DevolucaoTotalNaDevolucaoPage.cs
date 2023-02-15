@@ -28,6 +28,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProduto();
+            DriverService.EditarItensNaGridComDuploClickComTab(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, "0");
             AvancarNaDevolucao();
             DriverService.EditarItensNaGrid(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, DriverService.PegarValorDaColunaDaGrid(DevolucaoModel.CampoDaGridDeQuantidadeVendida));
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(DevolucaoModel.CampoDaGridDeSituacaoParaDevolver), "Devolução total");
