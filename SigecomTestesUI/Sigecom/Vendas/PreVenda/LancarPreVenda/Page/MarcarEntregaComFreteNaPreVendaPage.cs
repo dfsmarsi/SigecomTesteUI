@@ -25,8 +25,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoName(PreVendaModel.BotaoAtalhosPreVenda);
-            ClicarBotaoName(PreVendaModel.AtalhoDeEditarClienteDaPreVenda);
             LancarProdutoPadraoEAtribuirCliente();
             AvancarNaPreVenda();
             ClicarBotaoName(PreVendaModel.ElementoNameSelecionar);
