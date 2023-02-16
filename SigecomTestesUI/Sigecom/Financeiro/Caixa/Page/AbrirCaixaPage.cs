@@ -21,14 +21,21 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Page
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            DriverService.SelecionarItemComboBox(CaixaModel.BotaoSubMenuDoSub, 1);
+            DriverService.SelecionarItensDoDropDown(1);
 
             // Act
-            
-
+            ClicarBotaoName(CaixaModel.BotaoDeFecharCaixa);
+            ClicarBotaoName(CaixaModel.Confirmar);
+            ClicarBotaoName(CaixaModel.Sim);
+            ClicarBotaoName(CaixaModel.Nao);
 
             // Assert
+            ClicarBotaoName(CaixaModel.BotaoDeAbrirCaixa);
+            ClicarBotaoName(CaixaModel.Confirmar);
+            ClicarBotaoName(CaixaModel.Sim);
+            ClicarBotaoName(CaixaModel.Nao);
 
+            FecharTelaDeAbrirCaixaComEsc();
         }
 
         private void FecharTelaDeAbrirCaixaComEsc() =>

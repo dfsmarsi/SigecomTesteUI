@@ -306,19 +306,24 @@ namespace SigecomTestesUI.Services
 
         public void EditarItensNaGridComDuploClickComTab(string nomeCampo, string texto)
         {
-            var elementoEncontrado = EditarItemDaGridComDuploClick(nomeCampo, texto);
+            var elementoEncontrado = EditarItemDaGridComDuploClick(nomeCampo, texto, "0");
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
         public void EditarItensNaGridComDuploClickComEnter(string nomeCampo, string texto)
         {
-            var elementoEncontrado = EditarItemDaGridComDuploClick(nomeCampo, texto);
+            var elementoEncontrado = EditarItemDaGridComDuploClick(nomeCampo, texto, "0");
             elementoEncontrado.SendKeys(Keys.Enter);
         }
 
-        private WindowsElement EditarItemDaGridComDuploClick(string nomeCampo, string texto)
+        public void EditarItensNaGridComDuploClickNaPosicaoDesejada(string nomeCampo, string texto, string posicao)
         {
-            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
+            EditarItemDaGridComDuploClick(nomeCampo, texto, posicao);
+        }
+
+        private WindowsElement EditarItemDaGridComDuploClick(string nomeCampo, string texto, string posicao)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row {posicao}");
             var acao = new Actions(_driver);
             acao.MoveToElement(elementoEncontrado);
             acao.DoubleClick();
