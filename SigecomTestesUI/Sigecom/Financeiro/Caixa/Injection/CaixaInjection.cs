@@ -14,6 +14,10 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Injection
             {
                 containerBuilder.RegisterType<AbrirCaixaPage>();
                 containerBuilder.RegisterType<AbrirCaixaTeste>();
+                containerBuilder.RegisterType<SangriaSuprimentoNoCaixaPage>();
+                containerBuilder.RegisterType<SangriaSuprimentoNoCaixaTeste>();
+                containerBuilder.RegisterType<ReabrirCaixaPage>();
+                containerBuilder.RegisterType<ReabrirCaixaTeste>();
             }
             catch (Exception exception)
             {

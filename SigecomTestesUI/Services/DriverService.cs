@@ -170,6 +170,16 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void EditarCampoComDuploCliqueNoBotaoId(string nomeBotao, string texto)
+        {
+            var botaoEncontrado = _driver.FindElementByAccessibilityId(nomeBotao);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(botaoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+            botaoEncontrado.SendKeys(texto);
+        }
+
         public bool VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
         {
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
@@ -177,7 +187,7 @@ namespace SigecomTestesUI.Services
             return elementoDaGridComName.Text.Equals(nome);
         }
 
-        public bool VerificarSePossuiOValorNaGrid(string nome)
+        public bool VerificarSePossuiOValorNaTela(string nome)
         {
             var driverPageSource = _driver.PageSource;
             return driverPageSource.Contains(nome);

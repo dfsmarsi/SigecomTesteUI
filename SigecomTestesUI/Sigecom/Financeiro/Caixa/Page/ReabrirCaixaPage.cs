@@ -4,9 +4,9 @@ using SigecomTestesUI.Sigecom.Financeiro.Caixa.Model;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Page
 {
-    public class AbrirCaixaPage:PageObjectModel
+    public class ReabrirCaixaPage:PageObjectModel
     {
-        public AbrirCaixaPage(DriverService driver) : base(driver)
+        public ReabrirCaixaPage(DriverService driver) : base(driver)
         {
         }
 
@@ -16,7 +16,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(CaixaModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeAbrirCaixa()
+        public void RealizarFluxoDeReabrirCaixa()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
@@ -32,16 +32,12 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Page
             ClicarBotaoName(CaixaModel.Nao);
 
             // Assert
-            ClicarBotaoName(CaixaModel.BotaoDeAbrirCaixa);
-            ClicarBotaoName(CaixaModel.Confirmar);
-            ClicarBotaoName(CaixaModel.Sim);
-            ClicarBotaoName(CaixaModel.Nao);
+            ClicarBotaoName(CaixaModel.BotaoDeReabrirCaixa);
             DriverService.VerificarSePossuiOValorNaTela(CaixaModel.BotaoDeFecharCaixa);
-
-            FecharTelaDeAbrirCaixaComEsc();
+            FecharTelaDeReabrirCaixaComEsc();
         }
 
-        private void FecharTelaDeAbrirCaixaComEsc() =>
+        private void FecharTelaDeReabrirCaixaComEsc() =>
             DriverService.FecharJanelaComEsc(CaixaModel.ElementoTelaDeCaixa);
     }
 }
