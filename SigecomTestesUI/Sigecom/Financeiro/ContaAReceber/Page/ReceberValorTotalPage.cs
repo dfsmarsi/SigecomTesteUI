@@ -1,14 +1,13 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 {
-    public class LancarContaAvulsaPage:PageObjectModel
+    public class ReceberValorTotalPage:PageObjectModel
     {
-        public LancarContaAvulsaPage(DriverService driver) : base(driver)
+        public ReceberValorTotalPage(DriverService driver) : base(driver)
         {
         }
 
@@ -18,7 +17,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarContaAvulsaNaContaAReceber()
+        public void RealizarFluxoDeAbrirDetalhesDaContaNaContaAReceber()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
@@ -26,24 +25,24 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoSub);
 
             // Act
+            RealizarFluxoDeGerarContaAReceber();
+            ClicarBotaoName(ContaAReceberModel.BotaoDeReceber);
+
+
+            // Assert
+            ClicarBotaoName(LancarContaAvulsaModel.Cancelar);
+            FecharTelaDeLancarContaAvulsaContaAReceberComEsc();
+        }
+
+        private void RealizarFluxoDeGerarContaAReceber()
+        {
             ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "10");
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "3");
             ClicarBotaoName(LancarContaAvulsaModel.Gravar);
-
-            // Assert
-            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$3,34");
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$3,34");
-            VerificarValorDoSaldoNaPosicao(posicao + 1);
-            VerificarValorDoSaldoNaPosicao(posicao + 2);
-            FecharTelaDeLancarContaAvulsaContaAReceberComEsc();
         }
-
-        private void VerificarValorDoSaldoNaPosicao(int posicao) => 
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$3,33");
 
         private void FecharTelaDeLancarContaAvulsaContaAReceberComEsc() =>
             DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeConta);

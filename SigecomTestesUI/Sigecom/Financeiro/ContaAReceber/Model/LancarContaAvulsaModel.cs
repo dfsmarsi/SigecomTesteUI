@@ -11,6 +11,8 @@
         public static string ElementoCampoDeNumeroDocumento => "lblNumeroDocumento";
         public static string ElementoCampoDeValor => "txtValor";
         public static string ElementoCampoDeQuantidadeDeParcelas => "txtQuantidadeParcelas";
-        public static string Gravar => ", Gravar (F5)";
+        public static string ElementoCampoDaGridPendencia => "Pendência";
+        public static string Gravar => ", Gravar  (F5)";
+        public static string Cancelar => ", Cancelar (ESC)";
     }
 }
