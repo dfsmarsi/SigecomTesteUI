@@ -16,6 +16,10 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Injection
                 containerBuilder.RegisterType<LancarContaAvulsaTeste>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaPage>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaTeste>();
+                containerBuilder.RegisterType<ReceberValorTotalPage>();
+                containerBuilder.RegisterType<ReceberValorTotalTeste>();
+                containerBuilder.RegisterType<ReceberValorParcialPage>();
+                containerBuilder.RegisterType<ReceberValorParcialTeste>();
             }
             catch (Exception exception)
             {

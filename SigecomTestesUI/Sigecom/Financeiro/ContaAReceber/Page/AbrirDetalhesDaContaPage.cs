@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoSub);
+            AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
 
             // Act
             ClicarBotaoName(ContaAReceberModel.BotaoDeDetalhes);
@@ -38,6 +38,6 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         }
 
         private void FecharTelaDeLancarContaAvulsaContaAReceberComEsc() =>
-            DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeConta);
+            DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeContaRecebidas);
     }
 }

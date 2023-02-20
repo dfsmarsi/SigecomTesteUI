@@ -23,7 +23,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoSub);
+            AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
 
             // Act
             ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
@@ -46,6 +46,6 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$3,33");
 
         private void FecharTelaDeLancarContaAvulsaContaAReceberComEsc() =>
-            DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeConta);
+            DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeContaReceber);
     }
 }
