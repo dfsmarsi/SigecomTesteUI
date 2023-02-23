@@ -1,10 +1,9 @@
-﻿using Autofac;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
+using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Model;
+using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
 using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model;
-using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
@@ -32,8 +31,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             RealizarFluxoDeGerarContaAPagar();
 
             // Assert
-            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$3,34");
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$3,34");
+            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$6,68");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$6,68");
             VerificarValorDoSaldoNaPosicao(posicao + 1);
             VerificarValorDoSaldoNaPosicao(posicao + 2);
             FecharTelaDeLancarContaAvulsaContaAPagarComEsc();
@@ -41,13 +40,17 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 
         private void RealizarFluxoDeGerarContaAPagar()
         {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAPagar("10");
+            ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePessoa, "FORNECEDOR", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "20");
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "3");
+            ClicarBotaoName(LancarContaAvulsaModel.Gravar);
         }
 
         private void VerificarValorDoSaldoNaPosicao(int posicao) =>
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$3,33");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$6,66");
 
         private void FecharTelaDeLancarContaAvulsaContaAPagarComEsc() =>
             DriverService.FecharJanelaComEsc(ContaAPagarModel.ElementoTelaDeContaPagar);

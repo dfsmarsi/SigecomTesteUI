@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using SigecomTestesUI.Sigecom.Financeiro.Caixa.Injection;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Injection;
+using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Injection;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.Injection
 {
@@ -10,6 +11,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Injection
         {
             containerBuilder.RegisterModule<CaixaInjection>();
             containerBuilder.RegisterModule<ContaAReceberInjection>();
+            containerBuilder.RegisterModule<ContaAPagarInjection>();
         }
     }
 }

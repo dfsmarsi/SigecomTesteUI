@@ -1,9 +1,5 @@
-﻿using System;
-using Autofac;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
 using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Model;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
@@ -28,8 +24,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
-            RealizarFluxoDeGerarContaAReceber();
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$13,00");
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$6,50");
 
             // Act
             ClicarBotaoName(ContaAReceberModel.BotaoDeDetalhes);
@@ -44,14 +39,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             FecharTelaDeLancarContaAvulsaContaAReceberComEsc();
         }
 
-        private void RealizarFluxoDeGerarContaAReceber()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAReceber("13,00");
-        }
-
         private void FecharTelaDeLancarContaAvulsaContaAReceberComEsc() =>
-            DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeContaRecebidas);
+            DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeContaReceber);
     }
 }

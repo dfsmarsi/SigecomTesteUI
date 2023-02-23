@@ -1,10 +1,8 @@
-﻿using Autofac;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
+using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Model;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
-using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
@@ -41,9 +39,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 
         private void RealizarFluxoDeGerarContaAReceber()
         {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAReceber("10");
+            ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePessoa, "CONSUMIDOR", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "10");
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "3");
+            ClicarBotaoName(LancarContaAvulsaModel.Gravar);
         }
 
         private void VerificarValorDoSaldoNaPosicao(int posicao) => 
