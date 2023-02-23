@@ -18,11 +18,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("ReceberValorParcialComHaver")]
         [AllureSubSuite("ContaAReceber")]
-        public void ReceberValorParcialComHaver()
+        public void ReceberValorParcialComHaverNaContaAReceber()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var receberValorParcialComHaverPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorParcialComHaverDaContaAReceberPage>>()(DriverService);
-            receberValorParcialComHaverPage.RealizarFluxoDeReceberValorParcialComHaverNaContaAReceber();
+            var receberValorParcialComHaverDaContaAReceberPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorParcialComHaverDaContaAReceberPage>>()(DriverService);
+            receberValorParcialComHaverDaContaAReceberPage.RealizarFluxoDeReceberValorParcialComHaverNaContaAReceber();
         }
     }
 }

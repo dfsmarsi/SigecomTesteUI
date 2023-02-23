@@ -1,7 +1,10 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
@@ -26,13 +29,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
 
             // Act
-            ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeHistorico, "", Keys.Enter);
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeValor, "10");
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeQuantidadeDeParcelas, "3");
-            ClicarBotaoName(LancarContaAvulsaDaContaAReceberModel.Gravar);
+            RealizarFluxoDeGerarContaAReceber();
 
             // Assert
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$3,34");
@@ -40,6 +37,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             VerificarValorDoSaldoNaPosicao(posicao + 1);
             VerificarValorDoSaldoNaPosicao(posicao + 2);
             FecharTelaDeLancarContaAvulsaContaAReceberComEsc();
+        }
+
+        private void RealizarFluxoDeGerarContaAReceber()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
+            contaBasePage.RealizarFluxoDeGerarContaAReceber("10");
         }
 
         private void VerificarValorDoSaldoNaPosicao(int posicao) => 

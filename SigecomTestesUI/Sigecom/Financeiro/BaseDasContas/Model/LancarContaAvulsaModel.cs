@@ -1,11 +1,11 @@
-﻿namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model
+﻿namespace SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Model
 {
-    public class LancarContaAvulsaDaContaAReceberModel
+    public class LancarContaAvulsaModel
     {
         public static string ElementoCampoDePrimeiroVencimento => "dataPrimeiroVencimentoDateEdit";
         public static string ElementoCampoDeEmissao => "dateEditEmissao";
         public static string ElementoCampoDePlanoConta => "scPlanoConta";
-        public static string ElementoCampoDeCliente => "searchControlPessoa";
+        public static string ElementoCampoDePessoa => "searchControlPessoa";
         public static string ElementoCampoDeHistorico => "textEditHistorico";
         public static string ElementoCampoDeTipoDocumento => "cbxTipoDocumento";
         public static string ElementoCampoDeNumeroDocumento => "lblNumeroDocumento";

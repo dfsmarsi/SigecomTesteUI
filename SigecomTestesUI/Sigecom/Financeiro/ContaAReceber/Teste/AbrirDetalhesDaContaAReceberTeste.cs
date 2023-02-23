@@ -18,11 +18,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("AbrirDetalhesDaConta")]
         [AllureSubSuite("ContaAReceber")]
-        public void AbrirDetalhesDaConta()
+        public void AbrirDetalhesDaContaNaContaAReceber()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var abrirDetalhesDaContaPage = beginLifetimeScope.Resolve<Func<DriverService, AbrirDetalhesDaContaAReceberPage>>()(DriverService);
-            abrirDetalhesDaContaPage.RealizarFluxoDeAbrirDetalhesDaContaNaContaAReceber();
+            var abrirDetalhesDaContaAReceberPage = beginLifetimeScope.Resolve<Func<DriverService, AbrirDetalhesDaContaAReceberPage>>()(DriverService);
+            abrirDetalhesDaContaAReceberPage.RealizarFluxoDeAbrirDetalhesDaContaNaContaAReceber();
         }
     }
 }

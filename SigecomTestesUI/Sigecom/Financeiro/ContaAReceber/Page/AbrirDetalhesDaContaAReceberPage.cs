@@ -1,5 +1,10 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
+using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Model;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -23,18 +28,27 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
+            RealizarFluxoDeGerarContaAReceber();
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$13,00");
 
             // Act
             ClicarBotaoName(ContaAReceberModel.BotaoDeDetalhes);
             ValidarAberturaDeTela(ContaAReceberModel.ElementoTelaDeDetalhesDaConta);
-            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDePrimeiroVencimento), "quinta-feira, 22 de fevereiro de 2024");
-            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeCliente), "CONSUMIDOR");
-            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeValor), "R$13,00");
+            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaModel.ElementoCampoDePrimeiroVencimento), "quinta-feira, 22 de fevereiro de 2024");
+            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaModel.ElementoCampoDePessoa), "CONSUMIDOR");
+            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaModel.ElementoCampoDeValor), "R$13,00");
 
             // Assert
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDaGridPendencia), "Pendente");
-            ClicarBotaoName(LancarContaAvulsaDaContaAReceberModel.Cancelar);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaModel.ElementoCampoDaGridPendencia), "Pendente");
+            ClicarBotaoName(LancarContaAvulsaModel.Cancelar);
             FecharTelaDeLancarContaAvulsaContaAReceberComEsc();
+        }
+
+        private void RealizarFluxoDeGerarContaAReceber()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
+            contaBasePage.RealizarFluxoDeGerarContaAReceber("13,00");
         }
 
         private void FecharTelaDeLancarContaAvulsaContaAReceberComEsc() =>

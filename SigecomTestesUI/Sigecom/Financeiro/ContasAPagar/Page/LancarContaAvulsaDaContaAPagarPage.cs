@@ -1,23 +1,18 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
-using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
 using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 {
     public class LancarContaAvulsaDaContaAPagarPage:PageObjectModel
     {
-        private readonly IContaBasePage _contaBasePage;
         public LancarContaAvulsaDaContaAPagarPage(DriverService driver) : base(driver)
         {
-        }
-
-        public LancarContaAvulsaDaContaAPagarPage(DriverService driver, IContaBasePage contaBasePage) : base(driver)
-        {
-            _contaBasePage = contaBasePage;
         }
 
         private void ClicarNaOpcaoDoMenu() =>
@@ -34,13 +29,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenuDoPagar);
 
             // Act
-            ClicarBotaoName(ContaAPagarModel.BotaoDeNovaConta);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeHistorico, "", Keys.Enter);
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeValor, "10");
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeQuantidadeDeParcelas, "3");
-            ClicarBotaoName(LancarContaAvulsaDaContaAReceberModel.Gravar);
+            RealizarFluxoDeGerarContaAPagar();
 
             // Assert
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$3,34");
@@ -48,6 +37,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             VerificarValorDoSaldoNaPosicao(posicao + 1);
             VerificarValorDoSaldoNaPosicao(posicao + 2);
             FecharTelaDeLancarContaAvulsaContaAPagarComEsc();
+        }
+
+        private void RealizarFluxoDeGerarContaAPagar()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
+            contaBasePage.RealizarFluxoDeGerarContaAPagar("10");
         }
 
         private void VerificarValorDoSaldoNaPosicao(int posicao) =>

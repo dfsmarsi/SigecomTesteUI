@@ -2,7 +2,7 @@
 {
     public interface IContaBasePage
     {
-        void RealizarFluxoDeGerarContaAReceber();
-        void RealizarFluxoDeGerarContaAPagar();
+        void RealizarFluxoDeGerarContaAReceber(string valorDaConta);
+        void RealizarFluxoDeGerarContaAPagar(string valorDaConta);
     }
 }
