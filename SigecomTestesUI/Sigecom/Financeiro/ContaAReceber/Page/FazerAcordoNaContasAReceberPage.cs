@@ -47,11 +47,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         private void RealizarFluxoDeGerarContaAReceber()
         {
             ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "22,11");
-            ClicarBotaoName(LancarContaAvulsaModel.Gravar);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeHistorico, "", Keys.Enter);
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeValor, "22,11");
+            ClicarBotaoName(LancarContaAvulsaDaContaAReceberModel.Gravar);
         }
 
         private void FecharTelaDeContaAReceberComEsc() =>

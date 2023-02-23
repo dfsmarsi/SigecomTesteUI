@@ -1,6 +1,6 @@
 ﻿namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model
 {
-    public class LancarContaAvulsaModel
+    public class LancarContaAvulsaDaContaAReceberModel
     {
         public static string ElementoCampoDePrimeiroVencimento => "dataPrimeiroVencimentoDateEdit";
         public static string ElementoCampoDeEmissao => "dateEditEmissao";

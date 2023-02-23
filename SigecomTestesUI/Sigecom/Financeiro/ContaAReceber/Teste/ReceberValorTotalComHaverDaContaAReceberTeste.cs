@@ -1,28 +1,28 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
 {
-    public class ReceberValorParcialTeste:BaseTestes
+    public class ReceberValorTotalComHaverDaContaAReceberTeste:BaseTestes
     {
-        [Test(Description = "Receber valor parcial")]
+        [Test(Description = "Receber valor total com haver")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("ReceberValorParcial")]
+        [AllureSuite("ReceberValorTotalComHaver")]
         [AllureSubSuite("ContaAReceber")]
-        public void ReceberValorParcial()
+        public void ReceberValorTotalComHaver()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var receberValorParcialPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorParcialPage>>()(DriverService);
-            receberValorParcialPage.RealizarFluxoDeReceberValorParcialNaContaAReceber();
+            var receberValorTotalComHaverPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorTotalComHaverDaContaAReceberPage>>()(DriverService);
+            receberValorTotalComHaverPage.RealizarFluxoDeReceberValorTotalComHaverNaContaAReceber();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using SigecomTestesUI.ControleDeInjecao;
 using System;
+using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas;
+using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste;
 
@@ -12,22 +14,23 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Injection
         {
             try
             {
-                containerBuilder.RegisterType<LancarContaAvulsaPage>();
-                containerBuilder.RegisterType<LancarContaAvulsaTeste>();
-                containerBuilder.RegisterType<AbrirDetalhesDaContaPage>();
-                containerBuilder.RegisterType<AbrirDetalhesDaContaTeste>();
-                containerBuilder.RegisterType<ReceberValorTotalPage>();
-                containerBuilder.RegisterType<ReceberValorTotalTeste>();
-                containerBuilder.RegisterType<ReceberValorParcialPage>();
-                containerBuilder.RegisterType<ReceberValorParcialTeste>();
-                containerBuilder.RegisterType<ReceberValorTotalComHaverPage>();
-                containerBuilder.RegisterType<ReceberValorTotalComHaverTeste>();
-                containerBuilder.RegisterType<ReceberValorParcialComHaverPage>();
-                containerBuilder.RegisterType<ReceberValorParcialComHaverTeste>();
+                containerBuilder.RegisterType<LancarContaAvulsaDaContaAReceberPage>();
+                containerBuilder.RegisterType<LancarContaAvulsaDaContaAReceberTeste>();
+                containerBuilder.RegisterType<AbrirDetalhesDaContaAReceberPage>();
+                containerBuilder.RegisterType<AbrirDetalhesDaContaAReceberTeste>();
+                containerBuilder.RegisterType<ReceberValorTotalDaContaAReceberPage>();
+                containerBuilder.RegisterType<ReceberValorTotalDaContaAReceberTeste>();
+                containerBuilder.RegisterType<ReceberValorParcialDaContaAReceberPage>();
+                containerBuilder.RegisterType<ReceberValorParcialDaContaAReceberTeste>();
+                containerBuilder.RegisterType<ReceberValorTotalComHaverDaContaAReceberPage>();
+                containerBuilder.RegisterType<ReceberValorTotalComHaverDaContaAReceberTeste>();
+                containerBuilder.RegisterType<ReceberValorParcialComHaverDaContaAReceberPage>();
+                containerBuilder.RegisterType<ReceberValorParcialComHaverDaContaAReceberTeste>();
                 containerBuilder.RegisterType<FazerAcordoNaContasAReceberPage>();
                 containerBuilder.RegisterType<FazerAcordoNaContasAReceberTeste>();
                 containerBuilder.RegisterType<EstornarDaContaAReceberPage>();
                 containerBuilder.RegisterType<EstornarDaContaAReceberTeste>();
+                containerBuilder.RegisterType<ContaBasePage>().As<IContaBasePage>();
             }
             catch (Exception exception)
             {

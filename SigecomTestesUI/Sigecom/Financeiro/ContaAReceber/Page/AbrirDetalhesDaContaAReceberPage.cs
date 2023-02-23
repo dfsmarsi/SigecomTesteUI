@@ -5,9 +5,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 {
-    public class AbrirDetalhesDaContaPage: PageObjectModel
+    public class AbrirDetalhesDaContaAReceberPage: PageObjectModel
     {
-        public AbrirDetalhesDaContaPage(DriverService driver) : base(driver)
+        public AbrirDetalhesDaContaAReceberPage(DriverService driver) : base(driver)
         {
         }
 
@@ -27,13 +27,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             // Act
             ClicarBotaoName(ContaAReceberModel.BotaoDeDetalhes);
             ValidarAberturaDeTela(ContaAReceberModel.ElementoTelaDeDetalhesDaConta);
-            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaModel.ElementoCampoDePrimeiroVencimento), "quinta-feira, 22 de fevereiro de 2024");
-            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaModel.ElementoCampoDeCliente), "CONSUMIDOR");
-            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaModel.ElementoCampoDeValor), "R$13,00");
+            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDePrimeiroVencimento), "quinta-feira, 22 de fevereiro de 2024");
+            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeCliente), "CONSUMIDOR");
+            Assert.AreEqual(DriverService.ObterValorElementoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeValor), "R$13,00");
 
             // Assert
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaModel.ElementoCampoDaGridPendencia), "Pendente");
-            ClicarBotaoName(LancarContaAvulsaModel.Cancelar);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDaGridPendencia), "Pendente");
+            ClicarBotaoName(LancarContaAvulsaDaContaAReceberModel.Cancelar);
             FecharTelaDeLancarContaAvulsaContaAReceberComEsc();
         }
 

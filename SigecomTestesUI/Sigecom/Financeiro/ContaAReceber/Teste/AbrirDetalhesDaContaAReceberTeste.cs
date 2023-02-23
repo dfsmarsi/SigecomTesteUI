@@ -8,21 +8,21 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
 {
-    public class ReceberValorTotalTeste:BaseTestes
+    public class AbrirDetalhesDaContaAReceberTeste: BaseTestes
     {
-        [Test(Description = "Receber valor total")]
+        [Test(Description = "Abrir detalhes da conta")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("ReceberValorTotal")]
+        [AllureSuite("AbrirDetalhesDaConta")]
         [AllureSubSuite("ContaAReceber")]
-        public void ReceberValorTotal()
+        public void AbrirDetalhesDaConta()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var receberValorTotalPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorTotalPage>>()(DriverService);
-            receberValorTotalPage.RealizarFluxoDeReceberValorTotalNaContaAReceber();
+            var abrirDetalhesDaContaPage = beginLifetimeScope.Resolve<Func<DriverService, AbrirDetalhesDaContaAReceberPage>>()(DriverService);
+            abrirDetalhesDaContaPage.RealizarFluxoDeAbrirDetalhesDaContaNaContaAReceber();
         }
     }
 }

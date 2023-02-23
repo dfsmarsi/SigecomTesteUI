@@ -1,28 +1,28 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page;
-using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
 {
-    public class LancarContaAvulsaTeste: BaseTestes
+    public class ReceberValorParcialDaContaAReceberTeste:BaseTestes
     {
-        [Test(Description = "Lancar conta avulsa")]
+        [Test(Description = "Receber valor parcial")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("LancarContaAvulsa")]
+        [AllureSuite("ReceberValorParcial")]
         [AllureSubSuite("ContaAReceber")]
-        public void LancarContaAvulsa()
+        public void ReceberValorParcial()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var lancarContaAvulsaPage = beginLifetimeScope.Resolve<Func<DriverService, LancarContaAvulsaPage>>()(DriverService);
-            lancarContaAvulsaPage.RealizarFluxoDeLancarContaAvulsaNaContaAReceber();
+            var receberValorParcialPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorParcialDaContaAReceberPage>>()(DriverService);
+            receberValorParcialPage.RealizarFluxoDeReceberValorParcialNaContaAReceber();
         }
     }
 }

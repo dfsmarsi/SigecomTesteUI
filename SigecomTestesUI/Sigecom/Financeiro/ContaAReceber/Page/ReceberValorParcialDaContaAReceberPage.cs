@@ -6,9 +6,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 {
-    public class ReceberValorTotalPage:PageObjectModel
+    public class ReceberValorParcialDaContaAReceberPage:PageObjectModel
     {
-        public ReceberValorTotalPage(DriverService driver) : base(driver)
+        public ReceberValorParcialDaContaAReceberPage(DriverService driver) : base(driver)
         {
         }
 
@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeReceberValorTotalNaContaAReceber()
+        public void RealizarFluxoDeReceberValorParcialNaContaAReceber()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
@@ -27,27 +27,31 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 
             // Act
             RealizarFluxoDeGerarContaAReceber();
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$11,11");
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,11");
             ClicarBotaoName(ContaAReceberModel.BotaoDeReceber);
             DriverService.SelecionarItensDoDropDown(1);
-            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAReceberModel.ElementoDeFormaDePagamento, 1);
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(ContaAReceberModel.ElementoDeFormaDePagamento, 1);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(ContaAReceberModel.ElementoDoTotalPago, "10,11", Keys.Enter);
+            ClicarBotaoName(ContaAReceberModel.ParcialDoPagarConta);
+            ClicarBotaoName(ContaAReceberModel.Sim);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
             FecharTelaDeContaAReceberComEsc();
 
             // Assert
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(2);
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$11,11"), true);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$10,11"), true);
             FecharTelaDeContasRecebidasComEsc();
         }
 
         private void RealizarFluxoDeGerarContaAReceber()
         {
             ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "11,11");
-            ClicarBotaoName(LancarContaAvulsaModel.Gravar);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeHistorico, "", Keys.Enter);
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeValor, "22,11");
+            ClicarBotaoName(LancarContaAvulsaDaContaAReceberModel.Gravar);
         }
 
         private void FecharTelaDeContaAReceberComEsc() =>

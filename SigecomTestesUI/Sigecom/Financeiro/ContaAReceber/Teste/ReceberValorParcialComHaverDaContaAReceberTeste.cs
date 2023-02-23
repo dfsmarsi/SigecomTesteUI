@@ -8,21 +8,21 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
 {
-    public class ReceberValorTotalComHaverTeste:BaseTestes
+    public class ReceberValorParcialComHaverDaContaAReceberTeste:BaseTestes
     {
-        [Test(Description = "Receber valor total com haver")]
+        [Test(Description = "Receber valor parcial com haver")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("ReceberValorTotalComHaver")]
+        [AllureSuite("ReceberValorParcialComHaver")]
         [AllureSubSuite("ContaAReceber")]
-        public void ReceberValorTotalComHaver()
+        public void ReceberValorParcialComHaver()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var receberValorTotalComHaverPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorTotalComHaverPage>>()(DriverService);
-            receberValorTotalComHaverPage.RealizarFluxoDeReceberValorTotalComHaverNaContaAReceber();
+            var receberValorParcialComHaverPage = beginLifetimeScope.Resolve<Func<DriverService, ReceberValorParcialComHaverDaContaAReceberPage>>()(DriverService);
+            receberValorParcialComHaverPage.RealizarFluxoDeReceberValorParcialComHaverNaContaAReceber();
         }
     }
 }

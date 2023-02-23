@@ -6,9 +6,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 {
-    public class LancarContaAvulsaPage:PageObjectModel
+    public class LancarContaAvulsaDaContaAReceberPage:PageObjectModel
     {
-        public LancarContaAvulsaPage(DriverService driver) : base(driver)
+        public LancarContaAvulsaDaContaAReceberPage(DriverService driver) : base(driver)
         {
         }
 
@@ -27,12 +27,12 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 
             // Act
             ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "10");
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "3");
-            ClicarBotaoName(LancarContaAvulsaModel.Gravar);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeCliente, "CONSUMIDOR", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeHistorico, "", Keys.Enter);
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeValor, "10");
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaDaContaAReceberModel.ElementoCampoDeQuantidadeDeParcelas, "3");
+            ClicarBotaoName(LancarContaAvulsaDaContaAReceberModel.Gravar);
 
             // Assert
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$3,34");
