@@ -16,6 +16,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model
 
         public static string BotaoDeNovaConta => "Nova conta";
         public static string BotaoDeDetalhes => "Detalhes";
+        public static string BotaoDeEditar => "Editar";
         public static string BotaoDePagar => "Pagar";
         public static string BotaoDeEstornar => "Estornar";
         public static string BotaoDeAcordo => "Acordo";

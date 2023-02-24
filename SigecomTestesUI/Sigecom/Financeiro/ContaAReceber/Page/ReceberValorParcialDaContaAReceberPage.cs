@@ -1,12 +1,11 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
-using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Model;
 using SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
