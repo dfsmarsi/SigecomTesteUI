@@ -1,7 +1,7 @@
-﻿using SigecomTestesUI.Config;
-using System.Collections.Generic;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
+using SigecomTestesUI.Config;
 using SigecomTestesUI.Login.Model;
+using System.Collections.Generic;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Login
@@ -28,7 +28,7 @@ namespace SigecomTestesUI.Login
 
         public bool Logar()
         {
-            if (!ValidarAberturaDeTela(LoginPageModel.ElementoTelaLogin)) return false;
+            DriverService.EsperarAbrirTelaDeLogin(60, LoginPageModel.ElementoTelaLogin);
 
             PreencherLogin();
             EsperarAcaoEmSegundos(3);

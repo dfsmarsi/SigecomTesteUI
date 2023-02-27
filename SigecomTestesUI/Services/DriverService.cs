@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 
@@ -12,6 +13,27 @@ namespace SigecomTestesUI.Services
         private readonly WindowsDriver<WindowsElement> _driver;
 
         public DriverService(WindowsDriver<WindowsElement> windowsDriver) => _driver = windowsDriver;
+
+        public bool EsperarAbrirTelaDeLogin(int timeoutInSeconds, string elementoDaTela)
+        {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds));
+            return wait.Until(condition =>
+            {
+                try
+                {
+                    var elementToBeDisplayed = _driver.FindElementByName(elementoDaTela).Text;
+                    return elementToBeDisplayed.Equals(elementoDaTela);
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return false;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
 
         public void FecharSistema()
         {
@@ -80,22 +102,6 @@ namespace SigecomTestesUI.Services
             _driver.SwitchTo().Window(allWindowHandles[0]);
         }
 
-        public void FecharTelaDePreVisualizar()
-        {
-            TrocarJanela();
-            ValidarElementoExistentePorNome("Pré-visualizar");
-            ClicarBotaoName("Fechar");
-            _driver.SwitchTo().Window(_driver.WindowHandles[0]);
-        }
-
-        public void FecharTelaDeImpressaoTermica()
-        {
-            TrocarJanela();
-            ClicarBotaoName("Fechar");
-            var allWindowHandles = _driver.WindowHandles;
-            _driver.SwitchTo().Window(allWindowHandles[1]);
-        }
-
         public void DigitarNoCampoId(string idElemento, string texto) => 
             _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);
 
@@ -120,6 +126,12 @@ namespace SigecomTestesUI.Services
             elemento.SendKeys(teclaDeAtalho);
             return elemento;
         }
+
+        public void RealizarSelecaoDaAcao(string idElemento, int posicao) => 
+            RealizarSelecaoDaFormaDePagamento(idElemento, posicao);
+
+        public void RealizarSelecaoDaFormaDePagamentoSemEnter(string idElemento, int posicao) =>
+            DigitarNoCampoId(idElemento, posicao.ToString());
 
         public void RealizarSelecaoDaFormaDePagamento(string idElemento, int posicao)
         {
@@ -158,10 +170,32 @@ namespace SigecomTestesUI.Services
             acao.Perform();
         }
 
+        public void EditarCampoComDuploCliqueNoBotaoId(string nomeBotao, string texto)
+        {
+            var botaoEncontrado = _driver.FindElementByAccessibilityId(nomeBotao);
+            var acao = new Actions(_driver);
+            acao.MoveToElement(botaoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+            botaoEncontrado.SendKeys(texto);
+        }
+
+        public bool VerificarSePossuiOValorNaGrid(string nomeColuna, string nome)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
+            var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
+            return elementoDaGridComName.Text.Equals(nome);
+        }
+
+        public bool VerificarSePossuiOValorNaTela(string nome)
+        {
+            var driverPageSource = _driver.PageSource;
+            return driverPageSource.Contains(nome);
+        }
+
         public void CliqueNoElementoDaGridComVariosEVerificar(string nomeColuna, string nome)
         {
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
-
             var elementoDaGridComName = ObterElementoDaGridComName(nomeColuna, campoDaGrid);
             RealizarAcaoDeClicarNoCampoDaGrid(nome, elementoDaGridComName);
             Assert.AreEqual(elementoDaGridComName.Text, nome);
@@ -172,6 +206,25 @@ namespace SigecomTestesUI.Services
             var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColuna, nome);
 
             RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterElementoDaGridComName(nomeColuna, campoDaGrid));
+        }
+
+        public int RetornarPosicaoDoRegistroDesejado(string nomeColunaParaEncontrarValor, string valorParaSerEncontrado)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGrid(nomeColunaParaEncontrarValor, valorParaSerEncontrado);
+
+            RealizarAcaoDeClicarNoCampoDaGrid(valorParaSerEncontrado, ObterElementoDaGridComName(nomeColunaParaEncontrarValor, campoDaGrid));
+            return campoDaGrid;
+        }
+
+        public void EditarNaGridNaPosicao(string nomeColunaParaEditar, string valorParaEditar, int campoDaGrid)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeColunaParaEditar} row {campoDaGrid}");
+            var acao = new Actions(_driver);
+            acao.MoveToElement(elementoEncontrado);
+            acao.DoubleClick();
+            acao.Perform();
+            elementoEncontrado.SendKeys(valorParaEditar);
+            elementoEncontrado.SendKeys(Keys.Tab);
         }
 
         private int ObterPosicaoDoElementoNaGrid(string nomeColuna, string nome)
@@ -227,34 +280,66 @@ namespace SigecomTestesUI.Services
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
-        public void DigitarItensNaGridDeProdutoGrade(string nomeCampo, string texto)
+        public void SelecionarItensDoDropDown(int posicao)
+        {
+            var acao = new Actions(_driver);
+            for (var i = 1; i <= posicao; i++)
+                acao.SendKeys(Keys.ArrowDown);
+            acao.SendKeys(Keys.Enter);
+            acao.Perform();
+        }
+
+        public void ClicarNoCheckEditDaGrid(string nomeCampo)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
+            elementoEncontrado.Click();
+            elementoEncontrado.SendKeys(Keys.Enter);
+        }
+
+        public void DigitarNovosItensNaGrid(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} new item row");
-            DigitarEIrParaProximoCampoDaGrid(texto, elementoEncontrado);
+            DigitarItensNaGrid(texto, elementoEncontrado);
         }
 
         public void EditarItensNaGrid(string nomeCampo, string texto)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
-            DigitarEIrParaProximoCampoDaGrid(texto, elementoEncontrado);
+            DigitarItensNaGrid(texto, elementoEncontrado);
         }
 
-        private static void DigitarEIrParaProximoCampoDaGrid(string texto, WindowsElement elementoEncontrado)
+        private static void DigitarItensNaGrid(string texto, IWebElement elementoEncontrado)
         {
-            elementoEncontrado.Click();
             elementoEncontrado.SendKeys(texto);
             elementoEncontrado.SendKeys(Keys.Tab);
         }
 
-        public void EditarItensNaGridComDuploClick(string nomeCampo, string texto)
+        public void EditarItensNaGridComDuploClickComTab(string nomeCampo, string texto)
         {
-            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row 0");
+            var elementoEncontrado = EditarItemDaGridComDuploClick(nomeCampo, texto, "0");
+            elementoEncontrado.SendKeys(Keys.Tab);
+        }
+
+        public void EditarItensNaGridComDuploClickComEnter(string nomeCampo, string texto)
+        {
+            var elementoEncontrado = EditarItemDaGridComDuploClick(nomeCampo, texto, "0");
+            elementoEncontrado.SendKeys(Keys.Enter);
+        }
+
+        public void EditarItensNaGridComDuploClickNaPosicaoDesejada(string nomeCampo, string texto, string posicao)
+        {
+            EditarItemDaGridComDuploClick(nomeCampo, texto, posicao);
+        }
+
+        private WindowsElement EditarItemDaGridComDuploClick(string nomeCampo, string texto, string posicao)
+        {
+            var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row {posicao}");
             var acao = new Actions(_driver);
             acao.MoveToElement(elementoEncontrado);
             acao.DoubleClick();
             acao.Perform();
             elementoEncontrado.SendKeys(texto);
-            elementoEncontrado.SendKeys(Keys.Tab);
+            return elementoEncontrado;
         }
 
         public void RemoverItensDaGridComBotaoDireito(string nomeCampo)
@@ -282,10 +367,7 @@ namespace SigecomTestesUI.Services
         public void ConfirmarPesquisa(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F5);
 
-        public void ConcluirAcaoComEnter(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.Enter);
-
-        private void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
+        public void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
         public void Dispose()

@@ -144,6 +144,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
                 using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
                 beginLifetimeScope.Resolve<IEdicaoDeProdutoPageFactory>().Fabricar(DriverService, tipoDeProduto)
                     .PreencherCamposDaAbaAoEditar();
+                EsperarAcaoEmSegundos(1);
                 return true;
             }
             catch (Exception exception)

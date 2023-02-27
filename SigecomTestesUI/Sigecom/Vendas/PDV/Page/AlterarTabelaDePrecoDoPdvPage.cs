@@ -3,7 +3,10 @@ using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
 using System;
 using System.Threading;
+using Autofac;
 using NUnit.Framework;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
@@ -24,7 +27,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItemId, Keys.Enter);
+            LancarProdutoPadrao();
             DriverService.SelecionarItemComboBoxSemEnter(PdvModel.ElementoTabelaDePreco, 3);
             VerificarValorDaTabelaDoPrimeiroProduto();
             DriverService.SelecionarItemComboBoxSemEnter(PdvModel.ElementoTabelaDePreco, 1);
@@ -35,6 +38,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1);
             ConcluirPedido();
             FecharTelaDeVendaComEsc();
+        }
+
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PdvModel.ElementoTelaDePdv);
         }
 
         private void VerificarValorDaTabelaDoPrimeiroProduto() => 

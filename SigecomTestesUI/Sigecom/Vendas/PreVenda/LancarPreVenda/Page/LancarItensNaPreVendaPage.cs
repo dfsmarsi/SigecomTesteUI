@@ -1,7 +1,10 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
@@ -22,27 +25,27 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItem);
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemId);
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemReferencia);
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemCodInterno);
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemMultiplicadorDeQuantidade);
+            LancarProdutoPadrao();
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Qtde"), LancarItemNaPreVendaModel.QuantidadeDeProduto);
-            AvancarVenda();
+            AvancarNaPreVenda();
             DriverService.DigitarNoCampoId(PreVendaModel.ElementoDeObservação, LancarItemNaPreVendaModel.Observacao);
-            AvancarVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.AcoesDaPreVenda, 2);
+            AvancarNaPreVenda();
+            DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDePreVendaComEsc();
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutosNaVenda(PreVendaModel.ElementoTelaDePreVenda);
+        }
 
-        private void AvancarVenda()
+        private void AvancarNaPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
 
-        private void FecharTelaDeVendaComEsc() =>
+        private void FecharTelaDePreVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }
