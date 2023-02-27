@@ -1,17 +1,18 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
-using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
 using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model;
-using System;
+using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 {
-    public class PagarValorTotalComHaverDaContaAPagarPage:PageObjectModel
+    public class PagarValorParcialComHaverDaContaAPagarPage:PageObjectModel
     {
-        public PagarValorTotalComHaverDaContaAPagarPage(DriverService driver) : base(driver)
+        public PagarValorParcialComHaverDaContaAPagarPage(DriverService driver) : base(driver)
         {
         }
 
@@ -21,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenu);
 
-        public void RealizarFluxoDePagarValorTotalComHaverNaContaAPagar()
+        public void RealizarFluxoDePagarValorParcialComHaverNaContaAPagar()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
@@ -33,8 +34,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,22");
             ClicarBotaoName(ContaAPagarModel.BotaoDePagar);
             DriverService.SelecionarItensDoDropDown(1);
-            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAPagarModel.ElementoDeFormaDePagamento, 5);
-            ClicarBotaoName(ContaAPagarModel.Nao);
+            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(ContaAPagarModel.ElementoDeFormaDePagamento, 5);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(ContaAPagarModel.ElementoDoTotalPago, "10,22", Keys.Enter);
+            ClicarBotaoName(ContaAPagarModel.ParcialDoPagarConta);
+            ClicarBotaoName(ContaAPagarModel.Sim);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
             FecharTelaDeContaAPagarComEsc();
 
             // Assert

@@ -22,6 +22,12 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Injection
                 containerBuilder.RegisterType<EditarDaContaAPagarTeste>();
                 containerBuilder.RegisterType<PagarValorParcialDaContaAPagarPage>();
                 containerBuilder.RegisterType<PagarValorParcialDaContaAPagarTeste>();
+                containerBuilder.RegisterType<PagarValorTotalComHaverDaContaAPagarPage>();
+                containerBuilder.RegisterType<PagarValorTotalComHaverDaContaAPagarTeste>();
+                containerBuilder.RegisterType<PagarValorParcialComHaverDaContaAPagarPage>();
+                containerBuilder.RegisterType<PagarValorParcialComHaverDaContaAPagarTeste>();
+                containerBuilder.RegisterType<EstornarDaContaAPagarPage>();
+                containerBuilder.RegisterType<EstornarDaContaAPagarTeste>();
             }
             catch (Exception exception)
             {
