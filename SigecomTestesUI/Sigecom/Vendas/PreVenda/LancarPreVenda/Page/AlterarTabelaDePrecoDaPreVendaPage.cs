@@ -1,6 +1,10 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Autofac;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -22,17 +26,24 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItemId);
+            LancarProdutoPadrao();
             SelecionarItemComboBox(3);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Total"), LancarItemNaPreVendaModel.ValorUnitarioDoPrimeiroProdutoNoPreVenda);
-            SelecionarItemComboBox(4);
+            SelecionarItemComboBox(1);
             LancarProduto(LancarItemNaPreVendaModel.PesquisarItemIdDoSegundoProdutoNoPreVenda);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Total", "1"), LancarItemNaPreVendaModel.ValorUnitarioDoSegundoProdutoNoPreVenda);
             AvancarPreVenda();
             AvancarPreVenda();
-            DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.AcoesDaPreVenda, 2);
+            DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PreVendaModel.GridDeFormaDePagamento, 1);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDePreVendaComEsc();
+        }
+
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PreVendaModel.ElementoTelaDePreVenda);
         }
 
         private void LancarProduto(string textoDePesquisa)
@@ -44,7 +55,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         private void AvancarPreVenda()
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
 
-        private void FecharTelaDeVendaComEsc() =>
+        private void FecharTelaDePreVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }

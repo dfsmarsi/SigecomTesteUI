@@ -19,10 +19,14 @@
         public static string ElementoTotalPagamento => "txtTotalPago";
         public static string ElementoNameSelecionar => "Seleção row 0";
         public static string ElementoNameDoConfirmar => ", Confirmar (ENTER)";
+        public static string ElementoNameDoSim => ", Sim (ENTER)";
         public static string ElementoNameDoNao => ", Não (ESC)";
 
         public static string CampoDaGridDeTotalDoProduto => "Total";
         public static string CampoDaGridDeDescontoDoProduto => "Desconto (R$)";
         public static string CampoDaGridDeQuantidadeDoProduto => "Qtde";
+        public static string CampoDaGridDeValorUnitarioDoProduto => "Unitário";
+        public static string CampoDaGridDeValorTotalDaTelaDeConsultaDePreVenda => "Valor";
+        public static string CampoDaGridDeCodigoDaTelaDeConsultaDePreVenda => "Código";
     }
 }

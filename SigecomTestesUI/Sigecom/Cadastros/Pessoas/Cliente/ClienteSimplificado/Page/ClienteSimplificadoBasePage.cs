@@ -7,7 +7,7 @@ using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.Enum;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.Model;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.Page.Interfaces;
-using SigecomTestesUI.Sigecom.Vendas.Pedido.Model;
+using SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Model;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.ClienteSimplificado.Page
 {

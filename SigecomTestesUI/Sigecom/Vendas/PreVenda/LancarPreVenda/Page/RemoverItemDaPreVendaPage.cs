@@ -1,6 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using Autofac;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
+using System;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
@@ -21,15 +24,19 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarProduto(LancarItemNaPreVendaModel.PesquisarItem);
+            LancarProdutoPadrao();
             ClicarBotaoName(PreVendaModel.ElementoNameRemoverProduto);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDePreVendaComEsc();
         }
 
-        private void LancarProduto(string textoDePesquisa)
-            => DriverService.DigitarNoCampoComTeclaDeAtalhoId(PreVendaModel.ElementoPesquisaDeProduto, textoDePesquisa, Keys.Enter);
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PreVendaModel.ElementoTelaDePreVenda);
+        }
 
-        private void FecharTelaDeVendaComEsc() =>
+        private void FecharTelaDePreVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PreVendaModel.ElementoTelaDePreVenda);
     }
 }

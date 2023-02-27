@@ -4,6 +4,7 @@
     {
         public static string BotaoMenuCadastro => "Vendas";
         public static string BotaoSubMenu => "PDV";
+        public static string ElementoTelaDePdv => "Pdv";
         public static string ElementoPesquisaDeProduto => "scProdutos";
         public static string ElementoTabelaDePreco => "cbxTabelaPreco";
         public static string GridDoProdutos => "gridProdutos";

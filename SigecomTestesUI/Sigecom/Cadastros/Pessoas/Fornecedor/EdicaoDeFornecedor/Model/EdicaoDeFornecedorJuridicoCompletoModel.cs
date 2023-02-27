@@ -2,7 +2,7 @@
 {
     public class EdicaoDeFornecedorJuridicoCompletoModel
     {
-        public static string NomeDoFornecedorAlterado => "PERFIL VEICULOS E CAMINHOES EIRELI";
+        public static string NomeDoFornecedorAlterado => "PERFIL VEICULOS E CAMINHOES LTDA";
         public static string Cnpj => "32429331000138";
         public static string CnpjComPontos => "32.429.331/0001-38";
         public static string Cep => "75600000";

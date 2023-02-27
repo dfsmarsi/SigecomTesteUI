@@ -3,6 +3,9 @@ using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
 using System;
 using System.Threading;
+using Autofac;
+using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
@@ -23,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            LancarItemNoPedido();
+            LancarProdutoPadrao();
             PagarPedido();
             SelecionarFormaDePagamento();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoTotalPagamento, LancarItemNoPdvModel.ValorTotalParaVoltarTroco, Keys.Enter);
@@ -31,17 +34,21 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             FecharTelaDeVendaComEsc();
         }
 
-        public void SelecionarFormaDePagamento() =>
-            DriverService.DigitarNoCampoId(PdvModel.GridDeFormaDePagamento, "1");
+        private void LancarProdutoPadrao()
+        {
+            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
+            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
+            vendasBasePage.LancarProdutoPadraoNaVenda(PdvModel.ElementoTelaDePdv);
+        }
 
         internal void PagarPedido() =>
             ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
 
+        public void SelecionarFormaDePagamento() =>
+            DriverService.DigitarNoCampoId(PdvModel.GridDeFormaDePagamento, "1");
+
         internal void ConcluirPedido() =>
             ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
-
-        internal void LancarItemNoPedido() =>
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoPesquisaDeProduto, LancarItemNoPdvModel.PesquisarItem, Keys.Enter);
 
         internal void FecharTelaDeVendaComEsc()
         {
