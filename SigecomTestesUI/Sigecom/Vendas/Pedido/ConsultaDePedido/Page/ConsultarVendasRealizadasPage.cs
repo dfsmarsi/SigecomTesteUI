@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
@@ -42,7 +43,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Page
         }
 
         private void RealizarFluxoDeVerificarVendasRealizadas() => 
-            DriverService.VerificarSePossuiOValorNaGrid(ConsultaDePedidoModel.CampoDaGridValor, $"R${LancarItemNoPedidoModel.ValorUnitarioParaVerificarVendasRealizadas}");
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaTela($"R${LancarItemNoPedidoModel.ValorUnitarioParaVerificarVendasRealizadas}"), true);
 
         private void LancarProdutoPadrao()
         {
