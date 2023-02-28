@@ -53,7 +53,7 @@ namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Page
 
 
             // Assert
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDeCustoDoProduto), "31,00");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDoNovoCustoDoProduto), "31,00");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CompraAvulsaModel.CampoDaGridDePrecoDeVendaDoProduto), "62,00");
             ClicarBotaoName(CompraAvulsaModel.ElementoDoAvancarCompra);
             ClicarBotaoName(CompraAvulsaModel.ElementoDoAvancarCompra);

@@ -22,7 +22,8 @@
         
         public static string ElementoPesquisaDeProduto => "scProdutos";
         public static string CampoDaGridDeQuantidadeDoProduto => "Qtde";
-        public static string CampoDaGridDeCustoDoProduto => "Novo      custo";
+        public static string CampoDaGridDoNovoCustoDoProduto => "Novo      custo";
+        public static string CampoDaGridDeCustoDoProduto => "Custo";
         public static string CampoDaGridDePrecoDeVendaDoProduto => "Novo preço de venda";
         public static string CampoDaGridDeDiferencialDoProduto => "Diferencial de alíq. (%)";
         public static string CampoDaGridDeValorDuplicatas => "Valor";
