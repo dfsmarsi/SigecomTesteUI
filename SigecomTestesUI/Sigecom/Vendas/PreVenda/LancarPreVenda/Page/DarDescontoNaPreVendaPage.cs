@@ -26,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoPadrao();
-            DriverService.DigitarNoCampoName(PreVendaModel.CampoDaGridDeQuantidadeDoProduto, LancarItemNaPreVendaModel.QuantidadeDeProduto);
+            DriverService.EditarItensNaGridComDuploClickComEnter(PreVendaModel.CampoDaGridDeQuantidadeDoProduto, LancarItemNaPreVendaModel.QuantidadeDeProduto);
             DriverService.EditarItensNaGridComDuploClickComTab(PreVendaModel.CampoDaGridDeDescontoDoProduto, LancarItemNaPreVendaModel.DescontoNoItemPreVenda);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(PreVendaModel.CampoDaGridDeTotalDoProduto), LancarItemNaPreVendaModel.ItemComDescontoNoPreVenda);
             AvancarPreVenda();
