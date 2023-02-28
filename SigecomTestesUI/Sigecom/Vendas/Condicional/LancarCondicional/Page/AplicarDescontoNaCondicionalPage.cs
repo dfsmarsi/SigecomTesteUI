@@ -29,7 +29,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Condicional.LancarCondicional.Page
             LancarProdutoEAtribuirCliente();
 
             // Act
-            DriverService.DigitarNoCampoName(CondicionalModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaCondicionalModel.QuantidadeDeProduto);
+            DriverService.EditarItensNaGridComDuploClickComEnter(CondicionalModel.CampoDaGridDeQuantidadeDoProduto, LancarItensNaCondicionalModel.QuantidadeDeProduto);
             DriverService.EditarItensNaGridComDuploClickComTab(CondicionalModel.CampoDaGridDeDescontoDoProduto, LancarItensNaCondicionalModel.DescontoNoItemCondicional);
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(CondicionalModel.CampoDaGridDeTotalDoProduto), LancarItensNaCondicionalModel.ItemComDescontoNaCondicional);
 
