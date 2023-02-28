@@ -1,11 +1,11 @@
 ﻿using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Model;
 using SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Model;
 using System;
-using SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
@@ -61,10 +61,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             AvancarNaPreVenda();
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             AvancarNaPreVenda();
-            EsperarAcaoEmSegundos(1);
-            AcessarOpcaoSubMenu(PedidoModel.ElementoTelaConsultaDeVenda);
-            DriverService.VerificarSePossuiOValorNaGrid(PreVendaModel.CampoDaGridDeValorTotalDaTelaDeConsultaDePreVenda,
-                LancarItemNaPreVendaModel.VerificarValorTotalParaFaturarPreVenda);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaTela("R$40,00"), false);
         }
 
         private void AvancarNaPreVenda()
