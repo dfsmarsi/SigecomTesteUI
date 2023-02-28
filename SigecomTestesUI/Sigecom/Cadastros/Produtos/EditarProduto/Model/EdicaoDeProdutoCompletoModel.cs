@@ -16,8 +16,8 @@
         public static string Fornecedor => "FORNECEDOR";
 
         public static string CustoDoProduto => "2,00";
-        public static string MarkupDoProduto => "10,00";
-        public static string PrecoVendaDoProduto => "2,20";
+        public static string MarkupDoProduto => "100,00";
+        public static string PrecoVendaDoProduto => "4,00";
         public static string ReferenciaDoProduto => "ref 2";
         public static string NomeFinalDoProduto => "PRODUTO COMPLETO EDITAR TESTE ALTERADO";
     }
