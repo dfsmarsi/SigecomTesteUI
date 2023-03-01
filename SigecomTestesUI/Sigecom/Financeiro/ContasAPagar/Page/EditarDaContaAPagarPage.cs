@@ -5,6 +5,7 @@ using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
 using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Model;
 using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model;
 using System;
+using NUnit.Framework;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
@@ -28,27 +29,31 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenuDoPagar);
             RealizarFluxoDeGerarConta();
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$20,13");
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$2,13");
 
             // Act
             ClicarBotaoName(ContaAPagarModel.BotaoDeEditar);
-            //DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePrimeiroVencimento, "29/03/2023", Keys.Enter);
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "Teste");
             DriverService.SelecionarItemComboBox(LancarContaAvulsaModel.ElementoCampoDeTipoDocumento, 1);
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeNumeroDocumento, "1");
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "10,10");
+            EsperarAcaoEmSegundos(1);
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "1");
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "2");
-            ClicarBotaoName(LancarContaAvulsaModel.Gravar);
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeDataDeVencimento, "25");
+            var diaDaPrimeiraParcela = DateTime.Parse(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaModel.ElementoCampoDaGridDataVencimento));
+            ClicarBotaoName(LancarContaAvulsaModel.Recalcular);
 
             // Assert
-
+            Assert.AreEqual(diaDaPrimeiraParcela.ToString("d"), DateTime.Parse(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaModel.ElementoCampoDaGridDataVencimento)).ToString("d"));
+            Assert.AreEqual(diaDaPrimeiraParcela.AddDays(25).ToString("d"), DateTime.Parse(DriverService.PegarValorDaColunaDaGridNaPosicao(LancarContaAvulsaModel.ElementoCampoDaGridDataVencimento, "1")).ToString("d"));
+            ClicarBotaoName(LancarContaAvulsaModel.Gravar);
             FecharTelaDeLancarContaAvulsaContaAPagarComEsc();
         }
 
         private void RealizarFluxoDeGerarConta()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            beginLifetimeScope.Resolve<Func<DriverService,IContaBasePage>>()(DriverService).RealizarFluxoDeGerarContaAPagar("20,13");
+            beginLifetimeScope.Resolve<Func<DriverService,IContaBasePage>>()(DriverService).RealizarFluxoDeGerarContaAPagar("2,13");
         }
 
         private void FecharTelaDeLancarContaAvulsaContaAPagarComEsc() =>

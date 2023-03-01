@@ -51,6 +51,8 @@ namespace SigecomTestesUI.Services
         private void FinalizarFecharDoSistema()
         {
             Thread.Sleep(TimeSpan.FromSeconds(3));
+            if(VerificarSePossuiOValorNaTela(", Sim (ENTER)")) 
+                ClicarBotaoName(", Sim (ENTER)");
             TrocarJanela();
             ValidarElementoExistentePorNome("Sistema de gestão comercial");
             ClicarBotaoName("Fechar");
@@ -118,6 +120,13 @@ namespace SigecomTestesUI.Services
 
         public void DigitarNoCampoComTeclaDeAtalhoIdMaisF5(string idElemento, string texto, string teclaDeAtalho) => 
             DigitarNoCampoComTeclaDeAtalhoId(idElemento, texto, teclaDeAtalho).SendKeys(Keys.F5);
+
+        public void DigitarNoCampoComTeclaDeAtalhoIdTriploEnter(string idElemento, string texto)
+        {
+            var elemento = DigitarNoCampoComTeclaDeAtalhoId(idElemento, texto, Keys.Enter);
+            elemento.SendKeys(Keys.Enter);
+            elemento.SendKeys(Keys.Enter);
+        }
 
         public WindowsElement DigitarNoCampoComTeclaDeAtalhoId(string idElemento, string texto, string teclaDeAtalho)
         {
