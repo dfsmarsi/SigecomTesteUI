@@ -33,8 +33,9 @@ namespace SigecomTestesUI.Config
                 DriverService.ClicarBotaoName(opcaoSubMenu);
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                var e = exception.Message;
                 return false;
             }
         }
