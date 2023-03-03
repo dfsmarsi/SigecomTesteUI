@@ -7,31 +7,17 @@
         public static string ElementoTelaDeCompra => "Compra de mercadorias";
         public static string BotaoAtalhosCompra => ", Atalhos/Opções - F1";
         public static string AtalhoDeCarregarXml => ", [ F3 ] - Carregue um xml";
-        public static string BotaoAtalhosDeDespesas => ", [ F4 ] - Outras despesas";
-        public static string BotaoAtalhosDeFrete => ", [ F6 ] - Inserir frete";
-        public static string BotaoAtalhosDeNfe => ", [ F8 ] - Informações da NF-e";
-        public static string ElementoDoValorDeDespesas => "txtDescontoOuAcrescimo";
-        public static string ElementoDoTransportador => "lblFornecedor";
-        public static string ElementoDoValorDeFrete => "txtValor";
-        public static string ElementoDeSerieDoNfe => "textEditSerie";
-        public static string ElementoDoNumeroDoNfe => "textEditNumero";
         public static string ElementoDoTotalDuplicatas => "txtValor";
         public static string ElementoDoCaminhoDoDocumentos => "AUTOMACAO";
-        public static string ElementoDoConfirmar => ", Confirmar (ENTER)";
-        public static string ElementoDoConfirmarFinalDoFrete => ", Confirmar (F5)";
         public static string ElementoDoAvancarCompra => ", Avançar";
 
         public static string ElementoPesquisaDeProduto => "txtPesquisar";
-        public static string CampoDaGridDeQuantidadeDoProduto => "Qtde";
-        public static string CampoDaGridDeCustoDoProduto => "Novo      custo";
-        public static string CampoDaGridDePrecoDeVendaDoProduto => "Novo preço de venda";
-        public static string CampoDaGridDeDiferencialDoProduto => "Diferencial de alíq. (%)";
+        public static string ElementoIdDePesquisaDoWindows => "1148";
+        public static string ElementoIdDeAbrirDoWindows => "1";
+        public static string ElementoDeAssociarProdutoDoXml => "linkBuscarProdutoCadastrado";
         public static string CampoDaGridDeValorDuplicatas => "Valor";
-        public static string CampoDaGridDeMarkupDoProduto => "Novo markup";
-
-        public static string PesquisarItemId => "10";
-        public static string PesquisarItem => "PRODUTO TESTE PESQUISA";
-        public static string PesquisarItemCodInterno => "int1";
-        public static string PesquisarItemReferencia => "ref1";
+        public static string CampoDaGridDeItens => "Item";
+        public static string ElementoNameDoConfirmar => ", Confirmar (ENTER)";
+        public static string ElementoNameDoGravar => "F5 - Gravar";
     }
 }

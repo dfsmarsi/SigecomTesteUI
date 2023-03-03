@@ -28,10 +28,5 @@
         public static string CampoDaGridDeDiferencialDoProduto => "Diferencial de alíq. (%)";
         public static string CampoDaGridDeValorDuplicatas => "Valor";
         public static string CampoDaGridDeMarkupDoProduto => "Novo markup";
-
-        public static string PesquisarItemId => "10";
-        public static string PesquisarItem => "PRODUTO TESTE PESQUISA";
-        public static string PesquisarItemCodInterno => "int1";
-        public static string PesquisarItemReferencia => "ref1";
     }
 }

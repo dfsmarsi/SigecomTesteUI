@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Model;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page.Interfaces;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.ExceptionTabelaDePreco;
@@ -21,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
                 _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoAtalho, 2);
                 _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoRegra, 1);
                 _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoPorcentagem, CadastroDeTabelaDePrecoModel.ValorPorcentagem);
-                _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeTabelaDePrecoModel.ElementoPesquisaDeProduto, CadastroDeTabelaDePrecoModel.NomeDoProdutoParaPesquisar, Keys.Enter);
+                _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeTabelaDePrecoModel.ElementoPesquisaDeProduto, PesquisaDeProdutoInformacoesParaTesteModel.PesquisarItemId, Keys.Enter);
             }
             catch (Exception exception)
             {

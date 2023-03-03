@@ -27,19 +27,19 @@ namespace SigecomTestesUI.Sigecom.Compra.Xml.Page
             ClicarBotaoName(CompraXmlModel.AtalhoDeCarregarXml);
             DriverService.TrocarJanela();
             ClicarBotaoName(CompraXmlModel.ElementoDoCaminhoDoDocumentos);
-            DriverService.DigitarNoCampoId("1148", "Teste.xml");
-            DriverService.ClicarBotaoId("1");
-            ClicarBotaoName("F5 - Gravar");
+            DriverService.DigitarNoCampoId(CompraXmlModel.ElementoIdDePesquisaDoWindows, "Teste.xml");
+            DriverService.ClicarBotaoId(CompraXmlModel.ElementoIdDeAbrirDoWindows);
+            ClicarBotaoName(CompraXmlModel.ElementoNameDoGravar);
 
             // Act
-            DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejada("Item", "", "0");
-            DriverService.ClicarBotaoId("linkBuscarProdutoCadastrado");
+            DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejada(CompraXmlModel.CampoDaGridDeItens, "", "0");
+            DriverService.ClicarBotaoId(CompraXmlModel.ElementoDeAssociarProdutoDoXml);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraXmlModel.ElementoPesquisaDeProduto, "11", Keys.Enter);
-            ClicarBotaoName(", Confirmar (ENTER)");
-            DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejada("Item", "", "1");
-            DriverService.ClicarBotaoId("linkBuscarProdutoCadastrado");
+            ClicarBotaoName(CompraXmlModel.ElementoNameDoConfirmar);
+            DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejada(CompraXmlModel.CampoDaGridDeItens, "", "1");
+            DriverService.ClicarBotaoId(CompraXmlModel.ElementoDeAssociarProdutoDoXml);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraXmlModel.ElementoPesquisaDeProduto, "11", Keys.Enter);
-            ClicarBotaoName(", Confirmar (ENTER)");
+            ClicarBotaoName(CompraXmlModel.ElementoNameDoConfirmar);
 
             // Assert
             ClicarBotaoName(CompraXmlModel.ElementoDoAvancarCompra);
