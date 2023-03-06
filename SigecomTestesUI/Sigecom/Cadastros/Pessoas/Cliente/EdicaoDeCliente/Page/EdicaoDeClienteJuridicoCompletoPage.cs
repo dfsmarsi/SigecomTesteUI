@@ -19,15 +19,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
         {
             {"TipoPessoa", "JURÍDICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "CARLOS ADAO DE MAGALHAES"},
-            {"Cnpj", "23.423.959/0001-35"},
-            {"Cep", "12380-000"},
-            {"Endereco", "ESTRADA VELHA SANTA BRANCA A SALESOPOLIS, KM 12"},
-            {"Numero", "KM 12"},
-            {"Bairro", "MAMBUCA"},
+            {"Nome", "CLIENTE JURIDICO COMPLETO EDITAR TESTE"},
+            {"Cnpj", "23.423.959/0001-21"},
+            {"Cep", "15720-000"},
+            {"Endereco", "AVENIDA DA ALEGRIA"},
+            {"Numero", "0001"},
+            {"Bairro", "CENTRO"},
             {"Estado", "SÃO PAULO"},
-            {"Cidade", "SANTA BRANCA"},
-            {"Complemento", "SITIO ESPERANCA"},
+            {"Cidade", "PALMEIRA D OESTE"}
         };
 
         public EdicaoDeClienteJuridicoCompletoPage(DriverService driver) => _driverService = driver;
@@ -52,27 +51,25 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoBairro), _dadosDoCliente["Bairro"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEstado), _dadosDoCliente["Estado"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCidade), _dadosDoCliente["Cidade"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoComplemento), _dadosDoCliente["Complemento"]);
         }
 
         public void PreencherAsInformacoesDaPessoasNaEdicao()
         {
-            _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeClienteModel.ElementoCpf, EdicaoDeClienteJuridicoCompletoModel.Cnpj, Keys.Enter);
-            Thread.Sleep(TimeSpan.FromSeconds(1));
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), EdicaoDeClienteJuridicoCompletoModel.NomeDoClienteAlterado);
+            _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeClienteModel.ElementoCpf, EdicaoDeClienteJuridicoCompletoModel.Cnpj, Keys.Enter); 
+            Thread.Sleep(TimeSpan.FromSeconds(1));
         }
 
         public void VerificarDadosDaPessoaEditados()
         {
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), EdicaoDeClienteJuridicoCompletoModel.NomeDoClienteAlterado);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCpf), EdicaoDeClienteJuridicoCompletoModel.CpfComPontos);
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCpf), EdicaoDeClienteJuridicoCompletoModel.CnpjComPontos);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCep), EdicaoDeClienteJuridicoCompletoModel.CepComPontos);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEndereco), EdicaoDeClienteJuridicoCompletoModel.Endereco);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNumero), EdicaoDeClienteJuridicoCompletoModel.Numero);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoBairro), EdicaoDeClienteJuridicoCompletoModel.Bairro);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoEstado), EdicaoDeClienteJuridicoCompletoModel.Estado);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoCidade), EdicaoDeClienteJuridicoCompletoModel.Cidade);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoComplemento), EdicaoDeClienteJuridicoCompletoModel.Complemento);
         }
 
         public void FluxoDePesquisaDaPessoaEditado(EdicaoDeClienteBasePage edicaoDeClienteBasePage,
