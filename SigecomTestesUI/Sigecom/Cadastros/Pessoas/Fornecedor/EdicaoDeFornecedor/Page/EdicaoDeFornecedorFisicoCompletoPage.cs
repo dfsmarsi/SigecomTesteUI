@@ -21,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
             {"Rg", "204917633"},
             {"Apelido", "COMPLETO EDITAR TESTE"},
             {"Sexo", "Masculino"},
-            {"DataNascimento", "terça-feira, 4 de janeiro de 1684"},
+            {"DataNascimento", "terça-feira, 4 de janeiro de 2000"},
             {"EstadoCivil", "Solteiro(a)"},
             {"Cep", "15700-008"},
             {"Endereco", "RUA 3"},

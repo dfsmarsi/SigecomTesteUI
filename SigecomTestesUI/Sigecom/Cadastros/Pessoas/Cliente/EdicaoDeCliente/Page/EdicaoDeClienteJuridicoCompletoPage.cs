@@ -55,9 +55,9 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
 
         public void PreencherAsInformacoesDaPessoasNaEdicao()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), EdicaoDeClienteJuridicoCompletoModel.NomeDoClienteAlterado);
             _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeClienteModel.ElementoCpf, EdicaoDeClienteJuridicoCompletoModel.Cnpj, Keys.Enter); 
             Thread.Sleep(TimeSpan.FromSeconds(1));
+            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeClienteModel.ElementoNome), EdicaoDeClienteJuridicoCompletoModel.NomeDoClienteAlterado);
         }
 
         public void VerificarDadosDaPessoaEditados()
