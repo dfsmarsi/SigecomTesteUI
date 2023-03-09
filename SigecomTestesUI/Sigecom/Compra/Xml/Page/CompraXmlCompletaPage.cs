@@ -34,11 +34,11 @@ namespace SigecomTestesUI.Sigecom.Compra.Xml.Page
             // Act
             DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejada(CompraXmlModel.CampoDaGridDeItens, "", "0");
             DriverService.ClicarBotaoId(CompraXmlModel.ElementoDeAssociarProdutoDoXml);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraXmlModel.ElementoPesquisaDeProduto, "11", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraXmlModel.ElementoPesquisaDeProduto, "9", Keys.Enter);
             ClicarBotaoName(CompraXmlModel.ElementoNameDoConfirmar);
             DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejada(CompraXmlModel.CampoDaGridDeItens, "", "1");
             DriverService.ClicarBotaoId(CompraXmlModel.ElementoDeAssociarProdutoDoXml);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraXmlModel.ElementoPesquisaDeProduto, "11", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraXmlModel.ElementoPesquisaDeProduto, "9", Keys.Enter);
             ClicarBotaoName(CompraXmlModel.ElementoNameDoConfirmar);
 
             // Assert

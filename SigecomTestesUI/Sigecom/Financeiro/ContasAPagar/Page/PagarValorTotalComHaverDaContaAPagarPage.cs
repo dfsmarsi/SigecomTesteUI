@@ -33,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,22");
             ClicarBotaoName(ContaAPagarModel.BotaoDePagar);
             DriverService.SelecionarItensDoDropDown(1);
-            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAPagarModel.ElementoDeFormaDePagamento, 5);
+            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAPagarModel.ElementoDeFormaDePagamento, 6);
             ClicarBotaoName(ContaAPagarModel.Nao);
             FecharTelaDeContaAPagarComEsc();
 

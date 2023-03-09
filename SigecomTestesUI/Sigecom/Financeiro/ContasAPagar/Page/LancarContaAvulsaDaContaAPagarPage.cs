@@ -31,6 +31,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             RealizarFluxoDeGerarContaAPagar();
 
             // Assert
+            ClicarBotaoName("Saldo");
+            ClicarBotaoName("Saldo");
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$6,68");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$6,68");
             VerificarValorDoSaldoNaPosicao(posicao + 1);
