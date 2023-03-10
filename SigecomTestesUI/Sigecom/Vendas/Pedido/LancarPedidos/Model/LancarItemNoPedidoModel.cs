@@ -9,6 +9,6 @@
         public static string ItemComDescontoNoPedido => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPedido => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNoPedido => "5,25";
-        public static string PesquisarItemIdDoSegundoProdutoNoPedido => "2";
+        public static string PesquisarItemIdDoSegundoProdutoNoPedido => "9";
     }
 }

@@ -2,7 +2,7 @@
 {
     public class LancarItemNoPdvModel
     {
-        public static string PesquisarItemIdDoSegundoProduto => "2";
+        public static string PesquisarItemIdDoSegundoProduto => "9";
         public static string DescontoNoItemPdv => "5";
         public static string ItemComDescontoNoPdv => "R$5,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPdv => "R$5,50";
