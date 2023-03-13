@@ -10,7 +10,7 @@
         public static string ItemComDescontoNoPreVenda => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoPreVenda => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNoPreVenda => "5,25";
-        public static string PesquisarItemIdDoSegundoProdutoNoPreVenda => "2";
+        public static string PesquisarItemIdDoSegundoProdutoNoPreVenda => "9";
         public static string ValorUnitarioParaEditarPreVenda => "10,50";
         public static string ValorTotalParaClonarPreVenda => "11,11";
         public static string QuantidadeParaClonarPreVenda => "1";
