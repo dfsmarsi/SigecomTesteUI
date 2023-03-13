@@ -15,6 +15,7 @@
         public static string ElementoCampoDaGridPendencia => "Pendência";
         public static string ElementoCampoDaGridDataVencimento => "Vencimento";
         public static string Gravar => ", Gravar  (F5)";
+        public static string Sim => ", Sim  (ENTER)";
         public static string Cancelar => ", Cancelar (ESC)";
         public static string Recalcular => "Recalcular (F3)";
     }

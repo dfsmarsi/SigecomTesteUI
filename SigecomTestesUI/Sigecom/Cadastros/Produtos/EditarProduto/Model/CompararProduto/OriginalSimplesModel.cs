@@ -8,6 +8,6 @@
         public static string CustoDoProduto => "5,00";
         public static string MarkupDoProduto => "100,00";
         public static string PrecoVendaDoProduto => "10,00";
-        public static string ReferenciaDoProduto => "ref";
+        public static string ReferenciaDoProduto => "ref1";
     }
 }

@@ -2,11 +2,6 @@
 {
     public class LancarItensNaOrdemDeServicoModel
     {
-        public static string PesquisarItem => "PRODUTO TESTE PESQUISA";
-        public static string PesquisarItemId => "1";
-        public static string PesquisarItemCodInterno => "vendas teste";
-        public static string PesquisarItemReferencia => "ref vendas teste";
-        public static string PesquisarItemMultiplicadorDeQuantidade => "1*1";
         public static string QuantidadeDeProduto => "5,00";
         public static string SolicitanteDaOrdemDeServico => "Teste";
         public static string DefeitoDaOrdemDeServico => "Defeito teste";
@@ -15,6 +10,6 @@
         public static string ItemComDescontoNaOrdemDeServico => "40,00";
         public static string ValorUnitarioDoPrimeiroProdutoNaOrdemDeServico => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNaOrdemDeServico => "5,25";
-        public static string PesquisarItemIdDoSegundoProdutoNaOrdemDeServico => "2";
+        public static string PesquisarItemIdDoSegundoProdutoNaOrdemDeServico => "9";
     }
 }

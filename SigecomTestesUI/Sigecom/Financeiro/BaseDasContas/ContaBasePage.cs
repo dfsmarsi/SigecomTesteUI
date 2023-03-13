@@ -14,11 +14,19 @@ namespace SigecomTestesUI.Sigecom.Financeiro.BaseDasContas
         {
         }
 
-        public void RealizarFluxoDeGerarContaAReceber(string valorDaConta)
+        public void RealizarFluxoDeGerarContaAReceber(string valorDaConta) => 
+            GerarContaAReceber(valorDaConta, "CONSUMIDOR");
+
+        public void RealizarFluxoDeGerarContaAReceberComHaver(string valorDaConta) =>
+            GerarContaAReceber(valorDaConta, "CONSUMIDOR COM HAVER");
+
+        private void GerarContaAReceber(string valorDaConta, string cliente)
         {
             ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePessoa, "CARLOS ADAO DE MAGALHAES", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePlanoConta,
+                "Acerto de caixa", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePessoa, cliente,
+                Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, valorDaConta);
             ClicarBotaoName(LancarContaAvulsaModel.Gravar);

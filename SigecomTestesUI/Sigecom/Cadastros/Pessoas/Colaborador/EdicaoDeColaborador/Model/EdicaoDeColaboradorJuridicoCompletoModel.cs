@@ -2,15 +2,16 @@
 {
     public class EdicaoDeColaboradorJuridicoCompletoModel
     {
-        public static string NomeDoColaboradorAlterado => "JAIRA SOUZA DA SILVA 25764093856";
-        public static string Cnpj => "23989283000141";
-        public static string CnpjComPontos => "23.989.283/0001-41";
-        public static string Cep => "13181656";
-        public static string CepComPontos => "13181-656";
-        public static string Endereco => "RUA MARIA CONCEIÇÃO DA ROCHA FERRAZ";
-        public static string Numero => "224";
-        public static string Bairro => "JARDIM BOM RETIRO (NOVA VENEZA)";
-        public static string Cidade => "SUMARÉ";
+        public static string NomeDoColaboradorAlterado => "VENTURINI - FLORENCIO INDUSTRIA E COM DE BEBIDAS LTDA";
+        public static string Cnpj => "53765640000159";
+        public static string CnpjComPontos => "53.765.640/0001-59";
+        public static string NomeFantasia => "REFRIGERANTES SABORAKI";
+        public static string Cep => "15708030";
+        public static string CepComPontos => "15708-030";
+        public static string Endereco => "RUA SILVIO ALVES BALBINO";
+        public static string Numero => "251";
+        public static string Bairro => "PARQUE INDUSTRIAL II";
         public static string Estado => "SÃO PAULO";
+        public static string Cidade => "JALES";
     }
 }

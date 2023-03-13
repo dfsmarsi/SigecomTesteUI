@@ -19,6 +19,6 @@
         public static string ValorTotalSemDesconto => "50,00";
         public static string ValorUnitarioDoPrimeiroProdutoNoOrcamento => "5,50";
         public static string ValorUnitarioDoSegundoProdutoNoOrcamento => "5,25";
-        public static string PesquisarItemIdDoSegundoProdutoNoOrcamento => "2";
+        public static string PesquisarItemIdDoSegundoProdutoNoOrcamento => "9";
     }
 }

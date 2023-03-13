@@ -28,7 +28,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Page
         private void RealizarFluxoDeVerificarVendasRealizadas()
         {
             ClicarBotaoName("Filtro (F3)");
-            DriverService.DigitarNoCampoId(ConsultaDePedidoModel.NumeroDoPedido, "7");
+            DriverService.DigitarNoCampoId(ConsultaDePedidoModel.NumeroDoPedido, "6");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(ConsultaDePedidoModel.CampoDaGridValor), "R$5,55");
         }
 

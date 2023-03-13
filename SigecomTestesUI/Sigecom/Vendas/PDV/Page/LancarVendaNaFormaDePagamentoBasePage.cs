@@ -1,14 +1,13 @@
 ﻿using Autofac;
-using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa;
+using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces;
 using System;
 using System.Threading;
-using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
@@ -59,7 +58,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 
         internal void FecharTelaDeVendaComEsc()
         {
-            DriverService.ClicarBotaoId(PdvModel.BotaoDeFecharPerguntaDeImpressaoPdv);
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            DriverService.TrocarJanela();
+            ClicarBotaoName("Saída");
+            DriverService.ClicarBotaoName(PdvModel.BotaoDoNao);
             Thread.Sleep(TimeSpan.FromSeconds(2));
             ClicarBotaoName(PdvModel.AtalhoDoPdv);
             ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);

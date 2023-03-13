@@ -30,6 +30,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             RealizarFluxoDeGerarContaAReceber();
 
             // Assert
+            ClicarBotaoName("Restaurar colunas");
+            ClicarBotaoName(LancarContaAvulsaModel.Sim);
+            ClicarNaOpcaoDoMenu();
+            ClicarNaOpcaoDoSubMenu();
+            AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
+            ClicarBotaoName("Saldo");
+            ClicarBotaoName("Saldo");
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$3,34");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$3,34");
             VerificarValorDoSaldoNaPosicao(posicao + 1);
@@ -40,8 +47,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         private void RealizarFluxoDeGerarContaAReceber()
         {
             ClicarBotaoName(ContaAReceberModel.BotaoDeNovaConta);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDePessoa, "CONSUMIDOR", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePessoa, "CONSUMIDOR", Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "10");
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "3");

@@ -61,7 +61,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             AvancarNaPreVenda();
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);
             AvancarNaPreVenda();
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaTela("R$40,00"), false);
+            ClicarBotaoName(PreVendaModel.ElementoNameDoNao);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaTela("R$22,22"), false);
         }
 
         private void AvancarNaPreVenda()

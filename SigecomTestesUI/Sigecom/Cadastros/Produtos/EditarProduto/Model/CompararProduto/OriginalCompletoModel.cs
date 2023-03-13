@@ -7,8 +7,7 @@
         public static string UnidadeDoProduto => "UN";
         public static string CodigoInternoDoProduto => "int";
         public static string GarantiaEmDias => "30";
-        public static string CodigoDeBarrasProduto => "7000000000058";
-        public static string Estoque => "100,00";
+        public static string Estoque => "1.000,00";
         public static string EstoqueMinimo => "5,00";
         public static string EstoqueMaximo => "120,00";
         public static string CustoDoProduto => "5,00";

@@ -33,7 +33,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,22");
             ClicarBotaoName(ContaAReceberModel.BotaoDeReceber);
             DriverService.SelecionarItensDoDropDown(1);
-            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAReceberModel.ElementoDeFormaDePagamento, 4);
+            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAReceberModel.ElementoDeFormaDePagamento, 5);
             ClicarBotaoName(ContaAReceberModel.Nao);
             FecharTelaDeContaAReceberComEsc();
 
@@ -48,7 +48,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAReceber("22,22");
+            contaBasePage.RealizarFluxoDeGerarContaAReceberComHaver("22,22");
         }
 
         private void FecharTelaDeContaAReceberComEsc() =>

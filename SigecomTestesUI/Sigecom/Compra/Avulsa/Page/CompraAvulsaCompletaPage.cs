@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using SigecomTestesUI.Sigecom.Compra.Avulsa.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -66,11 +67,11 @@ namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Page
 
         private void LancarProdutosNaVenda()
         {
-            LancarProduto(CompraAvulsaModel.PesquisarItemId);
-            LancarProduto(CompraAvulsaModel.PesquisarItem);
-            LancarProduto(CompraAvulsaModel.PesquisarItemReferencia);
-            LancarProduto(CompraAvulsaModel.PesquisarItemCodInterno);
-            LancarProduto($"1*{CompraAvulsaModel.PesquisarItemId}");
+            LancarProduto(PesquisaDeProdutoInformacoesParaTesteModel.PesquisarItemId);
+            LancarProduto(PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
+            LancarProduto(PesquisaDeProdutoInformacoesParaTesteModel.ReferenciaDoProduto);
+            LancarProduto(PesquisaDeProdutoInformacoesParaTesteModel.CodigoInternoDoProduto);
+            LancarProduto($"1*{PesquisaDeProdutoInformacoesParaTesteModel.PesquisarItemId}");
         }
 
         private void LancarProduto(string textoDePesquisa)
