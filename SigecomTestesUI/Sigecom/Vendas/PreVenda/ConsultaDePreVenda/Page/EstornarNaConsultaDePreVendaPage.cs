@@ -22,6 +22,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            DriverService.CliqueNoElementoDaGridComVarios("Valor", "R$31,33");
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaEstornarPreVenda);
             ClicarBotaoName(PreVendaModel.ElementoNameDoSim);
             VerificarSeOPrimeiroRegistroFoiEliminado();

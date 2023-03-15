@@ -10,6 +10,7 @@
         public static string BotaoDaDetalhesPedido => "Detalhes";
         public static string BotaoDaEstornarPedido => "Estornar";
         public static string CampoDaGridValor => "Valor";
+        public static string NumeroDoPedido => "txtNumeroPedido";
 
     }
 }

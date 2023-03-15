@@ -4,8 +4,6 @@
     {
         public static string NomeDescricaoTodosOsProdutos => "EDITAR TABELA DE PRECO TESTE TODOS PRODUTOS";
         public static string NomeDescricaoUnicoProduto => "EDITAR TABELA DE PRECO TESTE UNICO PRODUTO";
-        public static string AtalhoTodosOsProdutos => "Ctrl + G";
-        public static string AtalhoUnicoProduto => "Ctrl + D";
         public static string Regra => "Acréscimo sobre o valor de venda";
         public static string ValorPorcentagem => "10,00";
         public static string MarkupNaTabela => "10,00";

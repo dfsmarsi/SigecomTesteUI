@@ -50,9 +50,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         internal void ConcluirPedido() =>
             ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
 
-        internal void FecharTelaDeVendaComEsc()
+        private void FecharTelaDeVendaComEsc()
         {
-            DriverService.ClicarBotaoId(PdvModel.BotaoDeFecharPerguntaDeImpressaoPdv);
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            DriverService.TrocarJanela();
+            ClicarBotaoName("Saída");
+            DriverService.ClicarBotaoName(PdvModel.BotaoDoNao);
             Thread.Sleep(TimeSpan.FromSeconds(2));
             ClicarBotaoName(PdvModel.AtalhoDoPdv);
             ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);

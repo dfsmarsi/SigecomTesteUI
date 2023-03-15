@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SigecomTestesUI.Config;
+using SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.Model;
 using SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
@@ -25,21 +26,21 @@ namespace SigecomTestesUI.Sigecom.Estoque.AnaliseDeEstoque.Page
             ClicarNaOpcaoDoSubMenu();
 
             // Act
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDeProduto, FiltroDaAnaliseDeEstoqueModel.CodigoIdDoProduto, Keys.Enter);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), FiltroDaAnaliseDeEstoqueModel.NomeDoProduto);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDeProduto, PesquisaDeProdutoInformacoesParaTesteModel.PesquisarItemId, Keys.Enter);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
             ClicarBotaoName(FiltroDaAnaliseDeEstoqueModel.BotaoDeLimparFiltro);
 
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDeProduto, FiltroDaAnaliseDeEstoqueModel.CodigoInternoDoProduto, Keys.Enter);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), FiltroDaAnaliseDeEstoqueModel.NomeDoProduto);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDeProduto, PesquisaDeProdutoInformacoesParaTesteModel.CodigoInternoDoProduto, Keys.Enter);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
             ClicarBotaoName(FiltroDaAnaliseDeEstoqueModel.BotaoDeLimparFiltro);
 
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDeProduto, FiltroDaAnaliseDeEstoqueModel.CodigoDeBarrasDoProduto, Keys.Enter);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), FiltroDaAnaliseDeEstoqueModel.NomeDoProduto);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDeProduto, PesquisaDeProdutoInformacoesParaTesteModel.CodigoDeBarras, Keys.Enter);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
             ClicarBotaoName(FiltroDaAnaliseDeEstoqueModel.BotaoDeLimparFiltro);
 
             // Assert
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDaReferencia, FiltroDaAnaliseDeEstoqueModel.ReferenciaDoProduto, Keys.Enter);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), FiltroDaAnaliseDeEstoqueModel.NomeDoProduto);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(FiltroDaAnaliseDeEstoqueModel.FiltroDaReferencia, PesquisaDeProdutoInformacoesParaTesteModel.ReferenciaDoProduto, Keys.Enter);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid("Descrição"), PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto);
             FecharTelaDeAnaliseDeEstoqueComEsc();
         }
 

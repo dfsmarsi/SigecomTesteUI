@@ -26,7 +26,6 @@
         public static string AtalhoUnicoProduto => "Ctrl + D";
         public static string Regra => "Markup sobre a última compra";
         public static string ValorPorcentagem => "10,00";
-        public static string NomeDoProdutoParaPesquisar => "PRODUTO TESTE PESQUISA";
         public static string MarkupNaTabela => "10,00";
         public static string ValorNaTabela => "R$5,50";
     }

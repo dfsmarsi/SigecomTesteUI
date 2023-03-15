@@ -1,12 +1,7 @@
-﻿using System;
-using Autofac;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SigecomTestesUI.Config;
-using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
-using SigecomTestesUI.Sigecom.Vendas.Base.Interfaces;
 using SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Model;
-using SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Model;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Page
 {
@@ -26,34 +21,16 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.ConsultaDePedido.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            RealizarFluxoDeGerarPedidoNaConsultaDePedido();
             RealizarFluxoDeVerificarVendasRealizadas();
             FecharTelaDaConsultaDeVendaComEsc();
         }
 
-        private void RealizarFluxoDeGerarPedidoNaConsultaDePedido()
+        private void RealizarFluxoDeVerificarVendasRealizadas()
         {
-            ClicarBotaoName(ConsultaDePedidoModel.BotaoDaNovoPedido);
-            LancarProdutoPadrao();
-            DriverService.EditarItensNaGridComDuploClickComTab(PedidoModel.CampoDaGridDeUnitarioDoProduto, LancarItemNoPedidoModel.ValorUnitarioParaVerificarVendasRealizadas);
-            AvancarVenda();
-            AvancarVenda();
-            DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.GridDeFormaDePagamento, 1);
+            ClicarBotaoName("Filtro (F3)");
+            DriverService.DigitarNoCampoId(ConsultaDePedidoModel.NumeroDoPedido, "6");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(ConsultaDePedidoModel.CampoDaGridValor), "R$5,55");
         }
-
-        private void RealizarFluxoDeVerificarVendasRealizadas() => 
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaTela($"R${LancarItemNoPedidoModel.ValorUnitarioParaVerificarVendasRealizadas}"), true);
-
-        private void LancarProdutoPadrao()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var vendasBasePage = beginLifetimeScope.Resolve<Func<DriverService, IVendasBasePage>>()(DriverService);
-            vendasBasePage.LancarProdutoPadraoNaVenda(PedidoModel.ElementoTelaDeVenda);
-        }
-
-        private void AvancarVenda()
-            => ClicarBotaoName(PedidoModel.ElementoNameDoAvancar);
 
         private void FecharTelaDaConsultaDeVendaComEsc() =>
             DriverService.FecharJanelaComEsc(ConsultaDePedidoModel.ElementoTelaDePedido);

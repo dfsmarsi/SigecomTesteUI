@@ -32,7 +32,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
         {
             try
             {
-                DriverService.ClicarBotaoName(CadastroDeProdutoModel.BotaoGravar);
+                DriverService.DarDuploCliqueNoBotaoName(CadastroDeProdutoModel.BotaoGravar);
                 return true;
             }
             catch (Exception exception)

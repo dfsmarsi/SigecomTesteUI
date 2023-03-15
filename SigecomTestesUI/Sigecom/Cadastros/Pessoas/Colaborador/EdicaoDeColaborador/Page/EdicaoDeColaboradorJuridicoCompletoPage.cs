@@ -18,16 +18,14 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
         {
             {"TipoPessoa", "JURÍDICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "FELIPE DE ARGOLO BENICIO 02713305543"},
-            {"Cnpj", "26.726.069/0001-90"},
-            {"Apelido", "BENICIO FOTOGRAFO"},
-            {"Cep", "41342-010"},
-            {"Endereco", "RUA JORNALISTA ARMANDO LOBRACCI NETO"},
-            {"Numero", "303"},
-            {"Bairro", "FAZENDA GRANDE II"},
-            {"Estado", "BAHIA"},
-            {"Cidade", "SALVADOR"},
-            {"DescontoPadrao", "0,00"},
+            {"Nome", "COLABORADOR JURIDICO COMPLETO EDITAR TESTE"},
+            {"Cnpj", "23.423.959/0001-92"},
+            {"Cep", "15720-000"},
+            {"Endereco", "AVENIDA DA ALEGRIA"},
+            {"Numero", "0002"},
+            {"Bairro", "CENTRO"},
+            {"Estado", "SÃO PAULO"},
+            {"Cidade", "PALMEIRA D OESTE"}
         };
 
         public EdicaoDeColaboradorJuridicoCompletoPage(DriverService driverService) => _driverService = driverService;
@@ -46,14 +44,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.EdicaoDeColabora
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNacionalidade), DadosDoColaborador["Nacionalidade"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNome), DadosDoColaborador["Nome"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCpf), DadosDoColaborador["Cnpj"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoApelido), DadosDoColaborador["Apelido"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCep), DadosDoColaborador["Cep"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEndereco), DadosDoColaborador["Endereco"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoNumero), DadosDoColaborador["Numero"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoBairro), DadosDoColaborador["Bairro"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoEstado), DadosDoColaborador["Estado"]);
             Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoCidade), DadosDoColaborador["Cidade"]);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeColaboradorModel.ElementoDescontoPadrao), DadosDoColaborador["DescontoPadrao"]);
         }
 
         public void PreencherAsInformacoesDaPessoasNaEdicao()

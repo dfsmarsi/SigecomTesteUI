@@ -19,7 +19,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Cliente.EdicaoDeCliente.Page
             {"Nome", "CLIENTE FISICA COMPLETO EDITAR TESTE"},
             {"Cpf", "941.543.670-05"},
             {"Rg", "204917633"},
-            {"Apelido", "COMPLETO EDITAR TESTE"},
+            {"Apelido", "COMPLETO FISICA EDITAR TESTE"},
             {"Sexo", "Masculino"},
             {"DataNascimento", "terça-feira, 4 de janeiro de 2000"},
             {"EstadoCivil", "Solteiro(a)"},

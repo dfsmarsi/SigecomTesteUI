@@ -19,15 +19,15 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Fornecedor.EdicaoDeFornecedo
         {
             {"TipoPessoa", "JURÍDICA"},
             {"Nacionalidade", "BRASILEIRO(A)"},
-            {"Nome", "CHEF DINO BURGUERIA EIRELI"},
-            {"Cnpj", "11.398.116/0001-47"},
-            {"Apelido", "CHEF DINO BURGUERIA"},
-            {"Cep", "76804-305"},
-            {"Endereco", "AVENIDA CAMPOS SALES"},
+            {"Nome", "FORNECEDOR JURIDICA COMPLETO EDITAR TESTE"},
+            {"Cnpj", "11.398.116/0001-23"},
+            {"Apelido", "COMPLETO EDITAR TESTE"},
+            {"Cep", "15700-008"},
+            {"Endereco", "RUA 3"},
             {"Numero", "1202"},
-            {"Bairro", "AREAL"},
-            {"Estado", "RONDÔNIA"},
-            {"Cidade", "PORTO VELHO"},
+            {"Bairro", "CENTRO"},
+            {"Estado", "SÃO PAULO"},
+            {"Cidade", "JALES"},
         };
 
         public EdicaoDeFornecedorJuridicoCompletoPage(DriverService driverService) => _driverService = driverService;

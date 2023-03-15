@@ -9,7 +9,7 @@ using SigecomTestesUI.Sigecom.Cadastros.Categoria.Page;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.Categoria.Teste
 {
-    public class CadastroDeCategoriaTeste: BaseTestes
+    public class CadastroDeCategoriaGradeTeste: BaseTestes
     {
         [Test(Description = "Cadastro de Categoria grade Somente Campos Obrigatorios")]
         [AllureTag("CI")]

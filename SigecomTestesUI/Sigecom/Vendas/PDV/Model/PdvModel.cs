@@ -13,6 +13,7 @@
         public static string ElementoTotalPagamento => "txtTotalPago";
         public static string ElementoNameConfirmarPdv => ", Confirmar";
         public static string BotaoDeFecharPerguntaDeImpressaoPdv => "btnNao";
+        public static string BotaoDoNao => ", Não (ESC)";
         public static string AtalhoDoPdv => ", Atalhos/Opções - F1";
         public static string AtalhoDeSairDoPdv => ", [ ESC ] - Sair";
         public static string AtalhoDeEditarItemDoPdv => ", [ F5 ] - Editar item";

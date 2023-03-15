@@ -14,6 +14,5 @@
         public static string CampoDaGridDeQuantidadeVendida => "Qtde vendida";
         public static string CampoDaGridDeQuantidadeParaDevolver => "Qtde p/ devolver";
         public static string CampoDaGridDeSituacaoParaDevolver => "Situação";
-
     }
 }
