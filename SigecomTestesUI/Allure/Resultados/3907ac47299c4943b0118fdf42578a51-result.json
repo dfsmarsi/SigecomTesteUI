@@ -1,0 +1,99 @@
+{
+  "uuid": "a77ed636-2d9f-495b-b3f2-8dbe6cd2db14-tr-0-1050",
+  "historyId": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.DarDescontoNoPdvTeste.DarDescontoNoProdutoDoPdv",
+  "fullName": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.DarDescontoNoPdvTeste.DarDescontoNoProdutoDoPdv",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste"
+    },
+    {
+      "name": "testMethod",
+      "value": "DarDescontoNoProdutoDoPdv"
+    },
+    {
+      "name": "testClass",
+      "value": "DarDescontoNoPdvTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Takaki"
+    },
+    {
+      "name": "suite",
+      "value": "Desconto"
+    },
+    {
+      "name": "subSuite",
+      "value": "PDV"
+    }
+  ],
+  "links": [
+    {
+      "name": "1",
+      "url": "https://sistemasbr.atlassian.net/browse/1",
+      "type": "issue"
+    },
+    {
+      "name": "1",
+      "url": "http://mysite.com/1",
+      "type": "tms"
+    }
+  ],
+  "name": "DarDescontoNoProdutoDoPdv",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/7C8C50CC-E35B-4C93-A91B-4E15AC5432F6/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+    "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ClicarBotaoName(String nomeBotao) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 160\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.DarDescontoNoPdvPage.FecharTelaDeVendaComEsc() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\DarDescontoNoPdvPage.cs:line 64\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.DarDescontoNoPdvPage.RealizarFluxoDeDarDescontoAoProduto() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\DarDescontoNoPdvPage.cs:line 30\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Teste.DarDescontoNoPdvTeste.DarDescontoNoProdutoDoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Teste\\DarDescontoNoPdvTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+  },
+  "stage": "finished",
+  "description": "Dar desconto para produto no PDV\n",
+  "steps": [
+    {
+      "name": "DarDescontoNoProdutoDoPdv",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/7C8C50CC-E35B-4C93-A91B-4E15AC5432F6/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+        "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ClicarBotaoName(String nomeBotao) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 160\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.DarDescontoNoPdvPage.FecharTelaDeVendaComEsc() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\DarDescontoNoPdvPage.cs:line 64\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.DarDescontoNoPdvPage.RealizarFluxoDeDarDescontoAoProduto() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\DarDescontoNoPdvPage.cs:line 30\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Teste.DarDescontoNoPdvTeste.DarDescontoNoProdutoDoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Teste\\DarDescontoNoPdvTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "88efa72d4e79421a8ae75e4bc537e748-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1681849381958,
+      "stop": 1681849544911
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1681849381958,
+  "stop": 1681849544911
+}

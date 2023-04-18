@@ -1,0 +1,99 @@
+{
+  "uuid": "debb42d0-06c9-47ec-970d-38ea30a3c67c-tr-0-1048",
+  "historyId": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv",
+  "fullName": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste"
+    },
+    {
+      "name": "testMethod",
+      "value": "AlterarTabelaDePrecoNoPdv"
+    },
+    {
+      "name": "testClass",
+      "value": "AlterarTabelaDePrecoDoPdvTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Takaki"
+    },
+    {
+      "name": "suite",
+      "value": "Alterar"
+    },
+    {
+      "name": "subSuite",
+      "value": "PDV"
+    }
+  ],
+  "links": [
+    {
+      "name": "1",
+      "url": "https://sistemasbr.atlassian.net/browse/1",
+      "type": "issue"
+    },
+    {
+      "name": "1",
+      "url": "http://mysite.com/1",
+      "type": "tms"
+    }
+  ],
+  "name": "AlterarTabelaDePrecoNoPdv",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/D8223122-C33F-4563-8794-2CA57A8318CE/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+    "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ClicarBotaoName(String nomeBotao) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 160\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.FecharTelaDeVendaComEsc() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 75\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.RealizarFluxoDeAlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 40\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Teste\\AlterarTabelaDePrecoDoPdvTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+  },
+  "stage": "finished",
+  "description": "Alterar tabela de preço no pdv\n",
+  "steps": [
+    {
+      "name": "AlterarTabelaDePrecoNoPdv",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/D8223122-C33F-4563-8794-2CA57A8318CE/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+        "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ClicarBotaoName(String nomeBotao) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 160\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.FecharTelaDeVendaComEsc() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 75\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.RealizarFluxoDeAlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 40\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Teste\\AlterarTabelaDePrecoDoPdvTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "1e5612fe718a48d68a6597735a89eb80-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1681849205321,
+      "stop": 1681849378135
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1681849205321,
+  "stop": 1681849378141
+}

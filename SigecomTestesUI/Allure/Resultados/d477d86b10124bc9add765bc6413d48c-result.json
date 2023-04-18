@@ -1,0 +1,99 @@
+{
+  "uuid": "fe00b481-0f4a-44b9-b6eb-cf88ab6fe364-tr-0-1048",
+  "historyId": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv",
+  "fullName": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste"
+    },
+    {
+      "name": "testMethod",
+      "value": "AlterarTabelaDePrecoNoPdv"
+    },
+    {
+      "name": "testClass",
+      "value": "AlterarTabelaDePrecoDoPdvTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Takaki"
+    },
+    {
+      "name": "suite",
+      "value": "Alterar"
+    },
+    {
+      "name": "subSuite",
+      "value": "PDV"
+    }
+  ],
+  "links": [
+    {
+      "name": "1",
+      "url": "https://sistemasbr.atlassian.net/browse/1",
+      "type": "issue"
+    },
+    {
+      "name": "1",
+      "url": "http://mysite.com/1",
+      "type": "tms"
+    }
+  ],
+  "name": "AlterarTabelaDePrecoNoPdv",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/408C5D06-D2C4-4A10-9333-E36288EB2821/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+    "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.RealizarAcaoDaTeclaDeAtalho(String nomeJanela, String teclaDeAtalho) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 381\r\n   at SigecomTestesUI.Services.DriverService.AbrirPesquisaComF9(String nomeJanela) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 375\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage.CadastroDeProdutoBasePage.ClicarNoAtalhoDePesquisarNaTelasDeVenda(String elementoDaTela) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\CadastroDeProduto\\CadastroDeProdutoPage\\CadastroDeProdutoBasePage.cs:line 35\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.PesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(ILifetimeScope beginLifetimeScope, String telaDeVenda) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\PesquisaProduto\\PesquisaDeProdutoPage.cs:line 78\r\n   at SigecomTestesUI.Sigecom.Vendas.Base.VendasBasePage.LancarProdutoPadraoNaVenda(String nomeDaTela) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\Base\\VendasBasePage.cs:line 25\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.LancarProdutoPadrao() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 47\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.RealizarFluxoDeAlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 30\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Teste\\AlterarTabelaDePrecoDoPdvTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+  },
+  "stage": "finished",
+  "description": "Alterar tabela de preço no pdv\n",
+  "steps": [
+    {
+      "name": "AlterarTabelaDePrecoNoPdv",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/408C5D06-D2C4-4A10-9333-E36288EB2821/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+        "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.RealizarAcaoDaTeclaDeAtalho(String nomeJanela, String teclaDeAtalho) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 381\r\n   at SigecomTestesUI.Services.DriverService.AbrirPesquisaComF9(String nomeJanela) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 375\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroDeProdutoPage.CadastroDeProdutoBasePage.ClicarNoAtalhoDePesquisarNaTelasDeVenda(String elementoDaTela) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\CadastroDeProduto\\CadastroDeProdutoPage\\CadastroDeProdutoBasePage.cs:line 35\r\n   at SigecomTestesUI.Sigecom.Cadastros.Produtos.PesquisaProduto.PesquisaDeProdutoPage.PesquisarComF9UmProdutoNaTelaDeVenda(ILifetimeScope beginLifetimeScope, String telaDeVenda) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Cadastros\\Produtos\\PesquisaProduto\\PesquisaDeProdutoPage.cs:line 78\r\n   at SigecomTestesUI.Sigecom.Vendas.Base.VendasBasePage.LancarProdutoPadraoNaVenda(String nomeDaTela) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\Base\\VendasBasePage.cs:line 25\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.LancarProdutoPadrao() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 47\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Page.AlterarTabelaDePrecoDoPdvPage.RealizarFluxoDeAlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Page\\AlterarTabelaDePrecoDoPdvPage.cs:line 30\r\n   at SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Vendas\\PDV\\Teste\\AlterarTabelaDePrecoDoPdvTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "0c35edf399c24f8ca58eb3c37390d99e-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1681848652244,
+      "stop": 1681848848485
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1681848652243,
+  "stop": 1681848848497
+}

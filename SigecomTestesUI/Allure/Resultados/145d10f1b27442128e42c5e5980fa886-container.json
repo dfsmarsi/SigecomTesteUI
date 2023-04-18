@@ -1,0 +1,44 @@
+{
+  "uuid": "be4c5778-6d5b-4504-ba18-803dfef20661-tc-0-1047",
+  "name": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.AlterarTabelaDePrecoDoPdvTeste.AlterarTabelaDePrecoNoPdv",
+  "children": [
+    "2347e0ba-12af-4648-baaa-fa61a45c9ae7-tr-0-1048"
+  ],
+  "befores": [
+    {
+      "name": "Setup",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1681858994307,
+      "stop": 1681858994307
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1681858994308,
+      "stop": 1681858994308
+    }
+  ],
+  "links": [],
+  "start": 1681858890019,
+  "stop": 1681858994391
+}

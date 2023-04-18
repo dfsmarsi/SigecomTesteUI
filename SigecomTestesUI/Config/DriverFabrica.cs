@@ -19,7 +19,7 @@ namespace SigecomTestesUI.Config
             appOptions.AddAdditionalCapability("app", AppId);
             var driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
             Assert.NotNull(driver);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
             return driver;
         }

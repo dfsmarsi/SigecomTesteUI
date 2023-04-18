@@ -1,0 +1,44 @@
+{
+  "uuid": "dd4b88b1-c5a1-4e00-8f6d-3554308eb8d2-tc-0-1051",
+  "name": "SigecomTestesUI.Sigecom.Vendas.PDV.Teste.LancarItemNoPdvTeste.LancarItensNoPdv",
+  "children": [
+    "136dc1ee-8425-487c-a306-0e7b7dd77a7d-tr-0-1052"
+  ],
+  "befores": [
+    {
+      "name": "Setup",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1681849713509,
+      "stop": 1681849713509
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1681849713509,
+      "stop": 1681849713509
+    }
+  ],
+  "links": [],
+  "start": 1681849548694,
+  "stop": 1681849713512
+}

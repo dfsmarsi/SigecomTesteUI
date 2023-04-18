@@ -1,0 +1,44 @@
+{
+  "uuid": "4c638ea3-2b1d-4b15-bb71-b2681104abdb-tc-0-1143",
+  "name": "SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste.EstornarDaContaAPagarTeste.EstornarDaContaAPagar",
+  "children": [
+    "2eb6788d-740b-4739-b2ab-dc1ec6fff58f-tr-0-1144"
+  ],
+  "befores": [
+    {
+      "name": "Setup",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1681846204002,
+      "stop": 1681846204002
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1681846204003,
+      "stop": 1681846204003
+    }
+  ],
+  "links": [],
+  "start": 1681846005988,
+  "stop": 1681846204124
+}

@@ -1,0 +1,99 @@
+{
+  "uuid": "2eb6788d-740b-4739-b2ab-dc1ec6fff58f-tr-0-1144",
+  "historyId": "SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste.EstornarDaContaAPagarTeste.EstornarDaContaAPagar",
+  "fullName": "SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste.EstornarDaContaAPagarTeste.EstornarDaContaAPagar",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "DOUGLAS-NOTE"
+    },
+    {
+      "name": "package",
+      "value": "SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste"
+    },
+    {
+      "name": "testMethod",
+      "value": "EstornarDaContaAPagar"
+    },
+    {
+      "name": "testClass",
+      "value": "EstornarDaContaAPagarTeste"
+    },
+    {
+      "name": "tag",
+      "value": "CI"
+    },
+    {
+      "name": "severity",
+      "value": "trivial"
+    },
+    {
+      "name": "owner",
+      "value": "Takaki"
+    },
+    {
+      "name": "suite",
+      "value": "EstornarDaContaAPagar"
+    },
+    {
+      "name": "subSuite",
+      "value": "ContaAPagar"
+    }
+  ],
+  "links": [
+    {
+      "name": "1",
+      "url": "https://sistemasbr.atlassian.net/browse/1",
+      "type": "issue"
+    },
+    {
+      "name": "1",
+      "url": "http://mysite.com/1",
+      "type": "tms"
+    }
+  ],
+  "name": "EstornarDaContaAPagar",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/FC5E2127-2588-4772-8E45-ABC99FEA6617/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+    "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ObterElementoDaGridComName(String nomeColuna, Int32 campoDaGrid) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 251\r\n   at SigecomTestesUI.Services.DriverService.ObterPosicaoDoElementoNaGrid(String nomeColuna, String nome) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 244\r\n   at SigecomTestesUI.Services.DriverService.CliqueNoElementoDaGridComVarios(String nomeColuna, String nome) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 216\r\n   at SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page.EstornarDaContaAPagarPage.RealizarFluxoDeEstornarNaContaAPagar() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Financeiro\\ContasAPagar\\Page\\EstornarDaContaAPagarPage.cs:line 28\r\n   at SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste.EstornarDaContaAPagarTeste.EstornarDaContaAPagar() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Financeiro\\ContasAPagar\\Teste\\EstornarDaContaAPagarTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+  },
+  "stage": "finished",
+  "description": "Estornar conta a pagar\n",
+  "steps": [
+    {
+      "name": "EstornarDaContaAPagar",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "OpenQA.Selenium.WebDriverException : The HTTP request to the remote WebDriver server for URL http://127.0.0.1:4723/session/FC5E2127-2588-4772-8E45-ABC99FEA6617/element timed out after 60 seconds.\r\n  ----> System.Net.WebException : The operation has timed out.",
+        "trace": "   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Appium.Service.AppiumCommandExecutor.Execute(Command commandToExecute)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.Execute(String driverCommandToExecute, Dictionary`2 parameters)\r\n   at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value)\r\n   at OpenQA.Selenium.Appium.AppiumDriver`1.FindElementByName(String name)\r\n   at SigecomTestesUI.Services.DriverService.ObterElementoDaGridComName(String nomeColuna, Int32 campoDaGrid) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 251\r\n   at SigecomTestesUI.Services.DriverService.ObterPosicaoDoElementoNaGrid(String nomeColuna, String nome) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 244\r\n   at SigecomTestesUI.Services.DriverService.CliqueNoElementoDaGridComVarios(String nomeColuna, String nome) in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Services\\DriverService.cs:line 216\r\n   at SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page.EstornarDaContaAPagarPage.RealizarFluxoDeEstornarNaContaAPagar() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Financeiro\\ContasAPagar\\Page\\EstornarDaContaAPagarPage.cs:line 28\r\n   at SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste.EstornarDaContaAPagarTeste.EstornarDaContaAPagar() in C:\\Users\\Douglas\\Source\\Repos\\dfsmarsi\\SigecomTesteUI\\SigecomTestesUI\\Sigecom\\Financeiro\\ContasAPagar\\Teste\\EstornarDaContaAPagarTeste.cs:line 25\r\n--WebException\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at OpenQA.Selenium.Remote.HttpCommandExecutor.MakeHttpRequest(HttpRequestInfo requestInfo)"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "1f24ad131c774474836a3b4541a46d1d-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1681846005993,
+      "stop": 1681846204010
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1681846005992,
+  "stop": 1681846204024
+}
