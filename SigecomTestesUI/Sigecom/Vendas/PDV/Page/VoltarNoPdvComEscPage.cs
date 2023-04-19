@@ -48,8 +48,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             DriverService.FecharJanelaComEsc("Pdv");
             DriverService.FecharJanelaComEsc("Pdv");
             ClicarBotaoName(", Sim (ENTER)");
-            ClicarBotaoName(PdvModel.AtalhoDoPdv);
-            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
+            DriverService.FecharJanelaComEscId("scProdutos");
             ClicarBotaoName(", Sim (ENTER)");
         }
 

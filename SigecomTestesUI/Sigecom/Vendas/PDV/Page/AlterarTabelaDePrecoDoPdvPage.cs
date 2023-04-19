@@ -36,7 +36,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             VerificarValorDaTabelaDoSegundoProduto();
             PagarPedido();
             DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1);
-            ConcluirPedido();
             FecharTelaDoPdv();
         }
 
@@ -63,9 +62,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
 
         private void PagarPedido() =>
             ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
-
-        private void ConcluirPedido() =>
-            ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
 
         private void FecharTelaDoPdv()
         {
