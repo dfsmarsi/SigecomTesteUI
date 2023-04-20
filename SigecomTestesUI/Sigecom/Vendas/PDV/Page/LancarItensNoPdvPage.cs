@@ -28,8 +28,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             LancarProdutoPadrao();
             PagarPedido();
             DriverService.RealizarSelecaoDaFormaDePagamento(PdvModel.GridDeFormaDePagamento, 1); 
-            ConcluirPedido();
-            FecharTelaDeVendaComEsc();
+            FecharTelaDoPdv();
         }
 
         private void LancarProdutoPadrao()
@@ -42,18 +41,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         private void PagarPedido() =>
             ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
 
-        private void ConcluirPedido() =>
-            ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
-
-        private void FecharTelaDeVendaComEsc()
+        private void FecharTelaDoPdv()
         {
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            DriverService.TrocarJanela();
-            ClicarBotaoName("Saída");
-            DriverService.ClicarBotaoName(PdvModel.BotaoDoNao);
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            ClicarBotaoName(PdvModel.AtalhoDoPdv);
-            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
+            EsperarAcaoEmSegundos(3);
+            DriverService.FecharJanelaComEscId("scProdutos");
         }
     }
 }
