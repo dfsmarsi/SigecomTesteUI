@@ -33,9 +33,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         internal void PagarPedido() =>
             ClicarBotaoName(PdvModel.ElementoNamePagarPedido);
 
-        internal void ConcluirPedido() =>
-            ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
-
         public void LancarProdutoPadrao()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
@@ -56,15 +53,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
         }
 
-        internal void FecharTelaDeVendaComEsc()
+        internal void FecharTelaDoPdv()
         {
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            DriverService.TrocarJanela();
-            ClicarBotaoName("Saída");
-            DriverService.ClicarBotaoName(PdvModel.BotaoDoNao);
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            ClicarBotaoName(PdvModel.AtalhoDoPdv);
-            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
+            EsperarAcaoEmSegundos(3);
+            DriverService.FecharJanelaComEscId("scProdutos");
         }
     }
 }

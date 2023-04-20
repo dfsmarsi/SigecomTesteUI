@@ -30,8 +30,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             PagarPedido();
             SelecionarFormaDePagamento();
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoTotalPagamento, LancarItemNoPdvModel.ValorTotalParaVoltarTroco, Keys.Enter);
-            ConcluirPedido();
-            FecharTelaDeVendaComEsc();
+            FecharTelaDoPdv();
         }
 
         private void LancarProdutoPadrao()
@@ -47,18 +46,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         public void SelecionarFormaDePagamento() =>
             DriverService.DigitarNoCampoId(PdvModel.GridDeFormaDePagamento, "1");
 
-        internal void ConcluirPedido() =>
-            ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
-
-        private void FecharTelaDeVendaComEsc()
+        private void FecharTelaDoPdv()
         {
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            DriverService.TrocarJanela();
-            ClicarBotaoName("Saída");
-            DriverService.ClicarBotaoName(PdvModel.BotaoDoNao);
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            ClicarBotaoName(PdvModel.AtalhoDoPdv);
-            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
+            EsperarAcaoEmSegundos(3);
+            DriverService.FecharJanelaComEscId("scProdutos");
         }
     }
 }

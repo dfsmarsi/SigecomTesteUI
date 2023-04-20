@@ -4,6 +4,7 @@ using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Diagnostics;
 using System.Threading;
 
 namespace SigecomTestesUI.Services
@@ -367,6 +368,12 @@ namespace SigecomTestesUI.Services
                 campo.SendKeys(Keys.ArrowDown);
         }
 
+        public void FecharJanelaComEscId(string idCampoParaFocar)
+        {
+            var campo = EncontrarElementoId(idCampoParaFocar);
+            campo.SendKeys(Keys.Escape);
+        }
+
         public void FecharJanelaComEsc(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalho(nomeJanela,Keys.Escape);
 
@@ -379,16 +386,44 @@ namespace SigecomTestesUI.Services
         public void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
+        public void FocarCampo(string idCampo)
+        {
+            var campo = EncontrarElementoId(idCampo);
+            campo.Click();
+        }
+
+        public void MatarProcessoSigecom()
+        {
+            foreach (var process in Process.GetProcessesByName("Sigecom"))
+            {
+                process.Kill();
+            }
+        }
+
         public void Dispose()
         {
-            FecharSistema();
-            _driver.Quit();
+            try
+            {
+                FecharSistema();
+                _driver.Quit();
+            }
+            catch (Exception)
+            {
+                MatarProcessoSigecom();
+            }
         }
 
         public void DisposeComTelaAberta()
         {
-            FecharSistemaComTelaAberta();
-            _driver.Quit();
+            try
+            {
+                FecharSistemaComTelaAberta();
+                _driver.Quit();
+            }
+            catch (Exception)
+            {
+                MatarProcessoSigecom();
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoPadrao();
             DriverService.RemoverItensDaGridComBotaoDireito(PdvModel.GridDoProdutos);
-            FecharTelaDeVendaComEsc();
+            FecharTelaDoPdv();
         }
 
         private void LancarProdutoPadrao()
@@ -36,10 +36,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             vendasBasePage.LancarProdutoPadraoNaVenda(PdvModel.ElementoTelaDePdv);
         }
 
-        private void FecharTelaDeVendaComEsc()
+        private void FecharTelaDoPdv()
         {
-            ClicarBotaoName(PdvModel.AtalhoDoPdv);
-            ClicarBotaoName(PdvModel.AtalhoDeSairDoPdv);
+            EsperarAcaoEmSegundos(3);
+            DriverService.FecharJanelaComEscId("scProdutos");
         }
     }
 }

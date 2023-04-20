@@ -24,6 +24,9 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+#Ignorar pasta com arquivos do relatorio de excução Allure
+.Allure/
+
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 

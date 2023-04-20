@@ -19,14 +19,14 @@ namespace SigecomTestesUI.Config
             appOptions.AddAdditionalCapability("app", AppId);
             var driver = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appOptions);
             Assert.NotNull(driver);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
 
             return driver;
         }
 
         public void AbrirWinAppDriver()
         {
-            const string WinAppDriver = @"C:\AUTOMACAO\WinAppDriver\WinAppDriver.exe";
+            const string WinAppDriver = @"C:\Program Files (x86)\Windows Application Driver\\WinAppDriver.exe";
             Process.Start(WinAppDriver);
         }
     }

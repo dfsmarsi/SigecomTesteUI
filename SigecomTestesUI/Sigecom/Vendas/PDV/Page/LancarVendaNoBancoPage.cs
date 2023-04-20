@@ -20,8 +20,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             SelecionarFormaDePagamento();
             _driverService.ClicarBotaoName(PdvModel.ElementoNameConfirmarPdv);
             _driverService.ClicarBotaoName(PdvModel.ElementoNameDoConfirmar);
-            lancarVendaNaFormaDePagamentoPage.ConcluirPedido();
-            lancarVendaNaFormaDePagamentoPage.FecharTelaDeVendaComEsc();
+            lancarVendaNaFormaDePagamentoPage.FecharTelaDoPdv();
         }
 
         private void SelecionarFormaDePagamento() => 
