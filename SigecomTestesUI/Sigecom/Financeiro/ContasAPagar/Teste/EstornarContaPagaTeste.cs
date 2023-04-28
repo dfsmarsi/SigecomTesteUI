@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
 {
-    public class EstornarDaContaAPagarTeste:BaseTestes
+    public class EstornarContaPagaTeste:BaseTestes
     {
         [Test(Description = "Estornar conta a pagar")]
         [AllureTag("CI")]
@@ -21,8 +21,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
         public void EstornarDaContaAPagar()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var estornarDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, EstornarDaContaAPagarPage>>()(DriverService);
-            estornarDaContaAPagarPage.RealizarFluxoDeEstornarNaContaAPagar();
+            var estornarDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, EstornarContaPagaPage>>()(DriverService);
+            estornarDaContaAPagarPage.RealizarFluxoDeEstornarContaPaga();
         }
     }
 }

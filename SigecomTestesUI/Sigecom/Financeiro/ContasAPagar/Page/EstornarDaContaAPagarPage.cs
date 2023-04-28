@@ -5,9 +5,9 @@ using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 {
-    public class EstornarDaContaAPagarPage:PageObjectModel
+    public class EstornarContaPagaPage:PageObjectModel
     {
-        public EstornarDaContaAPagarPage(DriverService driver) : base(driver)
+        public EstornarContaPagaPage(DriverService driver) : base(driver)
         {
         }
 
@@ -17,12 +17,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeEstornarNaContaAPagar()
+        public void RealizarFluxoDeEstornarContaPaga()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(2);
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
 
             // Act
             DriverService.CliqueNoElementoDaGridComVarios("Valor pago", "R$31,33");
