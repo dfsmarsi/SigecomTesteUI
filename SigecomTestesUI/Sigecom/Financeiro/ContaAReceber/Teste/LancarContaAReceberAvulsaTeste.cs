@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
 {
-    public class LancarContaAvulsaDaContaAReceberTeste: BaseTestes
+    public class LancarContaAReceberAvulsaTeste: BaseTestes
     {
         [Test(Description = "Lancar conta avulsa")]
         [AllureTag("CI")]
@@ -18,11 +18,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("LancarContaAvulsa")]
         [AllureSubSuite("ContaAReceber")]
-        public void LancarContaAvulsaNaContaAReceber()
+        public void LancarContaAReceberAvulsa()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var lancarContaAvulsaDaContaAReceberPage = beginLifetimeScope.Resolve<Func<DriverService, LancarContaAvulsaDaContaAReceberPage>>()(DriverService);
-            lancarContaAvulsaDaContaAReceberPage.RealizarFluxoDeLancarContaAvulsaNaContaAReceber();
+            var lancarContaAvulsaDaContaAReceberPage = beginLifetimeScope.Resolve<Func<DriverService, LancarContaAReceberAvulsaPage>>()(DriverService);
+            lancarContaAvulsaDaContaAReceberPage.RealizarFluxoDeLancarContaAReceberAvulsa();
         }
     }
 }

@@ -5,9 +5,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 {
-    public class EstornarDaContaAReceberPage:PageObjectModel
+    public class EstornarContaRecebidaPage:PageObjectModel
     {
-        public EstornarDaContaAReceberPage(DriverService driver) : base(driver)
+        public EstornarContaRecebidaPage(DriverService driver) : base(driver)
         {
         }
 
@@ -17,12 +17,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeEstornarNaContaAReceber()
+        public void RealizarFluxoDeEstornarContaRecebida()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(2);
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
 
             // Act
             DriverService.CliqueNoElementoDaGridComVarios("Valor pago", "R$31,33");

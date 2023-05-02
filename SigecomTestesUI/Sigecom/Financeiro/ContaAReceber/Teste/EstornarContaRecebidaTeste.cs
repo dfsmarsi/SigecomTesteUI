@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
 {
-    public class EstornarDaContaAReceberTeste:BaseTestes
+    public class EstornarContaRecebidaTeste:BaseTestes
     {
         [Test(Description = "Estornar conta a receber")]
         [AllureTag("CI")]
@@ -18,11 +18,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("EstornarDaContaAReceber")]
         [AllureSubSuite("ContaAReceber")]
-        public void EstornarDaContaAReceber()
+        public void EstornarContaRecebida()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var estornarDaContaAReceberPage = beginLifetimeScope.Resolve<Func<DriverService, EstornarDaContaAReceberPage>>()(DriverService);
-            estornarDaContaAReceberPage.RealizarFluxoDeEstornarNaContaAReceber();
+            var estornarDaContaAReceberPage = beginLifetimeScope.Resolve<Func<DriverService, EstornarContaRecebidaPage>>()(DriverService);
+            estornarDaContaAReceberPage.RealizarFluxoDeEstornarContaRecebida();
         }
     }
 }

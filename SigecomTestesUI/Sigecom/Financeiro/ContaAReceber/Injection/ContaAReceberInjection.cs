@@ -14,8 +14,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Injection
         {
             try
             {
-                containerBuilder.RegisterType<LancarContaAvulsaDaContaAReceberPage>();
-                containerBuilder.RegisterType<LancarContaAvulsaDaContaAReceberTeste>();
+                containerBuilder.RegisterType<LancarContaAReceberAvulsaPage>();
+                containerBuilder.RegisterType<LancarContaAReceberAvulsaTeste>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaAReceberPage>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaAReceberTeste>();
                 containerBuilder.RegisterType<ReceberValorTotalDaContaAReceberPage>();
@@ -28,8 +28,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Injection
                 containerBuilder.RegisterType<ReceberValorParcialComHaverDaContaAReceberTeste>();
                 containerBuilder.RegisterType<FazerAcordoNaContasAReceberPage>();
                 containerBuilder.RegisterType<FazerAcordoNaContasAReceberTeste>();
-                containerBuilder.RegisterType<EstornarDaContaAReceberPage>();
-                containerBuilder.RegisterType<EstornarDaContaAReceberTeste>();
+                containerBuilder.RegisterType<EstornarContaRecebidaPage>();
+                containerBuilder.RegisterType<EstornarContaRecebidaTeste>();
                 containerBuilder.RegisterType<ContaBasePage>().As<IContaBasePage>();
             }
             catch (Exception exception)
