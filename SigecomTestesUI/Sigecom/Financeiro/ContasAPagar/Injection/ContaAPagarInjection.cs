@@ -12,8 +12,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Injection
         {
             try
             {
-                containerBuilder.RegisterType<LancarContaAvulsaDaContaAPagarPage>();
-                containerBuilder.RegisterType<LancarContaAvulsaDaContaAPagarTeste>();
+                containerBuilder.RegisterType<LancarContaAPagarAvulsaPage>();
+                containerBuilder.RegisterType<LancarContaAPagarAvulsaTeste>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaAPagarPage>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaAPagarTeste>();
                 containerBuilder.RegisterType<PagarValorTotalDaContaAPagarPage>();

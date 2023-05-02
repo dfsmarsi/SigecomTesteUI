@@ -8,9 +8,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 {
-    public class LancarContaAvulsaDaContaAPagarPage:PageObjectModel
+    public class LancarContaAPagarAvulsaPage:PageObjectModel
     {
-        public LancarContaAvulsaDaContaAPagarPage(DriverService driver) : base(driver)
+        public LancarContaAPagarAvulsaPage(DriverService driver) : base(driver)
         {
         }
 
@@ -20,7 +20,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenu);
 
-        public void RealizarFluxoDeLancarContaAvulsaNaContaAPagar()
+        public void RealizarFluxoDeLancarContaAPagarAvulsa()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
@@ -31,12 +31,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             RealizarFluxoDeGerarContaAPagar();
 
             // Assert
-            ClicarBotaoName("Saldo");
-            ClicarBotaoName("Saldo");
-            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$6,68");
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$6,68");
-            VerificarValorDoSaldoNaPosicao(posicao + 1);
-            VerificarValorDoSaldoNaPosicao(posicao + 2);
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$10,00");
+            DriverService.ClicarBotaoName(ContaAPagarModel.BotaoDeDetalhes);
+            VerificarValorNaPosicao(0);
+            VerificarValorNaPosicao(1);
+            DriverService.ClicarBotaoName(", Cancelar (ESC)");
             FecharTelaDeLancarContaAvulsaContaAPagarComEsc();
         }
 
@@ -47,12 +46,12 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePessoa, "FORNECEDOR", Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "20");
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "3");
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "2");
             ClicarBotaoName(LancarContaAvulsaModel.Gravar);
         }
 
-        private void VerificarValorDoSaldoNaPosicao(int posicao) =>
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Saldo", posicao.ToString()), "R$6,66");
+        private void VerificarValorNaPosicao(int posicao) =>
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Valor", posicao.ToString()), "R$10,00");
 
         private void FecharTelaDeLancarContaAvulsaContaAPagarComEsc() =>
             DriverService.FecharJanelaComEsc(ContaAPagarModel.ElementoTelaDeContaPagar);
