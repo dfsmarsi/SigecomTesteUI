@@ -7,6 +7,7 @@ using System;
 using OpenQA.Selenium;
 using SigecomTestesUI.Sigecom.Cadastros.Pessoas.PesquisaPessoa.Model;
 using DriverService = SigecomTestesUI.Services.DriverService;
+using NUnit.Framework;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
 {
@@ -28,6 +29,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
             ClicarNaOpcaoDoSubMenu();
             LancarProduto();
             AvancarNaDevolucao();
+            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado(DevolucaoModel.CampoDaGridIdPedido, "18");
+            var qtdeVendida = int.Parse(DriverService.PegarValorDaColunaDaGridNaPosicao(DevolucaoModel.CampoDaGridDeQuantidadeVendida, posicao.ToString()));
+            Assert.IsTrue(qtdeVendida > 1);
+            DriverService.EditarNaGridNaPosicao(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, "1", posicao);
             AvancarNaDevolucao();
             DriverService.RealizarSelecaoDaAcao(DevolucaoModel.AcoesDaDevolucao, 2);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, "CLIENTE TESTE PESQUISA", Keys.Enter);

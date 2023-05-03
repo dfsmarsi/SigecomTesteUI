@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
 {
-    public class PagarValorParcialDaContaAPagarTeste:BaseTestes
+    public class PagarContaParcialmenteTeste:BaseTestes
     {
         [Test(Description = "PAgar valor parcial")]
         [AllureTag("CI")]
@@ -18,11 +18,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("PagarValorParcial")]
         [AllureSubSuite("ContaAReceber")]
-        public void PagarValorParcialDaContaAPagar()
+        public void PagarContaParcialmente()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var pagarValorParcialDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, PagarValorParcialDaContaAPagarPage>>()(DriverService);
-            pagarValorParcialDaContaAPagarPage.RealizarFluxoDePagarValorParcialNaContaAPagar();
+            var pagarValorParcialDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, PagarContaParcialmentePage>>()(DriverService);
+            pagarValorParcialDaContaAPagarPage.RealizarFluxoPagarContaParcialmente();
         }
     }
 }

@@ -18,8 +18,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Injection
                 containerBuilder.RegisterType<RemoverItemNaDevolucaoPage>();
                 containerBuilder.RegisterType<DevolucaoParcialNaDevolucaoPage>();
                 containerBuilder.RegisterType<DevolucaoParcialNaDevolucaoTeste>();
-                containerBuilder.RegisterType<DevolucaoTotalNaDevolucaoPage>();
-                containerBuilder.RegisterType<DevolucaoTotalNaDevolucaoTeste>();
+                containerBuilder.RegisterType<DevolucaoTotalPage>();
+                containerBuilder.RegisterType<DevolucaoTotalTeste>();
                 containerBuilder.RegisterType<VoltarNaDevolucaoComEscPage>();
                 containerBuilder.RegisterType<VoltarNaDevolucaoComEscTeste>();
                 containerBuilder.RegisterType<GerarHaverNaDevolucaoPage>();

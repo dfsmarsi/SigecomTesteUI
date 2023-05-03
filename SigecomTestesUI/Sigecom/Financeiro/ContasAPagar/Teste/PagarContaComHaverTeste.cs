@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
 {
-    public class PagarValorTotalComHaverDaContaAPagarTeste:BaseTestes
+    public class PagarContaComHaverTeste:BaseTestes
     {
         [Test(Description = "Pagar valor total com haver")]
         [AllureTag("CI")]
@@ -18,11 +18,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("PagarValorTotalComHaver")]
         [AllureSubSuite("ContaAPagar")]
-        public void PagarValorTotalComHaverNaContaAPagar()
+        public void PagarContaComHaver()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var pagarValorTotalComHaverDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, PagarValorTotalComHaverDaContaAPagarPage>>()(DriverService);
-            pagarValorTotalComHaverDaContaAPagarPage.RealizarFluxoDePagarValorTotalComHaverNaContaAPagar();
+            var pagarValorTotalComHaverDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, PagarContaComHaverPage>>()(DriverService);
+            pagarValorTotalComHaverDaContaAPagarPage.RealizarFluxoPagarContaComHaver();
         }
     }
 }
