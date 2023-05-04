@@ -398,6 +398,14 @@ namespace SigecomTestesUI.Services
             campo.Click();
         }
 
+        public bool VerificarSeCheckEstaMarcado(string idCampo)
+        {
+            var estaMarcado = ObterValorElementoName(idCampo);
+            if (estaMarcado == "Checked")
+                return true;
+            return false;
+        }
+
         public void MatarProcessoSigecom()
         {
             foreach (var process in Process.GetProcessesByName("Sigecom"))
