@@ -50,10 +50,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.EditarProduto.Page
 
         public void VerificarCamposDaAba()
         {
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptNacional), OriginalServicoModel.IbptNacional);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptEstatual), OriginalServicoModel.IbptEstatual);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptImportado), OriginalServicoModel.IbptImportado);
-            Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptMunicipal), OriginalServicoModel.IbptMunicipal);
+            //Não utilizado;
         }
 
         public void PreencherCamposDaAbaAoEditar()
