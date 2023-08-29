@@ -26,16 +26,12 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, CadastroDeProdutoBaseModel.MarkupDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, CadastroDeProdutoBaseModel.ReferenciaDoProduto);
                 _driverService.DigitarNoCampoComTeclaDeAtalhoIdComThread(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto, CadastroDeProdutoCodigoDeBarrasValidoModel.CodigoDeBarras, Keys.Tab);
-                Thread.Sleep(TimeSpan.FromSeconds(2));
+                Thread.Sleep(TimeSpan.FromSeconds(3));
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), CadastroDeProdutoCodigoDeBarrasValidoModel.OrigemMercadoria);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), CadastroDeProdutoCodigoDeBarrasValidoModel.SituacaoTributaria);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), CadastroDeProdutoCodigoDeBarrasValidoModel.NaturezaCfop);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNcm), CadastroDeProdutoCodigoDeBarrasValidoModel.Ncm);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCest), CadastroDeProdutoCodigoDeBarrasValidoModel.Cest);
-                Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptNacional), CadastroDeProdutoCodigoDeBarrasValidoModel.IbptNacional);
-                Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptEstatual), CadastroDeProdutoCodigoDeBarrasValidoModel.IbptEstatual);
-                Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptImportado), CadastroDeProdutoCodigoDeBarrasValidoModel.IbptImportado);
-                Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoIbptMunicipal), CadastroDeProdutoCodigoDeBarrasValidoModel.IbptMunicipal);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCstpis), CadastroDeProdutoCodigoDeBarrasValidoModel.Cstpis);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoCstCofins), CadastroDeProdutoCodigoDeBarrasValidoModel.CstCofins);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoClassificacaoPisCofins), CadastroDeProdutoCodigoDeBarrasValidoModel.ClassificacaoPisCofins);

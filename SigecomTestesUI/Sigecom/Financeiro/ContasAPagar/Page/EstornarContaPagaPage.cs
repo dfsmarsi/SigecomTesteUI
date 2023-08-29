@@ -23,7 +23,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(2);
+            DriverService.ClicarBotaoName("Filtro");
             DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
+            DriverService.DigitarNoCampoId("txtDataInicio", "28042023");
+            DriverService.DigitarNoCampoId("txtDataFim", "28042023");
+            DriverService.ClicarBotaoName(", Filtrar");
 
             // Act
             DriverService.CliqueNoElementoDaGridComVarios("Valor pago", "R$31,33");
@@ -34,6 +38,10 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             // Assert
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenuDoPagar);
+            DriverService.ClicarBotaoName("Filtro");
+            DriverService.DigitarNoCampoId("txtDataInicio", "24032023");
+            DriverService.DigitarNoCampoId("txtDataFim", "24032023");
+            DriverService.ClicarBotaoName(", Filtrar");
             Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$31,33"), true);
             FecharTelaDeContaAPagarComEsc();
         }

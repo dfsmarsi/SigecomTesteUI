@@ -106,7 +106,7 @@ namespace SigecomTestesUI.Services
         }
 
         public void DigitarNoCampoId(string idElemento, string texto) => 
-            _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);
+            _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);         
 
         public void DigitarNoCampoName(string nomeElemento, string texto) => 
             _driver.FindElementByName(nomeElemento).SendKeys(texto);
@@ -341,6 +341,12 @@ namespace SigecomTestesUI.Services
             EditarItemDaGridComDuploClick(nomeCampo, texto, posicao);
         }
 
+        public void EditarItensNaGridComDuploClickNaPosicaoDesejadaETab(string nomeCampo, string texto, string posicao)
+        {
+            EditarItemDaGridComDuploClick(nomeCampo, texto, posicao).SendKeys(Keys.Tab);
+            
+        }
+
         private WindowsElement EditarItemDaGridComDuploClick(string nomeCampo, string texto, string posicao)
         {
             var elementoEncontrado = _driver.FindElementByName($"{nomeCampo} row {posicao}");
@@ -375,21 +381,29 @@ namespace SigecomTestesUI.Services
         }
 
         public void FecharJanelaComEsc(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalho(nomeJanela,Keys.Escape);
+            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela,Keys.Escape);
 
         public void AbrirPesquisaComF9(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F9);
+            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F9);
 
         public void ConfirmarPesquisa(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalho(nomeJanela, Keys.F5);
+            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F5);
 
-        public void RealizarAcaoDaTeclaDeAtalho(string nomeJanela, string teclaDeAtalho) =>
+        public void RealizarAcaoDaTeclaDeAtalhoNaTela(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
         public void FocarCampo(string idCampo)
         {
             var campo = EncontrarElementoId(idCampo);
             campo.Click();
+        }
+
+        public bool VerificarSeCheckEstaMarcado(string idCampo)
+        {
+            var estaMarcado = ObterValorElementoName(idCampo);
+            if (estaMarcado == "Checked")
+                return true;
+            return false;
         }
 
         public void MatarProcessoSigecom()

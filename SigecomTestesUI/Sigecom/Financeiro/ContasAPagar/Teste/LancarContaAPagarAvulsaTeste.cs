@@ -18,7 +18,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
         [AllureOwner("Takaki")]
         [AllureSuite("LancarContaAvulsa")]
         [AllureSubSuite("ContaAPagar")]
-        public void LancarContaAvulsaNaContaAPagar()
+        public void LancarContaAPagarAvulsa()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var lancarContaAvulsaDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, LancarContaAPagarAvulsaPage>>()(DriverService);

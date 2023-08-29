@@ -27,7 +27,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
             ClicarNaOpcaoDoSubMenu();
             LancarProdutoPadraoEAtribuirCliente();
             AvancarNaPreVenda();
-            ClicarBotaoName(PreVendaModel.ElementoNameSelecionar);
+            Assert.IsTrue(DriverService.VerificarSeCheckEstaMarcado(PreVendaModel.ElementoNameCheckEntregarItem));
             DriverService.DarDuploCliqueNoBotaoId(PreVendaModel.ElementoDeTaxaEntrega);
             DriverService.DigitarNoCampoId(PreVendaModel.ElementoDeTaxaEntrega, LancarItemNaPreVendaModel.LancarValorDaEntrega);
             AvancarNaPreVenda();

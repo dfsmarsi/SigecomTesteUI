@@ -1,18 +1,17 @@
 ﻿using System;
 using Autofac;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
+using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
 using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model;
-using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 {
-    public class PagarValorParcialComHaverDaContaAPagarPage:PageObjectModel
+    public class PagarContaPage:PageObjectModel
     {
-        public PagarValorParcialComHaverDaContaAPagarPage(DriverService driver) : base(driver)
+        public PagarContaPage(DriverService driver) : base(driver)
         {
         }
 
@@ -22,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenu);
 
-        public void RealizarFluxoDePagarValorParcialComHaverNaContaAPagar()
+        public void RealizarFluxoDePagarValorTotalNaContaAPagar()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
@@ -31,20 +30,16 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 
             // Act
             RealizarFluxoDeGerarContaAPagar();
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,22");
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$11,11");
             ClicarBotaoName(ContaAPagarModel.BotaoDePagar);
             DriverService.SelecionarItensDoDropDown(1);
-            DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(ContaAPagarModel.ElementoDeFormaDePagamento, 6);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(ContaAPagarModel.ElementoDoTotalPago, "10,22", Keys.Enter);
-            ClicarBotaoName(ContaAPagarModel.ParcialDoPagarConta);
-            ClicarBotaoName(ContaAPagarModel.Sim);
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
+            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAPagarModel.ElementoDeFormaDePagamento, 1);
             FecharTelaDeContaAPagarComEsc();
 
             // Assert
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(2);
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$0,00"), true);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$11,11"), true);
             FecharTelaDeContasRecebidasComEsc();
         }
 
@@ -52,7 +47,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAPagar("22,22");
+            contaBasePage.RealizarFluxoDeGerarContaAPagar("11,11");
         }
 
         private void FecharTelaDeContaAPagarComEsc() =>

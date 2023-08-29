@@ -30,9 +30,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
             LancarProduto();
             DriverService.EditarItensNaGridComDuploClickComTab(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, "0");
             AvancarNaDevolucao();
-            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado(DevolucaoModel.CampoDaGridDeQuantidadeVendida, "5");
+            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado(DevolucaoModel.CampoDaGridIdPedido, "18");
+            var qtdeVendida = int.Parse(DriverService.PegarValorDaColunaDaGridNaPosicao(DevolucaoModel.CampoDaGridDeQuantidadeVendida, posicao.ToString()));
+            Assert.IsTrue(qtdeVendida > 1);
             DriverService.EditarNaGridNaPosicao(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, "1", posicao);
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(DevolucaoModel.CampoDaGridDeSituacaoParaDevolver), "Devolução parcial");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao(DevolucaoModel.CampoDaGridDeSituacaoParaDevolver, posicao.ToString()), "Devolução parcial");
             AvancarNaDevolucao();
             DriverService.RealizarSelecaoDaAcao(DevolucaoModel.AcoesDaDevolucao, 2);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, "CLIENTE TESTE PESQUISA", Keys.Enter);

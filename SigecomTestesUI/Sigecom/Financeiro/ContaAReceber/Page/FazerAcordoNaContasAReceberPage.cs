@@ -25,12 +25,17 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         public void RealizarFluxoDeFazerAcordoNaContaAReceber()
         {
             // Arange
+            var dataVencimento = DateTime.Now.ToString("dd/MM/yyyy");
+
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
+            DriverService.ClicarBotaoName("Filtro");
+            DriverService.DigitarNoCampoId("txtDataInicio", "16042023");
+            DriverService.DigitarNoCampoId("txtDataFim", "16042023");
+            DriverService.ClicarBotaoName(", Filtrar");
 
             // Act
-            RealizarFluxoDeGerarContaAReceber();
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,11");
             ClicarBotaoName(ContaAReceberModel.BotaoDeAcordo);
             ClicarBotaoName(ContaAReceberModel.Avançar);
@@ -39,20 +44,15 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             DriverService.TrocarJanela();
             ClicarBotaoName("Saída");
 
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId("tipoDaDataLookUpEdit", "Lançamento", Keys.Enter);
-            ClicarBotaoName(", Filtrar");
-
             // Assert
+            DriverService.ClicarBotaoName(", Limpar");
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId("tipoDaDataLookUpEdit", "Lançamento", Keys.Enter);
+            DriverService.DigitarNoCampoIdDuploClique("txtDataInicio", dataVencimento);
+            DriverService.DigitarNoCampoIdDuploClique("txtDataFim", dataVencimento);
+            DriverService.ClicarBotaoName(", Filtrar");
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$22,11");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Parcela", posicao.ToString()), "A-1/1");
             FecharTelaDeContaAReceberComEsc();
-        }
-
-        private void RealizarFluxoDeGerarContaAReceber()
-        {
-            using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAReceber("22,11");
         }
 
         private void FecharTelaDeContaAReceberComEsc() =>

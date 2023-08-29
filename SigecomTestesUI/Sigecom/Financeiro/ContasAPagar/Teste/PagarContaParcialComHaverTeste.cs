@@ -1,28 +1,30 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Autofac;
 using NUnit.Allure.Attributes;
 using NUnit.Framework;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page;
-using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
 {
-    public class PagarValorTotalDaContaAPagarTeste:BaseTestes
+    public class PagarContaParcialComHaverTeste:BaseTestes
     {
-        [Test(Description = "Pagar valor total")]
+        [Test(Description = "Pagar valor Parcial com haver")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("PagarValorTotal")]
+        [AllureSuite("PagarValorParcialComHaver")]
         [AllureSubSuite("ContaAPagar")]
-        public void PagarValorTotalNaContaAPagar()
+        public void PagarContaParcialComHaver()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var PagarValorTotalDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, PagarValorTotalDaContaAPagarPage>>()(DriverService);
-            PagarValorTotalDaContaAPagarPage.RealizarFluxoDePagarValorTotalNaContaAPagar();
+            var pagarValorParcialComHaverDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, PagarContaParcialComHaverPage>>()(DriverService);
+            pagarValorParcialComHaverDaContaAPagarPage.RealizarFluxoPagarContaParcialComHaver();
         }
     }
 }

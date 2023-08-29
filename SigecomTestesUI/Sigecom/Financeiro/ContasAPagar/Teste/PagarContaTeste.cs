@@ -8,21 +8,21 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Teste
 {
-    public class EstornarContaPagaTeste:BaseTestes
+    public class PagarContaTeste:BaseTestes
     {
-        [Test(Description = "Estornar conta a pagar")]
+        [Test(Description = "Pagar valor total")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]
         [AllureTms("1")]
         [AllureOwner("Takaki")]
-        [AllureSuite("EstornarDaContaAPagar")]
+        [AllureSuite("PagarValorTotal")]
         [AllureSubSuite("ContaAPagar")]
-        public void EstornarContaPaga()
+        public void PagarConta()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
-            var estornarDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, EstornarContaPagaPage>>()(DriverService);
-            estornarDaContaAPagarPage.RealizarFluxoDeEstornarContaPaga();
+            var PagarValorTotalDaContaAPagarPage = beginLifetimeScope.Resolve<Func<DriverService, PagarContaPage>>()(DriverService);
+            PagarValorTotalDaContaAPagarPage.RealizarFluxoDePagarValorTotalNaContaAPagar();
         }
     }
 }
