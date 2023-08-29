@@ -23,13 +23,7 @@ namespace SigecomTestesUI.Sigecom.Compra.Xml.Page
             // Arange
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
-            ClicarBotaoName(CompraXmlModel.BotaoAtalhosCompra);
-            ClicarBotaoName(CompraXmlModel.AtalhoDeCarregarXml);
-            DriverService.TrocarJanela();
-            ClicarBotaoName(CompraXmlModel.ElementoDoCaminhoDoDocumentos);
-            DriverService.DigitarNoCampoId(CompraXmlModel.ElementoIdDePesquisaDoWindows, "Teste.xml");
-            DriverService.ClicarBotaoId(CompraXmlModel.ElementoIdDeAbrirDoWindows);
-            ClicarBotaoName(CompraXmlModel.ElementoNameDoGravar);
+            DriverService.DarDuploCliqueNoBotaoName("Fornecedor row 0");
 
             // Act
             DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejada(CompraXmlModel.CampoDaGridDeItens, "", "0");

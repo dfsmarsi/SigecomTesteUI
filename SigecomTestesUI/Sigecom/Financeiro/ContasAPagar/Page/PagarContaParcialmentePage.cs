@@ -10,9 +10,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 {
-    public class PagarValorParcialDaContaAPagarPage:PageObjectModel 
+    public class PagarContaParcialmentePage:PageObjectModel 
     {
-        public PagarValorParcialDaContaAPagarPage(DriverService driver) : base(driver)
+        public PagarContaParcialmentePage(DriverService driver) : base(driver)
         {
         }
 
@@ -22,7 +22,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenu);
 
-        public void RealizarFluxoDePagarValorParcialNaContaAPagar()
+        public void RealizarFluxoPagarContaParcialmente()
         {
             // Arange
             ClicarNaOpcaoDoMenu();

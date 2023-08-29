@@ -12,6 +12,7 @@
         public static string ElementoNameDoNao => ", Não (ESC)";
         public static string CampoDaGridParaRemoverProduto => " row 0";
         public static string CampoDaGridDeQuantidadeVendida => "Qtde vendida";
+        public static string CampoDaGridIdPedido => "Pedido";
         public static string CampoDaGridDeQuantidadeParaDevolver => "Qtde p/ devolver";
         public static string CampoDaGridDeSituacaoParaDevolver => "Situação";
     }

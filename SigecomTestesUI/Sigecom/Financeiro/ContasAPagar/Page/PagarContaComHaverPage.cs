@@ -1,17 +1,17 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
 using SigecomTestesUI.Sigecom.Financeiro.BaseDasContas.Interfaces;
 using SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Model;
+using System;
 
 namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 {
-    public class PagarValorTotalDaContaAPagarPage:PageObjectModel
+    public class PagarContaComHaverPage:PageObjectModel
     {
-        public PagarValorTotalDaContaAPagarPage(DriverService driver) : base(driver)
+        public PagarContaComHaverPage(DriverService driver) : base(driver)
         {
         }
 
@@ -21,7 +21,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         private void ClicarNaOpcaoDoSubMenu() =>
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenu);
 
-        public void RealizarFluxoDePagarValorTotalNaContaAPagar()
+        public void RealizarFluxoPagarContaComHaver()
         {
             // Arange
             ClicarNaOpcaoDoMenu();
@@ -30,16 +30,16 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 
             // Act
             RealizarFluxoDeGerarContaAPagar();
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$11,11");
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$23,23");
             ClicarBotaoName(ContaAPagarModel.BotaoDePagar);
             DriverService.SelecionarItensDoDropDown(1);
-            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAPagarModel.ElementoDeFormaDePagamento, 1);
+            DriverService.RealizarSelecaoDaFormaDePagamento(ContaAPagarModel.ElementoDeFormaDePagamento, 6);
             FecharTelaDeContaAPagarComEsc();
 
             // Assert
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(2);
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$11,11"), true);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$0,00"), true);
             FecharTelaDeContasRecebidasComEsc();
         }
 
@@ -47,7 +47,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAPagar("11,11");
+            contaBasePage.RealizarFluxoDeGerarContaAPagar("23,23");
         }
 
         private void FecharTelaDeContaAPagarComEsc() =>

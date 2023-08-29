@@ -16,16 +16,16 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Injection
                 containerBuilder.RegisterType<LancarContaAPagarAvulsaTeste>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaAPagarPage>();
                 containerBuilder.RegisterType<AbrirDetalhesDaContaAPagarTeste>();
-                containerBuilder.RegisterType<PagarValorTotalDaContaAPagarPage>();
-                containerBuilder.RegisterType<PagarValorTotalDaContaAPagarTeste>();
+                containerBuilder.RegisterType<PagarContaPage>();
+                containerBuilder.RegisterType<PagarContaTeste>();
                 containerBuilder.RegisterType<EditarDaContaAPagarPage>();
                 containerBuilder.RegisterType<EditarDaContaAPagarTeste>();
-                containerBuilder.RegisterType<PagarValorParcialDaContaAPagarPage>();
-                containerBuilder.RegisterType<PagarValorParcialDaContaAPagarTeste>();
-                containerBuilder.RegisterType<PagarValorTotalComHaverDaContaAPagarPage>();
-                containerBuilder.RegisterType<PagarValorTotalComHaverDaContaAPagarTeste>();
-                containerBuilder.RegisterType<PagarValorParcialComHaverDaContaAPagarPage>();
-                containerBuilder.RegisterType<PagarValorParcialComHaverDaContaAPagarTeste>();
+                containerBuilder.RegisterType<PagarContaParcialmentePage>();
+                containerBuilder.RegisterType<PagarContaParcialmenteTeste>();
+                containerBuilder.RegisterType<PagarContaComHaverPage>();
+                containerBuilder.RegisterType<PagarContaComHaverTeste>();
+                containerBuilder.RegisterType<PagarContaParcialComHaverPage>();
+                containerBuilder.RegisterType<PagarContaParcialComHaverTeste>();
                 containerBuilder.RegisterType<EstornarContaPagaPage>();
                 containerBuilder.RegisterType<EstornarContaPagaTeste>();
             }

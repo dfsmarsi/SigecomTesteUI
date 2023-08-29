@@ -9,10 +9,6 @@
         public static string NaturezaCfop => "Produto adquirido ou recebido de terceiros em operação com mercadoria sujeita ao regime ST, na condição de contribuinte substituído";
         public static string Ncm => "22030000";
         public static string Cest => "0302103";
-        public static string IbptNacional => "0,00";
-        public static string IbptEstatual => "0,00";
-        public static string IbptImportado => "0,00";
-        public static string IbptMunicipal => "0,00";
         public static string Cstpis => "06 - Operação Tributável a Alíquota Zero";
         public static string CstCofins => "06 - Operação Tributável a Alíquota Zero";
         public static string ClassificacaoPisCofins => "Não monofásica";

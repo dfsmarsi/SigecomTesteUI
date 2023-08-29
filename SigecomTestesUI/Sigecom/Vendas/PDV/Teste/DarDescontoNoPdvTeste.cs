@@ -10,7 +10,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Teste
 {
     public class DarDescontoNoPdvTeste: BaseTestes
     {
-        [Test(Description = "Dar desconto para produto no PDV")]
+        [Test(Description = "Dar desconto no produto no PDV")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]

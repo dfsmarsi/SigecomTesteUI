@@ -24,7 +24,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenuDoPagar);
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$6,50");
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$13,00");
 
             // Act
             ClicarBotaoName(ContaAPagarModel.BotaoDeDetalhes);

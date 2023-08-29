@@ -17,7 +17,7 @@
         public static string ElementoNameRemoverProduto => "Remover produto da lista. row 0";
         public static string GridDeFormaDePagamento => "gridFormasPagamento";
         public static string ElementoTotalPagamento => "txtTotalPago";
-        public static string ElementoNameSelecionar => "Seleção row 0";
+        public static string ElementoNameCheckEntregarItem => "Seleção row 0";
         public static string ElementoNameDoConfirmar => ", Confirmar (ENTER)";
         public static string ElementoNameDoSim => ", Sim (ENTER)";
         public static string ElementoNameDoNao => ", Não (ESC)";

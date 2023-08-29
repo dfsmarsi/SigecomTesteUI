@@ -11,9 +11,9 @@ using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
 {
-    public class DevolucaoTotalNaDevolucaoPage: PageObjectModel
+    public class DevolucaoTotalPage: PageObjectModel
     {
-        public DevolucaoTotalNaDevolucaoPage(DriverService driver) : base(driver)
+        public DevolucaoTotalPage(DriverService driver) : base(driver)
         {
         }
 
@@ -30,11 +30,13 @@ namespace SigecomTestesUI.Sigecom.Vendas.Devolucao.Page
             LancarProduto();
             DriverService.EditarItensNaGridComDuploClickComTab(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, "0");
             AvancarNaDevolucao();
-            DriverService.EditarItensNaGrid(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, DriverService.PegarValorDaColunaDaGrid(DevolucaoModel.CampoDaGridDeQuantidadeVendida));
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGrid(DevolucaoModel.CampoDaGridDeSituacaoParaDevolver), "Devolução total");
+            var posicao = DriverService.RetornarPosicaoDoRegistroDesejado(DevolucaoModel.CampoDaGridIdPedido, "17").ToString();
+            DriverService.EditarItensNaGridComDuploClickNaPosicaoDesejadaETab(DevolucaoModel.CampoDaGridDeQuantidadeParaDevolver, "5", posicao);
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao(DevolucaoModel.CampoDaGridDeSituacaoParaDevolver, posicao), "Devolução total");
             AvancarNaDevolucao();
             DriverService.RealizarSelecaoDaAcao(DevolucaoModel.AcoesDaDevolucao, 2);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, "CLIENTE TESTE PESQUISA", Keys.Enter);
+            //Clicar em não imprimir devolução
             ClicarBotaoName(DevolucaoModel.ElementoNameDoNao);
             FecharTelaDeDevolucaoComEsc();
         }
