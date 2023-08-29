@@ -26,7 +26,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoMarkup, CadastroDeProdutoBaseModel.MarkupDoProduto);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, CadastroDeProdutoBaseModel.ReferenciaDoProduto);
                 _driverService.DigitarNoCampoComTeclaDeAtalhoIdComThread(CadastroDeProdutoModel.ElementoCodigoDeBarrasProduto, CadastroDeProdutoCodigoDeBarrasValidoModel.CodigoDeBarras, Keys.Tab);
-                Thread.Sleep(TimeSpan.FromSeconds(2));
+                Thread.Sleep(TimeSpan.FromSeconds(3));
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoOrigemMercadoria), CadastroDeProdutoCodigoDeBarrasValidoModel.OrigemMercadoria);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoSituacaoTributaria), CadastroDeProdutoCodigoDeBarrasValidoModel.SituacaoTributaria);
                 Assert.AreEqual(_driverService.ObterValorElementoId(CadastroDeProdutoModel.ElementoNaturezaCfop), CadastroDeProdutoCodigoDeBarrasValidoModel.NaturezaCfop);
