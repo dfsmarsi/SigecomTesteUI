@@ -106,7 +106,7 @@ namespace SigecomTestesUI.Services
         }
 
         public void DigitarNoCampoId(string idElemento, string texto) => 
-            _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);
+            _driver.FindElementByAccessibilityId(idElemento).SendKeys(texto);         
 
         public void DigitarNoCampoName(string nomeElemento, string texto) => 
             _driver.FindElementByName(nomeElemento).SendKeys(texto);
