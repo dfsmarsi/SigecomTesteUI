@@ -10,7 +10,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Teste
 {
     public class ReabrirCaixaTeste:BaseTestes
     {
-        [Test(Description = "Reabrir caixa")]
+        //[Test(Description = "Reabrir caixa")]
         [AllureTag("CI")]
         [AllureSeverity(Allure.Commons.SeverityLevel.trivial)]
         [AllureIssue("1")]

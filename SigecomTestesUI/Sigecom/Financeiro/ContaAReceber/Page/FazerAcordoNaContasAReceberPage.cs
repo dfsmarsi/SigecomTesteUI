@@ -31,6 +31,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
             DriverService.ClicarBotaoName("Filtro");
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
             DriverService.DigitarNoCampoId("txtDataInicio", "16042023");
             DriverService.DigitarNoCampoId("txtDataFim", "16042023");
             DriverService.ClicarBotaoName(", Filtrar");
@@ -47,8 +48,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             // Assert
             DriverService.ClicarBotaoName(", Limpar");
             DriverService.DigitarNoCampoComTeclaDeAtalhoId("tipoDaDataLookUpEdit", "Lançamento", Keys.Enter);
-            DriverService.DigitarNoCampoIdDuploClique("txtDataInicio", dataVencimento);
-            DriverService.DigitarNoCampoIdDuploClique("txtDataFim", dataVencimento);
+            DriverService.DigitarNoCampoId("txtDataInicio", dataVencimento);
+            DriverService.DigitarNoCampoId("txtDataFim", dataVencimento);
             DriverService.ClicarBotaoName(", Filtrar");
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$22,11");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Parcela", posicao.ToString()), "A-1/1");
