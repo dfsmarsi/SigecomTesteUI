@@ -19,11 +19,17 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Page
         public void RealizarFluxoDeAbrirCaixa()
         {
             // Arange
+            DriverService.RealizarAcaoDaTeclaDeAtalhoCtrlAltCombinadaNaTela("SIGECOM - Sistema de Gestão Comercial - SISTEMASBR", "c");
+            DriverService.SelecionarItemComboBox("lookUpEditCaixa", 3);
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(1);
 
             // Act
+            ClicarBotaoName(CaixaModel.BotaoDeAbrirCaixa);
+            ClicarBotaoName(CaixaModel.Confirmar);
+            DriverService.TrocarJanela();
+            ClicarBotaoName(CaixaModel.Sim);
             ClicarBotaoName(CaixaModel.BotaoDeFecharCaixa);
             DriverService.TrocarJanela();
             ClicarBotaoName(CaixaModel.Confirmar);
@@ -32,12 +38,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.Caixa.Page
             ClicarBotaoName(CaixaModel.Nao);
 
             // Assert
-            ClicarBotaoName(CaixaModel.BotaoDeAbrirCaixa);
-            ClicarBotaoName(CaixaModel.Confirmar);
-            ClicarBotaoName(CaixaModel.Sim);
-            ClicarBotaoName(CaixaModel.Nao);
-            DriverService.VerificarSePossuiOValorNaTela(CaixaModel.BotaoDeFecharCaixa);
-
+            DriverService.VerificarSePossuiOValorNaTela(CaixaModel.BotaoDeAbrirCaixa);
+            DriverService.TrocarJanela();
             FecharTelaDeAbrirCaixaComEsc();
         }
 

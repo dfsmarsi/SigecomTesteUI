@@ -392,9 +392,12 @@ namespace SigecomTestesUI.Services
         public void RealizarAcaoDaTeclaDeAtalhoNaTela(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 
-        public void FocarCampo(string idCampo)
+        public void RealizarAcaoDaTeclaDeAtalhoCtrlAltCombinadaNaTela(string nomeJanela, string teclaDeAtalho) =>
+            _driver.FindElementByName(nomeJanela).SendKeys(Keys.Control + Keys.Alt + teclaDeAtalho);
+
+        public void FocarCampoName(string nomeCampo)
         {
-            var campo = EncontrarElementoId(idCampo);
+            var campo = EncontrarElementoName(nomeCampo);
             campo.Click();
         }
 
