@@ -37,8 +37,10 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(ContaAReceberModel.ElementoDeFormaDePagamento, 5);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(ContaAReceberModel.ElementoDoTotalPago, "10,00", Keys.Enter);
             ClicarBotaoName(ContaAReceberModel.ParcialDoPagarConta);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ContaAReceberModel.Sim);
             ClicarBotaoName(ContaAReceberModel.Nao);
+            DriverService.TrocarJanela();
             Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$10,22"), true);
             FecharTelaDeContaAReceberComEsc();
 

@@ -21,6 +21,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            DriverService.AbrirFecharAbaDeFiltroTelaDeConsulta("Consulta de pré vendas");
+            DriverService.DigitarNoCampoId("comboBoxEditFiltroMes", "p");
+            DriverService.DigitarNoCampoId("dateEditDataInicio", "13032023");
+            DriverService.DigitarNoCampoId("dateEditDataFim", "13032023");
+            DriverService.ClicarBotaoName(", Filtrar");
+
             DriverService.CliqueNoElementoDaGridComVarios("Valor", "R$11,11");
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaClonarPreVenda);
             DriverService.EditarItensNaGridComDuploClickComTab(PreVendaModel.CampoDaGridDeQuantidadeDoProduto, LancarItemNaPreVendaModel.QuantidadeParaClonarPreVenda);
