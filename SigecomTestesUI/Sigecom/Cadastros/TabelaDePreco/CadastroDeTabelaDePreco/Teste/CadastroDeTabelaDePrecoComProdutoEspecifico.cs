@@ -7,6 +7,7 @@ using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Mo
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Page;
 using SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.Enum;
 using System;
+using System.Threading;
 
 namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePreco.Teste
 {
@@ -30,7 +31,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoAplicar();
             cadastroDeTabelaDePrecoBasePage.VerificarCamposDaGridDeProdutos();
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoGravar();
-            cadastroDeTabelaDePrecoBasePage.VoltarTelaDeCadastro();
             cadastroDeTabelaDePrecoBasePage.VerificarSeFoiCadastradoCorretamente(CadastroDeTabelaDePrecoModel.NomeDescricaoUnicoProduto);
         }
     }

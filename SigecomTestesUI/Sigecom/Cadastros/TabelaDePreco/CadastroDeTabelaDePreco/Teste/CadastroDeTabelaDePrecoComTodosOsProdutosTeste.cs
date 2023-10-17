@@ -29,7 +29,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
             cadastroDeTabelaDePrecoBasePage.PreencherCamposDaTabela(QuantidadeDeProdutoParaTabelaDePreco.TodosOsProdutos);
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoAplicar();
             cadastroDeTabelaDePrecoBasePage.ClicarNoBotaoGravar();
-            cadastroDeTabelaDePrecoBasePage.VoltarTelaDeCadastro();
             cadastroDeTabelaDePrecoBasePage.VerificarSeFoiCadastradoCorretamente(CadastroDeTabelaDePrecoModel.NomeDescricaoTodosOsProdutos);
         }
     }

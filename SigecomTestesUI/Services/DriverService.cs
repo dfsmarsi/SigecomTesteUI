@@ -45,6 +45,7 @@ namespace SigecomTestesUI.Services
         public void FecharSistemaComTelaAberta()
         {
             ClicarBotaoName("Sair/Login");
+            TrocarJanela();
             ClicarBotaoName(", Sim (ENTER)");
             FinalizarFecharDoSistema();
         }
@@ -55,8 +56,8 @@ namespace SigecomTestesUI.Services
             if(VerificarSePossuiOValorNaTela(", Sim (ENTER)")) 
                 ClicarBotaoName(", Sim (ENTER)");
             TrocarJanela();
-            ValidarElementoExistentePorNome("Sistema de gestão comercial");
-            ClicarBotaoName("Fechar");
+            ValidarElementoExistentePorNome("Sistema de gestão comercial"); //tela de login
+            ClicarBotaoName("Fechar"); // X da tela de login
             _driver.Dispose();
         }
 
@@ -388,6 +389,9 @@ namespace SigecomTestesUI.Services
 
         public void ConfirmarPesquisa(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F5);
+
+        public void AbrirFecharAbaDeFiltroTelaDeConsulta(string nomeJanela) =>
+            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F3);
 
         public void RealizarAcaoDaTeclaDeAtalhoNaTela(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);

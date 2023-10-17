@@ -35,7 +35,9 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             const string acrescentarNaQuantidade = "1";
             DriverService.EditarItensNaGridComDuploClickComEnter(ManutencaoDeEstoqueModel.CampoQuantidadeDaGrid, acrescentarNaQuantidade);
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoDeFiltrar);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDeProdutoModel.ElementoParametroDePesquisa,
                 PesquisaDeProdutoInformacoesParaTesteModel.NomeFinalDoProduto, Keys.Enter);

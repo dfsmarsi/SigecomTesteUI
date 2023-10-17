@@ -17,9 +17,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
             try
             {
                 _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoDescricao, CadastroDeTabelaDePrecoModel.NomeDescricaoTodosOsProdutos);
-                _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoAtalho, 1);
                 _driverService.ClicarNoToggleSwitchPeloId(CadastroDeTabelaDePrecoModel.ElementoToggleTodosOsProdutos);
-                _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoRegra, 1);
+                _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoRegra, 2);
                 _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoPorcentagem, CadastroDeTabelaDePrecoModel.ValorPorcentagem);
             }
             catch (Exception exception)
