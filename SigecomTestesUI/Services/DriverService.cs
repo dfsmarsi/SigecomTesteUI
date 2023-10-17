@@ -390,6 +390,9 @@ namespace SigecomTestesUI.Services
         public void ConfirmarPesquisa(string nomeJanela) =>
             RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F5);
 
+        public void AbrirFecharAbaDeFiltroTelaDeConsulta(string nomeJanela) =>
+            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F3);
+
         public void RealizarAcaoDaTeclaDeAtalhoNaTela(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
 

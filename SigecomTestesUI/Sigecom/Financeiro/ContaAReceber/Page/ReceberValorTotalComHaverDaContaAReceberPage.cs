@@ -34,7 +34,9 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             ClicarBotaoName(ContaAReceberModel.BotaoDeReceber);
             DriverService.SelecionarItensDoDropDown(1);
             DriverService.RealizarSelecaoDaFormaDePagamento(ContaAReceberModel.ElementoDeFormaDePagamento, 5);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ContaAReceberModel.Nao);
+            DriverService.TrocarJanela();
             FecharTelaDeContaAReceberComEsc();
 
             // Assert

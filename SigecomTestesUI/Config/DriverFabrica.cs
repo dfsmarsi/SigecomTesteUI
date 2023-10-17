@@ -26,7 +26,7 @@ namespace SigecomTestesUI.Config
 
         public void AbrirWinAppDriver()
         {
-            const string WinAppDriver = @"C:\Program Files (x86)\Windows Application Driver\\WinAppDriver.exe";
+            const string WinAppDriver = @"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe";
             Process.Start(WinAppDriver);
         }
     }
