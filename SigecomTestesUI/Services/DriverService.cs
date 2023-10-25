@@ -382,19 +382,21 @@ namespace SigecomTestesUI.Services
         }
 
         public void FecharJanelaComEsc(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela,Keys.Escape);
+            RealizarAcaoDaTeclaDeAtalhoNaTelaName(nomeJanela,Keys.Escape);
 
         public void AbrirPesquisaComF9(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F9);
+            RealizarAcaoDaTeclaDeAtalhoNaTelaName(nomeJanela, Keys.F9);
 
         public void ConfirmarPesquisa(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F5);
+            RealizarAcaoDaTeclaDeAtalhoNaTelaName(nomeJanela, Keys.F5);
 
         public void AbrirFecharAbaDeFiltroTelaDeConsulta(string nomeJanela) =>
-            RealizarAcaoDaTeclaDeAtalhoNaTela(nomeJanela, Keys.F3);
+            RealizarAcaoDaTeclaDeAtalhoNaTelaName(nomeJanela, Keys.F3);
 
-        public void RealizarAcaoDaTeclaDeAtalhoNaTela(string nomeJanela, string teclaDeAtalho) =>
+        public void RealizarAcaoDaTeclaDeAtalhoNaTelaName(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(teclaDeAtalho);
+        public void RealizarAcaoDaTeclaDeAtalhoNaTelaId(string nomeJanela, string teclaDeAtalho) =>
+            _driver.FindElementByAccessibilityId(nomeJanela).SendKeys(teclaDeAtalho);
 
         public void RealizarAcaoDaTeclaDeAtalhoCtrlAltCombinadaNaTela(string nomeJanela, string teclaDeAtalho) =>
             _driver.FindElementByName(nomeJanela).SendKeys(Keys.Control + Keys.Alt + teclaDeAtalho);

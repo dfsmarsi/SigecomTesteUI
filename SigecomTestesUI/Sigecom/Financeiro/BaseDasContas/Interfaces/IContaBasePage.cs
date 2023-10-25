@@ -2,8 +2,8 @@
 {
     public interface IContaBasePage
     {
-        void RealizarFluxoDeGerarContaAReceber(string valorDaConta);
-        void RealizarFluxoDeGerarContaAReceberComHaver(string valorDaConta);
+        void RealizarFluxoDeGerarContaAReceber(string valorDaConta, string numeroDocumento);
+        void RealizarFluxoDeGerarContaAReceberComHaver(string valorDaConta, string numeroDocumento);
         void RealizarFluxoDeGerarContaAPagar(string valorDaConta);
     }
 }

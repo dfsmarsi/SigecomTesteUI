@@ -18,6 +18,7 @@ namespace SigecomTestesUI.Sigecom.Cadastros.TabelaDePreco.CadastroDeTabelaDePrec
         {
             try
             {
+                _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoDescricao, CadastroDeTabelaDePrecoModel.NomeDescricaoUnicoProduto);
                 _driverService.SelecionarItemComboBox(CadastroDeTabelaDePrecoModel.ElementoRegra, 2);
                 _driverService.DigitarNoCampoId(CadastroDeTabelaDePrecoModel.ElementoPorcentagem, CadastroDeTabelaDePrecoModel.ValorPorcentagem);
                 _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeTabelaDePrecoModel.ElementoPesquisaDeProduto, PesquisaDeProdutoInformacoesParaTesteModel.PesquisarItemId, Keys.Enter);

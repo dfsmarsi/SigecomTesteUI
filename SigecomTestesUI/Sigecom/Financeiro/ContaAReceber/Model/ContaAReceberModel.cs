@@ -25,5 +25,9 @@
         public static string ParcialDoPagarConta => ", F5 - Parcial";
         public static string Sim => ", Sim (ENTER)";
         public static string Nao => ", Não (ESC)";
+        public static string NumeroDocumentoContaRecebimentoParcial => "1";
+        public static string NumeroDocumentoContaRecebimentoParcialComHaver => "2";
+        public static string NumeroDocumentoContaRecebimentoValorTotal => "3";
+        public static string NumeroDocumentoContaRecebimentoValorTotalComHaver => "4";
     }
 }
