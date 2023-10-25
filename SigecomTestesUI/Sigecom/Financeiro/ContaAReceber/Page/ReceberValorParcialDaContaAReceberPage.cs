@@ -31,6 +31,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 
             // Act
             RealizarFluxoDeGerarContaAReceber();
+            DriverService.ClicarBotaoName("Filtro");
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
+            DriverService.DigitarNoCampoId("cbxCriterioValor", "ig");
+            DriverService.DigitarNoCampoId("txtValor", "22,11");
+            DriverService.ClicarBotaoName(", Filtrar");
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,11");
             ClicarBotaoName(ContaAReceberModel.BotaoDeReceber);
             DriverService.SelecionarItensDoDropDown(1);
@@ -40,6 +45,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             DriverService.TrocarJanela();
             ClicarBotaoName(ContaAReceberModel.Sim);
             DriverService.TrocarJanela();
+            DriverService.ClicarBotaoName(", Limpar");
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
+            DriverService.DigitarNoCampoId("cbxCriterioValor", "ig");
+            DriverService.DigitarNoCampoId("txtValor", "12,00");
+            DriverService.ClicarBotaoName(", Filtrar");
             Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
             FecharTelaDeContaAReceberComEsc();
 

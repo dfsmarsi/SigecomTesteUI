@@ -30,6 +30,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
 
             // Act
             RealizarFluxoDeGerarContaAReceber();
+            DriverService.ClicarBotaoName("Filtro");
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
+            DriverService.DigitarNoCampoId("cbxCriterioValor", "ig");
+            DriverService.DigitarNoCampoId("txtValor", "22,22");
+            DriverService.ClicarBotaoName(", Filtrar");
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,22");
             ClicarBotaoName(ContaAReceberModel.BotaoDeReceber);
             DriverService.SelecionarItensDoDropDown(1);
