@@ -24,6 +24,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenuDoPagar);
+            DriverService.ClicarBotaoName("Filtro");
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
+            DriverService.DigitarNoCampoId("txtDataInicio", "25032023");
+            DriverService.DigitarNoCampoId("txtDataFim", "25032023");
+            DriverService.ClicarBotaoName(", Filtrar");
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$13,00");
 
             // Act

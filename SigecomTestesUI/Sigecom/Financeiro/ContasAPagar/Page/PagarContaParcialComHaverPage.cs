@@ -37,7 +37,9 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(ContaAPagarModel.ElementoDeFormaDePagamento, 6);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(ContaAPagarModel.ElementoDoTotalPago, "10,22", Keys.Enter);
             ClicarBotaoName(ContaAPagarModel.ParcialDoPagarConta);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ContaAPagarModel.Sim);
+            DriverService.TrocarJanela();
             Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
             FecharTelaDeContaAPagarComEsc();
 

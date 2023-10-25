@@ -50,6 +50,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId("tipoDaDataLookUpEdit", "Lançamento", Keys.Enter);
             DriverService.DigitarNoCampoId("txtDataInicio", dataVencimento);
             DriverService.DigitarNoCampoId("txtDataFim", dataVencimento);
+            DriverService.DigitarNoCampoId("cbxCriterioValor", "ig");
+            DriverService.DigitarNoCampoId("txtValor", "22,11");
             DriverService.ClicarBotaoName(", Filtrar");
             var posicao = DriverService.RetornarPosicaoDoRegistroDesejado("Saldo", "R$22,11");
             Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Parcela", posicao.ToString()), "A-1/1");
