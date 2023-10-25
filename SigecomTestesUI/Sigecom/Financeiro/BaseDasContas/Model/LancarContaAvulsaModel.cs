@@ -8,7 +8,7 @@
         public static string ElementoCampoDePessoa => "searchControlPessoa";
         public static string ElementoCampoDeHistorico => "textEditHistorico";
         public static string ElementoCampoDeTipoDocumento => "cbxTipoDocumento";
-        public static string ElementoCampoDeNumeroDocumento => "lblNumeroDocumento";
+        public static string ElementoCampoDeNumeroDocumento => "txtNumeroDocumento";
         public static string ElementoCampoDeDataDeVencimento => "txtDiferenca";
         public static string ElementoCampoDeValor => "txtValor";
         public static string ElementoCampoDeQuantidadeDeParcelas => "txtQuantidadeParcelas";
