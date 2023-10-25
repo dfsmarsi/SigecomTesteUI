@@ -54,7 +54,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             var contaBasePage = beginLifetimeScope.Resolve<Func<DriverService, IContaBasePage>>()(DriverService);
-            contaBasePage.RealizarFluxoDeGerarContaAReceber("22,11");
+            contaBasePage.RealizarFluxoDeGerarContaAReceber("22,11", ContaAReceberModel.NumeroDocumentoContaRecebimentoParcial);
         }
 
         private void FecharTelaDeContaAReceberComEsc() =>

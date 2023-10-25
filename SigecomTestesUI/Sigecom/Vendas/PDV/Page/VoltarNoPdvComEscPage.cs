@@ -31,6 +31,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(PdvModel.ElementoTotalPagamento, "5", Keys.Enter);
             DriverService.DigitarNoCampoId(PdvModel.GridDeFormaDePagamento, "3");
             FecharTelaDeVendaComEsc();
+            DriverService.TrocarJanela();
         }
 
         private void LancarProdutoPadrao()
@@ -47,9 +48,12 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
         {
             DriverService.FecharJanelaComEsc("Pdv");
             DriverService.FecharJanelaComEsc("Pdv");
+            DriverService.TrocarJanela();
             ClicarBotaoName(", Sim (ENTER)");
-            DriverService.FecharJanelaComEscId("scProdutos");
-            ClicarBotaoName(", Sim (ENTER)");
+            DriverService.TrocarJanela();
+            DriverService.FecharJanelaComEsc("Pdv");
+            DriverService.TrocarJanela();
+            DriverService.RealizarAcaoDaTeclaDeAtalhoNaTelaId("PerguntaMensagemView", Keys.Enter);
         }
 
     }

@@ -20,8 +20,8 @@
         public static string ElementoPesquisaDeProduto => "scProdutos";
         public static string BotaoVoltarParaTelaDeCadastro => "picVoltar";
 
-        public static string NomeDescricaoTodosOsProdutos => "CADASTRAR TABELA DE PRECO TESTE TODOS PRODUTOS";
-        public static string NomeDescricaoUnicoProduto => "CADASTRAR TABELA DE PRECO TESTE UNICO PRODUTO";
+        public static string NomeDescricaoTodosOsProdutos => "CADASTRO DE TABELA DE PRECO COM TODOS PRODUTOS";
+        public static string NomeDescricaoUnicoProduto => "CADASTRO DE TABELA DE PRECO UNICO PRODUTO";
         public static string Regra => "Acréscimo sobre o valor de venda";
         public static string ValorPorcentagem => "10,00";
         public static string MarkupNaTabela => "120,00";
