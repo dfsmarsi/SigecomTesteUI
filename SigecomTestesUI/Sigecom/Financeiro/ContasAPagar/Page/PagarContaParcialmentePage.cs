@@ -35,16 +35,18 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarBotaoName(ContaAPagarModel.BotaoDePagar);
             DriverService.SelecionarItensDoDropDown(1);
             DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(ContaAPagarModel.ElementoDeFormaDePagamento, 1);
-            DriverService.DigitarNoCampoComTeclaDeAtalhoId(ContaAPagarModel.ElementoDoTotalPago, "10,11", Keys.Enter);
+            DriverService.DigitarNoCampoComTeclaDeAtalhoId(ContaAPagarModel.ElementoDoTotalPago, "10,00", Keys.Enter);
             ClicarBotaoName(ContaAPagarModel.ParcialDoPagarConta);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ContaAPagarModel.Sim);
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
+            DriverService.TrocarJanela();
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,11"), true);
             FecharTelaDeContaAPagarComEsc();
 
             // Assert
             ClicarNaOpcaoDoSubMenu();
             DriverService.SelecionarItensDoDropDown(2);
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$10,11"), true);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Valor pago", "R$10,00"), true);
             FecharTelaDeContasRecebidasComEsc();
         }
 
