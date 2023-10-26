@@ -32,7 +32,7 @@ namespace SigecomTestesUI.Login
 
             PreencherLogin();
             EsperarAcaoEmSegundos(3);
-            DriverService.TrocarJanela();
+            DriverService.TrocarJanelaLogin();
             return ValidarAberturaDeTela(LoginPageModel.ElementoTelaPrincipal);
         }
     }
