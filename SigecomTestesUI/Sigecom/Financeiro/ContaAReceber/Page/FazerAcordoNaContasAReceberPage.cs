@@ -32,8 +32,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             AcessarOpcaoSubMenu(ContaAReceberModel.BotaoSubMenuDoReceber);
             DriverService.ClicarBotaoName("Filtro");
             DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
-            DriverService.DigitarNoCampoId("txtDataInicio", "16042023");
-            DriverService.DigitarNoCampoId("txtDataFim", "16042023");
+            DriverService.DigitarNoCampoId("txtDataInicio", "29082023");
+            DriverService.DigitarNoCampoId("txtDataFim", "29082023");
             DriverService.ClicarBotaoName(", Filtrar");
 
             // Act
@@ -42,7 +42,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             ClicarBotaoName(ContaAReceberModel.Avançar);
             ClicarBotaoName(ContaAReceberModel.ConcluirDoAcordo);
             EsperarAcaoEmSegundos(2);
-            DriverService.TrocarJanela();
+            DriverService.TrocarJanelaLogin();
             ClicarBotaoName("Saída");
 
             // Assert
