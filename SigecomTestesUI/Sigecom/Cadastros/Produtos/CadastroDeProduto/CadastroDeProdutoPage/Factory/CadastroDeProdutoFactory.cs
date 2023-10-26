@@ -22,7 +22,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
                 TipoDeProduto.Medicamento => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoMedicamentoPage>>()(driverService),
                 TipoDeProduto.Servico => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoServicoPage>>()(driverService),
                 TipoDeProduto.Completo => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoCompletoPage>>()(driverService),
-                TipoDeProduto.CodigoDeBarras => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoCodigoDeBarrasValidoPage>>()(driverService),
                 _ => beginLifetimeScope.Resolve<Func<DriverService, CadastroDeProdutoSimplesPage>>()(driverService)
             };
         }

@@ -11,7 +11,6 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.Enum
         [Description("Medicamento")] Medicamento = 4,
         [Description("Serviço")] Servico = 5,
         [Description("Completo")] Completo = 6,
-        [Description("Codigo de barras")] CodigoDeBarras = 7,
         [Description("Pesquisa")] Pesquisa = 8
     }
 }
