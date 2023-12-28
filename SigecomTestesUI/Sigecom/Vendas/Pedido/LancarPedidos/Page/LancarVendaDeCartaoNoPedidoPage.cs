@@ -30,7 +30,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Page
             DriverService.RealizarSelecaoDaAcao(PedidoModel.AcoesDoPedido, 2);
             DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.GridDeFormaDePagamento, 2);
             ClicarBotaoName(PedidoModel.ElementoNameDoConfirmar);
-            RealizarSelecaoDaOpcaoFiscal();
             FecharTelaDeVendaComEsc();
         }
 
@@ -43,9 +42,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.Pedido.LancarPedidos.Page
 
         private void AvancarVenda()
             => ClicarBotaoName(PedidoModel.ElementoNameDoAvancar);
-
-        private void RealizarSelecaoDaOpcaoFiscal() => 
-            DriverService.RealizarSelecaoDaFormaDePagamento(PedidoModel.AcoesDoPedido, 2);
 
         private void FecharTelaDeVendaComEsc() =>
             DriverService.FecharJanelaComEsc(PedidoModel.ElementoTelaDeVenda);

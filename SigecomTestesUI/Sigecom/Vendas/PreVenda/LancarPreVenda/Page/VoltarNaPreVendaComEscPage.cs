@@ -52,11 +52,15 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.LancarPreVenda.Page
         {
             FecharJanelaComEsc();
             FecharJanelaComEsc();
+            DriverService.TrocarJanela();
             ClicarBotaoName(", Sim (ENTER)");
+            DriverService.TrocarJanela();
             FecharJanelaComEsc();
             FecharJanelaComEsc();
             FecharJanelaComEsc();
-            ClicarBotaoName(", Sim (ENTER)");
+            DriverService.TrocarJanela();
+            DriverService.RealizarAcaoDaTeclaDeAtalhoNaTelaId("PerguntaMensagemView", Keys.Enter);
+            DriverService.TrocarJanela();
         }
 
         private void FecharJanelaComEsc() => 
