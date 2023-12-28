@@ -39,8 +39,8 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenuDoPagar);
             DriverService.ClicarBotaoName("Filtro");
-            DriverService.DigitarNoCampoId("txtDataInicio", "24032023");
-            DriverService.DigitarNoCampoId("txtDataFim", "24032023");
+            DriverService.DigitarNoCampoId("txtDataInicio", "09032023");
+            DriverService.DigitarNoCampoId("txtDataFim", "09032023");
             DriverService.ClicarBotaoName(", Filtrar");
             Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$31,33"), true);
             FecharTelaDeContaAPagarComEsc();
