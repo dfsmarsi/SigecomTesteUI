@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Allure\Relatorios\" />
-    <Folder Include="Allure\Resultados\" />
   </ItemGroup>
 
 </Project>
