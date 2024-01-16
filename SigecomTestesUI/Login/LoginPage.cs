@@ -28,8 +28,6 @@ namespace SigecomTestesUI.Login
 
         public bool Logar()
         {
-            DriverService.EsperarAbrirTelaDeLogin(60, LoginPageModel.ElementoTelaLogin);
-
             PreencherLogin();
             EsperarAcaoEmSegundos(3);
             DriverService.TrocarJanelaLogin();

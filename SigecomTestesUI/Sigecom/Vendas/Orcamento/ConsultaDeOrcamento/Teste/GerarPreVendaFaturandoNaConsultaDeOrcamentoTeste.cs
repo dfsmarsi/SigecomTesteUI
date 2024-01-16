@@ -8,7 +8,7 @@ using System;
 
 namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Teste
 {
-    public class GerarPreVendaFaturandoNaConsultaDeOrcamentoTeste: BaseTestes
+    public class GerarPreVendaFaturandoNaConsultaDeOrcamentoTeste: BaseTestesComTelaAbertaNoFechar
     {
         [Test(Description = "Gerar pré venda faturando na consulta do orçamento")]
         [AllureTag("CI")]
