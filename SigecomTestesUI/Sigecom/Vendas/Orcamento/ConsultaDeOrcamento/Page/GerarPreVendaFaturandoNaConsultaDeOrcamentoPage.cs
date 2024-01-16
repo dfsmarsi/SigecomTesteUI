@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using NUnit.Framework;
 using SigecomTestesUI.Config;
 using SigecomTestesUI.ControleDeInjecao;
 using SigecomTestesUI.Services;
@@ -27,8 +28,10 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarOrcamentoNaConsulta();
+            EsperarAcaoEmSegundos(2);
             RealizarOFluxoDeGerarPreVenda();
-            FecharTelaDoOrcamentoComEsc();
+            DriverService.TrocarJanela();
+            VerificarSePreVendaFoiFaturadaDoOrcamento();
         }
 
         private void RealizarOFluxoDeGerarOrcamentoNaConsulta()
@@ -36,6 +39,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDaNovaOrcamento);
             LancarProduto();
             AvancarNoOrcamento();
+            DriverService.DigitarNoCampoId("txtObservacao", "pre-venda faturada");
             AvancarNoOrcamento();
             DriverService.RealizarSelecaoDaAcao(OrcamentoModel.AcoesDoOrcamento, 2);
         }
@@ -44,6 +48,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeGerarDoOrcamento);
             DriverService.SelecionarItensDoDropDown(2);
+            DriverService.TrocarJanela();
             ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
             ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 4);
@@ -60,7 +65,11 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         private void AvancarNoOrcamento()
             => ClicarBotaoName(OrcamentoModel.ElementoNameDoAvancar);
 
-        private void FecharTelaDoOrcamentoComEsc() =>
-            DriverService.FecharJanelaComEsc(ConsultaDeOrcamentoModel.ElementoTelaDoOrcamento);
+        private void VerificarSePreVendaFoiFaturadaDoOrcamento()
+        {
+            int posicaoOrcamentoNaGrid = DriverService.RetornarPosicaoDoRegistroDesejado("Observação", "pre-venda faturada");
+            var dataFaturamentoOrcamento = DriverService.PegarValorDaColunaDaGridNaPosicao("Faturamento", posicaoOrcamentoNaGrid.ToString());
+            Assert.IsTrue(dataFaturamentoOrcamento != "");
+        }
     }
 }

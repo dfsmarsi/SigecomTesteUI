@@ -15,27 +15,6 @@ namespace SigecomTestesUI.Services
 
         public DriverService(WindowsDriver<WindowsElement> windowsDriver) => _driver = windowsDriver;
 
-        public bool EsperarAbrirTelaDeLogin(int timeoutInSeconds, string elementoDaTela)
-        {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutInSeconds));
-            return wait.Until(condition =>
-            {
-                try
-                {
-                    var elementToBeDisplayed = _driver.FindElementByName(elementoDaTela).Text;
-                    return elementToBeDisplayed.Equals(elementoDaTela);
-                }
-                catch (StaleElementReferenceException)
-                {
-                    return false;
-                }
-                catch (NoSuchElementException)
-                {
-                    return false;
-                }
-            });
-        }
-
         public void FecharSistema()
         {
             ClicarBotaoName("Sair/Login");

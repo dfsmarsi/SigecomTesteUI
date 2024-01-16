@@ -13,13 +13,13 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Pessoas.Colaborador.CadastroDeColabo
     {
         private readonly Dictionary<string, string> _dadosDoCliente = new Dictionary<string, string>
         {
-            {"Nome", "FABIANO HENRIQUE DE MORAIS FONSECA 04184783090"},
-            {"Cnpj", "39578222000121"},
-            {"NomeFantasia","SALGADINHOS DA VERA."},
-            {"Cep","92440-304"},
-            {"Endereco", "QUADRA F QUATRO B"},
-            {"Numero","23"},
-            {"Bairro","GUAJUVIRAS"},
+            {"Nome", "PLUG4SALES ATIVIDADES DE INTERNET LTDA"},
+            {"Cnpj", "40120973000189"},
+            {"NomeFantasia","PLUG4SALES"},
+            {"Cep","15700-082"},
+            {"Endereco", "AVENIDA JOÃO AMADEU"},
+            {"Numero","2345"},
+            {"Bairro","CENTRO"},
             {"DataAdmissao", "01/01/1998"},
             {"EmailFuncionario", "teste@sistemasbr.net"},
             {"DiaPagamento", "07"},

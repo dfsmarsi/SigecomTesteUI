@@ -27,7 +27,9 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
             RealizarOFluxoDeGerarOrcamentoNaConsulta();
+            EsperarAcaoEmSegundos(2);
             RealizarOFluxoDeGerarPreVenda();
+            DriverService.TrocarJanela();
             FecharTelaDoOrcamentoComEsc();
         }
 
@@ -44,6 +46,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
         {
             ClicarBotaoName(ConsultaDeOrcamentoModel.BotaoDeGerarDoOrcamento);
             DriverService.SelecionarItensDoDropDown(2);
+            DriverService.TrocarJanela();
             ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
             ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
             DriverService.RealizarSelecaoDaAcao(PreVendaModel.AcoesDaPreVenda, 2);

@@ -11,7 +11,7 @@
         public static string ElementoTipoPessoa => "cbxPessoaClassificacao";
         public static string ElementoNacionalidade => "cbxNacionalidade";
         public static string ElementoNome => "txtNome";
-        public static string ElementoCpf => "txtCPF";
+        public static string ElementoCpf => "cpfCnpjButtonEdit";
         public static string ElementoInscricaoSuframa => "txtInscricaoSuframa";
         public static string ElementoCep => "txtCEP";
         public static string ElementoNumero => "txtNumero";
