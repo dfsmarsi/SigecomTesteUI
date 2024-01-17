@@ -2,16 +2,16 @@
 {
     public class EdicaoDeClienteJuridicoCompletoModel
     {
-        public static string NomeDoClienteAlterado => "VENTURINI - FLORENCIO INDUSTRIA E COM DE BEBIDAS LTDA";
-        public static string Cnpj => "53765640000159";
-        public static string CnpjComPontos => "53.765.640/0001-59";
-        public static string NomeFantasia => "REFRIGERANTES SABORAKI";
-        public static string Cep => "15708030";
-        public static string CepComPontos => "15708-030";
-        public static string Endereco => "RUA SILVIO ALVES BALBINO";
-        public static string Numero => "251";
-        public static string Bairro => "PARQUE INDUSTRIAL II";
+        public static string NomeDoClienteAlterado => "SOCIEDADE ESPORTIVA PALMEIRAS";
+        public static string Cnpj => "61750345000157";
+        public static string CnpjComPontos => "61.750.345/0001-57";
+        public static string NomeFantasia => "PALMEIRAS";
+        public static string Cep => "05005030";
+        public static string CepComPontos => "05005-030";
+        public static string Endereco => "RUA PALESTRA ITÁLIA";
+        public static string Numero => "214";
+        public static string Bairro => "PERDIZES";
         public static string Estado => "SÃO PAULO";
-        public static string Cidade => "JALES";
+        public static string Cidade => "SÃO PAULO";
     }
 }
