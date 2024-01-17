@@ -23,8 +23,8 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             ClicarNaOpcaoDoSubMenu();
             DriverService.ClicarBotaoName("Filtro (F3)");
             DriverService.DigitarNoCampoId("comboBoxEditFiltroMes", "p");
-            DriverService.DigitarNoCampoId("txtDataInicio", "13032023");
-            DriverService.DigitarNoCampoId("txtDataFim", "13032023");
+            DriverService.DigitarNoCampoId("dateEditDataInicio", "13032023");
+            DriverService.DigitarNoCampoId("dateEditDataFim", "13032023");
             DriverService.ClicarBotaoName(", Filtrar");
             DriverService.CliqueNoElementoDaGridComVarios("Valor", "R$12,12");
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaEditarPreVenda);
