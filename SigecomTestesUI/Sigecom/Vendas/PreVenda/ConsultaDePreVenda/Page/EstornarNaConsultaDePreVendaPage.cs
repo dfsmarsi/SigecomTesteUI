@@ -22,13 +22,18 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
         {
             ClicarNaOpcaoDoMenu();
             ClicarNaOpcaoDoSubMenu();
+            DriverService.ClicarBotaoName("Filtro (F3)");
+            DriverService.DigitarNoCampoId("comboBoxEditFiltroMes", "p");
+            DriverService.DigitarNoCampoId("dateEditDataInicio", "13032023");
+            DriverService.DigitarNoCampoId("dateEditDataFim", "13032023");
+            DriverService.ClicarBotaoName(", Filtrar");
             DriverService.CliqueNoElementoDaGridComVarios("Valor", "R$31,33");
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaEstornarPreVenda);
+            DriverService.TrocarJanela();
             ClicarBotaoName(PreVendaModel.ElementoNameDoSim);
-            VerificarSeOPrimeiroRegistroFoiEliminado();
+            EsperarAcaoEmSegundos(2); 
+            DriverService.TrocarJanela();
+            Assert.AreNotEqual(DriverService.VerificarSePossuiOValorNaTela("R$31,33"), true);
         }
-
-        private void VerificarSeOPrimeiroRegistroFoiEliminado()
-            => Assert.AreNotEqual(DriverService.PegarValorDaColunaDaGrid("Código"), 1);
     }
 }
