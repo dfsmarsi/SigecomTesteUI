@@ -29,6 +29,11 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarNaOpcaoDoSubMenu();
             AcessarOpcaoSubMenu(ContaAPagarModel.BotaoSubMenuDoPagar);
             RealizarFluxoDeGerarConta();
+            DriverService.ClicarBotaoName("Filtro");
+            DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
+            DriverService.DigitarNoCampoId("cbxCriterioValor", "ig");
+            DriverService.DigitarNoCampoId("txtValor", "2,13");
+            DriverService.ClicarBotaoName(", Filtrar");
             DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$2,13");
 
             // Act
@@ -39,13 +44,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             EsperarAcaoEmSegundos(1);
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "1");
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "2");
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeDataDeVencimento, "25");
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeDataDeVencimento, "2");
             var diaDaPrimeiraParcela = DateTime.Parse(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaModel.ElementoCampoDaGridDataVencimento));
             ClicarBotaoName(LancarContaAvulsaModel.Recalcular);
 
             // Assert
             Assert.AreEqual(diaDaPrimeiraParcela.ToString("d"), DateTime.Parse(DriverService.PegarValorDaColunaDaGrid(LancarContaAvulsaModel.ElementoCampoDaGridDataVencimento)).ToString("d"));
-            Assert.AreEqual(diaDaPrimeiraParcela.AddDays(25).ToString("d"), DateTime.Parse(DriverService.PegarValorDaColunaDaGridNaPosicao(LancarContaAvulsaModel.ElementoCampoDaGridDataVencimento, "1")).ToString("d"));
+            Assert.AreEqual(diaDaPrimeiraParcela.AddMonths(2).ToString("d"), DateTime.Parse(DriverService.PegarValorDaColunaDaGridNaPosicao(LancarContaAvulsaModel.ElementoCampoDaGridDataVencimento, "1")).ToString("d"));
             ClicarBotaoName(LancarContaAvulsaModel.Gravar);
             FecharTelaDeLancarContaAvulsaContaAPagarComEsc();
         }

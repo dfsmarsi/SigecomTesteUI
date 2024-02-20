@@ -33,9 +33,9 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             DriverService.ClicarBotaoName("Filtro");
             DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
             DriverService.DigitarNoCampoId("cbxCriterioValor", "ig");
-            DriverService.DigitarNoCampoId("txtValor", "5,00");
+            DriverService.DigitarNoCampoId("txtValor", "2,50");
             DriverService.ClicarBotaoName(", Filtrar");
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$5,00");
+            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$2,50");
             DriverService.ClicarBotaoName(ContaAReceberModel.BotaoDeDetalhes);
             VerificarValorNaPosicao(0);
             VerificarValorNaPosicao(1);
@@ -49,13 +49,13 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePlanoConta, "Acerto de caixa", Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(LancarContaAvulsaModel.ElementoCampoDePessoa, "CONSUMIDOR", Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(LancarContaAvulsaModel.ElementoCampoDeHistorico, "", Keys.Enter);
-            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "1");
+            DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeValor, "5,00");
             DriverService.EditarCampoComDuploCliqueNoBotaoId(LancarContaAvulsaModel.ElementoCampoDeQuantidadeDeParcelas, "2");
             ClicarBotaoName(LancarContaAvulsaModel.Gravar);
         }
 
         private void VerificarValorNaPosicao(int posicao) => 
-            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Valor", posicao.ToString()), "R$5,00");
+            Assert.AreEqual(DriverService.PegarValorDaColunaDaGridNaPosicao("Valor", posicao.ToString()), "R$2,50");
 
         private void FecharTelaDeLancarContaAvulsaContaAReceberComEsc() =>
             DriverService.FecharJanelaComEsc(ContaAReceberModel.ElementoTelaDeContaReceber);
