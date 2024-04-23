@@ -29,6 +29,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.Orcamento.ConsultaDeOrcamento.Page
             RealizarOFluxoDeGerarOrcamentoNaConsulta();
             EsperarAcaoEmSegundos(2);
             RealizarOFluxoDeGerarPreVenda();
+            EsperarAcaoEmSegundos(2);
             DriverService.TrocarJanela();
             FecharTelaDoOrcamentoComEsc();
         }
