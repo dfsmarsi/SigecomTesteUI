@@ -2,7 +2,7 @@
 {
     public class EdicaoDeFornecedorJuridicoCompletoModel
     {
-        public static string NomeDoFornecedorAlterado => "B. S. DIGITAL LTDA";
+        public static string NomeDoFornecedorAlterado => "BRAS SUN DIGITAL LTDA";
         public static string Cnpj => "21418205000161";
         public static string CnpjComPontos => "21.418.205/0001-61";
         public static string Cep => "15700082";
