@@ -44,6 +44,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             ClicarBotaoName(ContaAReceberModel.ParcialDoPagarConta);
             DriverService.TrocarJanela();
             ClicarBotaoName(ContaAReceberModel.Sim);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ContaAReceberModel.Nao);
             DriverService.TrocarJanela();
             DriverService.ClicarBotaoName(", Limpar");
