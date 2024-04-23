@@ -39,6 +39,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarBotaoName(ContaAPagarModel.ParcialDoPagarConta);
             DriverService.TrocarJanela();
             ClicarBotaoName(ContaAPagarModel.Sim);
+            EsperarAcaoEmSegundos(1);
             DriverService.TrocarJanela();
             Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
             FecharTelaDeContaAPagarComEsc();
