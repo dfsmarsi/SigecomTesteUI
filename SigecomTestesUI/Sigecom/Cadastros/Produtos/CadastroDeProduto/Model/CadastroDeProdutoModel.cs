@@ -30,7 +30,7 @@
         //Aba Impostos
         public static string AbaImpostos => "Impostos";
         public static string ElementoOrigemMercadoria => "cbxOrigem";
-        public static string ElementoSituacaoTributaria => "cbxSituacaoTributaria";
+        public static string ElementoSituacaoTributaria => "situacaoTributariaCsosnLookUpEdit";
         public static string ElementoNaturezaCfop => "cbxNaturezaCfop";
         public static string ElementoNcm => "txtNCM";
         public static string ElementoCest => "txtCEST";
