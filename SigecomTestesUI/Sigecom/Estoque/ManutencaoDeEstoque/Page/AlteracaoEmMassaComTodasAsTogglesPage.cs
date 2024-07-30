@@ -62,6 +62,8 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
 
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
+            DriverService.TrocarJanela();
+            ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
 
             // Assert
             DriverService.TrocarJanela();

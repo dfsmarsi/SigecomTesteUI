@@ -7,7 +7,6 @@ using SigecomTestesUI.Sigecom.Vendas.PDV.Enum;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Model;
 using SigecomTestesUI.Sigecom.Vendas.PDV.Page.Interfaces;
 using System;
-using System.Threading;
 using DriverService = SigecomTestesUI.Services.DriverService;
 
 namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
@@ -47,7 +46,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PDV.Page
             SelecionarCliente();
         }
 
-        private void SelecionarCliente()
+        public void SelecionarCliente()
         {
             using var beginLifetimeScope = ControleDeInjecaoAutofac.Container.BeginLifetimeScope();
             beginLifetimeScope.Resolve<Func<DriverService, PesquisaDePessoaPage>>()(DriverService).PesquisarPessoaComConfirmar("cliente", "CLIENTE TESTE PESQUISA");
