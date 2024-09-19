@@ -44,6 +44,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContaAReceber.Page
             ClicarBotaoName(ContaAReceberModel.ParcialDoPagarConta);
             DriverService.TrocarJanela();
             ClicarBotaoName(ContaAReceberModel.Sim);
+            EsperarAcaoEmSegundos(1);
             DriverService.TrocarJanela();
             DriverService.ClicarBotaoName(", Limpar");
             DriverService.DigitarNoCampoId("periodoComboBoxEdit", "p");
