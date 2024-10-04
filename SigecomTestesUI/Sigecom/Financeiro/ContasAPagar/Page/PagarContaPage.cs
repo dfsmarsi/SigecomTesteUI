@@ -35,6 +35,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             DriverService.SelecionarItensDoDropDown(1);
             DriverService.RealizarSelecaoDaFormaDePagamento(ContaAPagarModel.ElementoDeFormaDePagamento, 1);
             FecharTelaDeContaAPagarComEsc();
+            EsperarAcaoEmSegundos(2);
 
             // Assert
             ClicarNaOpcaoDoSubMenu();
