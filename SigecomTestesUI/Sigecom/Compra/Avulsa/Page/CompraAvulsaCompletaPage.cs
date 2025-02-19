@@ -40,7 +40,7 @@ namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(CompraAvulsaModel.ElementoDoValorDeDespesas, "50", Keys.Enter);
             ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosCompra);
             ClicarBotaoName(CompraAvulsaModel.BotaoAtalhosDeFrete);
-            DriverService.ClicarBotaoId(CompraAvulsaModel.ElementoDoTransportador);
+            DriverService.ClicarBotaoName(CompraAvulsaModel.ElementoDoTransportador);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5(PesquisaDePessoaModel.ElementoParametroDePesquisa, "", Keys.Enter);
             DriverService.DigitarNoCampoId(CompraAvulsaModel.ElementoDoValorDeFrete, "50");
             ClicarBotaoName(CompraAvulsaModel.ElementoDoConfirmar);
@@ -51,6 +51,7 @@ namespace SigecomTestesUI.Sigecom.Compra.Avulsa.Page
             DriverService.DigitarNoCampoId(CompraAvulsaModel.ElementoDoNumeroDoNfe, "1");
             ClicarBotaoName(CompraAvulsaModel.ElementoDoConfirmar);
             DriverService.EditarItensNaGridComDuploClickComTab(CompraAvulsaModel.CampoDaGridDeMarkupDoProduto, "100");
+            EsperarAcaoEmSegundos(1);
 
 
             // Assert
