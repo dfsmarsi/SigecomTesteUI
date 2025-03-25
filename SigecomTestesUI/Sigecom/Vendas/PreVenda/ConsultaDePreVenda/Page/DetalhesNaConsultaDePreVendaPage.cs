@@ -60,6 +60,6 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             => ClicarBotaoName(PreVendaModel.ElementoNameDoAvancar);
 
         private void FecharTelaDeDetalhesDaPreVenda()
-            => DriverService.ClicarBotaoId(DetalhesNaConsultaDePreVendaModel.BotaoDeFecharTelaDeDetalhes);
+            => DriverService.FecharJanelaComEsc(DetalhesNaConsultaDePreVendaModel.TelaDeDetalhesPreVenda);
     }
 }

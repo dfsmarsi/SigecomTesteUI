@@ -8,6 +8,6 @@
         public static string ValorDoValorTotalComDesconto => "R$30,00";
         public static string ValorTotalParaVerificarDetalhes => "33,33";
         public static string DescontoParaVerificarDetalhes => "3,33";
-        public static string BotaoDeFecharTelaDeDetalhes => "lblFecharTela";
+        public static string TelaDeDetalhesPreVenda => "Detalhes da pré-venda";
     }
 }
