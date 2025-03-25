@@ -61,6 +61,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDoAtivoDesativo, 1);
 
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
             DriverService.TrocarJanela();
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);

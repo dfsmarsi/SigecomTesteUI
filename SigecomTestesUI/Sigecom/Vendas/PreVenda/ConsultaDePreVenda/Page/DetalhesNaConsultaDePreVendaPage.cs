@@ -29,6 +29,7 @@ namespace SigecomTestesUI.Sigecom.Vendas.PreVenda.ConsultaDePreVenda.Page
             RealizarOFluxoDeGerarPreVendaNaConsulta();
             DriverService.CliqueNoElementoDaGridComVarios(PreVendaModel.CampoDaGridDeValorTotalDaTelaDeConsultaDePreVenda, DetalhesNaConsultaDePreVendaModel.ValorDoValorTotalComDesconto);
             ClicarBotaoName(ConsultaDePreVendaModel.BotaoDaDetalhesPreVenda);
+            DriverService.TrocarJanela();
             Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoValorDaVenda), DetalhesNaConsultaDePreVendaModel.ValorDoValorTotalComDesconto);
             Assert.AreEqual(DriverService.ObterValorElementoId(DetalhesNaConsultaDePreVendaModel.ElementoDoDesconto), DetalhesNaConsultaDePreVendaModel.ValorDoDesconto);
             FecharTelaDeDetalhesDaPreVenda();  

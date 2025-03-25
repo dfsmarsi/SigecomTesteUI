@@ -36,6 +36,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaNaturezaCfop);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDaNaturezaCfop, 2);
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
 
             // Assert

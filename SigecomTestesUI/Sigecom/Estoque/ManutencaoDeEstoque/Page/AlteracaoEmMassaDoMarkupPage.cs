@@ -35,6 +35,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoTipoDeAlteracao, 3);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoValorDaVendaPorcentagem, acrescentarNoValor, Keys.Enter);
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
+            DriverService.TrocarJanela();
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
             DriverService.TrocarJanela();
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoSim);
