@@ -11,15 +11,14 @@
         public static string BotaoAtalhosDeFrete => ", [ F6 ] - Inserir frete";
         public static string BotaoAtalhosDeNfe => ", [ F8 ] - Informações da NF-e";
         public static string ElementoDoValorDeDespesas => "txtDescontoOuAcrescimo";
-        public static string ElementoDoTransportador => "lblFornecedor";
+        public static string ElementoDoTransportador => "(F2) - Selecione uma transportadora";
         public static string ElementoDoValorDeFrete => "txtValor";
         public static string ElementoDeSerieDoNfe => "textEditSerie";
         public static string ElementoDoNumeroDoNfe => "textEditNumero";
-        public static string ElementoDoTotalDuplicatas => "txtValor";
+        public static string ElementoDoTotalDuplicatas => "totalDuplicatasValorButtonEdit";
         public static string ElementoDoConfirmar => ", Confirmar (ENTER)";
         public static string ElementoDoConfirmarFinalDoFrete => ", Confirmar (F5)";
         public static string ElementoDoAvancarCompra => ", Avançar";
-        
         public static string ElementoPesquisaDeProduto => "scProdutos";
         public static string CampoDaGridDeQuantidadeDoProduto => "Qtde";
         public static string CampoDaGridDoNovoCustoDoProduto => "Novo      custo";
