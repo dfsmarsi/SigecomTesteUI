@@ -69,19 +69,8 @@ namespace SigecomTestesUI.Services
 
         public void TrocarJanela()
         {
-            // Identify the current window handle. You can check through inspect.exe which window this is.
-
-            //var currentWindowHandle = _driver.CurrentWindowHandle;
-
-            // Wait for 5 seconds or however long it is needed for the right window to appear/for the splash screen to be dismissed
             Thread.Sleep(TimeSpan.FromSeconds(2));
-            // Return all window handles associated with this process/application.
-            // At this point hopefully you have one to pick from. Otherwise you can
-            // simply iterate through them to identify the one you want.
             var allWindowHandles = _driver.WindowHandles;
-            // Assuming you only have only one window entry in allWindowHandles and it is in fact the correct one,
-            // switch the session to that window as follows. You can repeat this logic with any top window with the same
-            // process id (any entry of allWindowHandles)
             _driver.SwitchTo().Window(allWindowHandles[0]);
         }
 

@@ -36,6 +36,8 @@ namespace SigecomTestesUI.Sigecom.Cadastros.Produtos.CadastroDeProduto.CadastroD
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoReferencia, CadastroDeProdutoBaseModel.ReferenciaDoProduto);
 
                 _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeProdutoModel.ElementoMarca, CadastroDeProdutoCompletoModel.Marca, Keys.Enter);
+                _driverService.TrocarJanela();
+                _driverService.RealizarAcaoDaTeclaDeAtalhoNaTelaName("Pesquisa de Marca", Keys.Enter);
                 _driverService.DigitarNoCampoComTeclaDeAtalhoId(CadastroDeProdutoModel.ElementoFornecedor, CadastroDeProdutoCompletoModel.Fornecedor, Keys.Enter);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoLocal, CadastroDeProdutoCompletoModel.Local);
                 _driverService.DigitarNoCampoId(CadastroDeProdutoModel.ElementoObs, CadastroDeProdutoCompletoModel.Obs);
