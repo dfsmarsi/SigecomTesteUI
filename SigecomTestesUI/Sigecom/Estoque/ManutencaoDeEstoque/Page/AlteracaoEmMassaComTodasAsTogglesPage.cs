@@ -29,6 +29,8 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
 
             // Act
             DriverService.TrocarJanela();
+            //impostos
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoDeImpostos);
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaOrigemDaMercadoria);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDaOrigemDaMercadoria, 2);
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaSituacaoTribuitaria);
@@ -42,15 +44,20 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoCampoDoCest, "", Keys.Enter);
             DriverService.DigitarNoCampoComTeclaDeAtalhoIdMaisF5("txtPesquisa",
                 "0100100", Keys.Enter);
-
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaCstPis);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDaCstPis, 1);
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaClassificacaoPis);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDaClassificacaoPis, 1);
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoDeImpostos);
 
+            //valores
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoValores);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoTipoDeAlteracao, 1);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoValorDaVenda, "10", Keys.Enter);
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoValores);
 
+            //Detalhes
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoDetalhes);
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaCategoria);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoCampoDaCategoria, "Balanca", Keys.Enter); 
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaMarca);
@@ -61,6 +68,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             DriverService.DigitarNoCampoId(AlteracaoEmMassaModel.ElementoDoCampoDoLocal, "Teste");
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDoAtivoDesativo);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDoAtivoDesativo, 1);
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoDetalhes);
 
             ClicarBotaoName(ManutencaoDeEstoqueModel.BotaoConfirmar);
             DriverService.TrocarJanela();

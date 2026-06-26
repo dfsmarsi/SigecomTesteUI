@@ -3,6 +3,8 @@
     public class AlteracaoEmMassaModel
     {
         //Impostos
+        public static string ElementoGrupoDeImpostos => "Impostos";
+        public static string ElementoAcordeao => "alteracaoEmMassaAccordionControl";
         public static string ElementoDoCampoDaOrigemDaMercadoria => "origemDaMercadoriaLookUpEdit";
         public static string ElementoDaToggleDaOrigemDaMercadoria => "origemDaMercadoriaToggleSwitch";
         public static string ElementoDoCampoDaSituacaoTribuitaria => "csosnLookUpEdit";
@@ -24,7 +26,35 @@
         public static string ElementoDoCampoDoCBenef => "cBenefTextEdit";
         public static string ElementoDaToggleDoCBenef => "cBenefToggleSwitch";
 
+        //Reforma tributaria
+        public static string ElementoGrupoReformaTributaria => "Reforma Tributária";
+        public static string ElementoToggleClassTribGeral => "cClassTribToggleSwitch";
+        public static string ElementoCampoClassTrib => "cClassTribLookUpEdit";
+        public static string ElementoCampoNaturezaNfe => "naturezaNfeLookUpEdit";
+        public static string ElementoCampoAliquotaCbs => "aliquotaCbsButtonEdit";
+        public static string ElementoCampoAliquotaIbsEstadual => "aliquotaIbsEstadualButtonEdit";
+        public static string ElementoCampoAliquotaIbsMunicipal => "aliquotaIbsMunicipalButtonEdit";
+        public static string ElementoCampoDeferimentoCBS => "diferimentoCbsButtonEdit";
+        public static string ElementoCampoDeferimentoIbsEstadual => "diferimentoIbsEstadualButtonEdit";
+        public static string ElementoCampoDeferimentoIbsMunicipal => "diferimentoIbsMunicipalButtonEdit";
+
+        //Servicos
+        public static string ElementoGrupoServicos => "Serviços";
+        public static string ElementoToggleAliquotaIss => "aliquotaIssToggleSwitch";
+        public static string ElementoCampoAliquotaIss => "aliquotaIssTextEdit";
+        public static string ElementoToggleIndicadorIss => "indicadorIssToggleSwitch";
+        public static string ElementoCampoIndicadorIss => "indicadorIssLookUpEdit";
+        public static string ElementoToggleIndicadorIncentivo => "indicadorIncentivoToggleSwitch";
+        public static string ElementoCampoIndicadorIncentivo => "indicadorIncentivoLookUpEdit";
+        public static string ElementoToggleTipoServico => "tipoDeServicoToggleSwitch";
+        public static string ElementoCampoTipoServico => "tipoDeServicoButtonEdit";
+        public static string ElementoToggleIndicadorOperacao => "indicadorDeOperacaoToggleSwitch";
+        public static string ElementoCampoIndicadorOperacao => "indicadorDeOperacaoLookUpEdit";
+        public static string ElementoToggleNbs => "nbsToggleSwitch";
+        public static string ElementoCampoNbs => "nbsButtonEdit";
+
         //Valores
+        public static string ElementoGrupoValores => "Valores";
         public static string ElementoDeGroupButtomVenda => "Venda";
         public static string ElementoDeGroupButtomCusto => "Custo";
         public static string ElementoDeGroupButtomMarkup => "Markup";
@@ -33,6 +63,7 @@
         public static string ElementoDoValorDaVendaPorcentagem => "txtPorcentagem";
 
         //Detalhes
+        public static string ElementoGrupoDetalhes => "Detalhes";
         public static string ElementoDoCampoDaCategoria => "categoriaTreeListLookUpEdit";
         public static string ElementoDaToggleDaCategoria => "grupoToggleSwitch";
         public static string ElementoDoCampoDaMarca => "marcaLookUpEdit";
