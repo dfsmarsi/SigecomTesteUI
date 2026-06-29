@@ -31,6 +31,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
             // Act
             DriverService.TrocarJanela();
             const string acrescentarNoValor = "100";
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoValores);
             ClicarBotaoName(AlteracaoEmMassaModel.ElementoDeGroupButtomMarkup);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoTipoDeAlteracao, 3);
             DriverService.DigitarNoCampoComTeclaDeAtalhoId(AlteracaoEmMassaModel.ElementoDoValorDaVendaPorcentagem, acrescentarNoValor, Keys.Enter);

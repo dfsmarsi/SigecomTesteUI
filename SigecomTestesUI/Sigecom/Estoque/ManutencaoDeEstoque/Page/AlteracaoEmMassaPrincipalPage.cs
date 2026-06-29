@@ -29,6 +29,7 @@ namespace SigecomTestesUI.Sigecom.Estoque.ManutencaoDeEstoque.Page
 
             // Act
             DriverService.TrocarJanela();
+            DriverService.ClicarBotaoName(AlteracaoEmMassaModel.ElementoGrupoDeImpostos);
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaOrigemDaMercadoria);
             DriverService.SelecionarItemComboBox(AlteracaoEmMassaModel.ElementoDoCampoDaOrigemDaMercadoria, 2);
             DriverService.ClicarNoToggleSwitchPeloId(AlteracaoEmMassaModel.ElementoDaToggleDaSituacaoTribuitaria);

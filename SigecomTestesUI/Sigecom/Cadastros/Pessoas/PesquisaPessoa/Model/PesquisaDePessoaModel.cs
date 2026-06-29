@@ -3,6 +3,6 @@
     public class PesquisaDePessoaModel
     {
         public static string TelaPesquisaPessoaPrefixo => "Pesquisa de ";
-        public static string ElementoParametroDePesquisa => "textEditParametroDePesquisa";
+        public static string ElementoParametroDePesquisa => "parametroDePesquisaTextEdit";
     }
 }
