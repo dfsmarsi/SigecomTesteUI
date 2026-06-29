@@ -7,22 +7,22 @@
         public static string ElementoAcordeao => "alteracaoEmMassaAccordionControl";
         public static string ElementoDoCampoDaOrigemDaMercadoria => "origemDaMercadoriaLookUpEdit";
         public static string ElementoDaToggleDaOrigemDaMercadoria => "origemDaMercadoriaToggleSwitch";
-        public static string ElementoDoCampoDaSituacaoTribuitaria => "csosnLookUpEdit";
-        public static string ElementoDaToggleDaSituacaoTribuitaria => "csosnToggleSwitch";
-        public static string ElementoDoCampoDaNaturezaCfop => "cfopLookUpEdit";
-        public static string ElementoDaToggleDaNaturezaCfop => "cfopToggleSwitch";
+        public static string ElementoDoCampoDaSituacaoTribuitaria => "situacaoTributariaLookUpEdit";
+        public static string ElementoDaToggleDaSituacaoTribuitaria => "situacaoTributariaToggleSwitch";
+        public static string ElementoDoCampoDaNaturezaCfop => "naturezaCfopLookUpEdit";
+        public static string ElementoDaToggleDaNaturezaCfop => "naturezaCfopToggleSwitch";
         public static string ElementoDoCampoDoCest => "cestButtonEdit";
         public static string ElementoDaToggleDoCest => "cestToggleSwitch";
         public static string ElementoDoCampoDaNcm => "ncmButtonEdit";
         public static string ElementoDaToggleDaNcm => "ncmToggleSwitch"; 
-        public static string ElementoDoCampoDaCstPis => "cstDePisLookUpEdit";
-        public static string ElementoDaToggleDaCstPis => "cstDePisToggleSwitch"; 
-        public static string ElementoDoCampoDaCstCofins => "cstDeCofinsLookUpEdit";
-        public static string ElementoDaToggleDaCstCofins => "cstDeCofinsToggleSwitch";
-        public static string ElementoDoCampoDaCstIpi => "cstDeIpiLookUpEdit";
-        public static string ElementoDaToggleDaCstIpi => "cstDeIpiToggleSwitch";
+        public static string ElementoDoCampoDaCstPis => "cstPisLookUpEdit";
+        public static string ElementoDaToggleDaCstPis => "cstPisToggleSwitch"; 
+        public static string ElementoDoCampoDaCstCofins => "cstCofinsLookUpEdit";
+        public static string ElementoDaToggleDaCstCofins => "cstCofinsToggleSwitch";
+        public static string ElementoDoCampoDaCstIpi => "cstIpiLookUpEdit";
+        public static string ElementoDaToggleDaCstIpi => "cstIpiToggleSwitch";
         public static string ElementoDoCampoDaClassificacaoPis => "classificacaoDePisCofinsComboBoxEdit";
-        public static string ElementoDaToggleDaClassificacaoPis => "classificacaoDePisConfinsToggleSwitch";
+        public static string ElementoDaToggleDaClassificacaoPis => "classificacaoDePisCofinsToggleSwitch";
         public static string ElementoDoCampoDoCBenef => "cBenefTextEdit";
         public static string ElementoDaToggleDoCBenef => "cBenefToggleSwitch";
 
@@ -58,14 +58,14 @@
         public static string ElementoDeGroupButtomVenda => "Venda";
         public static string ElementoDeGroupButtomCusto => "Custo";
         public static string ElementoDeGroupButtomMarkup => "Markup";
-        public static string ElementoDoTipoDeAlteracao => "criterioDeAlteracaoDeValorlookUpEdit";
-        public static string ElementoDoValorDaVenda => "txtValor";
-        public static string ElementoDoValorDaVendaPorcentagem => "txtPorcentagem";
+        public static string ElementoDoTipoDeAlteracao => "criterioDeAlteracaoDeValorLookUpEdit";
+        public static string ElementoDoValorDaVenda => "valorTextEdit";
+        public static string ElementoDoValorDaVendaPorcentagem => "porcentagemTextEdit";
 
         //Detalhes
         public static string ElementoGrupoDetalhes => "Detalhes";
         public static string ElementoDoCampoDaCategoria => "categoriaTreeListLookUpEdit";
-        public static string ElementoDaToggleDaCategoria => "grupoToggleSwitch";
+        public static string ElementoDaToggleDaCategoria => "categoriaToggleSwitch";
         public static string ElementoDoCampoDaMarca => "marcaLookUpEdit";
         public static string ElementoDaToggleDaMarca => "marcaToggleSwitch";
         public static string ElementoDoCampoDoFornecedor => "fornecedorLookUpEdit";
