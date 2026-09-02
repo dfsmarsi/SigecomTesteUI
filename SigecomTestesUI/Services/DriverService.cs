@@ -389,6 +389,12 @@ namespace SigecomTestesUI.Services
             campo.Click();
         }
 
+        public void FocarCampoId(string nomeCampo)
+        {
+            var campo = EncontrarElementoId(nomeCampo);
+            campo.Click();
+        }
+
         public bool VerificarSeCheckEstaMarcado(string idCampo)
         {
             var estaMarcado = ObterValorElementoName(idCampo);
