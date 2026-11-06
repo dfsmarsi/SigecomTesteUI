@@ -230,7 +230,32 @@ namespace SigecomTestesUI.Services
             return campoDaGrid;
         }
 
-        private WindowsElement ObterElementoDaGridComName(string nomeColuna, int campoDaGrid) => 
+        public void CliqueNoElementoDaGridComFiltro(string nomeColuna, string nome, string nomeColunaFiltro, string valorFiltro)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGridComFiltro(nomeColuna, nome, nomeColunaFiltro, valorFiltro);
+            RealizarAcaoDeClicarNoCampoDaGrid(nome, ObterElementoDaGridComName(nomeColuna, campoDaGrid));
+        }
+
+        public bool VerificarSePossuiOValorNaGridComFiltro(string nomeColuna, string nome, string nomeColunaFiltro, string valorFiltro)
+        {
+            var campoDaGrid = ObterPosicaoDoElementoNaGridComFiltro(nomeColuna, nome, nomeColunaFiltro, valorFiltro);
+            return ObterElementoDaGridComName(nomeColuna, campoDaGrid).Text.Equals(nome);
+        }
+
+        // Procura a linha em que as duas colunas batem exatamente (Equals), evitando
+        // pegar outro registro que tenha só o mesmo valor (ex.: "FORNECEDOR" x "FORNECEDOR EDITAR TESTE").
+        private int ObterPosicaoDoElementoNaGridComFiltro(string nomeColuna, string nome, string nomeColunaFiltro, string valorFiltro)
+        {
+            var campoDaGrid = 0;
+
+            while (!(ObterElementoDaGridComName(nomeColuna, campoDaGrid).Text.Equals(nome)
+                     && ObterElementoDaGridComName(nomeColunaFiltro, campoDaGrid).Text.Equals(valorFiltro)))
+                campoDaGrid++;
+
+            return campoDaGrid;
+        }
+
+        private WindowsElement ObterElementoDaGridComName(string nomeColuna, int campoDaGrid) =>
             _driver.FindElementByName($"{nomeColuna} row {campoDaGrid}");
 
         private void RealizarAcaoDeClicarNoCampoDaGrid(string nome, IWebElement botaoEncontrado)

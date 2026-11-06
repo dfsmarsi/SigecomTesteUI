@@ -31,7 +31,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
 
             // Act
             RealizarFluxoDeGerarContaAPagar();
-            DriverService.CliqueNoElementoDaGridComVarios("Saldo", "R$22,22");
+            DriverService.CliqueNoElementoDaGridComFiltro("Saldo", "R$22,22", "Nome", "FORNECEDOR");
             ClicarBotaoName(ContaAPagarModel.BotaoDePagar);
             DriverService.SelecionarItensDoDropDown(1);
             DriverService.RealizarSelecaoDaFormaDePagamentoSemEnter(ContaAPagarModel.ElementoDeFormaDePagamento, 6);
@@ -41,7 +41,7 @@ namespace SigecomTestesUI.Sigecom.Financeiro.ContasAPagar.Page
             ClicarBotaoName(ContaAPagarModel.Sim);
             EsperarAcaoEmSegundos(1);
             DriverService.TrocarJanela();
-            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGrid("Saldo", "R$12,00"), true);
+            Assert.AreEqual(DriverService.VerificarSePossuiOValorNaGridComFiltro("Saldo", "R$12,00", "Nome", "FORNECEDOR"), true);
             FecharTelaDeContaAPagarComEsc();
 
             // Assert
