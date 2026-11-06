@@ -133,14 +133,16 @@ public static class Requirements
     }
 
     /// <summary>Gera o script PowerShell (rodado como administrador) para os requisitos informados.</summary>
-    public static string BuildScript(IEnumerable<string> ids, string logPath)
+    /// <remarks>O caminho do log chega pelo parâmetro -LogPath, e não embutido no texto, para não quebrar com apóstrofo no caminho.</remarks>
+    public static string BuildScript(IEnumerable<string> ids)
     {
         var set = ids.ToHashSet();
         var sb = new StringBuilder();
+        sb.AppendLine("param([Parameter(Mandatory = $true)][string]$LogPath)");
         sb.AppendLine("$ErrorActionPreference = 'Stop'");
         sb.AppendLine("[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12");
         sb.AppendLine("$ProgressPreference = 'SilentlyContinue'");
-        sb.AppendLine($"Start-Transcript -Path '{logPath}' -Force | Out-Null");
+        sb.AppendLine("Start-Transcript -LiteralPath $LogPath -Force | Out-Null");
         sb.AppendLine("$falhas = 0");
         sb.AppendLine("function Passo($nome, [scriptblock]$acao) {");
         sb.AppendLine("  Write-Host \"==> $nome\"");

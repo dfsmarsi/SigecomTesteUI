@@ -119,7 +119,7 @@ public class SetupWizardForm : Form
         Directory.CreateDirectory(dir);
         _logPath = Path.Combine(dir, $"instalacao-{DateTime.Now:yyyyMMdd-HHmmss}.log");
         var scriptPath = Path.Combine(dir, "instalar-requisitos.ps1");
-        File.WriteAllText(scriptPath, Requirements.BuildScript(ids, _logPath), new UTF8Encoding(true));
+        File.WriteAllText(scriptPath, Requirements.BuildScript(ids), new UTF8Encoding(true));
 
         _log.Clear();
         _logOffset = 0;
@@ -127,7 +127,8 @@ public class SetupWizardForm : Form
         {
             _process = Process.Start(new ProcessStartInfo("powershell.exe")
             {
-                Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{scriptPath}\"",
+                // Caminhos do Windows não podem conter aspas duplas, então envolver em "" é seguro.
+                Arguments = $"-NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"{scriptPath}\" -LogPath \"{_logPath}\"",
                 UseShellExecute = true,
                 Verb = "runas", // pede elevação (UAC)
                 WindowStyle = ProcessWindowStyle.Hidden

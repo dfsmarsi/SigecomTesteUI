@@ -571,13 +571,20 @@ public class MainForm : Form
             {
                 BeginInvoke(() =>
                 {
-                    var teste = pendentes.FirstOrDefault(t => nome == t.Method || nome.StartsWith(t.Method + "("));
-                    if (teste == null) return;
-                    pendentes.Remove(teste);
-                    teste.Status = status;
-                    AplicarVisual(teste);
-                    AtualizarGrupos();
-                    AtualizarStatusBar();
+                    // A saída do dotnet test traz só o nome do método. Se mais de um teste pendente tiver esse nome
+                    // (classes diferentes), não dá para saber qual terminou: só avança o progresso e deixa o .trx
+                    // (que tem o nome completo) marcar o status no final.
+                    var candidatos = pendentes.Where(t => nome == t.Method || nome.StartsWith(t.Method + "(")).ToList();
+                    if (candidatos.Count == 0) return;
+                    if (candidatos.Count == 1)
+                    {
+                        var teste = candidatos[0];
+                        pendentes.Remove(teste);
+                        teste.Status = status;
+                        AplicarVisual(teste);
+                        AtualizarGrupos();
+                        AtualizarStatusBar();
+                    }
                     concluidos++;
                     _progress.Value = Math.Min(concluidos, _progress.Maximum);
                     _statusLabel.Text = $"Executando… {concluidos}/{selecionados.Count}";
